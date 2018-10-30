@@ -1,0 +1,319 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8C6A55A9-8EF2-455A-B750-E6BC08DD52A4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TRAMARSA.TRANSMISIONES.DTO</RootNamespace>
+    <AssemblyName>TRAMARSA.TRANSMISIONES.DTO</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Adjunto\AdjuntarArchivosDTO.cs" />
+    <Compile Include="Adjunto\EliminarArchivoAdjuntoDTO.cs" />
+    <Compile Include="Adjunto\RequestAdjuntarArchivosDTO.cs" />
+    <Compile Include="Adjunto\RequestDescargarArchivoDTO.cs" />
+    <Compile Include="Adjunto\ResponseAdjuntarArchivoDTO.cs" />
+    <Compile Include="Adjunto\ResponseDescargarArchivoDTO.cs" />
+    <Compile Include="Adjunto\ResponseEliminarAdjuntarArchivoDTO.cs" />
+    <Compile Include="Documento\DetalleDocumentoDTO.cs" />
+    <Compile Include="Documento\Request\ConsultaDetalleDocumentoRequestDTO.cs" />
+    <Compile Include="Documento\Response\ConsultaDetalleDocumentoResponseDTO.cs" />
+    <Compile Include="Maestros\Aduana\AduanaDTO.cs" />
+    <Compile Include="Maestros\Aduana\Request\RequestConsultarAduanaDTO.cs" />
+    <Compile Include="Maestros\Aduana\Request\RequestRegistraAduanaDTO.cs" />
+    <Compile Include="Maestros\Aduana\Response\ResponseRegistraAduanaDTO.cs" />
+    <Compile Include="Maestros\Aduana\Response\ResponseConsultaAduanaDTO.cs" />
+    <Compile Include="BaseDTO.cs" />
+    <Compile Include="BusquedaBaseDTO.cs" />
+    <Compile Include="Maestros\ClaseIMO\ClaseIMODTO.cs" />
+    <Compile Include="Maestros\ClaseIMO\Request\RequestConsultarClaseIMODTO.cs" />
+    <Compile Include="Maestros\ClaseIMO\Request\RequestRegistraClaseIMODTO.cs" />
+    <Compile Include="Maestros\ClaseIMO\Response\ResponseConsultaClaseIMODTO.cs" />
+    <Compile Include="Maestros\ClaseIMO\Response\ResponseRegistraClaseIMODTO.cs" />
+    <Compile Include="Maestros\CondicionCarga\CondicionCargaDTO.cs" />
+    <Compile Include="Maestros\CondicionCarga\Request\RequestConsultarCondicionCargaDTO.cs" />
+    <Compile Include="Maestros\CondicionCarga\Request\RequestRegistraCondicionCargaDTO.cs" />
+    <Compile Include="Maestros\CondicionCarga\Response\ResponseConsultaCondicionCargaDTO.cs" />
+    <Compile Include="Maestros\CondicionCarga\Response\ResponseRegistraCondicionCargaDTO.cs" />
+    <Compile Include="Maestros\CondicionContrato\CondicionContratoDTO.cs" />
+    <Compile Include="Maestros\CondicionContrato\Request\RequestConsultarCondicionContratoDTO.cs" />
+    <Compile Include="Maestros\CondicionContrato\Request\RequestRegistraCondicionContratoDTO.cs" />
+    <Compile Include="Maestros\CondicionContrato\Response\ResponseConsultaCondicionContratoDTO.cs" />
+    <Compile Include="Maestros\CondicionContrato\Response\ResponseRegistraCondicionContratoDTO.cs" />
+    <Compile Include="Maestros\CondicionesCarga\CondicionesCargaDTO.cs" />
+    <Compile Include="Maestros\CondicionesCarga\Response\ConsultaCondicionesCargaResponseDTO.cs" />
+    <Compile Include="Maestros\CondicionesContrato\CondicionesContratoDTO.cs" />
+    <Compile Include="Maestros\CondicionesContrato\Response\ConsultaCondicionesContratoResponseDTO.cs" />
+    <Compile Include="Maestros\CondicionesTransporte\CondicionesTransporteDTO.cs" />
+    <Compile Include="Maestros\CondicionesTransporte\Response\ConsultaCondicionesTransporteResponseDTO.cs" />
+    <Compile Include="Maestros\CondicionPrecinto\CondicionPrecintoDTO.cs" />
+    <Compile Include="Maestros\CondicionPrecinto\Request\RequestConsultarCondicionPrecintoDTO.cs" />
+    <Compile Include="Maestros\CondicionPrecinto\Request\RequestRegistraCondicionPrecintoDTO.cs" />
+    <Compile Include="Maestros\CondicionPrecinto\Response\ResponseConsultaCondicionPrecintoDTO.cs" />
+    <Compile Include="Maestros\CondicionPrecinto\Response\ResponseRegistraCondicionPrecintoDTO.cs" />
+    <Compile Include="Maestros\CondicionTransporte\CondicionTransporteDTO.cs" />
+    <Compile Include="Maestros\CondicionTransporte\Request\RequestConsultarCondicionTransporteDTO.cs" />
+    <Compile Include="Maestros\CondicionTransporte\Request\RequestRegistraCondicionTransporteDTO.cs" />
+    <Compile Include="Maestros\CondicionTransporte\Response\ResponseConsultaCondicionTransporteDTO.cs" />
+    <Compile Include="Maestros\CondicionTransporte\Response\ResponseRegistraCondicionTransporteDTO.cs" />
+    <Compile Include="Maestros\Contenedor\ContenedorDTO.cs" />
+    <Compile Include="Maestros\Contenedor\Request\RequestConsultarContenedorDTO.cs" />
+    <Compile Include="Maestros\Contenedor\Request\RequestRegistraContenedorDTO.cs" />
+    <Compile Include="Maestros\Contenedor\Response\ResponseConsultaContenedorDTO.cs" />
+    <Compile Include="Maestros\Contenedor\Response\ResponseRegistraContenedorDTO.cs" />
+    <Compile Include="Core\FlujoAprobarDTO.cs" />
+    <Compile Include="Core\ParametroNegocioDTO.cs" />
+    <Compile Include="Core\RequestOperacionBusquedaDTO.cs" />
+    <Compile Include="Core\Request\ActualizarParametroNegocioRequestDTO.cs" />
+    <Compile Include="Core\Request\EliminarParametroNegocioRequestDTO.cs" />
+    <Compile Include="Core\Response\ActualizarParametroNegocioResponseDTO.cs" />
+    <Compile Include="Core\Response\EliminarParametroNegocioResponseDTO.cs" />
+    <Compile Include="Core\Response\ParametroNegocioResponseDTO.cs" />
+    <Compile Include="Documento\DocumentoDetalleCargaDTO.cs" />
+    <Compile Include="Documento\DocumentoDetalleClienteDTO.cs" />
+    <Compile Include="Documento\DocumentoDetalleFleteDTO.cs" />
+    <Compile Include="Documento\DocumentoDTO.cs" />
+    <Compile Include="Documento\Request\RegistraDocumentoRequestDTO.cs" />
+    <Compile Include="Documento\Request\RequestConsultarDocumentoDTO.cs" />
+    <Compile Include="Documento\Response\RegistraDocumentoResponseDTO.cs" />
+    <Compile Include="Documento\Response\ResponseConsultaDocumentoDTO.cs" />
+    <Compile Include="Maestros\EntidadPrecinto\EntidadPrecintoDTO.cs" />
+    <Compile Include="Maestros\EntidadPrecinto\Request\RequestConsultarEntidadPrecintoDTO.cs" />
+    <Compile Include="Maestros\EntidadPrecinto\Request\RequestRegistraEntidadPrecintoDTO.cs" />
+    <Compile Include="Maestros\EntidadPrecinto\Response\ResponseConsultaEntidadPrecintoDTO.cs" />
+    <Compile Include="Maestros\EntidadPrecinto\Response\ResponseRegistraEntidadPrecintoDTO.cs" />
+    <Compile Include="Maestros\Itinerario\ItinerarioDTO.cs" />
+    <Compile Include="Maestros\Itinerario\Request\RequestConsultarItinerarioDTO.cs" />
+    <Compile Include="Maestros\Itinerario\Request\RequestRegistraItinerarioDTO.cs" />
+    <Compile Include="Maestros\Itinerario\Response\ResponseConsultaItinerarioDTO.cs" />
+    <Compile Include="Maestros\Itinerario\Response\ResponseRegistraItinerarioDTO.cs" />
+    <Compile Include="Maestros\LineaNaviera\LineaNavieraDTO.cs" />
+    <Compile Include="Maestros\LineaNaviera\Request\RequestConsultarLineaNavieraDTO.cs" />
+    <Compile Include="Maestros\LineaNaviera\Request\RequestRegistraLineaNavieraDTO.cs" />
+    <Compile Include="Maestros\LineaNaviera\Response\ResponseConsultaLineaNavieraDTO.cs" />
+    <Compile Include="Maestros\LineaNaviera\Response\ResponseRegistraLineaNavieraDTO.cs" />
+    <Compile Include="Maestros\MedioTransporte\MedioTransporteDTO.cs" />
+    <Compile Include="Maestros\MedioTransporte\Request\RequestConsultarMedioTransporteDTO.cs" />
+    <Compile Include="Maestros\MedioTransporte\Request\RequestRegistraMedioTransporteDTO.cs" />
+    <Compile Include="Maestros\MedioTransporte\Response\ResponseConsultaMedioTransporteDTO.cs" />
+    <Compile Include="Maestros\MedioTransporte\Response\ResponseRegistraMedioTransporteDTO.cs" />
+    <Compile Include="Maestros\ModoPago\ModoPagoDTO.cs" />
+    <Compile Include="Maestros\ModoPago\Request\RequestConsultarModoPagoDTO.cs" />
+    <Compile Include="Maestros\ModoPago\Request\RequestRegistraModoPagoDTO.cs" />
+    <Compile Include="Maestros\ModoPago\Response\ResponseConsultaModoPagoDTO.cs" />
+    <Compile Include="Maestros\ModoPago\Response\ResponseRegistraModoPagoDTO.cs" />
+    <Compile Include="Maestros\ModosPago\ModosPagoDTO.cs" />
+    <Compile Include="Maestros\ModosPago\Response\ConsultaModosPagoResponseDTO.cs" />
+    <Compile Include="Maestros\Moneda\MonedaDTO.cs" />
+    <Compile Include="Maestros\Moneda\Request\RequestConsultarMonedaDTO.cs" />
+    <Compile Include="Maestros\Moneda\Request\RequestRegistraMonedaDTO.cs" />
+    <Compile Include="Maestros\Moneda\Response\ResponseConsultaMonedaDTO.cs" />
+    <Compile Include="Maestros\Moneda\Response\ResponseRegistraMonedaDTO.cs" />
+    <Compile Include="Maestros\NaturalezaCarga\NaturalezaCargaDTO.cs" />
+    <Compile Include="Maestros\NaturalezaCarga\Request\RequestConsultarNaturalezaCargaDTO.cs" />
+    <Compile Include="Maestros\NaturalezaCarga\Request\RequestRegistraNaturalezaCargaDTO.cs" />
+    <Compile Include="Maestros\NaturalezaCarga\Response\ResponseConsultaNaturalezaCargaDTO.cs" />
+    <Compile Include="Maestros\NaturalezaCarga\Response\ResponseRegistraNaturalezaCargaDTO.cs" />
+    <Compile Include="Maestros\Nave\NaveDTO.cs" />
+    <Compile Include="Maestros\Nave\Request\RequestConsultarNaveDTO.cs" />
+    <Compile Include="Maestros\Nave\Request\RequestRegistraNaveDTO.cs" />
+    <Compile Include="Maestros\Nave\Response\ResponseConsultaNaveDTO.cs" />
+    <Compile Include="Maestros\Nave\Response\ResponseRegistraNaveDTO.cs" />
+    <Compile Include="Maestros\NumeroIMO\NumeroIMODTO.cs" />
+    <Compile Include="Maestros\NumeroIMO\Request\RequestConsultarNumeroIMODTO.cs" />
+    <Compile Include="Maestros\NumeroIMO\Request\RequestRegistraNumeroIMODTO.cs" />
+    <Compile Include="Maestros\NumeroIMO\Response\ResponseConsultaNumeroIMODTO.cs" />
+    <Compile Include="Maestros\NumeroIMO\Response\ResponseRegistraNumeroIMODTO.cs" />
+    <Compile Include="Maestros\Pais\PaisDTO.cs" />
+    <Compile Include="Maestros\Pais\Request\RequestConsultarPaisDTO.cs" />
+    <Compile Include="Maestros\Pais\Request\RequestRegistraPaisDTO.cs" />
+    <Compile Include="Maestros\Pais\Response\ResponseConsultaPaisDTO.cs" />
+    <Compile Include="Maestros\Pais\Response\ResponseRegistraPaisDTO.cs" />
+    <Compile Include="Maestros\PersonaxRol\PersonaxRolDTO.cs" />
+    <Compile Include="Maestros\PersonaxRol\Request\RequestConsultarPersonaxRolDTO.cs" />
+    <Compile Include="Maestros\PersonaxRol\Response\ResponseConsultaPersonaxRolDTO.cs" />
+    <Compile Include="Maestros\Roles\Response\ConsultaRolesResponseDTO.cs" />
+    <Compile Include="Maestros\Roles\RolesDTO.cs" />
+    <Compile Include="Maestros\Temperaturas\Response\ConsultaTemperaturasResponseDTO.cs" />
+    <Compile Include="Maestros\Temperaturas\TemperaturasDTO.cs" />
+    <Compile Include="Maestros\TiposBL\Response\ConsultaTiposBLResponseDTO.cs" />
+    <Compile Include="Maestros\TiposBL\TiposBLDTO.cs" />
+    <Compile Include="Maestros\TiposEnvio\Response\ConsultaTiposEnvioResponseDTO.cs" />
+    <Compile Include="Maestros\TiposEnvio\TiposEnvioDTO.cs" />
+    <Compile Include="Maestros\TiposOperacion\Response\ConsultaTiposOperacionResponseDTO.cs" />
+    <Compile Include="Maestros\TiposOperacion\TiposOperacionDTO.cs" />
+    <Compile Include="Maestros\TiposTransmision\Response\ConsultaTiposTransmisionDocumentoResponseDTO.cs" />
+    <Compile Include="Maestros\TiposTransmision\Response\ConsultaTiposTransmisionNaveResponseDTO.cs" />
+    <Compile Include="Maestros\TiposTransmision\TiposTransmisionDocumentoDTO.cs" />
+    <Compile Include="Maestros\TiposTransmision\TiposTransmisionNaveDTO.cs" />
+    <Compile Include="ParametroSistema\BusquedaParametroSistemaValidacionDTO.cs" />
+    <Compile Include="ParametroSistema\ParametroSistemaDTO.cs" />
+    <Compile Include="ParametroSistema\RequestBusquedaParametroSistemaDTO.cs" />
+    <Compile Include="ParametroSistema\RequestItemParametroSistemaDTO.cs" />
+    <Compile Include="ParametroSistema\ResponseBusquedaParametroSistemaDTO.cs" />
+    <Compile Include="ParametroSistema\ResultadoFilaParametroSistemaDTO.cs" />
+    <Compile Include="Maestros\Precinto\PrecintoDTO.cs" />
+    <Compile Include="Maestros\Precinto\Request\RequestConsultarPrecintoDTO.cs" />
+    <Compile Include="Maestros\Precinto\Request\RequestRegistraPrecintoDTO.cs" />
+    <Compile Include="Maestros\Precinto\Response\ResponseConsultaPrecintoDTO.cs" />
+    <Compile Include="Maestros\Precinto\Response\ResponseRegistraPrecintoDTO.cs" />
+    <Compile Include="Maestros\Puerto\PuertoDTO.cs" />
+    <Compile Include="Maestros\Puerto\Request\RequestConsultarPuertoDTO.cs" />
+    <Compile Include="Maestros\Puerto\Request\RequestRegistraPuertoDTO.cs" />
+    <Compile Include="Maestros\Puerto\Response\ResponseConsultaPuertoDTO.cs" />
+    <Compile Include="Maestros\Puerto\Response\ResponseRegistraPuertoDTO.cs" />
+    <Compile Include="Maestros\RequerimientoServicio\RequerimientoServicioDTO.cs" />
+    <Compile Include="Maestros\RequerimientoServicio\Request\RequestConsultarRequerimientoServicioDTO.cs" />
+    <Compile Include="Maestros\RequerimientoServicio\Request\RequestRegistraRequerimientoServicioDTO.cs" />
+    <Compile Include="Maestros\RequerimientoServicio\Response\ResponseConsultaRequerimientoServicioDTO.cs" />
+    <Compile Include="Maestros\RequerimientoServicio\Response\ResponseRegistraRequerimientoServicioDTO.cs" />
+    <Compile Include="Persona\DetallePersonaDTO.cs" />
+    <Compile Include="Persona\PersonaDTO.cs" />
+    <Compile Include="Persona\PersonaRolDTO.cs" />
+    <Compile Include="Persona\Request\ConsultaDetallePersonaRequestDTO.cs" />
+    <Compile Include="Persona\Request\RegistraPersonaRequestDTO.cs" />
+    <Compile Include="Persona\Request\RequestConsultarPersonaDTO.cs" />
+    <Compile Include="Persona\Response\ConsultaDetallePersonaResponseDTO.cs" />
+    <Compile Include="Persona\Response\RegistraPersonaResponseDTO.cs" />
+    <Compile Include="Persona\Response\ResponseConsultaPersonaDTO.cs" />
+    <Compile Include="RequestPaginacionBaseDTO.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RequestBaseDTO.cs" />
+    <Compile Include="ResponseBaseDTO.cs" />
+    <Compile Include="ResponsePaginacionBaseDTO.cs" />
+    <Compile Include="Result.cs" />
+    <Compile Include="Resultado.cs" />
+    <Compile Include="ResultException.cs" />
+    <Compile Include="Maestros\Rol\Request\RequestConsultarRolDTO.cs" />
+    <Compile Include="Maestros\Rol\Request\RequestRegistraRolDTO.cs" />
+    <Compile Include="Maestros\Rol\Response\ResponseConsultaRolDTO.cs" />
+    <Compile Include="Maestros\Rol\Response\ResponseRegistraRolDTO.cs" />
+    <Compile Include="Maestros\Rol\RolDTO.cs" />
+    <Compile Include="Maestros\Temperatura\Request\RequestConsultarTemperaturaDTO.cs" />
+    <Compile Include="Maestros\Temperatura\Request\RequestRegistraTemperaturaDTO.cs" />
+    <Compile Include="Maestros\Temperatura\Response\ResponseConsultaTemperaturaDTO.cs" />
+    <Compile Include="Maestros\Temperatura\Response\ResponseRegistraTemperaturaDTO.cs" />
+    <Compile Include="Maestros\Temperatura\TemperaturaDTO.cs" />
+    <Compile Include="Maestros\TipoBL\Request\RequestConsultarTipoBLDTO.cs" />
+    <Compile Include="Maestros\TipoBL\Request\RequestRegistraTipoBLDTO.cs" />
+    <Compile Include="Maestros\TipoBL\Response\ResponseConsultaTipoBLDTO.cs" />
+    <Compile Include="Maestros\TipoBL\Response\ResponseRegistraTipoBLDTO.cs" />
+    <Compile Include="Maestros\TipoBL\TipoBLDTO.cs" />
+    <Compile Include="Maestros\TipoContenedor\Request\RequestConsultarTipoContenedorDTO.cs" />
+    <Compile Include="Maestros\TipoContenedor\Request\RequestRegistraTipoContenedorDTO.cs" />
+    <Compile Include="Maestros\TipoContenedor\Response\ResponseConsultaTipoContenedorDTO.cs" />
+    <Compile Include="Maestros\TipoContenedor\Response\ResponseRegistraTipoContenedorDTO.cs" />
+    <Compile Include="Maestros\TipoContenedor\TipoContenedorDTO.cs" />
+    <Compile Include="Maestros\TipoDocumento\Request\RequestConsultarTipoDocumentoDTO.cs" />
+    <Compile Include="Maestros\TipoDocumento\Request\RequestRegistraTipoDocumentoDTO.cs" />
+    <Compile Include="Maestros\TipoDocumento\Response\ResponseConsultaTipoDocumentoDTO.cs" />
+    <Compile Include="Maestros\TipoDocumento\Response\ResponseRegistraTipoDocumentoDTO.cs" />
+    <Compile Include="Maestros\TipoDocumento\TipoDocumentoDTO.cs" />
+    <Compile Include="Maestros\TipoEnvio\Request\RequestConsultarTipoEnvioDTO.cs" />
+    <Compile Include="Maestros\TipoEnvio\Request\RequestRegistraTipoEnvioDTO.cs" />
+    <Compile Include="Maestros\TipoEnvio\Response\ResponseConsultaTipoEnvioDTO.cs" />
+    <Compile Include="Maestros\TipoEnvio\Response\ResponseRegistraTipoEnvioDTO.cs" />
+    <Compile Include="Maestros\TipoEnvio\TipoEnvioDTO.cs" />
+    <Compile Include="Maestros\TipoFlete\Request\RequestConsultarTipoFleteDTO.cs" />
+    <Compile Include="Maestros\TipoFlete\Request\RequestRegistraTipoFleteDTO.cs" />
+    <Compile Include="Maestros\TipoFlete\Response\ResponseConsultaTipoFleteDTO.cs" />
+    <Compile Include="Maestros\TipoFlete\Response\ResponseRegistraTipoFleteDTO.cs" />
+    <Compile Include="Maestros\TipoFlete\TipoFleteDTO.cs" />
+    <Compile Include="Maestros\TipoLugarCarga\Request\RequestConsultarTipoLugarCargaDTO.cs" />
+    <Compile Include="Maestros\TipoLugarCarga\Request\RequestRegistraTipoLugarCargaDTO.cs" />
+    <Compile Include="Maestros\TipoLugarCarga\Response\ResponseConsultaTipoLugarCargaDTO.cs" />
+    <Compile Include="Maestros\TipoLugarCarga\Response\ResponseRegistraTipoLugarCargaDTO.cs" />
+    <Compile Include="Maestros\TipoLugarCarga\TipoLugarCargaDTO.cs" />
+    <Compile Include="Maestros\TipoMovimiento\Request\RequestConsultarTipoMovimientoDTO.cs" />
+    <Compile Include="Maestros\TipoMovimiento\Request\RequestRegistraTipoMovimientoDTO.cs" />
+    <Compile Include="Maestros\TipoMovimiento\Response\ResponseConsultaTipoMovimientoDTO.cs" />
+    <Compile Include="Maestros\TipoMovimiento\Response\ResponseRegistraTipoMovimientoDTO.cs" />
+    <Compile Include="Maestros\TipoMovimiento\TipoMovimientoDTO.cs" />
+    <Compile Include="Maestros\TipoNave\Request\RequestConsultarTipoNaveDTO.cs" />
+    <Compile Include="Maestros\TipoNave\Request\RequestRegistraTipoNaveDTO.cs" />
+    <Compile Include="Maestros\TipoNave\Response\ResponseConsultaTipoNaveDTO.cs" />
+    <Compile Include="Maestros\TipoNave\Response\ResponseRegistraTipoNaveDTO.cs" />
+    <Compile Include="Maestros\TipoNave\TipoNaveDTO.cs" />
+    <Compile Include="Maestros\TipoOperacion\Request\RequestConsultarTipoOperacionDTO.cs" />
+    <Compile Include="Maestros\TipoOperacion\Request\RequestRegistraTipoOperacionDTO.cs" />
+    <Compile Include="Maestros\TipoOperacion\Response\ResponseConsultaTipoOperacionDTO.cs" />
+    <Compile Include="Maestros\TipoOperacion\Response\ResponseRegistraTipoOperacionDTO.cs" />
+    <Compile Include="Maestros\TipoOperacion\TipoOperacionDTO.cs" />
+    <Compile Include="Maestros\UnidadMercancia\Request\RequestConsultarUnidadMercanciaDTO.cs" />
+    <Compile Include="Maestros\UnidadMercancia\Request\RequestRegistraUnidadMercanciaDTO.cs" />
+    <Compile Include="Maestros\UnidadMercancia\Response\ResponseConsultaUnidadMercanciaDTO.cs" />
+    <Compile Include="Maestros\UnidadMercancia\Response\ResponseRegistraUnidadMercanciaDTO.cs" />
+    <Compile Include="Maestros\UnidadMercancia\UnidadMercanciaDTO.cs" />
+    <Compile Include="Maestros\ViaTransporte\Request\RequestConsultarViaTransporteDTO.cs" />
+    <Compile Include="Maestros\ViaTransporte\Request\RequestRegistraViaTransporteDTO.cs" />
+    <Compile Include="Maestros\ViaTransporte\Response\ResponseConsultaViaTransporteDTO.cs" />
+    <Compile Include="Maestros\ViaTransporte\Response\ResponseRegistraViaTransporteDTO.cs" />
+    <Compile Include="Maestros\ViaTransporte\ViaTransporteDTO.cs" />
+    <Compile Include="Transmisiones\Documento\DetalleTransmisionDocumentoDTO.cs" />
+    <Compile Include="Transmisiones\Documento\LogTransmisionDocumentoDTO.cs" />
+    <Compile Include="Transmisiones\Documento\Request\RegistraTransmisionDocumentoDTO.cs" />
+    <Compile Include="Transmisiones\Documento\Request\RequestConsultarLogTransmisionDocumentoDTO.cs" />
+    <Compile Include="Transmisiones\Documento\Request\RequestConsultarTransmisionDocumentoDTO.cs" />
+    <Compile Include="Transmisiones\Documento\Response\ResponseConsultarLogTransmisionDocumentoDTO.cs" />
+    <Compile Include="Transmisiones\Documento\Response\ResponseConsultarTransmisionDocumentoDTO.cs" />
+    <Compile Include="Transmisiones\Documento\Response\ResponseRegistrarTransmisionDocumentoDTO.cs" />
+    <Compile Include="Transmisiones\Documento\TransmisionDocumentoDTO.cs" />
+    <Compile Include="Transmisiones\Nave\DetalleTransmisionNaveDTO.cs" />
+    <Compile Include="Transmisiones\Nave\LogTransmisionNaveDTO.cs" />
+    <Compile Include="Transmisiones\Nave\Request\RegistraTransmisionNaveDTO.cs" />
+    <Compile Include="Transmisiones\Nave\Request\RequestConsultarLogTransmisionNaveDTO.cs" />
+    <Compile Include="Transmisiones\Nave\Request\RequestConsultarTransmisionNaveDTO.cs" />
+    <Compile Include="Transmisiones\Nave\Response\ResponseConsultarLogTransmisionNaveDTO.cs" />
+    <Compile Include="Transmisiones\Nave\Response\ResponseConsultarTransmisionNaveDTO.cs" />
+    <Compile Include="Transmisiones\Nave\Response\ResponseRegistrarTransmisionNaveDTO.cs" />
+    <Compile Include="Transmisiones\Nave\TransmisionNaveDTO.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TRAMARSA.TRANSMISIONES.Entidades\TRAMARSA.TRANSMISIONES.Entidades.csproj">
+      <Project>{5bb581d9-85dc-4698-86f0-7498a06b3fa8}</Project>
+      <Name>TRAMARSA.TRANSMISIONES.Entidades</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

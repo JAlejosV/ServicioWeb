@@ -1,0 +1,277 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5BB581D9-85DC-4698-86F0-7498A06B3FA8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TRAMARSA.TRANSMISIONES.Entidades</RootNamespace>
+    <AssemblyName>TRAMARSA.TRANSMISIONES.Entidades</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Documento\ConsultaDetalleDocumento.cs" />
+    <Compile Include="Documento\DetalleDocumento.cs" />
+    <Compile Include="Maestros\Aduana\Aduana.cs" />
+    <Compile Include="Maestros\Aduana\Request\RequestConsultarAduana.cs" />
+    <Compile Include="Maestros\Aduana\Request\RequestRegistroAduana.cs" />
+    <Compile Include="Maestros\Aduana\Response\ResponseConsultarAduana.cs" />
+    <Compile Include="Maestros\Aduana\Response\ResponseRegistroAduana.cs" />
+    <Compile Include="Maestros\ClaseIMO\ClaseIMO.cs" />
+    <Compile Include="Maestros\ClaseIMO\Request\RequestConsultarClaseIMO.cs" />
+    <Compile Include="Maestros\ClaseIMO\Request\RequestRegistroClaseIMO.cs" />
+    <Compile Include="Maestros\ClaseIMO\Response\ResponseConsultarClaseIMO.cs" />
+    <Compile Include="Maestros\ClaseIMO\Response\ResponseRegistroClaseIMO.cs" />
+    <Compile Include="Maestros\CondicionCarga\CondicionCarga.cs" />
+    <Compile Include="Maestros\CondicionCarga\CondicionesCarga.cs" />
+    <Compile Include="Maestros\CondicionCarga\Request\RequestConsultarCondicionCarga.cs" />
+    <Compile Include="Maestros\CondicionCarga\Request\RequestRegistroCondicionCarga.cs" />
+    <Compile Include="Maestros\CondicionCarga\Response\ResponseConsultarCondicionCarga.cs" />
+    <Compile Include="Maestros\CondicionCarga\Response\ResponseRegistroCondicionCarga.cs" />
+    <Compile Include="Maestros\CondicionContrato\CondicionContrato.cs" />
+    <Compile Include="Maestros\CondicionContrato\CondicionesContrato.cs" />
+    <Compile Include="Maestros\CondicionContrato\Request\RequestConsultarCondicionContrato.cs" />
+    <Compile Include="Maestros\CondicionContrato\Request\RequestRegistroCondicionContrato.cs" />
+    <Compile Include="Maestros\CondicionContrato\Response\ResponseConsultarCondicionContrato.cs" />
+    <Compile Include="Maestros\CondicionContrato\Response\ResponseRegistroCondicionContrato.cs" />
+    <Compile Include="Maestros\CondicionPrecinto\CondicionPrecinto.cs" />
+    <Compile Include="Maestros\CondicionPrecinto\Request\RequestConsultarCondicionPrecinto.cs" />
+    <Compile Include="Maestros\CondicionPrecinto\Request\RequestRegistroCondicionPrecinto.cs" />
+    <Compile Include="Maestros\CondicionPrecinto\Response\ResponseConsultarCondicionPrecinto.cs" />
+    <Compile Include="Maestros\CondicionPrecinto\Response\ResponseRegistroCondicionPrecinto.cs" />
+    <Compile Include="Maestros\CondicionTransporte\CondicionesTransporte.cs" />
+    <Compile Include="Maestros\CondicionTransporte\CondicionTransporte.cs" />
+    <Compile Include="Maestros\CondicionTransporte\Request\RequestConsultarCondicionTransporte.cs" />
+    <Compile Include="Maestros\CondicionTransporte\Request\RequestRegistroCondicionTransporte.cs" />
+    <Compile Include="Maestros\CondicionTransporte\Response\ResponseConsultarCondicionTransporte.cs" />
+    <Compile Include="Maestros\CondicionTransporte\Response\ResponseRegistroCondicionTransporte.cs" />
+    <Compile Include="Maestros\Contenedor\Contenedor.cs" />
+    <Compile Include="Maestros\Contenedor\Request\RequestConsultarContenedor.cs" />
+    <Compile Include="Maestros\Contenedor\Request\RequestRegistroContenedor.cs" />
+    <Compile Include="Maestros\Contenedor\Response\ResponseConsultarContenedor.cs" />
+    <Compile Include="Maestros\Contenedor\Response\ResponseRegistroContenedor.cs" />
+    <Compile Include="Documento\Documento.cs" />
+    <Compile Include="Documento\DocumentoDetalleCarga.cs" />
+    <Compile Include="Documento\DocumentoDetalleCliente.cs" />
+    <Compile Include="Documento\DocumentoDetalleFlete.cs" />
+    <Compile Include="Documento\RegistraDocumento.cs" />
+    <Compile Include="Documento\Request\RequestConsultarDocumento.cs" />
+    <Compile Include="Documento\Response\ResponseConsultarDocumento.cs" />
+    <Compile Include="Maestros\EntidadPrecinto\EntidadPrecinto.cs" />
+    <Compile Include="Maestros\EntidadPrecinto\Request\RequestConsultarEntidadPrecinto.cs" />
+    <Compile Include="Maestros\EntidadPrecinto\Request\RequestRegistroEntidadPrecinto.cs" />
+    <Compile Include="Maestros\EntidadPrecinto\Response\ResponseConsultarEntidadPrecinto.cs" />
+    <Compile Include="Maestros\EntidadPrecinto\Response\ResponseRegistroEntidadPrecinto.cs" />
+    <Compile Include="Maestros\Itinerario\Itinerario.cs" />
+    <Compile Include="Maestros\Itinerario\Request\RequestConsultarItinerario.cs" />
+    <Compile Include="Maestros\Itinerario\Request\RequestRegistroItinerario.cs" />
+    <Compile Include="Maestros\Itinerario\Response\ResponseConsultarItinerario.cs" />
+    <Compile Include="Maestros\Itinerario\Response\ResponseRegistroItinerario.cs" />
+    <Compile Include="Maestros\LineaNaviera\LineaNaviera.cs" />
+    <Compile Include="Maestros\LineaNaviera\LineasNavieras.cs" />
+    <Compile Include="Maestros\LineaNaviera\Request\RequestConsultarLineaNaviera.cs" />
+    <Compile Include="Maestros\LineaNaviera\Request\RequestRegistroLineaNaviera.cs" />
+    <Compile Include="Maestros\LineaNaviera\Response\ResponseConsultarLineaNaviera.cs" />
+    <Compile Include="Maestros\LineaNaviera\Response\ResponseRegistroLineaNaviera.cs" />
+    <Compile Include="Maestros\MedioTransporte\MedioTransporte.cs" />
+    <Compile Include="Maestros\MedioTransporte\Request\RequestConsultarMedioTransporte.cs" />
+    <Compile Include="Maestros\MedioTransporte\Request\RequestRegistroMedioTransporte.cs" />
+    <Compile Include="Maestros\MedioTransporte\Response\ResponseConsultarMedioTransporte.cs" />
+    <Compile Include="Maestros\MedioTransporte\Response\ResponseRegistroMedioTransporte.cs" />
+    <Compile Include="Maestros\ModoPago\ModoPago.cs" />
+    <Compile Include="Maestros\ModoPago\ModosPago.cs" />
+    <Compile Include="Maestros\ModoPago\Request\RequestConsultarModoPago.cs" />
+    <Compile Include="Maestros\ModoPago\Request\RequestRegistroModoPago.cs" />
+    <Compile Include="Maestros\ModoPago\Response\ResponseConsultarModoPago.cs" />
+    <Compile Include="Maestros\ModoPago\Response\ResponseRegistroModoPago.cs" />
+    <Compile Include="Maestros\Moneda\Moneda.cs" />
+    <Compile Include="Maestros\Moneda\Request\RequestConsultarMoneda.cs" />
+    <Compile Include="Maestros\Moneda\Request\RequestRegistroMoneda.cs" />
+    <Compile Include="Maestros\Moneda\Response\ResponseConsultarMoneda.cs" />
+    <Compile Include="Maestros\Moneda\Response\ResponseRegistroMoneda.cs" />
+    <Compile Include="Maestros\NaturalezaCarga\NaturalezaCarga.cs" />
+    <Compile Include="Maestros\NaturalezaCarga\Request\RequestConsultarNaturalezaCarga.cs" />
+    <Compile Include="Maestros\NaturalezaCarga\Request\RequestRegistroNaturalezaCarga.cs" />
+    <Compile Include="Maestros\NaturalezaCarga\Response\ResponseConsultarNaturalezaCarga.cs" />
+    <Compile Include="Maestros\NaturalezaCarga\Response\ResponseRegistroNaturalezaCarga.cs" />
+    <Compile Include="Maestros\Nave\Nave.cs" />
+    <Compile Include="Maestros\Nave\Request\RequestConsultarNave.cs" />
+    <Compile Include="Maestros\Nave\Request\RequestRegistroNave.cs" />
+    <Compile Include="Maestros\Nave\Response\ResponseConsultarNave.cs" />
+    <Compile Include="Maestros\Nave\Response\ResponseRegistroNave.cs" />
+    <Compile Include="Maestros\NumeroIMO\NumeroIMO.cs" />
+    <Compile Include="Maestros\NumeroIMO\Request\RequestConsultarNumeroIMO.cs" />
+    <Compile Include="Maestros\NumeroIMO\Request\RequestRegistroNumeroIMO.cs" />
+    <Compile Include="Maestros\NumeroIMO\Response\ResponseConsultarNumeroIMO.cs" />
+    <Compile Include="Maestros\NumeroIMO\Response\ResponseRegistroNumeroIMO.cs" />
+    <Compile Include="Maestros\Pais\Pais.cs" />
+    <Compile Include="Maestros\Pais\Request\RequestConsultarPais.cs" />
+    <Compile Include="Maestros\Pais\Request\RequestRegistroPais.cs" />
+    <Compile Include="Maestros\Pais\Response\ResponseConsultarPais.cs" />
+    <Compile Include="Maestros\Pais\Response\ResponseRegistroPais.cs" />
+    <Compile Include="Maestros\PersonaxRol\PersonaxRol.cs" />
+    <Compile Include="Maestros\PersonaxRol\Request\RequestConsultarPersonaxRol.cs" />
+    <Compile Include="Maestros\PersonaxRol\Response\ResponseConsultarPersonaxRol.cs" />
+    <Compile Include="Maestros\Rol\Roles.cs" />
+    <Compile Include="Maestros\Temperatura\Temperaturas.cs" />
+    <Compile Include="Maestros\TipoBL\TiposBL.cs" />
+    <Compile Include="Maestros\TipoEnvio\TiposEnvio.cs" />
+    <Compile Include="Maestros\TipoOperacion\TiposOperacion.cs" />
+    <Compile Include="Maestros\TipoTransmision\TiposTransmisionDocumento.cs" />
+    <Compile Include="Maestros\TipoTransmision\TiposTransmisionNave.cs" />
+    <Compile Include="ParametrosSistemas\PaginacionDTO.cs" />
+    <Compile Include="Constantes\ConstantesSistema.cs" />
+    <Compile Include="Constantes\Enumeradores.cs" />
+    <Compile Include="Core\EliminarParametroNegocio.cs" />
+    <Compile Include="Core\AuditoriaBase.cs" />
+    <Compile Include="Core\Notificacion.cs" />
+    <Compile Include="Core\ActualizarParametroNegocio.cs" />
+    <Compile Include="Core\ParametroNegocio.cs" />
+    <Compile Include="Core\ParametroSistema.cs" />
+    <Compile Include="PaginacionResponseBase.cs" />
+    <Compile Include="PaginacionBase.cs" />
+    <Compile Include="MaestroBase.cs" />
+    <Compile Include="Maestros\Precinto\Precinto.cs" />
+    <Compile Include="Maestros\Precinto\Request\RequestConsultarPrecinto.cs" />
+    <Compile Include="Maestros\Precinto\Request\RequestRegistroPrecinto.cs" />
+    <Compile Include="Maestros\Precinto\Response\ResponseConsultarPrecinto.cs" />
+    <Compile Include="Maestros\Precinto\Response\ResponseRegistroPrecinto.cs" />
+    <Compile Include="Persona\ConsultaDetallePersona.cs" />
+    <Compile Include="Persona\DetallePersona.cs" />
+    <Compile Include="Persona\Persona.cs" />
+    <Compile Include="Persona\PersonaRol.cs" />
+    <Compile Include="Persona\RegistraPersona.cs" />
+    <Compile Include="Persona\Request\RequestConsultarPersona.cs" />
+    <Compile Include="Persona\Response\ResponseConsultarPersona.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Maestros\Puerto\Puerto.cs" />
+    <Compile Include="Maestros\Puerto\Request\RequestConsultarPuerto.cs" />
+    <Compile Include="Maestros\Puerto\Request\RequestRegistroPuerto.cs" />
+    <Compile Include="Maestros\Puerto\Response\ResponseConsultarPuerto.cs" />
+    <Compile Include="Maestros\Puerto\Response\ResponseRegistroPuerto.cs" />
+    <Compile Include="Maestros\RequerimientoServicio\RequerimientoServicio.cs" />
+    <Compile Include="Maestros\RequerimientoServicio\Request\RequestConsultarRequerimientoServicio.cs" />
+    <Compile Include="Maestros\RequerimientoServicio\Request\RequestRegistroRequerimientoServicio.cs" />
+    <Compile Include="Maestros\RequerimientoServicio\Response\ResponseConsultarRequerimientoServicio.cs" />
+    <Compile Include="Maestros\RequerimientoServicio\Response\ResponseRegistroRequerimientoServicio.cs" />
+    <Compile Include="Maestros\Rol\Request\RequestConsultarRol.cs" />
+    <Compile Include="Maestros\Rol\Request\RequestRegistroRol.cs" />
+    <Compile Include="Maestros\Rol\Response\ResponseConsultarRol.cs" />
+    <Compile Include="Maestros\Rol\Response\ResponseRegistroRol.cs" />
+    <Compile Include="Maestros\Rol\Rol.cs" />
+    <Compile Include="Maestros\Temperatura\Request\RequestConsultarTemperatura.cs" />
+    <Compile Include="Maestros\Temperatura\Request\RequestRegistroTemperatura.cs" />
+    <Compile Include="Maestros\Temperatura\Response\ResponseConsultarTemperatura.cs" />
+    <Compile Include="Maestros\Temperatura\Response\ResponseRegistroTemperatura.cs" />
+    <Compile Include="Maestros\Temperatura\Temperatura.cs" />
+    <Compile Include="Maestros\TipoBL\Request\RequestConsultarTipoBL.cs" />
+    <Compile Include="Maestros\TipoBL\Request\RequestRegistroTipoBL.cs" />
+    <Compile Include="Maestros\TipoBL\Response\ResponseConsultarTipoBL.cs" />
+    <Compile Include="Maestros\TipoBL\Response\ResponseRegistroTipoBL.cs" />
+    <Compile Include="Maestros\TipoBL\TipoBL.cs" />
+    <Compile Include="Maestros\TipoContenedor\Request\RequestConsultarTipoContenedor.cs" />
+    <Compile Include="Maestros\TipoContenedor\Request\RequestRegistroTipoContenedor.cs" />
+    <Compile Include="Maestros\TipoContenedor\Response\ResponseConsultarTipoContenedor.cs" />
+    <Compile Include="Maestros\TipoContenedor\Response\ResponseRegistroTipoContenedor.cs" />
+    <Compile Include="Maestros\TipoContenedor\TipoContenedor.cs" />
+    <Compile Include="Maestros\TipoDocumento\Request\RequestConsultarTipoDocumento.cs" />
+    <Compile Include="Maestros\TipoDocumento\Request\RequestRegistroTipoDocumento.cs" />
+    <Compile Include="Maestros\TipoDocumento\Response\ResponseConsultarTipoDocumento.cs" />
+    <Compile Include="Maestros\TipoDocumento\Response\ResponseRegistroTipoDocumento.cs" />
+    <Compile Include="Maestros\TipoDocumento\TipoDocumento.cs" />
+    <Compile Include="Maestros\TipoEnvio\Request\RequestConsultarTipoEnvio.cs" />
+    <Compile Include="Maestros\TipoEnvio\Request\RequestRegistroTipoEnvio.cs" />
+    <Compile Include="Maestros\TipoEnvio\Response\ResponseConsultarTipoEnvio.cs" />
+    <Compile Include="Maestros\TipoEnvio\Response\ResponseRegistroTipoEnvio.cs" />
+    <Compile Include="Maestros\TipoEnvio\TipoEnvio.cs" />
+    <Compile Include="Maestros\TipoFlete\Request\RequestConsultarTipoFlete.cs" />
+    <Compile Include="Maestros\TipoFlete\Request\RequestRegistroTipoFlete.cs" />
+    <Compile Include="Maestros\TipoFlete\Response\ResponseConsultarTipoFlete.cs" />
+    <Compile Include="Maestros\TipoFlete\Response\ResponseRegistroTipoFlete.cs" />
+    <Compile Include="Maestros\TipoFlete\TipoFlete.cs" />
+    <Compile Include="Maestros\TipoLugarCarga\Request\RequestConsultarTipoLugarCarga.cs" />
+    <Compile Include="Maestros\TipoLugarCarga\Request\RequestRegistroTipoLugarCarga.cs" />
+    <Compile Include="Maestros\TipoLugarCarga\Response\ResponseRegistroTipoLugarCarga.cs" />
+    <Compile Include="Maestros\TipoLugarCarga\Response\ResponseConsultarTipoLugarCarga.cs" />
+    <Compile Include="Maestros\TipoLugarCarga\TipoLugarCarga.cs" />
+    <Compile Include="Maestros\TipoMovimiento\Request\RequestConsultarTipoMovimiento.cs" />
+    <Compile Include="Maestros\TipoMovimiento\Request\RequestRegistroTipoMovimiento.cs" />
+    <Compile Include="Maestros\TipoMovimiento\Response\ResponseConsultarTipoMovimiento.cs" />
+    <Compile Include="Maestros\TipoMovimiento\Response\ResponseRegistroTipoMovimiento.cs" />
+    <Compile Include="Maestros\TipoMovimiento\TipoMovimiento.cs" />
+    <Compile Include="Maestros\TipoNave\Request\RequestConsultarTipoNave.cs" />
+    <Compile Include="Maestros\TipoNave\Request\RequestRegistroTipoNave.cs" />
+    <Compile Include="Maestros\TipoNave\Response\ResponseConsultarTipoNave.cs" />
+    <Compile Include="Maestros\TipoNave\Response\ResponseRegistroTipoNave.cs" />
+    <Compile Include="Maestros\TipoNave\TipoNave.cs" />
+    <Compile Include="Maestros\TipoOperacion\Request\RequestConsultarTipoOperacion.cs" />
+    <Compile Include="Maestros\TipoOperacion\Request\RequestRegistroTipoOperacion.cs" />
+    <Compile Include="Maestros\TipoOperacion\Response\ResponseConsultarTipoOperacion.cs" />
+    <Compile Include="Maestros\TipoOperacion\Response\ResponseRegistroTipoOperacion.cs" />
+    <Compile Include="Maestros\TipoOperacion\TipoOperacion.cs" />
+    <Compile Include="Maestros\UnidadMercancia\Request\RequestConsultarUnidadMercancia.cs" />
+    <Compile Include="Maestros\UnidadMercancia\Request\RequestRegistroUnidadMercancia.cs" />
+    <Compile Include="Maestros\UnidadMercancia\Response\ResponseConsultarUnidadMercancia.cs" />
+    <Compile Include="Maestros\UnidadMercancia\Response\ResponseRegistroUnidadMercancia.cs" />
+    <Compile Include="Maestros\UnidadMercancia\UnidadMercancia.cs" />
+    <Compile Include="Maestros\ViaTransporte\Request\RequestConsultarViaTransporte.cs" />
+    <Compile Include="Maestros\ViaTransporte\Request\RequestRegistroViaTransporte.cs" />
+    <Compile Include="Maestros\ViaTransporte\Response\ResponseConsultarViaTransporte.cs" />
+    <Compile Include="Maestros\ViaTransporte\Response\ResponseRegistroViaTransporte.cs" />
+    <Compile Include="Maestros\ViaTransporte\ViaTransporte.cs" />
+    <Compile Include="Transmisiones\Documento\DetalleTransmisionDocumento.cs" />
+    <Compile Include="Transmisiones\Documento\LogTransmisionDocumento.cs" />
+    <Compile Include="Transmisiones\Documento\RegistraTransmisionDocumento.cs" />
+    <Compile Include="Transmisiones\Documento\Request\RequestConsultarLogTransmisionDocumento.cs" />
+    <Compile Include="Transmisiones\Documento\Request\RequestConsultarTransmisionDocumento.cs" />
+    <Compile Include="Transmisiones\Documento\Response\ResponseConsultarLogTransmisionDocumento.cs" />
+    <Compile Include="Transmisiones\Documento\Response\ResponseConsultarTransmisionDocumento.cs" />
+    <Compile Include="Transmisiones\Documento\TransmisionDocumento.cs" />
+    <Compile Include="Transmisiones\Nave\DetalleTransmisionNave.cs" />
+    <Compile Include="Transmisiones\Nave\LogTransmisionNave.cs" />
+    <Compile Include="Transmisiones\Nave\RegistraTransmisionNave.cs" />
+    <Compile Include="Transmisiones\Nave\Request\RequestConsultarLogTransmisionNave.cs" />
+    <Compile Include="Transmisiones\Nave\Request\RequestConsultarTransmisionNave.cs" />
+    <Compile Include="Transmisiones\Nave\Response\ResponseConsultarLogTransmisionNave.cs" />
+    <Compile Include="Transmisiones\Nave\Response\ResponseConsultarTransmisionNave.cs" />
+    <Compile Include="Transmisiones\Nave\TransmisionNave.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

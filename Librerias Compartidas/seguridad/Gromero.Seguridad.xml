@@ -1,0 +1,767 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Gromero.Seguridad</name>
+    </assembly>
+    <members>
+        <member name="T:Gromero.Seguridad.BaseDatos">
+            <summary>
+            Clase estática que devuelve información de la Base de Datos
+            </summary>
+        </member>
+        <member name="P:Gromero.Seguridad.BaseDatos.ConexionBD">
+            <summary>
+            Devuelve la Cadena de Conexión
+            </summary>
+        </member>
+        <member name="T:Gromero.Seguridad.Entidades.ActivarUsuario">
+            <summary>
+            Objeto de Negocio que permite Activar el Usuario
+            </summary>
+        </member>
+        <member name="F:Gromero.Seguridad.Entidades.ActivarUsuario.IdProperty">
+            <summary>
+            IdProperty
+            </summary>
+        </member>
+        <member name="F:Gromero.Seguridad.Entidades.ActivarUsuario.NombreUsuarioProperty">
+            <summary>
+            NombreUsuarioProperty
+            </summary>
+        </member>
+        <member name="F:Gromero.Seguridad.Entidades.ActivarUsuario.PreguntaSecretaProperty">
+            <summary>
+            PreguntaSecretaProperty
+            </summary>
+        </member>
+        <member name="F:Gromero.Seguridad.Entidades.ActivarUsuario.RespuestaSecretaProperty">
+            <summary>
+            RespuestaSecretaProperty
+            </summary>
+        </member>
+        <member name="F:Gromero.Seguridad.Entidades.ActivarUsuario.ClaveSecretaProperty">
+            <summary>
+            ClaveSecretaProperty
+            </summary>
+        </member>
+        <member name="F:Gromero.Seguridad.Entidades.ActivarUsuario.ConfirmarClaveProperty">
+            <summary>
+            ConfirmarClaveProperty
+            </summary>
+        </member>
+        <member name="M:Gromero.Seguridad.Entidades.ActivarUsuario.AddBusinessRules">
+            <summary>
+            AddBusinessRules
+            </summary>
+        </member>
+        <member name="M:Gromero.Seguridad.Entidades.ActivarUsuario.GetActivarUsuario(System.String)">
+            <summary>
+            Obtiene el Objeto ActivarUsuario en base al nombre de Usuario
+            </summary>
+        </member>
+        <member name="M:Gromero.Seguridad.Entidades.ActivarUsuario.DataPortal_Update">
+            <summary>
+            DataPortal_Update
+            </summary>
+        </member>
+        <member name="P:Gromero.Seguridad.Entidades.ActivarUsuario.ID">
+            <summary>
+            ID
+            </summary>
+        </member>
+        <member name="P:Gromero.Seguridad.Entidades.ActivarUsuario.NombresCompletos">
+            <summary>
+            NombresCompletos
+            </summary>
+        </member>
+        <member name="P:Gromero.Seguridad.Entidades.ActivarUsuario.NombreUsuario">
+            <summary>
+            NombreUsuario
+            </summary>
+        </member>
+        <member name="P:Gromero.Seguridad.Entidades.ActivarUsuario.PreguntaSecreta">
+            <summary>
+            PreguntaSecreta
+            </summary>
+        </member>
+        <member name="P:Gromero.Seguridad.Entidades.ActivarUsuario.RespuestaSecreta">
+            <summary>
+            RespuestaSecreta
+            </summary>
+        </member>
+        <member name="P:Gromero.Seguridad.Entidades.ActivarUsuario.ClaveSecreta">
+            <summary>
+            ClaveSecreta
+            </summary>
+        </member>
+        <member name="P:Gromero.Seguridad.Entidades.ActivarUsuario.ConfirmarClave">
+            <summary>
+            ConfirmarClave
+            </summary>
+        </member>
+        <member name="T:Gromero.Seguridad.Entidades.CambiarClave">
+            <summary>
+            Objeto de Negocio que permite Cambiar la Clave del Usuario
+            </summary>
+        </member>
+        <member name="F:Gromero.Seguridad.Entidades.CambiarClave.IdProperty">
+            <summary>
+            IdProperty
+            </summary>
+        </member>
+        <member name="F:Gromero.Seguridad.Entidades.CambiarClave.UsuarioProperty">
+            <summary>
+            UsuarioProperty
+            </summary>
+        </member>
+        <member name="F:Gromero.Seguridad.Entidades.CambiarClave.RespuestaSecretaProperty">
+            <summary>
+            RespuestaSecretaProperty
+            </summary>
+        </member>
+        <member name="F:Gromero.Seguridad.Entidades.CambiarClave.SecretAnswerProperty">
+            <summary>
+            SecretAnswerProperty
+            </summary>
+        </member>
+        <member name="F:Gromero.Seguridad.Entidades.CambiarClave.ClaveNuevaProperty">
+            <summary>
+            ClaveNuevaProperty
+            </summary>
+        </member>
+        <member name="F:Gromero.Seguridad.Entidades.CambiarClave.ConfirmarClaveProperty">
+            <summary>
+            ConfirmarClaveProperty
+            </summary>
+        </member>
+        <member name="M:Gromero.Seguridad.Entidades.CambiarClave.AddBusinessRules">
+            <summary>
+            AddBusinessRules
+            </summary>
+        </member>
+        <member name="M:Gromero.Seguridad.Entidades.CambiarClave.GetCambiarClave(System.String)">
+            <summary>
+            Obtiene el Objeto CambiarClave en base al Código del Usuario
+            </summary>
+        </member>
+        <member name="M:Gromero.Seguridad.Entidades.CambiarClave.Save">
+            <summary>
+            Guarda los Cambios
+            </summary>
+        </member>
+        <member name="M:Gromero.Seguridad.Entidades.CambiarClave.DataPortal_Update">
+            <summary>
+            DataPortal_Update
+            </summary>
+        </member>
+        <member name="P:Gromero.Seguridad.Entidades.CambiarClave.ID">
+            <summary>
+            ID
+            </summary>
+        </member>
+        <member name="P:Gromero.Seguridad.Entidades.CambiarClave.Usuario">
+            <summary>
+            Nombre de Usuario
+            </summary>
+        </member>
+        <member name="P:Gromero.Seguridad.Entidades.CambiarClave.NombresCompletos">
+            <summary>
+            NombresCompletos
+            </summary>
+        </member>
+        <member name="P:Gromero.Seguridad.Entidades.CambiarClave.PreguntaSecreta">
+            <summary>
+            PreguntaSecreta
+            </summary>
+        </member>
+        <member name="P:Gromero.Seguridad.Entidades.CambiarClave.RespuestaSecreta">
+            <summary>
+            RespuestaSecreta
+            </summary>
+        </member>
+        <member name="P:Gromero.Seguridad.Entidades.CambiarClave.SecretAnswer">
+            <summary>
+            SecretAnswer
+            </summary>
+        </member>
+        <member name="P:Gromero.Seguridad.Entidades.CambiarClave.ClaveNueva">
+            <summary>
+            ConfirmarClave
+            </summary>
+        </member>
+        <member name="P:Gromero.Seguridad.Entidades.CambiarClave.ConfirmarClave">
+            <summary>
+            ConfirmarClave
+            </summary>
+        </member>
+        <member name="T:Gromero.Seguridad.InformacionREST`1">
+            <summary>
+            Permite interactuar con los los RESTful Services del Grupo Romero
+            </summary>
+            <typeparam name="T">Tipo de Dato que se quiere enviar o recibir</typeparam>
+        </member>
+        <member name="M:Gromero.Seguridad.InformacionREST`1.DevuelveInformacion(System.Uri)">
+            <summary>
+            Trae información correspondiente al servicio usando el metodo GET
+            </summary>
+            <param name="ruta">Ruta del Servicio</param>
+        </member>
+        <member name="M:Gromero.Seguridad.InformacionREST`1.EnviarInfo(System.Uri,`0)">
+            <summary>
+            Envia información en la ruta especificada así como enviando el tipo T
+            con el metodo POST y serializándolo con JSON
+            </summary>
+            <param name="ruta">Ruta del Servicio</param>
+            <param name="data">Dato que se desea enviar</param>
+            <returns>Retorna true si el Servicio responde correctamente</returns>
+        </member>
+        <member name="T:Gromero.Seguridad.InfoUsuario">
+            <summary>
+            Devuelve información del Usuario Autenticado
+            </summary>
+        </member>
+        <member name="F:Gromero.Seguridad.InfoUsuario.Instancia">
+            <summary>
+            Instancia de InfoUsuario
+            </summary>
+        </member>
+        <member name="M:Gromero.Seguridad.InfoUsuario.SaveParametros">
+            <summary>
+            Guarda los parámetros en el Contexto de la Aplicación
+            </summary>
+        </member>
+        <member name="M:Gromero.Seguridad.InfoUsuario.Initialize">
+            <summary>
+            Inicializa una nueva Instancia de InfoUsuario
+            </summary>
+        </member>
+        <member name="P:Gromero.Seguridad.InfoUsuario.FechaUltimoIngreso">
+            <summary>
+            Fecha del Último Ingreso del Usuario
+            </summary>
+        </member>
+        <member name="P:Gromero.Seguridad.InfoUsuario.IdPerfilUsuario">
+            <summary>
+            Id del Perfil de Usuario
+            </summary>
+        </member>
+        <member name="P:Gromero.Seguridad.InfoUsuario.Acronimo">
+            <summary>
+            Acrónimo de la Aplicación
+            </summary>
+        </member>
+        <member name="P:Gromero.Seguridad.InfoUsuario.Roles">
+            <summary>
+            Lista de los Roles que tiene asignado el Usuario
+            </summary>
+        </member>
+        <member name="P:Gromero.Seguridad.InfoUsuario.IdUsuario">
+            <summary>
+            Id del Usuario
+            </summary>
+        </member>
+        <member name="P:Gromero.Seguridad.InfoUsuario.NombresCompletos">
+            <summary>
+            Nombres Completos del Usuario Autenticado
+            </summary>
+        </member>
+        <member name="P:Gromero.Seguridad.InfoUsuario.CorreoUsuario">
+            <summary>
+            Correo Electrónico del Usuario
+            </summary>
+        </member>
+        <member name="P:Gromero.Seguridad.InfoUsuario.Dominio">
+            <summary>
+            Dominio al que pertenece el usuario
+            </summary>
+        </member>
+        <member name="P:Gromero.Seguridad.InfoUsuario.Tipo">
+            <summary>
+            Tipo de Usuario (Externo o Interno)
+            Externo = false
+            Interno = true (Cuando pertenece a un Dominio)
+            </summary>
+        </member>
+        <member name="P:Gromero.Seguridad.InfoUsuario.Parametros">
+            <summary>
+            Diccionario que aculuma todos los valores para InfoUsuario
+            </summary>
+        </member>
+        <member name="T:Gromero.Seguridad.Login.GRCrypto">
+            <summary>
+            Encriptador de Contraseñas para COMEX Suite
+            </summary>
+            <remarks>Erick Orlando © 2012</remarks>
+        </member>
+        <member name="M:Gromero.Seguridad.Login.GRCrypto.Encriptar(System.String)">
+            <summary>
+            Encripta una Cadena con el Método Hash
+            </summary>
+            <param name="cadena">Cadena a encriptar</param>
+        </member>
+        <member name="T:Gromero.Seguridad.Login.GRIdentity">
+            <summary>
+            Representa la Identidad del Usuario
+            </summary>
+        </member>
+        <member name="T:Gromero.Seguridad.Login.GromeroMembershipProvider">
+            <summary>
+            MemberShipProvider de Seguridad COMEX para ASP.NET
+            </summary>
+        </member>
+        <member name="M:Gromero.Seguridad.Login.GromeroMembershipProvider.ChangePassword(System.String,System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="username"></param>
+            <param name="oldPassword"></param>
+            <param name="newPassword"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Gromero.Seguridad.Login.GromeroMembershipProvider.ChangePasswordQuestionAndAnswer(System.String,System.String,System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="username"></param>
+            <param name="password"></param>
+            <param name="newPasswordQuestion"></param>
+            <param name="newPasswordAnswer"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Gromero.Seguridad.Login.GromeroMembershipProvider.CreateUser(System.String,System.String,System.String,System.String,System.String,System.Boolean,System.Object,System.Web.Security.MembershipCreateStatus@)">
+            <summary>
+            
+            </summary>
+            <param name="username"></param>
+            <param name="password"></param>
+            <param name="email"></param>
+            <param name="passwordQuestion"></param>
+            <param name="passwordAnswer"></param>
+            <param name="isApproved"></param>
+            <param name="providerUserKey"></param>
+            <param name="status"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Gromero.Seguridad.Login.GromeroMembershipProvider.DeleteUser(System.String,System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="username"></param>
+            <param name="deleteAllRelatedData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Gromero.Seguridad.Login.GromeroMembershipProvider.FindUsersByEmail(System.String,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            
+            </summary>
+            <param name="emailToMatch"></param>
+            <param name="pageIndex"></param>
+            <param name="pageSize"></param>
+            <param name="totalRecords"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Gromero.Seguridad.Login.GromeroMembershipProvider.FindUsersByName(System.String,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            
+            </summary>
+            <param name="usernameToMatch"></param>
+            <param name="pageIndex"></param>
+            <param name="pageSize"></param>
+            <param name="totalRecords"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Gromero.Seguridad.Login.GromeroMembershipProvider.GetAllUsers(System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            
+            </summary>
+            <param name="pageIndex"></param>
+            <param name="pageSize"></param>
+            <param name="totalRecords"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Gromero.Seguridad.Login.GromeroMembershipProvider.GetNumberOfUsersOnline">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Gromero.Seguridad.Login.GromeroMembershipProvider.GetPassword(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="username"></param>
+            <param name="answer"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Gromero.Seguridad.Login.GromeroMembershipProvider.GetUser(System.String,System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="username"></param>
+            <param name="userIsOnline"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Gromero.Seguridad.Login.GromeroMembershipProvider.GetUser(System.Object,System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="providerUserKey"></param>
+            <param name="userIsOnline"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Gromero.Seguridad.Login.GromeroMembershipProvider.GetUserNameByEmail(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="email"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Gromero.Seguridad.Login.GromeroMembershipProvider.ResetPassword(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="username"></param>
+            <param name="answer"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Gromero.Seguridad.Login.GromeroMembershipProvider.UnlockUser(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="userName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Gromero.Seguridad.Login.GromeroMembershipProvider.UpdateUser(System.Web.Security.MembershipUser)">
+            <summary>
+            
+            </summary>
+            <param name="user"></param>
+        </member>
+        <member name="M:Gromero.Seguridad.Login.GromeroMembershipProvider.ValidateUser(System.String,System.String)">
+            <summary>
+            Comprobación del Usuario
+            </summary>
+            <param name="username">Usuario</param>
+            <param name="password">Contrasena</param>
+            <returns>Booleano</returns>
+        </member>
+        <member name="M:Gromero.Seguridad.Login.GromeroMembershipProvider.#ctor">
+            <summary>
+            Inicializa una nueva instancia de GromeroMembershipProvider
+            </summary>
+        </member>
+        <member name="P:Gromero.Seguridad.Login.GromeroMembershipProvider.ApplicationName">
+            <summary>
+            Nombre de la Aplicación
+            </summary>
+        </member>
+        <member name="P:Gromero.Seguridad.Login.GromeroMembershipProvider.EnablePasswordReset">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Gromero.Seguridad.Login.GromeroMembershipProvider.EnablePasswordRetrieval">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Gromero.Seguridad.Login.GromeroMembershipProvider.MaxInvalidPasswordAttempts">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Gromero.Seguridad.Login.GromeroMembershipProvider.MinRequiredNonAlphanumericCharacters">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Gromero.Seguridad.Login.GromeroMembershipProvider.MinRequiredPasswordLength">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Gromero.Seguridad.Login.GromeroMembershipProvider.PasswordAttemptWindow">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Gromero.Seguridad.Login.GromeroMembershipProvider.PasswordFormat">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Gromero.Seguridad.Login.GromeroMembershipProvider.PasswordStrengthRegularExpression">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Gromero.Seguridad.Login.GromeroMembershipProvider.RequiresQuestionAndAnswer">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Gromero.Seguridad.Login.GromeroMembershipProvider.RequiresUniqueEmail">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Gromero.Seguridad.Login.GRPrincipal">
+            <summary>
+            Administra la Autenticación de Usuarios en el Sistema de Seguridad
+            </summary>
+        </member>
+        <member name="M:Gromero.Seguridad.Login.GRPrincipal.#ctor">
+            <summary>
+            Inicializa una nueva instancia de GRPrincipal
+            </summary>
+        </member>
+        <member name="M:Gromero.Seguridad.Login.GRPrincipal.#ctor(System.Security.Principal.IIdentity)">
+            <summary>
+            Inicializa una nueva instancia de GRPrincipal
+            con un Objeto IIdentity
+            </summary>
+        </member>
+        <member name="M:Gromero.Seguridad.Login.GRPrincipal.Login(System.String,System.String,System.String)">
+            <summary>
+            Autentica al Usuario en base al usuario, clave y dominio (INTERNOS)
+            </summary>
+        </member>
+        <member name="M:Gromero.Seguridad.Login.GRPrincipal.Login(System.String,System.String)">
+            <summary>
+            Autentica al Usuario en base al Usuario y Clave (EXTERNOS)
+            </summary>
+        </member>
+        <member name="M:Gromero.Seguridad.Login.GRPrincipal.Load(System.String,System.String)">
+            <summary>
+            Carga la Info del Usuario en base al nombre de usuario
+            </summary>
+        </member>
+        <member name="M:Gromero.Seguridad.Login.GRPrincipal.Login(System.Guid)">
+            <summary>
+            Autentica al Usuario en base al Id del Perfil del Usuario
+            </summary>
+        </member>
+        <member name="M:Gromero.Seguridad.Login.GRPrincipal.Login">
+            <summary>
+            Realiza la Autenticación Anónima
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Gromero.Seguridad.Login.GRPrincipal.Logout">
+            <summary>
+            Cierra Sesión
+            </summary>
+        </member>
+        <member name="E:Gromero.Seguridad.Login.GRPrincipal.NewUser">
+            <summary>
+            Evento que se produce cuando se autentica el Usuario
+            </summary>
+        </member>
+        <member name="T:Gromero.Seguridad.Login.UsuarioNoActivoException">
+            <summary>
+            Excepcion que representa un Usuario No Activo
+            </summary>
+        </member>
+        <member name="M:Gromero.Seguridad.Login.UsuarioNoActivoException.#ctor">
+            <summary>
+            Inicializa una nueva instancia de UsuarioNoActivoException
+            </summary>
+        </member>
+        <member name="M:Gromero.Seguridad.Login.UsuarioNoActivoException.#ctor(System.String)">
+            <summary>
+            Inicializa una nueva instancia de UsuarioNoActivoException
+            </summary>
+        </member>
+        <member name="M:Gromero.Seguridad.Login.UsuarioNoActivoException.#ctor(System.String,System.Exception)">
+            <summary>
+            Inicializa una nueva instancia de UsuarioNoActivoException
+            </summary>
+        </member>
+        <member name="M:Gromero.Seguridad.Login.UsuarioNoActivoException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Inicializa una nueva instancia de UsuarioNoActivoException
+            </summary>
+        </member>
+        <member name="M:Gromero.Seguridad.Login.UsuarioNoActivoException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Obtiene un Dato de un objeto serializado
+            </summary>
+        </member>
+        <member name="P:Gromero.Seguridad.Login.UsuarioNoActivoException.NombreUsuario">
+            <summary>
+            Nombre de Usuario
+            </summary>
+        </member>
+        <member name="P:Gromero.Seguridad.Login.UsuarioNoActivoException.Message">
+            <summary>
+            Mensaje que contiene la Excepcion
+            </summary>
+        </member>
+        <member name="T:Gromero.Seguridad.Login.UsuarioSinClaveException">
+            <summary>
+            Excepcion que representa UsuarioSinClave
+            </summary>
+        </member>
+        <member name="M:Gromero.Seguridad.Login.UsuarioSinClaveException.#ctor">
+            <summary>
+            Inicializa una nueva instancia de UsuarioSinClaveException
+            </summary>
+        </member>
+        <member name="M:Gromero.Seguridad.Login.UsuarioSinClaveException.#ctor(System.String)">
+            <summary>
+            Inicializa una nueva instancia de UsuarioSinClaveException
+            </summary>
+        </member>
+        <member name="M:Gromero.Seguridad.Login.UsuarioSinClaveException.#ctor(System.String,System.Exception)">
+            <summary>
+            Inicializa una nueva instancia de UsuarioSinClaveException
+            </summary>
+        </member>
+        <member name="M:Gromero.Seguridad.Login.UsuarioSinClaveException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Inicializa una nueva instancia de UsuarioSinClaveException
+            </summary>
+        </member>
+        <member name="M:Gromero.Seguridad.Login.UsuarioSinClaveException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Obtiene un Dato de un objeto serializado
+            </summary>
+        </member>
+        <member name="P:Gromero.Seguridad.Login.UsuarioSinClaveException.NombreUsuario">
+            <summary>
+            NombreUsuario
+            </summary>
+        </member>
+        <member name="P:Gromero.Seguridad.Login.UsuarioSinClaveException.Message">
+            <summary>
+            Mensaje que contiene la Excepcion
+            </summary>
+        </member>
+        <member name="T:Gromero.Seguridad.Publicos">
+            <summary>
+            Clase que expone Métodos y Propiedades
+            para usar en el Sistema de Seguridad
+            </summary>
+        </member>
+        <member name="F:Gromero.Seguridad.Publicos.msgPermisosAgregar">
+            <summary>
+            No tiene autorización para agregar!
+            </summary>
+        </member>
+        <member name="F:Gromero.Seguridad.Publicos.msgPermisosLeer">
+            <summary>
+            No tiene autorización para leer!
+            </summary>
+        </member>
+        <member name="F:Gromero.Seguridad.Publicos.msgPermisosActualizar">
+            <summary>
+            No tiene autorización para actualizar!
+            </summary>
+        </member>
+        <member name="F:Gromero.Seguridad.Publicos.msgPermisosEliminar">
+            <summary>
+            No tiene autorización para eliminar!
+            </summary>
+        </member>
+        <member name="M:Gromero.Seguridad.Publicos.AutenticacionContext">
+            <summary>
+            Guarda en el Contexto los Datos del Usuario autenticado
+            </summary>
+        </member>
+        <member name="M:Gromero.Seguridad.Publicos.ConsultarPermisos(Gromero.Seguridad.TipoAccion,System.String,System.String)">
+            <summary>
+            Permite consultar los Permisos de un Módulo en especifico de un sistema,
+            devuelve un valor Booleano (True si tiene acceso y False si no lo tiene)
+            </summary>
+            <param name="tipo">Tipo de Permiso (si se escoge Otro se usará el parametro OtroPermiso)</param>
+            <param name="NombreModulo">Literal. Módulo del Sistema registrado en el Gestor de Usuarios</param>
+            <param name="OtroPermiso">Literal. Opcion utilizada cuando en Tipo se establece Otro</param>
+            <remarks>Erick Orlando © 2008</remarks>
+        </member>
+        <member name="M:Gromero.Seguridad.Publicos.LimpiarCache">
+            <summary>
+            Limpia por Completo la caché de Permisos
+            NOTA: No es igual que cerrar sesión
+            </summary>
+            <remarks>Erick Orlando © 2010</remarks>
+        </member>
+        <member name="M:Gromero.Seguridad.Publicos.ComprobarDominioEnUsuario(System.String)">
+            <summary>
+            Comprueba si dentro del nombre del usuario existe el Dominio
+            </summary>
+            <param name="username">Nombre de usuario, si hay dominio debe separarse con el símbolo (\)</param>
+            <returns>Una estructura de tipo <see cref="T:Gromero.Seguridad.UserDomain"/></returns>
+        </member>
+        <member name="M:Gromero.Seguridad.Publicos.GetDireccionServicio">
+            <summary>
+            Devuelve la dirección del Servicio WCF de Seguridad
+            </summary>
+            <returns>Un Objeto Uri que contiene la dirección</returns>
+        </member>
+        <member name="T:Gromero.Seguridad.UserDomain">
+            <summary>
+            Estructura que contiene el Nombre de Usuario y el Dominio
+            </summary>
+        </member>
+        <member name="P:Gromero.Seguridad.UserDomain.Usuario">
+            <summary>
+            Nombre de Usuario
+            </summary>
+        </member>
+        <member name="P:Gromero.Seguridad.UserDomain.Dominio">
+            <summary>
+            Dominio al que pertenece el usuario
+            </summary>
+        </member>
+        <member name="T:Gromero.Seguridad.TipoAccion">
+            <summary>
+            Tipo de Acción que se realizará para ejecutar una Opción
+            </summary>
+        </member>
+        <member name="F:Gromero.Seguridad.TipoAccion.PuedeAgregar">
+            <summary>
+            Puede Agregar?
+            </summary>
+        </member>
+        <member name="F:Gromero.Seguridad.TipoAccion.PuedeLeer">
+            <summary>
+            Puede Leer?
+            </summary>
+        </member>
+        <member name="F:Gromero.Seguridad.TipoAccion.PuedeActualizar">
+            <summary>
+            Puede Actualizar?
+            </summary>
+        </member>
+        <member name="F:Gromero.Seguridad.TipoAccion.PuedeEliminar">
+            <summary>
+            Puede Eliminar?
+            </summary>
+        </member>
+        <member name="F:Gromero.Seguridad.TipoAccion.PuedeAgregarHijo">
+            <summary>
+            Puede Agregar?
+            </summary> 
+        </member>
+        <member name="F:Gromero.Seguridad.TipoAccion.PuedeLeerHijo">
+            <summary>
+            Puede Leer?
+            </summary>
+        </member>
+        <member name="F:Gromero.Seguridad.TipoAccion.PuedeActualizarHijo">
+            <summary>
+            Puede Actualizar?
+            </summary>
+        </member>
+        <member name="F:Gromero.Seguridad.TipoAccion.PuedeEliminarHijo">
+            <summary>
+            Puede Eliminar?
+            </summary>
+        </member>
+        <member name="F:Gromero.Seguridad.TipoAccion.Otro">
+            <summary>
+            Otro permiso Adicional
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,14886 @@
+USE TransmisionesDB
+GO
+
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_PROCESAR_ARCHIVO_MANIFIESTO')
+BEGIN 
+DROP PROCEDURE USP_PROCESAR_ARCHIVO_MANIFIESTO
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_LISTAR_TIPO_TRANSMISION_DOCUMENTOS')
+BEGIN 
+DROP PROCEDURE USP_LISTAR_TIPO_TRANSMISION_DOCUMENTOS
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_LISTAR_TIPO_TRANSMISION_NAVES')
+BEGIN 
+DROP PROCEDURE USP_LISTAR_TIPO_TRANSMISION_NAVES
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_CONSULTAR_LOG_TRANSMISION_DOCUMENTOS')
+BEGIN
+DROP PROCEDURE USP_CONSULTAR_LOG_TRANSMISION_DOCUMENTOS
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_CONSULTAR_LOG_TRANSMISION_NAVES')
+BEGIN
+DROP PROCEDURE USP_CONSULTAR_LOG_TRANSMISION_NAVES
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_REGISTRA_TRANSMISION_SUNAT_DOCUMENTOS')
+BEGIN 
+DROP PROCEDURE USP_REGISTRA_TRANSMISION_SUNAT_DOCUMENTOS
+DROP TYPE dtDocumentos
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_REGISTRA_TRANSMISION_SUNAT_NAVES')
+BEGIN 
+DROP PROCEDURE USP_REGISTRA_TRANSMISION_SUNAT_NAVES
+DROP TYPE dtItinerarios
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_CONSULTAR_TRANSMISION_DOCUMENTOS')
+BEGIN 
+DROP PROCEDURE USP_CONSULTAR_TRANSMISION_DOCUMENTOS
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_CONSULTAR_TRANSMISION_NAVES')
+BEGIN 
+DROP PROCEDURE USP_CONSULTAR_TRANSMISION_NAVES
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_LISTAR_CONDICION_CARGA')
+BEGIN 
+DROP PROCEDURE USP_LISTAR_CONDICION_CARGA
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_LISTAR_TEMPERATURA')
+BEGIN 
+DROP PROCEDURE USP_LISTAR_TEMPERATURA
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_LISTAR_CONDICION_TRANSPORTE')
+BEGIN 
+DROP PROCEDURE USP_LISTAR_CONDICION_TRANSPORTE
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_LISTAR_MODO_PAGO')
+BEGIN 
+DROP PROCEDURE USP_LISTAR_MODO_PAGO
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_LISTAR_CONDICION_CONTRATO')
+BEGIN 
+DROP PROCEDURE USP_LISTAR_CONDICION_CONTRATO
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_LISTAR_TIPOOPERACION')
+BEGIN 
+DROP PROCEDURE USP_LISTAR_TIPOOPERACION
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_LISTAR_TIPOBL')
+BEGIN 
+DROP PROCEDURE USP_LISTAR_TIPOBL
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_LISTAR_TIPOENVIO')
+BEGIN 
+DROP PROCEDURE USP_LISTAR_TIPOENVIO
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_CONSULTAR_PERSONA_POR_ROL')
+BEGIN 
+DROP PROCEDURE USP_CONSULTAR_PERSONA_POR_ROL
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_CONSULTAR_DETALLE_DOCUMENTO')
+BEGIN 
+DROP PROCEDURE USP_CONSULTAR_DETALLE_DOCUMENTO
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_LISTAR_ROLES')
+BEGIN 
+DROP PROCEDURE USP_LISTAR_ROLES
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_CONSULTAR_DETALLE_PERSONA')
+BEGIN 
+DROP PROCEDURE USP_CONSULTAR_DETALLE_PERSONA
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_VALIDAR_PERSONA')
+BEGIN 
+DROP PROCEDURE USP_VALIDAR_PERSONA
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_REGISTRAR_PERSONAROL')
+BEGIN 
+DROP PROCEDURE USP_REGISTRAR_PERSONAROL
+DROP TYPE dtPersonaRol
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_CONSULTAR_PERSONA')
+BEGIN 
+DROP PROCEDURE USP_CONSULTAR_PERSONA
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_MODIFICAR_PERSONA')
+BEGIN 
+DROP PROCEDURE USP_MODIFICAR_PERSONA
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_INSERTAR_PERSONA')
+BEGIN 
+DROP PROCEDURE USP_INSERTAR_PERSONA
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_VALIDAR_DOCUMENTO')
+BEGIN 
+DROP PROCEDURE USP_VALIDAR_DOCUMENTO
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_REGISTRAR_DOCUMENTODETALLECLIENTE')
+BEGIN 
+DROP PROCEDURE USP_REGISTRAR_DOCUMENTODETALLECLIENTE
+DROP TYPE dtDocumentoDetalleCliente
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_REGISTRAR_DOCUMENTODETALLEFLETE')
+BEGIN 
+DROP PROCEDURE USP_REGISTRAR_DOCUMENTODETALLEFLETE
+DROP TYPE dtDocumentoDetalleFlete
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_REGISTRAR_DOCUMENTODETALLECARGA')
+BEGIN 
+DROP PROCEDURE USP_REGISTRAR_DOCUMENTODETALLECARGA
+DROP TYPE dtDocumentoDetalleCarga
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_MODIFICAR_DOCUMENTO')
+BEGIN 
+DROP PROCEDURE USP_MODIFICAR_DOCUMENTO
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_INSERTAR_DOCUMENTO')
+BEGIN 
+DROP PROCEDURE USP_INSERTAR_DOCUMENTO
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_CONSULTAR_DOCUMENTO')
+BEGIN 
+DROP PROCEDURE USP_CONSULTAR_DOCUMENTO
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_REGISTRAR_DOCUMENTO')
+BEGIN 
+DROP PROCEDURE USP_REGISTRAR_DOCUMENTO
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_CONSULTAR_CONTENEDOR')
+BEGIN 
+DROP PROCEDURE USP_CONSULTAR_CONTENEDOR
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_REGISTRAR_CONTENEDOR')
+BEGIN 
+DROP PROCEDURE USP_REGISTRAR_CONTENEDOR
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_CONSULTAR_NUMEROIMO')
+BEGIN 
+DROP PROCEDURE USP_CONSULTAR_NUMEROIMO
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_REGISTRAR_NUMEROIMO')
+BEGIN 
+DROP PROCEDURE USP_REGISTRAR_NUMEROIMO
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_CONSULTAR_CLASEIMO')
+BEGIN 
+DROP PROCEDURE USP_CONSULTAR_CLASEIMO
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_REGISTRAR_CLASEIMO')
+BEGIN 
+DROP PROCEDURE USP_REGISTRAR_CLASEIMO
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_CONSULTAR_NATURALEZACARGA')
+BEGIN 
+DROP PROCEDURE USP_CONSULTAR_NATURALEZACARGA
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_REGISTRAR_NATURALEZACARGA')
+BEGIN 
+DROP PROCEDURE USP_REGISTRAR_NATURALEZACARGA
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_CONSULTAR_CONDICIONCARGA')
+BEGIN 
+DROP PROCEDURE USP_CONSULTAR_CONDICIONCARGA
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_REGISTRAR_CONDICIONCARGA')
+BEGIN 
+DROP PROCEDURE USP_REGISTRAR_CONDICIONCARGA
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_CONSULTAR_UNIDADMERCANCIA')
+BEGIN 
+DROP PROCEDURE USP_CONSULTAR_UNIDADMERCANCIA
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_REGISTRAR_UNIDADMERCANCIA')
+BEGIN 
+DROP PROCEDURE USP_REGISTRAR_UNIDADMERCANCIA
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_CONSULTAR_TIPOMOVIMIENTO')
+BEGIN 
+DROP PROCEDURE USP_CONSULTAR_TIPOMOVIMIENTO
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_REGISTRAR_TIPOMOVIMIENTO')
+BEGIN 
+DROP PROCEDURE USP_REGISTRAR_TIPOMOVIMIENTO
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_CONSULTAR_CONDICIONTRANSPORTE')
+BEGIN 
+DROP PROCEDURE USP_CONSULTAR_CONDICIONTRANSPORTE
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_REGISTRAR_CONDICIONTRANSPORTE')
+BEGIN 
+DROP PROCEDURE USP_REGISTRAR_CONDICIONTRANSPORTE
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_CONSULTAR_TEMPERATURA')
+BEGIN 
+DROP PROCEDURE USP_CONSULTAR_TEMPERATURA
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_REGISTRAR_TEMPERATURA')
+BEGIN 
+DROP PROCEDURE USP_REGISTRAR_TEMPERATURA
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_CONSULTAR_TIPOCONTENEDOR')
+BEGIN 
+DROP PROCEDURE USP_CONSULTAR_TIPOCONTENEDOR
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_REGISTRAR_TIPOCONTENEDOR')
+BEGIN 
+DROP PROCEDURE USP_REGISTRAR_TIPOCONTENEDOR
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_CONSULTAR_MODOPAGO')
+BEGIN 
+DROP PROCEDURE USP_CONSULTAR_MODOPAGO
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_REGISTRAR_MODOPAGO')
+BEGIN 
+DROP PROCEDURE USP_REGISTRAR_MODOPAGO
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_CONSULTAR_TIPOFLETE')
+BEGIN 
+DROP PROCEDURE USP_CONSULTAR_TIPOFLETE
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_REGISTRAR_TIPOFLETE')
+BEGIN 
+DROP PROCEDURE USP_REGISTRAR_TIPOFLETE
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_CONSULTAR_TIPOBL')
+BEGIN 
+DROP PROCEDURE USP_CONSULTAR_TIPOBL
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_REGISTRAR_TIPOBL')
+BEGIN 
+DROP PROCEDURE USP_REGISTRAR_TIPOBL
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_CONSULTAR_REQUERIMIENTOSERVICIO')
+BEGIN 
+DROP PROCEDURE USP_CONSULTAR_REQUERIMIENTOSERVICIO
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_REGISTRAR_REQUERIMIENTOSERVICIO')
+BEGIN 
+DROP PROCEDURE USP_REGISTRAR_REQUERIMIENTOSERVICIO
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_CONSULTAR_CONDICIONCONTRATO')
+BEGIN 
+DROP PROCEDURE USP_CONSULTAR_CONDICIONCONTRATO
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_REGISTRAR_CONDICIONCONTRATO')
+BEGIN 
+DROP PROCEDURE USP_REGISTRAR_CONDICIONCONTRATO
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_CONSULTAR_TIPOENVIO')
+BEGIN 
+DROP PROCEDURE USP_CONSULTAR_TIPOENVIO
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_REGISTRAR_TIPOENVIO')
+BEGIN 
+DROP PROCEDURE USP_REGISTRAR_TIPOENVIO
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_CONSULTAR_MONEDA')
+BEGIN 
+DROP PROCEDURE USP_CONSULTAR_MONEDA
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_REGISTRAR_MONEDA')
+BEGIN 
+DROP PROCEDURE USP_REGISTRAR_MONEDA
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_CONSULTAR_PRECINTO')
+BEGIN 
+DROP PROCEDURE USP_CONSULTAR_PRECINTO
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_REGISTRAR_PRECINTO')
+BEGIN 
+DROP PROCEDURE USP_REGISTRAR_PRECINTO
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_CONSULTAR_ENTIDADPRECINTO')
+BEGIN 
+DROP PROCEDURE USP_CONSULTAR_ENTIDADPRECINTO
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_REGISTRAR_ENTIDADPRECINTO')
+BEGIN 
+DROP PROCEDURE USP_REGISTRAR_ENTIDADPRECINTO
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_CONSULTAR_CONDICIONPRECINTO')
+BEGIN 
+DROP PROCEDURE USP_CONSULTAR_CONDICIONPRECINTO
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_REGISTRAR_CONDICIONPRECINTO')
+BEGIN 
+DROP PROCEDURE USP_REGISTRAR_CONDICIONPRECINTO
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_CONSULTAR_ITINERARIO')
+BEGIN 
+DROP PROCEDURE USP_CONSULTAR_ITINERARIO
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_REGISTRAR_ITINERARIO')
+BEGIN 
+DROP PROCEDURE USP_REGISTRAR_ITINERARIO
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_CONSULTAR_TIPOOPERACION')
+BEGIN 
+DROP PROCEDURE USP_CONSULTAR_TIPOOPERACION
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_REGISTRAR_TIPOOPERACION')
+BEGIN 
+DROP PROCEDURE USP_REGISTRAR_TIPOOPERACION
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_CONSULTAR_ROLPERSONA')
+BEGIN 
+DROP PROCEDURE USP_CONSULTAR_ROLPERSONA
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_REGISTRAR_ROLPERSONA')
+BEGIN 
+DROP PROCEDURE USP_REGISTRAR_ROLPERSONA
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_REGISTRAR_PERSONA')
+BEGIN 
+DROP PROCEDURE USP_REGISTRAR_PERSONA
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_CONSULTAR_ROL')
+BEGIN 
+DROP PROCEDURE USP_CONSULTAR_ROL
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_REGISTRAR_ROL')
+BEGIN 
+DROP PROCEDURE USP_REGISTRAR_ROL
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_CONSULTAR_TIPODOCUMENTO')
+BEGIN 
+DROP PROCEDURE USP_CONSULTAR_TIPODOCUMENTO
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_REGISTRAR_TIPODOCUMENTO')
+BEGIN 
+DROP PROCEDURE USP_REGISTRAR_TIPODOCUMENTO
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_CONSULTAR_NAVE')
+BEGIN 
+DROP PROCEDURE USP_CONSULTAR_NAVE
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_REGISTRAR_NAVE')
+BEGIN 
+DROP PROCEDURE USP_REGISTRAR_NAVE
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_CONSULTAR_LINEANAVIERA')
+BEGIN 
+DROP PROCEDURE USP_CONSULTAR_LINEANAVIERA
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_REGISTRAR_LINEANAVIERA')
+BEGIN 
+DROP PROCEDURE USP_REGISTRAR_LINEANAVIERA
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_CONSULTAR_TIPONAVE')
+BEGIN 
+DROP PROCEDURE USP_CONSULTAR_TIPONAVE
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_REGISTRAR_TIPONAVE')
+BEGIN 
+DROP PROCEDURE USP_REGISTRAR_TIPONAVE
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_CONSULTAR_MEDIOTRANSPORTE')
+BEGIN 
+DROP PROCEDURE USP_CONSULTAR_MEDIOTRANSPORTE
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_REGISTRAR_MEDIOTRANSPORTE')
+BEGIN 
+DROP PROCEDURE USP_REGISTRAR_MEDIOTRANSPORTE
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_CONSULTAR_TIPOLUGARCARGA')
+BEGIN 
+DROP PROCEDURE USP_CONSULTAR_TIPOLUGARCARGA
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_REGISTRAR_TIPOLUGARCARGA')
+BEGIN 
+DROP PROCEDURE USP_REGISTRAR_TIPOLUGARCARGA
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_CONSULTAR_ADUANA')
+BEGIN 
+DROP PROCEDURE USP_CONSULTAR_ADUANA
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_REGISTRAR_ADUANA')
+BEGIN 
+DROP PROCEDURE USP_REGISTRAR_ADUANA
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_CONSULTAR_VIATRANSPORTE')
+BEGIN 
+DROP PROCEDURE USP_CONSULTAR_VIATRANSPORTE
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_REGISTRAR_VIATRANSPORTE')
+BEGIN 
+DROP PROCEDURE USP_REGISTRAR_VIATRANSPORTE
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_CONSULTAR_PUERTO')
+BEGIN 
+DROP PROCEDURE USP_CONSULTAR_PUERTO
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_REGISTRAR_PUERTO')
+BEGIN 
+DROP PROCEDURE USP_REGISTRAR_PUERTO
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_CONSULTAR_PAIS')
+BEGIN 
+DROP PROCEDURE USP_CONSULTAR_PAIS
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_REGISTRAR_PAIS')
+BEGIN 
+DROP PROCEDURE USP_REGISTRAR_PAIS
+END
+IF EXISTS (SELECT name FROM sys.procedures WHERE name = 'USP_INSERT_LOGMAPA')
+BEGIN 
+DROP PROCEDURE USP_INSERT_LOGMAPA
+END
+IF OBJECT_ID('dbo.Funcion_TipoMensaje') IS NOT NULL
+BEGIN
+  DROP FUNCTION dbo.Funcion_TipoMensaje 
+END
+IF EXISTS (SELECT name FROM sys.tables WHERE name = 'Logmapa')
+BEGIN 
+DROP TABLE Logmapa
+END
+IF EXISTS (SELECT name FROM sys.tables WHERE name = 'DetalleCatalogo')
+BEGIN 
+DROP TABLE DetalleCatalogo
+END
+IF EXISTS (SELECT name FROM sys.tables WHERE name = 'CatalogoTablas')
+BEGIN 
+DROP TABLE CatalogoTablas
+END
+IF EXISTS (SELECT name FROM sys.tables WHERE name = 'DocumentoDetalleCargaDetallePrecinto')
+BEGIN 
+DROP TABLE DocumentoDetalleCargaDetallePrecinto
+END
+IF EXISTS (SELECT name FROM sys.tables WHERE name = 'DocumentoDetalleCarga')
+BEGIN 
+DROP TABLE DocumentoDetalleCarga
+END
+IF EXISTS (SELECT name FROM sys.tables WHERE name = 'DocumentoDetalleFlete')
+BEGIN 
+DROP TABLE DocumentoDetalleFlete
+END
+IF EXISTS (SELECT name FROM sys.tables WHERE name = 'DocumentoDetalleCliente')
+BEGIN 
+DROP TABLE DocumentoDetalleCliente
+END
+IF EXISTS (SELECT name FROM sys.tables WHERE name = 'LogTransmisionDocumento')
+BEGIN 
+DROP TABLE LogTransmisionDocumento
+END
+IF EXISTS (SELECT name FROM sys.tables WHERE name = 'Documento')
+BEGIN 
+DROP TABLE Documento
+END
+IF EXISTS (SELECT name FROM sys.tables WHERE name = 'Contenedor')
+BEGIN 
+DROP TABLE Contenedor
+END
+IF EXISTS (SELECT name FROM sys.tables WHERE name = 'NumeroIMO')
+BEGIN 
+DROP TABLE NumeroIMO
+END
+IF EXISTS (SELECT name FROM sys.tables WHERE name = 'ClaseIMO')
+BEGIN 
+DROP TABLE ClaseIMO
+END
+IF EXISTS (SELECT name FROM sys.tables WHERE name = 'NaturalezaCarga')
+BEGIN 
+DROP TABLE NaturalezaCarga
+END
+IF EXISTS (SELECT name FROM sys.tables WHERE name = 'CondicionCarga')
+BEGIN 
+DROP TABLE CondicionCarga
+END
+IF EXISTS (SELECT name FROM sys.tables WHERE name = 'UnidadMercancia')
+BEGIN 
+DROP TABLE UnidadMercancia
+END
+IF EXISTS (SELECT name FROM sys.tables WHERE name = 'TipoMovimiento')
+BEGIN 
+DROP TABLE TipoMovimiento
+END
+IF EXISTS (SELECT name FROM sys.tables WHERE name = 'CondicionTransporte')
+BEGIN 
+DROP TABLE CondicionTransporte
+END
+IF EXISTS (SELECT name FROM sys.tables WHERE name = 'Temperatura')
+BEGIN 
+DROP TABLE Temperatura
+END
+IF EXISTS (SELECT name FROM sys.tables WHERE name = 'TipoContenedor')
+BEGIN 
+DROP TABLE TipoContenedor
+END
+IF EXISTS (SELECT name FROM sys.tables WHERE name = 'ModoPago')
+BEGIN 
+DROP TABLE ModoPago
+END
+IF EXISTS (SELECT name FROM sys.tables WHERE name = 'TipoFlete')
+BEGIN 
+DROP TABLE TipoFlete
+END
+IF EXISTS (SELECT name FROM sys.tables WHERE name = 'TipoBL')
+BEGIN 
+DROP TABLE TipoBL
+END
+IF EXISTS (SELECT name FROM sys.tables WHERE name = 'RequerimientoServicio')
+BEGIN 
+DROP TABLE RequerimientoServicio
+END
+IF EXISTS (SELECT name FROM sys.tables WHERE name = 'CondicionContrato')
+BEGIN 
+DROP TABLE CondicionContrato
+END
+IF EXISTS (SELECT name FROM sys.tables WHERE name = 'TipoEnvio')
+BEGIN 
+DROP TABLE TipoEnvio
+END
+IF EXISTS (SELECT name FROM sys.tables WHERE name = 'Moneda')
+BEGIN 
+DROP TABLE Moneda
+END
+IF EXISTS (SELECT name FROM sys.tables WHERE name = 'Precinto')
+BEGIN 
+DROP TABLE Precinto
+END
+IF EXISTS (SELECT name FROM sys.tables WHERE name = 'EntidadPrecinto')
+BEGIN 
+DROP TABLE EntidadPrecinto
+END
+IF EXISTS (SELECT name FROM sys.tables WHERE name = 'CondicionPrecinto')
+BEGIN 
+DROP TABLE CondicionPrecinto
+END
+IF EXISTS (SELECT name FROM sys.tables WHERE name = 'LogTransmisionItinerario')
+BEGIN 
+DROP TABLE LogTransmisionItinerario
+END
+IF EXISTS (SELECT name FROM sys.tables WHERE name = 'Itinerario')
+BEGIN 
+DROP TABLE Itinerario
+END
+IF EXISTS (SELECT name FROM sys.tables WHERE name = 'TipoOperacion')
+BEGIN 
+DROP TABLE TipoOperacion
+END
+IF EXISTS (SELECT name FROM sys.tables WHERE name = 'PersonaRol')
+BEGIN 
+DROP TABLE PersonaRol
+END
+IF EXISTS (SELECT name FROM sys.tables WHERE name = 'Persona')
+BEGIN 
+DROP TABLE Persona
+END
+IF EXISTS (SELECT name FROM sys.tables WHERE name = 'Rol')
+BEGIN 
+DROP TABLE Rol
+END
+IF EXISTS (SELECT name FROM sys.tables WHERE name = 'TipoDocumento')
+BEGIN 
+DROP TABLE TipoDocumento
+END
+IF EXISTS (SELECT name FROM sys.tables WHERE name = 'Nave')
+BEGIN 
+DROP TABLE Nave
+END
+IF EXISTS (SELECT name FROM sys.tables WHERE name = 'LineaNaviera')
+BEGIN 
+DROP TABLE LineaNaviera
+END
+IF EXISTS (SELECT name FROM sys.tables WHERE name = 'TipoNave')
+BEGIN 
+DROP TABLE TipoNave
+END
+IF EXISTS (SELECT name FROM sys.tables WHERE name = 'MedioTransporte')
+BEGIN 
+DROP TABLE MedioTransporte
+END
+IF EXISTS (SELECT name FROM sys.tables WHERE name = 'TipoLugarCarga')
+BEGIN 
+DROP TABLE TipoLugarCarga
+END
+IF EXISTS (SELECT name FROM sys.tables WHERE name = 'Aduana')
+BEGIN 
+DROP TABLE Aduana
+END
+IF EXISTS (SELECT name FROM sys.tables WHERE name = 'ViaTransporte')
+BEGIN 
+DROP TABLE ViaTransporte
+END
+IF EXISTS (SELECT name FROM sys.tables WHERE name = 'Puerto')
+BEGIN 
+DROP TABLE Puerto
+END
+IF EXISTS (SELECT name FROM sys.tables WHERE name = 'Pais')
+BEGIN 
+DROP TABLE Pais
+END
+IF EXISTS (SELECT name FROM sys.tables WHERE name = 'ArchivoManifiesto')
+BEGIN 
+DROP TABLE ArchivoManifiesto
+END
+
+CREATE TABLE ArchivoManifiesto
+(
+	CodigoArchivoManifiesto BIGINT IDENTITY(1,1) PRIMARY KEY,
+	NombreArchivoManifiesto VARCHAR(150) NOT NULL,
+	ContenidoArchivoManifiesto TEXT NOT NULL,
+	TipoArchivoManifiesto CHAR(1) NULL,
+	Voyage VARCHAR(10) NULL,
+	Estado VARCHAR(3) NULL,
+	EstadoRegistro BIT NOT NULL DEFAULT 1,
+    UsuarioCreacion VARCHAR(100) NOT NULL DEFAULT USER_NAME(),
+	FechaHoraCreacion DATETIME NOT NULL DEFAULT GETDATE(),
+ 	UsuarioActualizacion VARCHAR(100) NULL,
+	FechaHoraActualizacion DATETIME NULL
+)
+CREATE INDEX IDX_ArchivoManifiesto01 ON ArchivoManifiesto
+(CodigoArchivoManifiesto,NombreArchivoManifiesto,TipoArchivoManifiesto,Voyage,Estado,EstadoRegistro,FechaHoraCreacion)
+
+CREATE TABLE Pais
+(
+	 CodigoPais BIGINT IDENTITY(1,1) PRIMARY KEY,
+     CodigoPaisSunat VARCHAR(2) NOT NULL,
+     NombrePais VARCHAR(150) NOT NULL,           
+     CodigoAlfaPais VARCHAR(3) NOT NULL,
+     EstadoRegistro BIT NOT NULL DEFAULT 1,
+     UsuarioCreacion VARCHAR(100) NOT NULL DEFAULT USER_NAME(),
+	 FechaHoraCreacion DATETIME NOT NULL DEFAULT GETDATE(),
+	 UsuarioActualizacion VARCHAR(100) NULL,
+	 FechaHoraActualizacion DATETIME NULL
+) 
+CREATE INDEX IDX_Pais01 ON Pais(CodigoPais,CodigoPaisSunat,NombrePais,CodigoAlfaPais,EstadoRegistro)
+
+CREATE TABLE Puerto
+(
+	 CodigoPuerto BIGINT IDENTITY(1,1) PRIMARY KEY,
+	 CodigoPais BIGINT NOT NULL,
+	 CodigoPuertoSunat VARCHAR(5) NOT NULL,
+     NombrePuerto VARCHAR(100) NOT NULL,
+     EstadoRegistro BIT NOT NULL DEFAULT 1,
+     UsuarioCreacion VARCHAR(100) NOT NULL DEFAULT USER_NAME(),
+	 FechaHoraCreacion DATETIME NOT NULL DEFAULT GETDATE(),
+	 UsuarioActualizacion VARCHAR(100) NULL,
+	 FechaHoraActualizacion DATETIME NULL	 
+) 
+CREATE INDEX IDX_Puerto01 ON Puerto(CodigoPuerto,CodigoPais,CodigoPuertoSunat,NombrePuerto,EstadoRegistro)
+ALTER TABLE Puerto ADD CONSTRAINT FK_Puerto_Pais FOREIGN KEY(CodigoPais)REFERENCES Pais(CodigoPais)
+
+CREATE TABLE ViaTransporte
+(
+	 CodigoViaTransporte BIGINT IDENTITY(1,1) PRIMARY KEY,
+	 CodigoViaTransporteSunat TINYINT NOT NULL,
+     NombreViaTransporte VARCHAR(50) NOT NULL,
+	 EstadoRegistro BIT NOT NULL DEFAULT 1,
+     UsuarioCreacion VARCHAR(100) NOT NULL DEFAULT USER_NAME(),
+	 FechaHoraCreacion DATETIME NOT NULL DEFAULT GETDATE(),
+	 UsuarioActualizacion VARCHAR(100) NULL,
+	 FechaHoraActualizacion DATETIME NULL  
+) 
+CREATE INDEX IDX_ViaTransporte01 ON ViaTransporte(CodigoViaTransporte,CodigoViaTransporteSunat,NombreViaTransporte,EstadoRegistro)
+
+CREATE TABLE Aduana
+(
+	 CodigoAduana BIGINT IDENTITY(1,1) PRIMARY KEY,
+	 CodigoPuerto BIGINT NOT NULL, 
+	 CodigoViaTransporte BIGINT NOT NULL,
+	 CodigoAduanaSunat INTEGER NOT NULL,
+     NombreAduana VARCHAR(150) NOT NULL,
+	 EstadoRegistro BIT NOT NULL DEFAULT 1,
+     UsuarioCreacion VARCHAR(100) NOT NULL DEFAULT USER_NAME(),
+	 FechaHoraCreacion DATETIME NOT NULL DEFAULT GETDATE(),
+	 UsuarioActualizacion VARCHAR(100) NULL,
+	 FechaHoraActualizacion DATETIME NULL
+) 
+CREATE INDEX IDX_Aduana01 ON Aduana(CodigoAduana,CodigoPuerto,CodigoViaTransporte,CodigoAduanaSunat,NombreAduana,EstadoRegistro)
+ALTER TABLE Aduana ADD CONSTRAINT FK_Aduana_Puerto FOREIGN KEY(CodigoPuerto)REFERENCES Puerto(CodigoPuerto)
+ALTER TABLE Aduana ADD CONSTRAINT FK_Aduana_ViaTransporte FOREIGN KEY(CodigoViaTransporte)REFERENCES ViaTransporte(CodigoViaTransporte)
+
+CREATE TABLE TipoLugarCarga
+(
+	 CodigoTipoLugarCarga BIGINT IDENTITY(1,1) PRIMARY KEY,
+	 CodigoTipoLugarCargaSunat SMALLINT NOT NULL,
+	 NombreTipoLugarCarga VARCHAR(50) NOT NULL,
+	 EstadoRegistro BIT NOT NULL DEFAULT 1,
+     UsuarioCreacion VARCHAR(100) NOT NULL DEFAULT USER_NAME(),
+	 FechaHoraCreacion DATETIME NOT NULL DEFAULT GETDATE(),
+	 UsuarioActualizacion VARCHAR(100) NULL,
+	 FechaHoraActualizacion DATETIME NULL
+)
+CREATE INDEX IDX_TipoLugarCarga01 ON TipoLugarCarga(CodigoTipoLugarCarga,CodigoTipoLugarCargaSunat,NombreTipoLugarCarga,EstadoRegistro)
+
+CREATE TABLE MedioTransporte
+(
+	 CodigoMedioTransporte BIGINT IDENTITY(1,1) PRIMARY KEY,
+     CodigoMedioTransporteSunat TINYINT NOT NULL,
+     NombreMedioTransporte VARCHAR(100) NOT NULL,
+	 EstadoRegistro BIT NOT NULL DEFAULT 1,
+     UsuarioCreacion VARCHAR(100) NOT NULL DEFAULT USER_NAME(),
+	 FechaHoraCreacion DATETIME NOT NULL DEFAULT GETDATE(),
+	 UsuarioActualizacion VARCHAR(100) NULL,
+	 FechaHoraActualizacion DATETIME NULL
+)
+CREATE INDEX IDX_MedioTransporte01 ON MedioTransporte(CodigoMedioTransporte,CodigoMedioTransporteSunat,NombreMedioTransporte,EstadoRegistro)
+
+CREATE TABLE TipoNave
+(
+	 CodigoTipoNave BIGINT IDENTITY(1,1) PRIMARY KEY,
+	 CodigoTipoNaveSunat VARCHAR(4) NOT NULL,
+     NombreTipoNave VARCHAR(50) NOT NULL,
+     EstadoRegistro BIT NOT NULL DEFAULT 1,
+     UsuarioCreacion VARCHAR(100) NOT NULL DEFAULT USER_NAME(),
+	 FechaHoraCreacion DATETIME NOT NULL DEFAULT GETDATE(),
+	 UsuarioActualizacion VARCHAR(100) NULL,
+	 FechaHoraActualizacion DATETIME NULL
+)
+CREATE INDEX IDX_TipoNave01 ON TipoNave(CodigoTipoNave,CodigoTipoNaveSunat,NombreTipoNave,EstadoRegistro)
+
+CREATE TABLE LineaNaviera
+(
+	 CodigoLineaNaviera BIGINT IDENTITY(1,1) PRIMARY KEY,
+     NombreLineaNaviera VARCHAR(80) NOT NULL,
+     DireccionLineaNaviera VARCHAR(150) NOT NULL,
+	 RucLineaNaviera VARCHAR(11) NULL, -- Validar por SP que el RUC no se repita
+	 CodigoEquivalencia VARCHAR(10) NULL,
+	 EstadoRegistro BIT NOT NULL DEFAULT 1,
+     UsuarioCreacion VARCHAR(100) NOT NULL DEFAULT USER_NAME(),
+	 FechaHoraCreacion DATETIME NOT NULL DEFAULT GETDATE(),
+	 UsuarioActualizacion VARCHAR(100) NULL,
+	 FechaHoraActualizacion DATETIME NULL
+)
+CREATE INDEX IDX_LineaNaviera01 ON LineaNaviera(CodigoLineaNaviera,NombreLineaNaviera,DireccionLineaNaviera,RucLineaNaviera,EstadoRegistro)
+
+CREATE TABLE Nave
+(
+	 CodigoNave BIGINT IDENTITY(1,1) PRIMARY KEY,
+	 CodigoPais BIGINT NOT NULL,
+	 CodigoTipoNave BIGINT NOT NULL, 
+	 CodigoLineaNaviera BIGINT NOT NULL,
+     NombreNave VARCHAR(50) NOT NULL,  
+	 MatriculaNave VARCHAR(20) NOT NULL,
+     TrbNave DECIMAL(15,2) NULL,
+     TrnNave DECIMAL(15,2) NULL,
+     EsloraNave DECIMAL(15,2) NULL,
+     MangaNave DECIMAL(15,2) NULL,     
+     CaladoNave DECIMAL(15,2) NULL,
+	 EstadoRegistro BIT NOT NULL DEFAULT 1,
+     UsuarioCreacion VARCHAR(100) NOT NULL DEFAULT USER_NAME(),
+	 FechaHoraCreacion DATETIME NOT NULL DEFAULT GETDATE(),
+	 UsuarioActualizacion VARCHAR(100) NULL,
+	 FechaHoraActualizacion DATETIME NULL
+)
+CREATE INDEX IDX_Nave01 ON Nave(CodigoNave,CodigoPais,CodigoTipoNave,CodigoLineaNaviera,NombreNave,MatriculaNave,EstadoRegistro)
+ALTER TABLE Nave ADD CONSTRAINT FK_Nave_Pais FOREIGN KEY(CodigoPais)REFERENCES Pais(CodigoPais)
+ALTER TABLE Nave ADD CONSTRAINT FK_Nave_TipoNave FOREIGN KEY(CodigoTipoNave)REFERENCES TipoNave(CodigoTipoNave)
+ALTER TABLE Nave ADD CONSTRAINT FK_Nave_LineaNaviera FOREIGN KEY(CodigoLineaNaviera)REFERENCES LineaNaviera(CodigoLineaNaviera)
+
+CREATE TABLE TipoDocumento
+(
+	CodigoTipoDocumento BIGINT IDENTITY(1,1) PRIMARY KEY,
+	CodigoTipoDocumentoSunat SMALLINT NOT NULL,
+    NombreTipoDocumento VARCHAR(50) NOT NULL,
+	EstadoRegistro BIT NOT NULL DEFAULT 1,
+    UsuarioCreacion VARCHAR(100) NOT NULL DEFAULT USER_NAME(),
+	FechaHoraCreacion DATETIME NOT NULL DEFAULT GETDATE(),
+	UsuarioActualizacion VARCHAR(100) NULL,
+	FechaHoraActualizacion DATETIME NULL
+)
+CREATE INDEX IDX_TipoDocumento01 ON TipoDocumento(CodigoTipoDocumento,CodigoTipoDocumentoSunat,NombreTipoDocumento,EstadoRegistro)
+
+
+CREATE TABLE Rol
+(
+	CodigoRol BIGINT IDENTITY(1,1) PRIMARY KEY,
+	CodigoRolSunat VARCHAR(2) NOT NULL,
+    NombreRol VARCHAR(50) NOT NULL,
+	CodigoEquivalencia VARCHAR(2) NULL,
+	EstadoRegistro BIT NOT NULL DEFAULT 1,
+    UsuarioCreacion VARCHAR(100) NOT NULL DEFAULT USER_NAME(),
+	FechaHoraCreacion DATETIME NOT NULL DEFAULT GETDATE(),
+	UsuarioActualizacion VARCHAR(100) NULL,
+	FechaHoraActualizacion DATETIME NULL
+)
+CREATE INDEX IDX_Rol01 ON Rol(CodigoRol,CodigoRolSunat,NombreRol,EstadoRegistro)
+
+CREATE TABLE Persona
+(
+	 CodigoPersona BIGINT IDENTITY(1,1) PRIMARY KEY,
+	 CodigoTipoDocumento BIGINT NOT NULL,
+	 CodigoPais BIGINT NOT NULL,
+     RazonSocialPersona VARCHAR(150) NOT NULL,
+	 NumeroDocumentoPersona VARCHAR(11) NULL,-- Validar por SP que el RUC no se repita
+	 DireccionPersona VARCHAR(250) NOT NULL,
+	 TelefonoPersona VARCHAR(20) NULL,
+	 EmailPersona VARCHAR(150) NULL,
+	 ContactoPersona VARCHAR(80) NULL,
+	 WebPersona VARCHAR(80) NULL,
+	 EstadoRegistro BIT NOT NULL DEFAULT 1,
+     UsuarioCreacion VARCHAR(100) NOT NULL DEFAULT USER_NAME(),
+	 FechaHoraCreacion DATETIME NOT NULL DEFAULT GETDATE(),
+	 UsuarioActualizacion VARCHAR(100) NULL,
+	 FechaHoraActualizacion DATETIME NULL 
+)
+CREATE INDEX IDX_Persona01 ON Persona(CodigoPersona,CodigoTipoDocumento,CodigoPais,RazonSocialPersona,NumeroDocumentoPersona,EstadoRegistro)
+ALTER TABLE Persona ADD CONSTRAINT FK_Persona_TipoDocumento FOREIGN KEY(CodigoTipoDocumento) REFERENCES TipoDocumento(CodigoTipoDocumento)
+ALTER TABLE Persona ADD CONSTRAINT FK_Persona_Pais FOREIGN KEY(CodigoPais)REFERENCES Pais(CodigoPais)
+
+CREATE TABLE PersonaRol
+(
+	 CodigoPersonaRol BIGINT IDENTITY(1,1) PRIMARY KEY,
+	 CodigoPersona BIGINT NOT NULL,
+     CodigoRol BIGINT NOT NULL,
+     CodigoAduanaPersonaRol VARCHAR(4) NULL,
+	 --EstadoRegistro BIT NOT NULL DEFAULT 1,
+  --   UsuarioCreacion VARCHAR(100) NOT NULL DEFAULT USER_NAME(),
+	 --FechaHoraCreacion DATETIME NOT NULL DEFAULT GETDATE(),
+	 --UsuarioActualizacion VARCHAR(100) NULL,
+	 --FechaHoraActualizacion DATETIME NULL
+)
+CREATE INDEX IDX_RolPersona01 ON PersonaRol(CodigoPersonaRol,CodigoRol,CodigoPersona,CodigoAduanaPersonaRol)
+ALTER TABLE PersonaRol ADD CONSTRAINT FK_RolPersona_Rol FOREIGN KEY(CodigoRol)REFERENCES Rol(CodigoRol)
+ALTER TABLE PersonaRol ADD CONSTRAINT FK_RolPersona_Persona FOREIGN KEY(CodigoPersona)REFERENCES Persona(CodigoPersona)
+
+CREATE TABLE TipoOperacion
+(
+	CodigoTipoOperacion BIGINT IDENTITY(1,1) PRIMARY KEY,
+	CodigoTipoOperacionSunat TINYINT NOT NULL,
+	NombreTipoOperacion VARCHAR(50) NOT NULL,
+	EstadoRegistro BIT NOT NULL DEFAULT 1,
+    UsuarioCreacion VARCHAR(100) NOT NULL DEFAULT USER_NAME(),
+	FechaHoraCreacion DATETIME NOT NULL DEFAULT GETDATE(),
+	UsuarioActualizacion VARCHAR(100) NULL,
+	FechaHoraActualizacion DATETIME NULL
+) 
+CREATE INDEX IDX_TipoOperacion01 ON TipoOperacion(CodigoTipoOperacion,CodigoTipoOperacionSunat,NombreTipoOperacion)
+
+CREATE TABLE Itinerario
+(
+	 CodigoItinerario BIGINT IDENTITY(1,1) PRIMARY KEY,
+	 CodigoNave BIGINT NOT NULL,
+	 CodigoAduana BIGINT NOT NULL,
+	 CodigoTipoOperacion BIGINT NOT NULL,
+	 CodigoTipoLugarCarga BIGINT NOT NULL,
+	 CodigoOperadorEmbarqueItinerario BIGINT NOT NULL,
+	 CodigoOperadorDescargaItinerario BIGINT NOT NULL,
+	 CodigoAgenteMaritimoItinerario BIGINT NOT NULL,
+	 CodigoTipoLugarCargaPuertoIntermedio BIGINT NOT NULL,
+	 CodigoPuertoIntermedio BIGINT NOT NULL,
+	 NumeroViajeItinerario VARCHAR(6) NOT NULL,
+	 NumeroManifiestoItinerario VARCHAR(6) NULL,
+	 AnioManifiestoItinerario INTEGER NULL,
+	 FechaArriboItinerario DATETIME NULL,
+	 FechaZarpeItinerario DATETIME NULL,
+	 FechaAtraqueItinerario DATETIME NULL,
+	 FechaTerminoDescargaItinerario DATETIME NULL,
+	 DUEItinerario VARCHAR(15) NULL,
+	 CapitanNaveItinerario VARCHAR(50) NOT NULL,
+	 FechaZarpePuertoIntermedio DATETIME NULL,
+	 Voyage VARCHAR(10) NULL,
+	 EstadoRegistro BIT NOT NULL DEFAULT 1,
+     UsuarioCreacion VARCHAR(100) NOT NULL DEFAULT USER_NAME(),
+	 FechaHoraCreacion DATETIME NOT NULL DEFAULT GETDATE(),
+	 UsuarioActualizacion VARCHAR(100) NULL,
+	 FechaHoraActualizacion DATETIME NULL,
+	 EstadoEnvioAduanas BIT NOT NULL DEFAULT 0,
+	 FechaCreacionEnvioAduanas DATETIME NULL,
+	 FechaModificacionEnvioAduanas DATETIME NULL,
+	 TipoTransaccionTransmision VARCHAR(4) NULL,
+	 TotalPesoBrutoTransmision DECIMAL(15,2) NULL,
+	 TotalBultosTransmision BIGINT NULL,
+	 TotalContenedoresTransmision BIGINT NULL,
+	 EstadoTransmision SMALLINT NULL DEFAULT 0,
+	 FechaCreacionTransmision DATETIME NULL,
+	 FechaModificacionTransmision DATETIME NULL
+) 
+CREATE INDEX IDX_Itinerario01 ON Itinerario(CodigoItinerario,CodigoNave,NumeroViajeItinerario,CodigoAduana,
+CodigoTipoOperacion,CodigoOperadorEmbarqueItinerario,CodigoOperadorDescargaItinerario,CodigoAgenteMaritimoItinerario,
+NumeroManifiestoItinerario,AnioManifiestoItinerario)
+ALTER TABLE Itinerario ADD CONSTRAINT FK_Itinerario_Nave FOREIGN KEY(CodigoNave)REFERENCES Nave(CodigoNave);
+ALTER TABLE Itinerario ADD CONSTRAINT FK_Itinerario_Aduana FOREIGN KEY(CodigoAduana)REFERENCES Aduana(CodigoAduana);
+ALTER TABLE Itinerario ADD CONSTRAINT FK_Itinerario_TipoOperacion FOREIGN KEY(CodigoTipoOperacion)REFERENCES TipoOperacion(CodigoTipoOperacion);
+ALTER TABLE Itinerario ADD CONSTRAINT FK_Itinerario_TipoLugarCarga01 FOREIGN KEY(CodigoTipoLugarCarga)REFERENCES TipoLugarCarga(CodigoTipoLugarCarga);
+ALTER TABLE Itinerario ADD CONSTRAINT FK_Itinerario_Persona01 FOREIGN KEY(CodigoOperadorEmbarqueItinerario)REFERENCES Persona(CodigoPersona);
+ALTER TABLE Itinerario ADD CONSTRAINT FK_Itinerario_Persona02 FOREIGN KEY(CodigoOperadorDescargaItinerario)REFERENCES Persona(CodigoPersona);
+ALTER TABLE Itinerario ADD CONSTRAINT FK_Itinerario_Persona03 FOREIGN KEY(CodigoAgenteMaritimoItinerario)REFERENCES Persona(CodigoPersona);
+ALTER TABLE Itinerario ADD CONSTRAINT FK_Itinerario_TipoLugarCarga02 FOREIGN KEY(CodigoTipoLugarCargaPuertoIntermedio)REFERENCES TipoLugarCarga(CodigoTipoLugarCarga);
+ALTER TABLE Itinerario ADD CONSTRAINT FK_Itinerario_Puerto FOREIGN KEY(CodigoPuertoIntermedio)REFERENCES Puerto(CodigoPuerto);
+
+CREATE TABLE LogTransmisionItinerario
+(
+	CodigoLogTransmisionItinerario BIGINT IDENTITY(1,1) PRIMARY KEY,
+	CodigoItinerario BIGINT NOT NULL,
+	EstadoLogTransmisionItinerario BIT NULL,
+	CampoLogTransmisionItinerario VARCHAR(100) NULL,
+	ValorLogTransmisionItinerario VARCHAR(100) NULL,
+	TextoLogTransmisionItinerario VARCHAR(1000) NULL,
+	FechaLogTransmisionItinerario DATETIME NOT NULL DEFAULT GETDATE(),
+	EstadoRegistro BIT NOT NULL DEFAULT 1
+)
+CREATE INDEX IDX_LogTransmisionItinerario01 ON LogTransmisionItinerario(CodigoLogTransmisionItinerario,CodigoItinerario,EstadoRegistro);
+ALTER TABLE LogTransmisionItinerario ADD CONSTRAINT FK_LogTransmisionItinerario_Itinerario FOREIGN KEY(CodigoItinerario) REFERENCES Itinerario(CodigoItinerario);
+
+CREATE TABLE CondicionPrecinto
+(
+	CodigoCondicionPrecinto BIGINT IDENTITY(1,1) PRIMARY KEY,
+	CodigoCondicionPrecintoSunat VARCHAR(1) NOT NULL,
+    NombreCondicionPrecinto VARCHAR(40) NOT NULL,
+	EstadoRegistro BIT NOT NULL DEFAULT 1,
+    UsuarioCreacion VARCHAR(100) NOT NULL DEFAULT USER_NAME(),
+	FechaHoraCreacion DATETIME NOT NULL DEFAULT GETDATE(),
+ 	UsuarioActualizacion VARCHAR(100) NULL,
+	FechaHoraActualizacion DATETIME NULL
+)
+CREATE INDEX IDX_CondicionPrecinto01 ON CondicionPrecinto(CodigoCondicionPrecinto,CodigoCondicionPrecintoSunat,NombreCondicionPrecinto,EstadoRegistro)
+
+CREATE TABLE EntidadPrecinto
+(
+	CodigoEntidadPrecinto BIGINT IDENTITY(1,1) PRIMARY KEY,
+	CodigoEntidadPrecintoSunat VARCHAR(2) NOT NULL,
+    NombreEntidadPrecinto VARCHAR(40) NOT NULL,
+	EstadoRegistro BIT NOT NULL DEFAULT 1,
+    UsuarioCreacion VARCHAR(100) NOT NULL DEFAULT USER_NAME(),
+	FechaHoraCreacion DATETIME NOT NULL DEFAULT GETDATE(),
+ 	UsuarioActualizacion VARCHAR(100) NULL,
+	FechaHoraActualizacion DATETIME NULL
+) 
+CREATE INDEX IDX_EntidadPrecinto01 ON EntidadPrecinto(CodigoEntidadPrecinto,CodigoEntidadPrecintoSunat,NombreEntidadPrecinto,EstadoRegistro)
+
+/* Precinto*/
+CREATE TABLE Precinto
+(
+	CodigoPrecinto BIGINT IDENTITY(1,1) PRIMARY KEY,
+	CodigoCondicionPrecinto BIGINT NOT NULL,
+	CodigoEntidadPrecinto BIGINT NOT NULL,
+	NumeroPrecinto VARCHAR(15) NOT NULL,
+	EstadoRegistro BIT NOT NULL DEFAULT 1,
+    UsuarioCreacion VARCHAR(100) NOT NULL DEFAULT USER_NAME(),
+	FechaHoraCreacion DATETIME NOT NULL DEFAULT GETDATE(),
+ 	UsuarioActualizacion VARCHAR(100) NULL,
+	FechaHoraActualizacion DATETIME NULL
+)
+CREATE INDEX IDX_Precinto01 ON Precinto(CodigoPrecinto,NumeroPrecinto,CodigoCondicionPrecinto,CodigoEntidadPrecinto);
+ALTER TABLE Precinto ADD CONSTRAINT FK_Precinto_CondicionPrecinto FOREIGN KEY(CodigoCondicionPrecinto) REFERENCES CondicionPrecinto(CodigoCondicionPrecinto);
+ALTER TABLE Precinto ADD CONSTRAINT FK_Precinto_EntidadPrecinto FOREIGN KEY(CodigoEntidadPrecinto) REFERENCES EntidadPrecinto(CodigoEntidadPrecinto);
+
+CREATE TABLE Moneda
+(
+	 CodigoMoneda BIGINT IDENTITY(1,1) PRIMARY KEY,
+     CodigoMonedaSunat VARCHAR(3) NOT NULL,
+     NombreMoneda VARCHAR(80) NOT NULL,   
+	 EstadoRegistro BIT NOT NULL DEFAULT 1,
+     UsuarioCreacion VARCHAR(100) NOT NULL DEFAULT USER_NAME(),
+	 FechaHoraCreacion DATETIME NOT NULL DEFAULT GETDATE(),
+ 	 UsuarioActualizacion VARCHAR(100) NULL,
+	 FechaHoraActualizacion DATETIME NULL
+) 
+CREATE INDEX IDX_Moneda01 ON Moneda(CodigoMoneda,CodigoMonedaSunat,NombreMoneda,EstadoRegistro)
+
+CREATE TABLE TipoEnvio
+(
+	 CodigoTipoEnvio BIGINT IDENTITY(1,1) PRIMARY KEY,
+	 CodigoTipoEnvioSunat SMALLINT NOT NULL,
+	 NombreTipoEnvio VARCHAR(50) NOT NULL,
+	 CodigoEquivalencia smallint NULL,
+	 EstadoRegistro BIT NOT NULL DEFAULT 1,
+     UsuarioCreacion VARCHAR(100) NOT NULL DEFAULT USER_NAME(),
+	 FechaHoraCreacion DATETIME NOT NULL DEFAULT GETDATE(),
+ 	 UsuarioActualizacion VARCHAR(100) NULL,
+	 FechaHoraActualizacion DATETIME NULL
+)
+CREATE INDEX IDX_TipoEnvio01 ON TipoEnvio(CodigoTipoEnvio,CodigoTipoEnvioSunat,NombreTipoEnvio,EstadoRegistro)
+
+/*Condicion Contrato */
+CREATE TABLE CondicionContrato
+(
+	CodigoCondicionContrato BIGINT IDENTITY(1,1) PRIMARY KEY,
+	CodigoCondicionContratoSunat VARCHAR(2) NOT NULL,
+	NombreCondicionContrato VARCHAR(80) NOT NULL,
+	EstadoRegistro BIT NOT NULL DEFAULT 1,
+    UsuarioCreacion VARCHAR(100) NOT NULL DEFAULT USER_NAME(),
+	FechaHoraCreacion DATETIME NOT NULL DEFAULT GETDATE(),
+ 	UsuarioActualizacion VARCHAR(100) NULL,
+	FechaHoraActualizacion DATETIME NULL
+) 
+CREATE UNIQUE INDEX IDX_CondicionContrato01 ON CondicionContrato(CodigoCondicionContrato,CodigoCondicionContratoSunat,NombreCondicionContrato,EstadoRegistro)
+
+/*Requerimiento Servicio */
+CREATE TABLE RequerimientoServicio
+(
+	CodigoRequerimientoServicio BIGINT IDENTITY(1,1) PRIMARY KEY,
+	CodigoRequerimientoServicioSunat VARCHAR(2) NOT NULL,
+	NombreRequerimientoServicio VARCHAR(80) NOT NULL,
+	EstadoRegistro BIT NOT NULL DEFAULT 1,
+    UsuarioCreacion VARCHAR(100) NOT NULL DEFAULT USER_NAME(),
+	FechaHoraCreacion DATETIME NOT NULL DEFAULT GETDATE(),
+ 	UsuarioActualizacion VARCHAR(100) NULL,
+	FechaHoraActualizacion DATETIME NULL
+)
+CREATE INDEX IDX_RequerimientoServicio01 ON RequerimientoServicio(CodigoRequerimientoServicio,CodigoRequerimientoServicioSunat,NombreRequerimientoServicio,EstadoRegistro)
+
+CREATE TABLE TipoBL
+(
+	CodigoTipoBL BIGINT IDENTITY(1,1) PRIMARY KEY,
+	CodigoTipoBLSunat VARCHAR(3) NOT NULL,
+	NombreTipoBL VARCHAR(80) NOT NULL,
+	EstadoRegistro BIT NOT NULL DEFAULT 1,
+    UsuarioCreacion VARCHAR(100) NOT NULL DEFAULT USER_NAME(),
+	FechaHoraCreacion DATETIME NOT NULL DEFAULT GETDATE(),
+ 	UsuarioActualizacion VARCHAR(100) NULL,
+	FechaHoraActualizacion DATETIME NULL
+)
+CREATE UNIQUE INDEX IDX_TipoBL01 ON TipoBL(CodigoTipoBL,CodigoTipoBLSunat,NombreTipoBL,EstadoRegistro)
+
+/*Tipo de Flete*/
+CREATE TABLE TipoFlete
+(
+	CodigoTipoFlete BIGINT IDENTITY(1,1) PRIMARY KEY,
+	NombreTipoFlete VARCHAR(80) NOT NULL,
+	CodigoAduanaTipoFlete VARCHAR(6) NOT NULL,
+	CodigoEquivalencia VARCHAR(6) NULL,
+	EstadoRegistro BIT NOT NULL DEFAULT 1,
+    UsuarioCreacion VARCHAR(100) NOT NULL DEFAULT USER_NAME(),
+	FechaHoraCreacion DATETIME NOT NULL DEFAULT GETDATE(),
+ 	UsuarioActualizacion VARCHAR(100) NULL,
+	FechaHoraActualizacion DATETIME NULL
+)
+CREATE INDEX IDX_TipoFlete01 ON TipoFlete(CodigoTipoFlete,NombreTipoFlete,CodigoAduanaTipoFlete,CodigoEquivalencia,EstadoRegistro)
+
+CREATE TABLE ModoPago
+(
+	CodigoModoPago BIGINT IDENTITY(1,1) PRIMARY KEY,
+	CodigoModoPagoSunat VARCHAR(2) NOT NULL,
+	NombreModoPago VARCHAR(80) NOT NULL,
+	CodigoEquivalencia VARCHAR(4) NULL,
+	EstadoRegistro BIT NOT NULL DEFAULT 1,
+    UsuarioCreacion VARCHAR(100) NOT NULL DEFAULT USER_NAME(),
+	FechaHoraCreacion DATETIME NOT NULL DEFAULT GETDATE(),
+ 	UsuarioActualizacion VARCHAR(100) NULL,
+	FechaHoraActualizacion DATETIME NULL
+) 
+CREATE INDEX IDX_ModoPago01 ON ModoPago(CodigoModoPago,CodigoModoPagoSunat,NombreModoPago,EstadoRegistro)
+
+CREATE TABLE TipoContenedor
+(
+	 CodigoTipoContenedor BIGINT IDENTITY(1,1) PRIMARY KEY,
+     CodigoIsoTipoContenedor VARCHAR(4) NOT NULL,
+	 CodigoIsoGrupoTipoContenedor VARCHAR(4) NOT NULL,
+     NombreTipoContenedor VARCHAR(80) NOT NULL,   
+	 CodigoAduanaTipoContenedor VARCHAR(2) NOT NULL,  
+	 CodTipoContenedor VARCHAR(2) NOT NULL,  	 
+	 TamanioTipoContenedor VARCHAR(2) NOT NULL,  
+	 IsoTipoContenedor VARCHAR(4) NULL,  
+	 EstadoRegistro BIT NOT NULL DEFAULT 1,
+     UsuarioCreacion VARCHAR(100) NOT NULL DEFAULT USER_NAME(),
+	 FechaHoraCreacion DATETIME NOT NULL DEFAULT GETDATE(),
+ 	 UsuarioActualizacion VARCHAR(100) NULL,
+	 FechaHoraActualizacion DATETIME NULL
+) 
+
+CREATE INDEX IDX_TipoContenedor01 ON TipoContenedor(CodigoTipoContenedor,CodigoIsoTipoContenedor,CodigoIsoGrupoTipoContenedor,
+NombreTipoContenedor,CodigoAduanaTipoContenedor,CodTipoContenedor,TamanioTipoContenedor,IsoTipoContenedor,EstadoRegistro)
+
+CREATE TABLE Temperatura
+(
+	 CodigoTemperatura BIGINT IDENTITY(1,1) PRIMARY KEY,
+     CodigoTemperaturaSunat VARCHAR(3) NOT NULL,
+     NombreTemperatura VARCHAR(50) NOT NULL,   
+	 EstadoRegistro BIT NOT NULL DEFAULT 1,
+     UsuarioCreacion VARCHAR(100) NOT NULL DEFAULT USER_NAME(),
+	 FechaHoraCreacion DATETIME NOT NULL DEFAULT GETDATE(),
+ 	 UsuarioActualizacion VARCHAR(100) NULL,
+	 FechaHoraActualizacion DATETIME NULL
+)
+CREATE INDEX IDX_Temperatura01 ON Temperatura(CodigoTemperatura,CodigoTemperaturaSunat,NombreTemperatura,EstadoRegistro)
+
+/*Condicion de Transporte*/
+CREATE TABLE CondicionTransporte
+(
+	 CodigoCondicionTransporte BIGINT IDENTITY(1,1) PRIMARY KEY,
+     CodigoCondicionTransporteSunat VARCHAR(3) NOT NULL,
+     NombreCondicionTransporte VARCHAR(50) NOT NULL,   
+	 CodigoAduanaCondicionTransporte VARCHAR(2) NOT NULL,  
+	 EstadoRegistro BIT NOT NULL DEFAULT 1,
+     UsuarioCreacion VARCHAR(100) NOT NULL DEFAULT USER_NAME(),
+	 FechaHoraCreacion DATETIME NOT NULL DEFAULT GETDATE(),
+ 	 UsuarioActualizacion VARCHAR(100) NULL,
+	 FechaHoraActualizacion DATETIME NULL
+) 
+CREATE INDEX IDX_CondicionTransporte01 ON CondicionTransporte(CodigoCondicionTransporte,CodigoCondicionTransporteSunat,NombreCondicionTransporte,CodigoAduanaCondicionTransporte,EstadoRegistro)
+
+/*Tipo de Movimiento de Carga*/
+CREATE TABLE TipoMovimiento
+(
+	 CodigoTipoMovimiento BIGINT IDENTITY(1,1) PRIMARY KEY,
+     CodigoTipoMovimientoSunat VARCHAR(2) NOT NULL,
+     NombreTipoMovimiento VARCHAR(50) NOT NULL,   
+	 EstadoRegistro BIT NOT NULL DEFAULT 1,
+     UsuarioCreacion VARCHAR(100) NOT NULL DEFAULT USER_NAME(),
+	 FechaHoraCreacion DATETIME NOT NULL DEFAULT GETDATE(),
+ 	 UsuarioActualizacion VARCHAR(100) NULL,
+	 FechaHoraActualizacion DATETIME NULL
+) 
+CREATE INDEX IDX_TipoMovimiento01 ON TipoMovimiento(CodigoTipoMovimiento,CodigoTipoMovimientoSunat,NombreTipoMovimiento,EstadoRegistro)
+
+/*Tipo de Unidad de Mercancia*/
+CREATE TABLE UnidadMercancia
+(
+	 CodigoUnidadMercancia BIGINT IDENTITY(1,1) PRIMARY KEY,
+     CodigoUnidadMercanciaSunat VARCHAR(2) NOT NULL,
+     NombreUnidadMercancia VARCHAR(100) NOT NULL,  
+	 CodigoAduanaUnidadMercancia VARCHAR(2) NOT NULL, 	 
+	 EstadoRegistro BIT NOT NULL DEFAULT 1,
+     UsuarioCreacion VARCHAR(100) NOT NULL DEFAULT USER_NAME(),
+	 FechaHoraCreacion DATETIME NOT NULL DEFAULT GETDATE(),
+ 	 UsuarioActualizacion VARCHAR(100) NULL,
+	 FechaHoraActualizacion DATETIME NULL
+)
+CREATE INDEX IDX_UnidadMercancia01 ON UnidadMercancia(CodigoUnidadMercancia,CodigoUnidadMercanciaSunat,NombreUnidadMercancia,CodigoAduanaUnidadMercancia,EstadoRegistro)
+
+
+/*Condicion de la Carga */
+CREATE TABLE CondicionCarga
+(
+	 CodigoCondicionCarga BIGINT IDENTITY(1,1) PRIMARY KEY,
+     CodigoCondicionCargaSunat VARCHAR(2) NOT NULL,
+     NombreCondicionCarga VARCHAR(80) NOT NULL,   
+	 EstadoRegistro BIT NOT NULL DEFAULT 1,
+     UsuarioCreacion VARCHAR(100) NOT NULL DEFAULT USER_NAME(),
+	 FechaHoraCreacion DATETIME NOT NULL DEFAULT GETDATE(),
+ 	 UsuarioActualizacion VARCHAR(100) NULL,
+	 FechaHoraActualizacion DATETIME NULL
+) 
+CREATE INDEX IDX_CondicionCarga01 ON CondicionCarga(CodigoCondicionCarga,CodigoCondicionCargaSunat,NombreCondicionCarga,EstadoRegistro)
+
+/*Naturaleza de la Carga */
+CREATE TABLE NaturalezaCarga
+(
+	 CodigoNaturalezaCarga BIGINT IDENTITY(1,1) PRIMARY KEY,
+     CodigoNaturalezaCargaSunat VARCHAR(2) NOT NULL,
+     NombreNaturalezaCarga VARCHAR(80) NOT NULL,   
+	 EstadoRegistro BIT NOT NULL DEFAULT 1,
+     UsuarioCreacion VARCHAR(100) NOT NULL DEFAULT USER_NAME(),
+	 FechaHoraCreacion DATETIME NOT NULL DEFAULT GETDATE(),
+ 	 UsuarioActualizacion VARCHAR(100) NULL,
+	 FechaHoraActualizacion DATETIME NULL
+) 
+CREATE INDEX IDX_NaturalezaCarga01 ON NaturalezaCarga(CodigoNaturalezaCarga,CodigoNaturalezaCargaSunat,NombreNaturalezaCarga,EstadoRegistro)
+
+/*Clase IMO*/
+CREATE TABLE ClaseIMO
+(
+	 CodigoClaseIMO BIGINT IDENTITY(1,1) PRIMARY KEY,
+     CodigoClaseIMOSunat VARCHAR(4) NOT NULL,
+     NombreClaseIMO VARCHAR(255) NOT NULL,   
+	 EstadoRegistro BIT NOT NULL DEFAULT 1,
+     UsuarioCreacion VARCHAR(100) NOT NULL DEFAULT USER_NAME(),
+	 FechaHoraCreacion DATETIME NOT NULL DEFAULT GETDATE(),
+ 	 UsuarioActualizacion VARCHAR(100) NULL,
+	 FechaHoraActualizacion DATETIME NULL
+) 
+CREATE INDEX IDX_ClaseIMO01 ON ClaseIMO(CodigoClaseIMO,CodigoClaseIMOSunat,NombreClaseIMO,EstadoRegistro)
+
+/*Numero IMO*/
+CREATE TABLE NumeroIMO
+(
+     CodigoNumeroIMO BIGINT IDENTITY(1,1) PRIMARY KEY,
+     CodigoClaseIMO BIGINT NOT NULL,
+     NumberIMO VARCHAR(4) NOT NULL,
+     NombreNumeroIMO VARCHAR(255) NOT NULL,   
+	 PaginaNumeroIMO INT NULL,   
+	 EstadoRegistro BIT NOT NULL DEFAULT 1,
+     UsuarioCreacion VARCHAR(100) NOT NULL DEFAULT USER_NAME(),
+	 FechaHoraCreacion DATETIME NOT NULL DEFAULT GETDATE(),
+ 	 UsuarioActualizacion VARCHAR(100) NULL,
+	 FechaHoraActualizacion DATETIME NULL
+) 
+CREATE INDEX IDX_NumeroIMO01 ON NumeroIMO(CodigoNumeroIMO,CodigoClaseIMO,NumberIMO,NombreNumeroIMO,PaginaNumeroIMO,EstadoRegistro)
+ALTER TABLE NumeroIMO ADD CONSTRAINT FK_NumeroIMO_CodigoClaseIMO FOREIGN KEY(CodigoClaseIMO) REFERENCES ClaseIMO(CodigoClaseIMO);
+
+CREATE TABLE Contenedor
+(
+	 CodigoContenedor BIGINT IDENTITY(1,1) PRIMARY KEY,
+	 CodigoTipoContenedor BIGINT NOT NULL,
+     NumeroContenedor VARCHAR(15) NOT NULL,
+     TaraContenedor DECIMAL(15,2) NOT NULL,   
+	 EstadoRegistro BIT NOT NULL DEFAULT 1,
+     UsuarioCreacion VARCHAR(100) NOT NULL DEFAULT USER_NAME(),
+	 FechaHoraCreacion DATETIME NOT NULL DEFAULT GETDATE(),
+ 	 UsuarioActualizacion VARCHAR(100) NULL,
+	 FechaHoraActualizacion DATETIME NULL
+) 
+CREATE INDEX IDX_Contenedor01 ON Contenedor(CodigoContenedor,CodigoTipoContenedor,NumeroContenedor,TaraContenedor,EstadoRegistro)
+ALTER TABLE Contenedor ADD CONSTRAINT FK_Contenedor_TipoContenedor FOREIGN KEY(CodigoTipoContenedor) REFERENCES TipoContenedor(CodigoTipoContenedor)
+
+CREATE TABLE Documento
+(
+	 CodigoDocumento BIGINT IDENTITY(1,1) PRIMARY KEY,
+	 CodigoItinerario BIGINT NOT NULL,
+	 CodigoPuertoOrigenDocumento BIGINT NOT NULL,
+	 CodigoPuertoEmbarqueDocumento BIGINT NOT NULL,
+	 CodigoPuertoDescargaDocumento BIGINT NOT NULL,
+	 CodigoPuertoFinalDocumento BIGINT NOT NULL,
+	 CodigoLineaNaviera BIGINT NOT NULL,
+	 CodigoAduana BIGINT NOT NULL,
+	 CodigoTipoBL BIGINT NOT NULL,
+	 CodigoTipoEnvio BIGINT NOT NULL,
+	 CodigoCondicionContrato BIGINT NOT NULL,
+	 CodigoRequerimientoServicio BIGINT NOT NULL,
+	 NumeroDocumento VARCHAR(25) NOT NULL,
+	 FechaEmisionDocumento DATETIME NOT NULL,
+	 FechaEmbarqueDocumento DATETIME NULL,
+	 EstadoRegistro BIT NOT NULL DEFAULT 1,
+     UsuarioCreacion VARCHAR(100) NOT NULL DEFAULT USER_NAME(),
+	 FechaHoraCreacion DATETIME NOT NULL DEFAULT GETDATE(),
+ 	 UsuarioActualizacion VARCHAR(100) NULL,
+	 FechaHoraActualizacion DATETIME NULL,
+	 EstadoEnvioAduanas BIT NOT NULL DEFAULT 0,
+	 FechaCreacionEnvioAduanas DATETIME NULL,
+	 FechaModificacionEnvioAduanas DATETIME NULL,
+	 TipoTransaccionTransmision VARCHAR(4) NULL,
+	 TotalPesoBrutoTransmision DECIMAL(15,2) NULL,
+	 TotalBultosTransmision BIGINT NULL,
+	 TotalContenedoresTransmision BIGINT NULL,
+	 EstadoTransmision SMALLINT NULL DEFAULT 0,
+	 FechaCreacionTransmision DATETIME NULL,
+	 FechaModificacionTransmision DATETIME NULL
+) 
+CREATE INDEX IDX_Documento01 ON Documento(CodigoDocumento,CodigoItinerario,CodigoPuertoOrigenDocumento,CodigoPuertoEmbarqueDocumento,
+CodigoPuertoDescargaDocumento,CodigoPuertoFinalDocumento,CodigoLineaNaviera,CodigoAduana,CodigoTipoBL,CodigoTipoEnvio,
+CodigoCondicionContrato,CodigoRequerimientoServicio,NumeroDocumento,FechaEmisionDocumento,EstadoRegistro)
+ALTER TABLE Documento ADD CONSTRAINT FK_Documento_Itinerario FOREIGN KEY(CodigoItinerario) REFERENCES Itinerario(CodigoItinerario);
+ALTER TABLE Documento ADD CONSTRAINT FK_Documento_Puerto01 FOREIGN KEY(CodigoPuertoOrigenDocumento) REFERENCES Puerto(CodigoPuerto);
+ALTER TABLE Documento ADD CONSTRAINT FK_Documento_Puerto02 FOREIGN KEY(CodigoPuertoEmbarqueDocumento) REFERENCES Puerto(CodigoPuerto);
+ALTER TABLE Documento ADD CONSTRAINT FK_Documento_Puerto03 FOREIGN KEY(CodigoPuertoDescargaDocumento) REFERENCES Puerto(CodigoPuerto);
+ALTER TABLE Documento ADD CONSTRAINT FK_Documento_Puerto04 FOREIGN KEY(CodigoPuertoFinalDocumento) REFERENCES Puerto(CodigoPuerto);
+ALTER TABLE Documento ADD CONSTRAINT FK_Documento_LineaNaviera FOREIGN KEY(CodigoLineaNaviera) REFERENCES LineaNaviera(CodigoLineaNaviera);
+ALTER TABLE Documento ADD CONSTRAINT FK_Documento_TipoBL FOREIGN KEY(CodigoTipoBL) REFERENCES TipoBL(CodigoTipoBL);
+ALTER TABLE Documento ADD CONSTRAINT FK_Documento_TipoEnvio FOREIGN KEY(CodigoTipoEnvio) REFERENCES TipoEnvio(CodigoTipoEnvio);
+ALTER TABLE Documento ADD CONSTRAINT FK_Documento_CondicionContrato FOREIGN KEY(CodigoCondicionContrato) REFERENCES CondicionContrato(CodigoCondicionContrato);
+ALTER TABLE Documento ADD CONSTRAINT FK_Documento_RequerimientoServicio FOREIGN KEY(CodigoRequerimientoServicio) REFERENCES RequerimientoServicio(CodigoRequerimientoServicio);
+
+GO
+CREATE TABLE LogTransmisionDocumento
+(
+	CodigoLogTransmisionDocumento BIGINT IDENTITY(1,1) PRIMARY KEY,
+	CodigoDocumento BIGINT NOT NULL,
+	EstadoLogTransmisionDocumento BIT NULL,
+	CampoLogTransmisionDocumento VARCHAR(100) NULL,
+	ValorLogTransmisionDocumento VARCHAR(100) NULL,
+	TextoLogTransmisionDocumento VARCHAR(1000) NULL,
+	FechaLogTransmisionDocumento DATETIME NOT NULL DEFAULT GETDATE(),
+	EstadoRegistro BIT NOT NULL DEFAULT 1
+)
+CREATE INDEX IDX_LogTransmisionDocumento01 ON LogTransmisionDocumento(CodigoLogTransmisionDocumento,CodigoDocumento,EstadoRegistro);
+ALTER TABLE LogTransmisionDocumento ADD CONSTRAINT FK_LogTransmisionDocumento_Documento FOREIGN KEY(CodigoDocumento) REFERENCES Documento(CodigoDocumento);
+GO
+CREATE TABLE DocumentoDetalleCliente
+(
+	 CodigoDocumentoDetalleCliente BIGINT IDENTITY(1,1) PRIMARY KEY,
+	 CodigoDocumento BIGINT NOT NULL,
+	 CodigoRol BIGINT NOT NULL,
+	 CodigoPersona BIGINT NOT NULL,
+	 EstadoRegistro BIT NOT NULL DEFAULT 1,
+     UsuarioCreacion VARCHAR(100) NOT NULL DEFAULT USER_NAME(),
+	 FechaHoraCreacion DATETIME NOT NULL DEFAULT GETDATE(),
+ 	 UsuarioActualizacion VARCHAR(100) NULL,
+	 FechaHoraActualizacion DATETIME NULL
+) 
+CREATE INDEX IDX_DocumentoDetalleCliente01 ON DocumentoDetalleCliente(CodigoDocumentoDetalleCliente,CodigoDocumento,
+CodigoRol,CodigoPersona,EstadoRegistro)
+ALTER TABLE DocumentoDetalleCliente ADD CONSTRAINT FK_DocumentoDetalleCliente_Documento FOREIGN KEY(CodigoDocumento) REFERENCES Documento(CodigoDocumento)
+ALTER TABLE DocumentoDetalleCliente ADD CONSTRAINT FK_DocumentoDetalleCliente_Rol FOREIGN KEY(CodigoRol) REFERENCES Rol(CodigoRol);
+ALTER TABLE DocumentoDetalleCliente ADD CONSTRAINT FK_DocumentoDetalleCliente_Persona FOREIGN KEY(CodigoPersona) REFERENCES Persona(CodigoPersona);
+
+/*Detalle Flete del Documento*/
+CREATE TABLE DocumentoDetalleFlete
+(
+	 CodigoDocumentoDetalleFlete BIGINT IDENTITY(1,1) PRIMARY KEY,
+	 CodigoDocumento BIGINT NOT NULL,
+	 CodigoTipoFlete BIGINT NOT NULL,
+	 CodigoMoneda BIGINT NOT NULL,
+	 CodigoModoPago BIGINT NOT NULL,
+	 MontoDocumentoDetalleFlete DECIMAL(15,2) NOT NULL,
+	 EstadoRegistro BIT NOT NULL DEFAULT 1,
+     UsuarioCreacion VARCHAR(100) NOT NULL DEFAULT USER_NAME(),
+	 FechaHoraCreacion DATETIME NOT NULL DEFAULT GETDATE(),
+ 	 UsuarioActualizacion VARCHAR(100) NULL,
+	 FechaHoraActualizacion DATETIME NULL
+)
+
+CREATE INDEX IDX_DocumentoDetalleFlete01 ON DocumentoDetalleFlete(CodigoDocumentoDetalleFlete,CodigoDocumento,CodigoTipoFlete,
+CodigoMoneda,CodigoModoPago,MontoDocumentoDetalleFlete,EstadoRegistro)
+ALTER TABLE DocumentoDetalleFlete ADD CONSTRAINT FK_DocumentoDetalleFlete_Documento FOREIGN KEY(CodigoDocumento) REFERENCES Documento(CodigoDocumento);
+ALTER TABLE DocumentoDetalleFlete ADD CONSTRAINT FK_DocumentoDetalleFlete_TipoFlete FOREIGN KEY(CodigoTipoFlete) REFERENCES TipoFlete(CodigoTipoFlete);
+ALTER TABLE DocumentoDetalleFlete ADD CONSTRAINT FK_DocumentoDetalleFlete_Moneda FOREIGN KEY(CodigoMoneda) REFERENCES Moneda(CodigoMoneda);
+ALTER TABLE DocumentoDetalleFlete ADD CONSTRAINT FK_DocumentoDetalleFlete_ModoPago FOREIGN KEY(CodigoModoPago) REFERENCES ModoPago(CodigoModoPago);
+
+/*Detalle de la Carga del Documento*/
+-- DROP TABLE DocumentoDetalleCarga
+-- SELECT * FROM DocumentoDetalleCarga
+CREATE TABLE DocumentoDetalleCarga
+(
+	 CodigoDocumentoDetalleCarga BIGINT IDENTITY(1,1) PRIMARY KEY,
+	 CodigoDocumento BIGINT NOT NULL,
+	 CodigoContenedor BIGINT NOT NULL,
+	 CodigoCondicionTransporte BIGINT NOT NULL,	
+	 CodigoTipoMovimiento BIGINT NOT NULL,
+	 CodigoUnidadMercancia BIGINT NOT NULL,
+	 CodigoNaturalezaCarga BIGINT NOT NULL,
+	 CodigoCondicionCarga BIGINT NOT NULL,	
+	 CodigoTemperatura BIGINT NOT NULL,
+	 CodigoClaseIMO BIGINT NOT NULL,
+	 CodigoNumeroIMO BIGINT NOT NULL,
+	 CodigoAlmacenDocumentoDetalleCarga BIGINT NOT NULL,
+	 CodigoDepositoDocumentoDetalleCarga BIGINT NOT NULL,
+	 CodigoPrecinto BIGINT NOT NULL,
+	 ItemDocumentoDetalleCarga INT NULL,
+	 CantidadBultoDocumentoDetalleCarga INT NOT NULL DEFAULT 0,			 
+	 PesoBrutoDocumentoDetalleCarga DECIMAL(15,3) NOT NULL DEFAULT 0, 
+	 VolumenBrutoDocumentoDetalleCarga  DECIMAL(15,3) NOT NULL DEFAULT 0,	
+	 TemperaturaMinimaDocumentoDetalleCarga DECIMAL(15,2) NULL,	
+	 TemperaturaMaximaDocumentoDetalleCarga DECIMAL(15,2) NULL,
+	 PropietarioDocumentoDetalleCarga BIT NULL DEFAULT 0,	
+	 ObservacionDocumentoDetalleCarga VARCHAR(150) NULL,
+	 DescripcionDocumentoDetalleCarga VARCHAR(4000) NOT NULL,
+	 MarcasNumerosDocumentoDetalleCarga VARCHAR(4000) NOT NULL,
+	 FaltoDocumentoDetalleCarga  BIT NOT NULL DEFAULT 0,
+	 EstadoRegistro BIT NOT NULL DEFAULT 1,
+     UsuarioCreacion VARCHAR(100) NOT NULL DEFAULT USER_NAME(),
+	 FechaHoraCreacion DATETIME NOT NULL DEFAULT GETDATE(),
+ 	 UsuarioActualizacion VARCHAR(100) NULL,
+	 FechaHoraActualizacion DATETIME NULL
+)
+
+CREATE INDEX IDX_DocumentoDetalleCarga01 ON DocumentoDetalleCarga(CodigoDocumentoDetalleCarga,CodigoDocumento,CodigoContenedor,
+CodigoCondicionTransporte,CodigoTipoMovimiento,CodigoUnidadMercancia,CodigoNaturalezaCarga,CodigoCondicionCarga,CodigoTemperatura,
+CodigoAlmacenDocumentoDetalleCarga,CodigoDepositoDocumentoDetalleCarga)
+ALTER TABLE DocumentoDetalleCarga ADD CONSTRAINT FK_DocumentoDetalleCarga_Documento FOREIGN KEY(CodigoDocumento) REFERENCES Documento(CodigoDocumento)
+ALTER TABLE DocumentoDetalleCarga ADD CONSTRAINT FK_DocumentoDetalleCarga_Contenedor FOREIGN KEY(CodigoContenedor) REFERENCES Contenedor(CodigoContenedor);
+ALTER TABLE DocumentoDetalleCarga ADD CONSTRAINT FK_DocumentoDetalleCarga_CondicionTransporte FOREIGN KEY(CodigoCondicionTransporte) REFERENCES CondicionTransporte(CodigoCondicionTransporte);
+ALTER TABLE DocumentoDetalleCarga ADD CONSTRAINT FK_DocumentoDetalleCarga_TipoMovimiento FOREIGN KEY(CodigoTipoMovimiento) REFERENCES TipoMovimiento(CodigoTipoMovimiento);
+ALTER TABLE DocumentoDetalleCarga ADD CONSTRAINT FK_DocumentoDetalleCarga_UnidadMercancia FOREIGN KEY(CodigoUnidadMercancia) REFERENCES UnidadMercancia(CodigoUnidadMercancia);
+ALTER TABLE DocumentoDetalleCarga ADD CONSTRAINT FK_DocumentoDetalleCarga_NaturalezaCarga FOREIGN KEY(CodigoNaturalezaCarga) REFERENCES NaturalezaCarga(CodigoNaturalezaCarga);
+ALTER TABLE DocumentoDetalleCarga ADD CONSTRAINT FK_DocumentoDetalleCarga_CondicionCarga FOREIGN KEY(CodigoCondicionCarga) REFERENCES CondicionCarga(CodigoCondicionCarga);
+ALTER TABLE DocumentoDetalleCarga ADD CONSTRAINT FK_DocumentoDetalleCarga_Temperatura FOREIGN KEY(CodigoTemperatura) REFERENCES Temperatura(CodigoTemperatura);
+ALTER TABLE DocumentoDetalleCarga ADD CONSTRAINT FK_DocumentoDetalleCarga_ClaseIMO FOREIGN KEY(CodigoClaseIMO) REFERENCES ClaseIMO(CodigoClaseIMO);
+ALTER TABLE DocumentoDetalleCarga ADD CONSTRAINT FK_DocumentoDetalleCarga_NumeroIMO FOREIGN KEY(CodigoNumeroIMO) REFERENCES NumeroIMO(CodigoNumeroIMO);
+ALTER TABLE DocumentoDetalleCarga ADD CONSTRAINT FK_DocumentoDetalleCarga_Persona01 FOREIGN KEY(CodigoAlmacenDocumentoDetalleCarga) REFERENCES Persona(CodigoPersona);
+ALTER TABLE DocumentoDetalleCarga ADD CONSTRAINT FK_DocumentoDetalleCarga_Persona02 FOREIGN KEY(CodigoDepositoDocumentoDetalleCarga) REFERENCES Persona(CodigoPersona);
+ALTER TABLE DocumentoDetalleCarga ADD CONSTRAINT FK_DocumentoDetalleCarga_Precinto FOREIGN KEY(CodigoPrecinto) REFERENCES Precinto(CodigoPrecinto);
+
+/*Detalle de Precintos del Detalle Carga del Documento*/
+-- DROP TABLE DocumentoDetalleCargaDetallePrecinto
+-- SELECT * FROM DocumentoDetalleCargaDetallePrecinto
+--CREATE TABLE DocumentoDetalleCargaDetallePrecinto
+--(
+--	 CodigoDocumentoDetalleCargaDetallePrecinto BIGINT IDENTITY(1,1) PRIMARY KEY,
+--	 CodigoDocumento BIGINT NOT NULL,
+--	 CodigoDocumentoDetalleCarga BIGINT NOT NULL,
+--	 CodigoPrecinto BIGINT NOT NULL,
+--	 EstadoRegistro BIT NOT NULL DEFAULT 1,
+--     UsuarioCreacion VARCHAR(100) NOT NULL DEFAULT USER_NAME(),
+--	 FechaHoraCreacion DATETIME NOT NULL DEFAULT GETDATE(),
+-- 	 UsuarioActualizacion VARCHAR(100) NULL,
+--	 FechaHoraActualizacion DATETIME NULL
+--)
+
+--CREATE INDEX IDX_DocumentoDetalleCargaDetallePrecinto01 ON 
+--DocumentoDetalleCargaDetallePrecinto(CodigoDocumentoDetalleCargaDetallePrecinto,CodigoDocumento,CodigoDocumentoDetalleCarga)
+--ALTER TABLE DocumentoDetalleCargaDetallePrecinto ADD CONSTRAINT FK_DocumentoDetalleCargaDetallePrecinto_Documento
+--FOREIGN KEY(CodigoDocumento) REFERENCES Documento(CodigoDocumento)
+--ALTER TABLE DocumentoDetalleCargaDetallePrecinto ADD CONSTRAINT FK_DocumentoDetalleCargaDetallePrecinto_DocumentoDetalleCarga
+--FOREIGN KEY(CodigoDocumentoDetalleCarga) REFERENCES DocumentoDetalleCarga(CodigoDocumentoDetalleCarga)
+--ALTER TABLE DocumentoDetalleCargaDetallePrecinto ADD CONSTRAINT FK_DocumentoDetalleCargaDetallePrecinto_Precinto 
+--FOREIGN KEY(CodigoPrecinto) REFERENCES Precinto(CodigoPrecinto)
+
+/****** Object:  Table [dbo].[CatalogoTablas]    Script Date: 06/30/2017 11:59:03 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[CatalogoTablas](
+	[IdCatalogo] [int] IDENTITY(1,1) NOT NULL,
+	[Codigo] [varchar](50) NOT NULL,
+	[Nombre] [varchar](50) NOT NULL,
+	[Descripcion] [varchar](250) NOT NULL,
+	[CodigoTabla] [varchar](30) NOT NULL,
+	[UsuarioCreacion] [varchar](100) NULL DEFAULT USER_NAME(),
+	[FechaHoraCreacion] [datetime] NOT NULL DEFAULT GETDATE(),
+	[UsuarioActualizacion] [varchar](100) NULL,
+	[FechaHoraActualizacion] [datetime] NULL,
+	[EstadoRegistro] [bit] NOT NULL DEFAULT 1,
+	[UltimoCambio] [timestamp] NOT NULL,
+ CONSTRAINT [PK__Catalogo__FD0AC26C239E4DCF] PRIMARY KEY CLUSTERED 
+(
+	[IdCatalogo] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON, FILLFACTOR = 98) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Identificador del Catálogo Tabla.' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CatalogoTablas', @level2type=N'COLUMN',@level2name=N'IdCatalogo'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Código de Catálogo tabla.' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CatalogoTablas', @level2type=N'COLUMN',@level2name=N'Codigo'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Nombre de la tabla.' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CatalogoTablas', @level2type=N'COLUMN',@level2name=N'Nombre'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Descripción de la tabla.' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CatalogoTablas', @level2type=N'COLUMN',@level2name=N'Descripcion'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Código de la tabla.' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CatalogoTablas', @level2type=N'COLUMN',@level2name=N'CodigoTabla'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Código del usuario creador.' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CatalogoTablas', @level2type=N'COLUMN',@level2name=N'UsuarioCreacion'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Fecha y Hora de creación.' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CatalogoTablas', @level2type=N'COLUMN',@level2name=N'FechaHoraCreacion'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Código del usuario que realizó la última actualización.' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CatalogoTablas', @level2type=N'COLUMN',@level2name=N'UsuarioActualizacion'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Fecha y Hora en la cual se realizó la ultima modificación.' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CatalogoTablas', @level2type=N'COLUMN',@level2name=N'FechaHoraActualizacion'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Indica el estado del registro.' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CatalogoTablas', @level2type=N'COLUMN',@level2name=N'EstadoRegistro'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Fecha y Hora del último cambio realizado (más preciso que un date time, con el fin de evitar incurrencias simultaneas)' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CatalogoTablas', @level2type=N'COLUMN',@level2name=N'UltimoCambio'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Actúa como una "tabla de tablas", es decir una tabla que contiene la definición de tablas genéricas (tablas que sólo contienen una descripción stándard), por ejemplo: Estado de parte de caja, tipo de Impresión, etc.' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CatalogoTablas'
+GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[DetalleCatalogo](
+	[IdDetalleCatalogo] [int] IDENTITY(1,1) NOT NULL,
+	[IdCatalogo] [int] NOT NULL,
+	[Codigo] [varchar](50) NOT NULL,
+	[Label] [varchar](50) NOT NULL,
+	[Descripcion] [varchar](255) NULL,
+	[Mnemonico] [varchar](20) NULL,
+	[Val1] [varchar](20) NULL,
+	[Val2] [varchar](80) NULL,
+	[Val3] [varchar](20) NULL,
+	[SociedadPropietaria] [varchar](50) NOT NULL,	
+	[UsuarioCreacion] [varchar](100) NOT NULL DEFAULT USER_NAME(),
+	[FechaHoraCreacion] [datetime] NOT NULL DEFAULT GETDATE(),
+	[UsuarioActualizacion] [varchar](100) NULL,
+	[FechaHoraActualizacion] [datetime] NULL,
+	[EstadoRegistro] [bit] NOT NULL DEFAULT 1,
+	[UltimoCambio] [timestamp] NOT NULL,
+ CONSTRAINT [PK__DetalleC__342B89A9276EDEB3] PRIMARY KEY CLUSTERED 
+(
+	[IdDetalleCatalogo] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON, FILLFACTOR = 98) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Identificador del detalle del Catálogo.' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'DetalleCatalogo', @level2type=N'COLUMN',@level2name=N'IdDetalleCatalogo'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Identificador del Catálogo Tabla. Hace referencia a la tabla CatalogoTablas.' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'DetalleCatalogo', @level2type=N'COLUMN',@level2name=N'IdCatalogo'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Código del Detalle Catálogo, que hace referencia al valor de una de tablas genéricas de la tabla CatalogoTablas.' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'DetalleCatalogo', @level2type=N'COLUMN',@level2name=N'Codigo'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Label del Detalle Catálogo.' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'DetalleCatalogo', @level2type=N'COLUMN',@level2name=N'Label'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Descripción del Detalle Catálogo.' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'DetalleCatalogo', @level2type=N'COLUMN',@level2name=N'Descripcion'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Mnemónico del Detalle Catálogo.' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'DetalleCatalogo', @level2type=N'COLUMN',@level2name=N'Mnemonico'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Valor 1 del Detalle Catálogo.' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'DetalleCatalogo', @level2type=N'COLUMN',@level2name=N'Val1'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Valor 2 del Detalle Catálogo.' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'DetalleCatalogo', @level2type=N'COLUMN',@level2name=N'Val2'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Código de la Sociedad Propietaria SAP.' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'DetalleCatalogo', @level2type=N'COLUMN',@level2name=N'SociedadPropietaria'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Valor 3 del Detalle Catálogo.' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'DetalleCatalogo', @level2type=N'COLUMN',@level2name=N'Val3'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Código del usuario creador.' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'DetalleCatalogo', @level2type=N'COLUMN',@level2name=N'UsuarioCreacion'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Fecha y Hora de creación.' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'DetalleCatalogo', @level2type=N'COLUMN',@level2name=N'FechaHoraCreacion'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Código del usuario que realizó la última actualización.' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'DetalleCatalogo', @level2type=N'COLUMN',@level2name=N'UsuarioActualizacion'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Fecha y Hora en la cual se realizó la última modificación.' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'DetalleCatalogo', @level2type=N'COLUMN',@level2name=N'FechaHoraActualizacion'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Indica el estado del registro.' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'DetalleCatalogo', @level2type=N'COLUMN',@level2name=N'EstadoRegistro'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Fecha y Hora del último cambio realizado (más preciso que un date time, con el fin de evitar incurrencias simultaneas)' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'DetalleCatalogo', @level2type=N'COLUMN',@level2name=N'UltimoCambio'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Almacena los valores de cada una de las tablas genéricas definidas en el "Catálogo de tablas". Por ejemplo: Si yo definí en el "Catálogo de tablas" la tabla "Estado Parte Caja", en esta tabla se encontrarán los siguientes valores: Creado, Eliminado, Caja cuadrada, Con cierre de Pagos, etc.' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'DetalleCatalogo'
+GO
+
+ALTER TABLE [dbo].[DetalleCatalogo]  WITH CHECK ADD  CONSTRAINT [FK__DetalleCa__IdCat__29572725] FOREIGN KEY([IdCatalogo])
+REFERENCES [dbo].[CatalogoTablas] ([IdCatalogo])
+GO
+
+ALTER TABLE [dbo].[DetalleCatalogo] CHECK CONSTRAINT [FK__DetalleCa__IdCat__29572725]
+GO
+
+/****** Object:  Table [dbo].[Logmapa]    Script Date: 06/28/2017 12:38:00 ******/
+SET ANSI_NULLS ON
+GO
+ 
+SET QUOTED_IDENTIFIER ON
+GO
+ 
+SET ANSI_PADDING ON
+GO
+ 
+CREATE TABLE [dbo].[Logmapa](
+      [IdLogMapa] BIGINT IDENTITY(1,1) NOT NULL,
+      [FechaInicio] [datetime] NULL,
+      [FechaFin] [datetime] NULL,
+      [DuracionMS] [decimal](20, 10) NULL,
+      [DuracionSeg] [decimal](20, 10) NULL,
+      [IPLocal] [varchar](15) NULL,
+      [Usuario] [varchar](100) NULL,
+      [TipoLlamada] [varchar](50) NULL,
+      [URL] [varchar](1000) NULL,
+      [JsonRequest] [varchar](max) NULL,
+      [JsonResponse] [varchar](max) NULL,
+      [ConfirmacionDeProceso] [bit] NULL,
+      [TipoEntrada] [varchar](100) NULL,
+      [UsuarioCreacion] [varchar](100) NULL,
+      [FechaHoraCreacion] [datetime] NULL,
+      [UsuarioActualizacion] [varchar](100) NULL,
+      [FechaHoraActualizacion] [datetime] NULL,
+      [EstadoRegistro] [bit] NULL,
+      [UltimoCambio] [timestamp] NOT NULL,
+      [IdTrazabilidad] [char](36) NULL,
+      [Valor1] [varchar](300) NULL,
+      [IdEvento] [char](36) NULL,
+PRIMARY KEY CLUSTERED
+(
+      [IdLogMapa] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON, FILLFACTOR = 98) ON [PRIMARY]
+) ON [PRIMARY]
+ 
+GO
+ 
+SET ANSI_PADDING OFF
+GO
+  
+CREATE PROCEDURE USP_INSERT_LOGMAPA
+@FechaInicio DATETIME, 
+@FechaFin DATETIME, 
+@DuracionMS DECIMAL(20,10), 
+@DuracionSeg decimal(20,10), 
+@IPLocal VARCHAR(15), 
+@Usuario VARCHAR(100), 
+@TipoLlamada VARCHAR(50), 
+@URL VARCHAR(1000), 
+@JsonRequest text=null, 
+@JsonResponse text=null, 
+@ConfirmacionDeProceso BIT=1, 
+@TipoEntrada VARCHAR(100), 
+@IdTrazabilidad char(36)=NULL, 
+@Valor1 varchar(300)=NULL, 
+@IdEvento char(36)=NULL 
+AS 
+BEGIN 
+ INSERT INTO Logmapa 
+                      (FechaInicio, FechaFin, DuracionMS, DuracionSeg,
+                      IPLocal, Usuario, TipoLlamada, URL, JsonRequest, JsonResponse,
+                      ConfirmacionDeProceso, TipoEntrada,  
+                      FechaHoraCreacion, EstadoRegistro, IdTrazabilidad, Valor1, IdEvento) 
+VALUES(@FechaInicio,@FechaFin,@DuracionMS,@DuracionSeg,@IPLocal,@Usuario,@TipoLlamada,
+@URL,@JsonRequest,@JsonResponse,@ConfirmacionDeProceso,@TipoEntrada, 
+GETDATE(), 1, @IdTrazabilidad, @Valor1, @IdEvento) 
+END 
+
+GO
+CREATE FUNCTION dbo.Funcion_TipoMensaje
+(
+	@TipoError INT
+)
+RETURNS VARCHAR(1)
+AS
+BEGIN
+DECLARE @CodigoMensaje VARCHAR(1)
+	SELECT @CodigoMensaje=b.Codigo
+			FROM CatalogoTablas a (NOLOCK) JOIN DetalleCatalogo b (NOLOCK) ON a.IdCatalogo = b.IdCatalogo
+			WHERE a.EstadoRegistro = 1 AND b.EstadoRegistro = 1 -- Activos
+			AND a.IdCatalogo = 1 -- Catalogo TipoError
+			AND IdDetalleCatalogo = @TipoError -- Detalle Catalogo TipoError
+			
+	IF ISNULL(@CodigoMensaje,'')='' -- En caso este Anulado en el Catalogo
+	BEGIN
+		SET @CodigoMensaje = 3
+	END 
+	RETURN @CodigoMensaje
+END
+
+
+GO
+-- EXEC USP_REGISTRAR_PAIS 267,'Y2','PAISY366','XO1','HEC','U'  
+CREATE PROCEDURE [dbo].[USP_REGISTRAR_PAIS]  
+  (  
+ @CodigoPais BIGINT=NULL,  
+ @CodigoPaisSunat VARCHAR(2)=NULL,  
+ @NombrePais VARCHAR(150)=NULL,  
+ @CodigoAlfaPais VARCHAR(3)=NULL,  
+ @UsuarioRegistro VARCHAR(100)=NULL,  
+ @Accion VARCHAR(1)=NULL  
+  )  
+  AS  
+BEGIN TRY   
+ IF @Accion = 'I'  
+ BEGIN  
+  IF EXISTS(SELECT CodigoPais FROM dbo.Pais (NOLOCK)   
+  WHERE CodigoPaisSunat = @CodigoPaisSunat AND EstadoRegistro = 1)  
+  OR EXISTS(SELECT CodigoPais FROM dbo.Pais (NOLOCK)   
+  WHERE RTRIM(LTRIM(NombrePais)) = RTRIM(LTRIM(@NombrePais)) AND EstadoRegistro = 1)  
+  BEGIN  
+  -- Controlar Errores y enviar al Servicio  
+   SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código o nombre de pais ya se encuentra registrado' AS Mensaje  
+  END  
+  ELSE  
+  BEGIN  
+   INSERT dbo.Pais  
+           ( CodigoPaisSunat ,  
+             NombrePais ,  
+             CodigoAlfaPais,  
+             UsuarioCreacion  
+           )  
+   VALUES  ( @CodigoPaisSunat ,   
+             @NombrePais,  
+             @CodigoAlfaPais,  
+             @UsuarioRegistro  
+           )  
+     
+   SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se registró pais satisfactoriamente' AS Mensaje  
+  END   
+ END  
+   
+ IF @Accion = 'U'  
+ BEGIN  
+  IF NOT EXISTS(SELECT CodigoPais FROM dbo.Pais (NOLOCK)   
+   WHERE CodigoPais = @CodigoPais AND EstadoRegistro = 1)  
+  BEGIN  
+   SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de pais no existe, no se puede actualizar' AS Mensaje  
+  END  
+  ELSE IF EXISTS(SELECT CodigoPais FROM dbo.Pais (NOLOCK)   
+  WHERE CodigoPaisSunat = @CodigoPaisSunat AND EstadoRegistro = 1 AND CodigoPais <> @CodigoPais)  
+  OR EXISTS(SELECT CodigoPais FROM dbo.Pais (NOLOCK)   
+  WHERE RTRIM(LTRIM(NombrePais)) = RTRIM(LTRIM(@NombrePais)) AND EstadoRegistro = 1 AND CodigoPais <> @CodigoPais)  
+  BEGIN  
+   SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código o nombre de pais ya se encuentra registrado, no se puede actualizar' AS Mensaje  
+  END  
+  ELSE  
+  BEGIN  
+   UPDATE dbo.Pais SET   
+   CodigoPaisSunat = @CodigoPaisSunat,  
+   NombrePais = @NombrePais,  
+   CodigoAlfaPais = @CodigoAlfaPais,  
+   UsuarioActualizacion = @UsuarioRegistro,  
+   FechaHoraActualizacion = GETDATE()  
+   WHERE CodigoPais = @CodigoPais  
+     
+   SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se actualizó pais satisfactoriamente' AS Mensaje  
+  END  
+ END  
+   
+ IF @Accion = 'D'  
+ BEGIN  
+  IF NOT EXISTS(SELECT CodigoPais FROM dbo.Pais (NOLOCK)   
+   WHERE CodigoPais = @CodigoPais AND EstadoRegistro = 1)  
+  BEGIN  
+   SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de pais no existe, no se puede anular' AS Mensaje  
+  END   
+  ELSE  
+  BEGIN  
+   UPDATE dbo.Pais SET  
+   EstadoRegistro = 0,   
+   UsuarioActualizacion = @UsuarioRegistro,  
+   FechaHoraActualizacion = GETDATE()  
+   WHERE CodigoPais = @CodigoPais  
+     
+   SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'se anuló pais satisfactoriamente' AS Mensaje  
+  END  
+ END  
+END TRY  
+BEGIN CATCH  
+ SELECT dbo.Funcion_TipoMensaje(3) AS CodigoMensaje,ISNULL(ERROR_MESSAGE(),'Ocurrió un error interno') AS Mensaje  
+END CATCH  
+  
+GO
+
+-- EXEC USP_CONSULTAR_PAIS NULL,NULL,NULL,NULL,NULL,NULL,NULL,300,NULL,NULL
+CREATE PROCEDURE [dbo].[USP_CONSULTAR_PAIS]       
+ (        
+  @CodigoPais BIGINT=NULL
+ ,@CodigoPaisSunat VARCHAR(2)=NULL         
+ ,@NombrePais VARCHAR(150)=NULL
+ ,@CodigoAlfaPais VARCHAR(3)=NULL       
+ ,@OrdenCampo VARCHAR(50)=NULL   
+ ,@OrdenOrientacion VARCHAR(4)=NULL         
+ ,@PaginaActual INT=1         
+ ,@NroRegistrosPorPagina INT=10         
+ ,@TotalRegistros INT OUTPUT         
+ ,@CantidadPaginas INT OUTPUT         
+ )         
+ AS         
+ BEGIN         
+  
+ DECLARE @vInicio int, @vFin INT,@vNumeroSerie int 
+
+ DECLARE @dtPais AS  
+ TABLE( 
+ CodigoPais BIGINT, 
+ CodigoPaisSunat VARCHAR(2), 
+ NombrePais VARCHAR(150), 
+ CodigoAlfaPais VARCHAR(3),         
+ UsuarioCreacion VARCHAR(100),         
+ FechaHoraCreacion DATETIME,         
+ UsuarioActualizacion VARCHAR(100),         
+ FechaHoraActualizacion DATETIME)         
+
+ IF @PaginaActual IS NULL SET @PaginaActual = 1
+ IF @NroRegistrosPorPagina IS NULL SET @NroRegistrosPorPagina = 10
+ 
+  set @vInicio = ((@PaginaActual*@NroRegistrosPorPagina-@NroRegistrosPorPagina)+1);         
+  set @vFin = (@PaginaActual*@NroRegistrosPorPagina);          
+           
+            
+ INSERT INTO @dtPais  
+ ( 
+ CodigoPais, 
+ CodigoPaisSunat, 
+ NombrePais, 
+ CodigoAlfaPais,         
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion
+ ) 
+ SELECT  
+ CodigoPais, 
+ CodigoPaisSunat, 
+ NombrePais, 
+ CodigoAlfaPais,         
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion        
+ FROM dbo.Pais (NOLOCK)       
+ WHERE  
+ (@CodigoPais IS NULL OR CodigoPais=@CodigoPais) AND
+ (@CodigoPaisSunat IS NULL OR CodigoPaisSunat=@CodigoPaisSunat) AND
+ (@NombrePais IS NULL OR NombrePais LIKE '%' + @NombrePais + '%') AND
+ (@CodigoAlfaPais IS NULL OR CodigoAlfaPais = @CodigoAlfaPais) AND
+ EstadoRegistro=1 
+        
+ SELECT         
+ CodigoPais, 
+ CodigoPaisSunat, 
+ NombrePais, 
+ CodigoAlfaPais,         
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion        
+ FROM (         
+ SELECT          
+ CASE WHEN UPPER(@OrdenOrientacion)='ASC' OR @OrdenOrientacion IS NULL THEN         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoPais') THEN ROW_NUMBER()OVER(ORDER BY CodigoPais ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoPaisSunat') THEN ROW_NUMBER()OVER(ORDER BY CodigoPaisSunat ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombrePais') THEN ROW_NUMBER()OVER(ORDER BY NombrePais ASC)
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoAlfaPais') THEN ROW_NUMBER()OVER(ORDER BY CodigoAlfaPais ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion ASC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoPaisSunat ASC)         
+  END         
+ ELSE         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoPais') THEN ROW_NUMBER()OVER(ORDER BY CodigoPais DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoPaisSunat') THEN ROW_NUMBER()OVER(ORDER BY CodigoPaisSunat DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombrePais') THEN ROW_NUMBER()OVER(ORDER BY NombrePais DESC)
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoAlfaPais') THEN ROW_NUMBER()OVER(ORDER BY CodigoAlfaPais DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion DESC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoPaisSunat DESC)        
+  END         
+ END AS [NROORDEN],         
+ CodigoPais, 
+ CodigoPaisSunat, 
+ NombrePais, 
+ CodigoAlfaPais,       
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion         
+ FROM @dtPais         
+ )Info         
+ WHERE         
+   [NROORDEN] = CASE WHEN (@PaginaActual is null)THEN [NROORDEN] ELSE -1 END         
+   OR [NROORDEN] BETWEEN @vInicio AND @vFin         
+   ORDER BY         
+   [NROORDEN] ASC;         
+           
+ SELECT  @TotalRegistros = count(1),         
+   @CantidadPaginas =  CASE WHEN @NroRegistrosPorPagina is null THEN 1         
+   ELSE CAST(CEILING(count(1)/CAST(@NroRegistrosPorPagina as float)) as int)         
+   END          
+ FROM @dtPais        
+            
+END
+
+GO
+-- USP_REGISTRAR_PUERTO 17954,2,'XX8','ZZPEEXX44','JAV','U'
+-- USP_REGISTRAR_PUERTO null,2,'PER17','PUERTO 127','JAV','I'
+CREATE PROCEDURE [dbo].[USP_REGISTRAR_PUERTO]  
+(  
+ @CodigoPuerto BIGINT=NULL,  
+ @CodigoPais BIGINT=NULL,  
+ @CodigoPuertoSunat VARCHAR(5)=NULL,  
+ @NombrePuerto VARCHAR(100)=NULL,  
+ @UsuarioRegistro VARCHAR(100)=NULL,  
+ @Accion VARCHAR(1)=NULL  
+)  
+AS  
+BEGIN TRY 
+ IF @Accion = 'I'  
+ BEGIN  
+  IF EXISTS(SELECT CodigoPuerto FROM dbo.Puerto (NOLOCK)   
+  WHERE CodigoPuertoSunat = @CodigoPuertoSunat AND EstadoRegistro = 1)  
+  OR EXISTS(SELECT CodigoPuerto FROM dbo.Puerto (NOLOCK)   
+  WHERE RTRIM(LTRIM(NombrePuerto)) = RTRIM(LTRIM(@NombrePuerto)) AND EstadoRegistro = 1)
+  BEGIN  
+   -- Controlar Errores y enviar al Servicio
+		SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código o nombre de puerto ya se encuentra registrado' AS Mensaje
+  END  
+  ELSE  
+  BEGIN  
+   INSERT dbo.Puerto  
+           ( CodigoPais ,  
+             CodigoPuertoSunat ,  
+             NombrePuerto,  
+             UsuarioCreacion  
+           )  
+   VALUES  ( @CodigoPais ,   
+             @CodigoPuertoSunat,  
+             @NombrePuerto,  
+             @UsuarioRegistro  
+           )  
+   SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se registró puerto satisfactoriamente' AS Mensaje
+  END   
+ END  
+   
+ IF @Accion = 'U'  
+ BEGIN 
+	IF NOT EXISTS(SELECT CodigoPuerto FROM dbo.Puerto (NOLOCK) 
+			WHERE CodigoPuerto = @CodigoPuerto AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de puerto no existe, no se puede actualizar' AS Mensaje
+		END
+		ELSE IF EXISTS(SELECT CodigoPuerto FROM dbo.Puerto (NOLOCK) 
+		WHERE CodigoPuertoSunat = @CodigoPuertoSunat AND EstadoRegistro = 1 AND CodigoPuerto <> @CodigoPuerto)
+		OR EXISTS(SELECT CodigoPuerto FROM dbo.Puerto (NOLOCK) 
+		WHERE RTRIM(LTRIM(NombrePuerto)) = RTRIM(LTRIM(@NombrePuerto)) AND EstadoRegistro = 1 AND CodigoPuerto <> @CodigoPuerto)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código o nombre de puerto ya se encuentra registrado, no se puede actualizar' AS Mensaje
+		END
+		ELSE
+		BEGIN 
+		  UPDATE dbo.Puerto SET   
+		  CodigoPais = @CodigoPais,  
+		  CodigoPuertoSunat = @CodigoPuertoSunat,  
+		  NombrePuerto = @NombrePuerto,  
+		  UsuarioActualizacion = @UsuarioRegistro,  
+		  FechaHoraActualizacion = GETDATE()  
+		  WHERE CodigoPuerto = @CodigoPuerto  
+		    
+		  SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se actualizó puerto satisfactoriamente' AS Mensaje
+		END
+ END  
+   
+ IF @Accion = 'D'  
+ BEGIN 
+	IF NOT EXISTS(SELECT CodigoPuerto FROM dbo.Puerto (NOLOCK) 
+			WHERE CodigoPuerto = @CodigoPuerto AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de puerto no existe, no se puede anular' AS Mensaje
+		END
+		ELSE
+		BEGIN 
+		  UPDATE dbo.Puerto SET  
+		  EstadoRegistro = 0,   
+		  UsuarioActualizacion = @UsuarioRegistro,  
+		  FechaHoraActualizacion = GETDATE()  
+		  WHERE CodigoPuerto = @CodigoPuerto  
+		  
+		  SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se anuló puerto correctamente' AS Mensaje
+		END
+ END  
+END TRY
+BEGIN CATCH
+	 SELECT dbo.Funcion_TipoMensaje(3) AS CodigoMensaje,ISNULL(ERROR_MESSAGE(),'Ocurrió un error interno') AS Mensaje
+END CATCH
+
+GO
+-- USP_CONSULTAR_PUERTO NULL,2,NULL,NULL,NULL,NULL,NULL,100000,NULL,NULL
+CREATE PROCEDURE [dbo].[USP_CONSULTAR_PUERTO]       
+ (        
+  @CodigoPuerto BIGINT=NULL
+ ,@CodigoPais BIGINT=NULL
+ ,@CodigoPuertoSunat VARCHAR(5)=NULL         
+ ,@NombrePuerto VARCHAR(100)=NULL    
+ ,@OrdenCampo VARCHAR(50)=NULL         
+ ,@OrdenOrientacion VARCHAR(4)=NULL         
+ ,@PaginaActual INT=1         
+ ,@NroRegistrosPorPagina INT=10         
+ ,@TotalRegistros INT OUTPUT         
+ ,@CantidadPaginas INT OUTPUT         
+ )         
+ AS      
+BEGIN     
+ DECLARE @vInicio int, @vFin INT,@vNumeroSerie int 
+ 
+ DECLARE @dtPuerto AS  
+ TABLE( 
+ CodigoPuerto BIGINT,
+ CodigoPuertoSunat VARCHAR(5), 
+ NombrePuerto VARCHAR(100), 
+ CodigoPais BIGINT,
+ NombrePais VARCHAR(150),          
+ UsuarioCreacion VARCHAR(100),         
+ FechaHoraCreacion DATETIME,         
+ UsuarioActualizacion VARCHAR(100),         
+ FechaHoraActualizacion DATETIME)    
+ 
+ IF @PaginaActual IS NULL SET @PaginaActual = 1
+ IF @NroRegistrosPorPagina IS NULL SET @NroRegistrosPorPagina = 10
+           
+  SET @vInicio = ((@PaginaActual*@NroRegistrosPorPagina-@NroRegistrosPorPagina)+1);         
+  SET @vFin = (@PaginaActual*@NroRegistrosPorPagina);          
+            
+ INSERT INTO @dtPuerto  
+ ( 
+ CodigoPuerto,
+ CodigoPuertoSunat, 
+ NombrePuerto, 
+ CodigoPais,   
+ NombrePais,      
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion
+ ) 
+ SELECT  
+ CodigoPuerto,
+ CodigoPuertoSunat, 
+ NombrePuerto, 
+ b.CodigoPais,
+ b.NombrePais,        
+ a.UsuarioCreacion,         
+ a.FechaHoraCreacion,         
+ a.UsuarioActualizacion,         
+ a.FechaHoraActualizacion        
+ FROM dbo.Puerto a (NOLOCK) JOIN dbo.Pais b (NOLOCK) ON a.CodigoPais = b.CodigoPais     
+ WHERE  
+ (@CodigoPuerto IS NULL OR CodigoPuerto=@CodigoPuerto) AND
+ (@CodigoPais IS NULL OR a.CodigoPais=@CodigoPais) AND
+ (@CodigoPuertoSunat IS NULL OR CodigoPuertoSunat=@CodigoPuertoSunat) AND
+ (@NombrePuerto IS NULL OR NombrePuerto LIKE '%' + @NombrePuerto + '%') AND 
+  a.EstadoRegistro=1 
+        
+ SELECT 
+ CodigoPuerto,        
+ CodigoPuertoSunat, 
+ NombrePuerto,
+ CodigoPais,  
+ NombrePais,       
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion        
+ FROM (         
+ SELECT          
+ CASE WHEN UPPER(@OrdenOrientacion)='ASC' OR @OrdenOrientacion IS NULL THEN         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoPuerto') THEN ROW_NUMBER()OVER(ORDER BY CodigoPuerto ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoPuertoSunat') THEN ROW_NUMBER()OVER(ORDER BY CodigoPuertoSunat ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombrePuerto') THEN ROW_NUMBER()OVER(ORDER BY NombrePuerto ASC)   
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombrePais') THEN ROW_NUMBER()OVER(ORDER BY NombrePais ASC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion ASC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoPuerto ASC)         
+  END         
+ ELSE         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoPuerto') THEN ROW_NUMBER()OVER(ORDER BY CodigoPuerto DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoPuertoSunat') THEN ROW_NUMBER()OVER(ORDER BY CodigoPuertoSunat DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombrePuerto') THEN ROW_NUMBER()OVER(ORDER BY NombrePuerto DESC)  
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombrePais') THEN ROW_NUMBER()OVER(ORDER BY NombrePais DESC)        
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion DESC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoPuertoSunat DESC)        
+  END         
+ END AS [NROORDEN],
+ CodigoPuerto,         
+ CodigoPuertoSunat, 
+ NombrePuerto,
+ CodigoPais,
+ NombrePais,      
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion         
+ FROM @dtPuerto         
+ )Info         
+ WHERE         
+   [NROORDEN] = CASE WHEN (@PaginaActual is null)THEN [NROORDEN] ELSE -1 END         
+   OR [NROORDEN] BETWEEN @vInicio AND @vFin         
+   ORDER BY         
+   [NROORDEN] ASC;         
+           
+ SELECT  @TotalRegistros = count(1),         
+   @CantidadPaginas =  CASE WHEN @NroRegistrosPorPagina is null THEN 1         
+   ELSE CAST(CEILING(count(1)/CAST(@NroRegistrosPorPagina as float)) as int)         
+   END          
+ FROM @dtPuerto        
+END
+
+GO 
+-- EXEC USP_REGISTRAR_VIATRANSPORTE NULL,12,'OTROS 12','JAV','I'
+-- EXEC USP_REGISTRAR_VIATRANSPORTE 14,12,'OTROS 11','JAV','U'
+-- EXEC USP_REGISTRAR_VIATRANSPORTE 14,0,'OTROS XXXXXXXX','TYU','D'
+CREATE PROCEDURE [dbo].[USP_REGISTRAR_VIATRANSPORTE]
+  (
+	@CodigoViaTransporte BIGINT=NULL,
+	@CodigoViaTransporteSunat TINYINT=NULL,
+	@NombreViaTransporte VARCHAR(50)=NULL,
+	@UsuarioRegistro VARCHAR(100)=NULL,
+	@Accion VARCHAR(1)=NULL
+  )
+  AS
+BEGIN TRY 
+	IF @Accion = 'I'
+	BEGIN
+		IF EXISTS(SELECT CodigoViaTransporte FROM dbo.ViaTransporte (NOLOCK) 
+		WHERE CodigoViaTransporteSunat = @CodigoViaTransporteSunat AND EstadoRegistro = 1)
+		OR EXISTS(SELECT CodigoViaTransporte FROM dbo.ViaTransporte (NOLOCK) 
+		WHERE RTRIM(LTRIM(NombreViaTransporte)) = RTRIM(LTRIM(@NombreViaTransporte)) AND EstadoRegistro = 1)
+		BEGIN
+		-- Controlar Errores y enviar al Servicio
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código o nombre de Vía de Transporte ya se encuentra registrado' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			INSERT dbo.ViaTransporte
+			        ( CodigoViaTransporteSunat,
+			          NombreViaTransporte,
+			          UsuarioCreacion
+			        )
+			VALUES  ( @CodigoViaTransporteSunat, 
+			          @NombreViaTransporte,
+			          @UsuarioRegistro
+			        )
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se registró vía de Transporte atisfactoriamente' AS Mensaje
+		END 
+	END
+	
+	IF @Accion = 'U'
+	BEGIN
+		IF NOT EXISTS(SELECT CodigoViaTransporte FROM dbo.ViaTransporte (NOLOCK) 
+			WHERE CodigoViaTransporte = @CodigoViaTransporte AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de vía de transporte no existe, no se puede actualizar' AS Mensaje
+		END
+		ELSE IF EXISTS(SELECT CodigoViaTransporte FROM dbo.ViaTransporte (NOLOCK) 
+		WHERE CodigoViaTransporteSunat = @CodigoViaTransporteSunat AND EstadoRegistro = 1 AND CodigoViaTransporte <> @CodigoViaTransporte)
+		OR EXISTS(SELECT CodigoViaTransporte FROM dbo.ViaTransporte (NOLOCK) 
+		WHERE RTRIM(LTRIM(NombreViaTransporte)) = RTRIM(LTRIM(@NombreViaTransporte)) AND EstadoRegistro = 1 AND CodigoViaTransporte <> @CodigoViaTransporte)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código o nombre de Vía de Transporte ya se encuentra registrado, no se puede actualizar' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			UPDATE dbo.ViaTransporte SET 
+			CodigoViaTransporteSunat = @CodigoViaTransporteSunat,
+			NombreViaTransporte = @NombreViaTransporte,
+			UsuarioActualizacion = @UsuarioRegistro,
+			FechaHoraActualizacion = GETDATE()
+			WHERE CodigoViaTransporte = @CodigoViaTransporte
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se actualizó vía de transporte satisfactoriamente' AS Mensaje
+		END
+	END
+	
+	IF @Accion = 'D'
+	BEGIN
+		IF NOT EXISTS(SELECT CodigoViaTransporte FROM dbo.ViaTransporte (NOLOCK) 
+			WHERE CodigoViaTransporte = @CodigoViaTransporte AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de vía de transporte no existe, No se puede Anular' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			UPDATE dbo.ViaTransporte SET
+			EstadoRegistro = 0, 
+			UsuarioActualizacion = @UsuarioRegistro,
+			FechaHoraActualizacion = GETDATE()
+			WHERE CodigoViaTransporte = @CodigoViaTransporte
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se anuló Vía de Transporte satisfactoriamente' AS Mensaje
+		END
+	END
+END TRY
+BEGIN CATCH
+	SELECT dbo.Funcion_TipoMensaje(3) AS CodigoMensaje,ISNULL(ERROR_MESSAGE(),'Ocurrio un error interno') AS Mensaje
+END CATCH
+
+GO
+-- EXEC USP_CONSULTAR_VIATRANSPORTE NULL,NULL,NULL,NULL,NULL,NULL,100,NULL,NULL
+CREATE PROCEDURE [dbo].[USP_CONSULTAR_VIATRANSPORTE]       
+ (        
+  @CodigoViaTransporte BIGINT=NULL
+ ,@CodigoViaTransporteSunat TINYINT=NULL       
+ ,@NombreViaTransporte VARCHAR(50)=NULL     
+ ,@OrdenCampo VARCHAR(50)=NULL        
+ ,@OrdenOrientacion VARCHAR(4)=NULL         
+ ,@PaginaActual INT=1         
+ ,@NroRegistrosPorPagina INT=10         
+ ,@TotalRegistros INT OUTPUT         
+ ,@CantidadPaginas INT OUTPUT         
+ )         
+ AS         
+ BEGIN         
+  
+ DECLARE @vInicio int, @vFin INT,@vNumeroSerie int 
+
+ DECLARE @dtViaTransporte AS  
+ TABLE( 
+ CodigoViaTransporte BIGINT, 
+ CodigoViaTransporteSunat TINYINT, 
+ NombreViaTransporte VARCHAR(50),          
+ UsuarioCreacion VARCHAR(100),         
+ FechaHoraCreacion DATETIME,         
+ UsuarioActualizacion VARCHAR(100),         
+ FechaHoraActualizacion DATETIME)   
+ 
+ IF @PaginaActual IS NULL SET @PaginaActual = 1
+ IF @NroRegistrosPorPagina IS NULL SET @NroRegistrosPorPagina = 10      
+           
+  set @vInicio = ((@PaginaActual*@NroRegistrosPorPagina-@NroRegistrosPorPagina)+1);         
+  set @vFin = (@PaginaActual*@NroRegistrosPorPagina);          
+           
+            
+ INSERT INTO @dtViaTransporte  
+ ( 
+ CodigoViaTransporte, 
+ CodigoViaTransporteSunat, 
+ NombreViaTransporte,      
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion
+ ) 
+ SELECT  
+ CodigoViaTransporte, 
+ CodigoViaTransporteSunat, 
+ NombreViaTransporte,        
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion        
+ FROM dbo.ViaTransporte (NOLOCK)       
+ WHERE  
+ (@CodigoViaTransporte IS NULL OR CodigoViaTransporte=@CodigoViaTransporte)
+ AND(@CodigoViaTransporteSunat IS NULL OR CodigoViaTransporteSunat=@CodigoViaTransporteSunat)
+ AND (@NombreViaTransporte IS NULL OR NombreViaTransporte LIKE '%' + @NombreViaTransporte + '%')  
+ AND EstadoRegistro=1 
+        
+ SELECT         
+ CodigoViaTransporte, 
+ CodigoViaTransporteSunat, 
+ NombreViaTransporte,        
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion        
+ FROM (         
+ SELECT          
+ CASE WHEN UPPER(@OrdenOrientacion)='ASC' OR @OrdenOrientacion IS NULL THEN         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoViaTransporte') THEN ROW_NUMBER()OVER(ORDER BY CodigoViaTransporte ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoViaTransporteSunat') THEN ROW_NUMBER()OVER(ORDER BY CodigoViaTransporteSunat ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreViaTransporte') THEN ROW_NUMBER()OVER(ORDER BY NombreViaTransporte ASC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion ASC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoViaTransporteSunat ASC)         
+  END         
+ ELSE         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoViaTransporte') THEN ROW_NUMBER()OVER(ORDER BY CodigoViaTransporte DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoViaTransporteSunat') THEN ROW_NUMBER()OVER(ORDER BY CodigoViaTransporteSunat DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreViaTransporte') THEN ROW_NUMBER()OVER(ORDER BY NombreViaTransporte DESC)
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion DESC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoViaTransporteSunat DESC)        
+  END         
+ END AS [NROORDEN],         
+ CodigoViaTransporte, 
+ CodigoViaTransporteSunat, 
+ NombreViaTransporte,       
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion         
+ FROM @dtViaTransporte        
+ )Info         
+ WHERE         
+   [NROORDEN] = CASE WHEN (@PaginaActual is null)THEN [NROORDEN] ELSE -1 END         
+   OR [NROORDEN] BETWEEN @vInicio AND @vFin         
+   ORDER BY         
+   [NROORDEN] ASC;         
+           
+ SELECT  @TotalRegistros = count(1),         
+   @CantidadPaginas =  CASE WHEN @NroRegistrosPorPagina is null THEN 1         
+   ELSE CAST(CEILING(count(1)/CAST(@NroRegistrosPorPagina as float)) as int)         
+   END          
+ FROM @dtViaTransporte      
+            
+END 
+
+GO
+-- USP_REGISTRAR_ADUANA null,1,1,30,'ADUANA X','JAV','I'
+-- USP_REGISTRAR_ADUANA 50,12785,1,29,'TALARA X','HEC','U'
+-- USP_REGISTRAR_ADUANA 47,1,2,29,'Aduana XX','HEC','D'
+CREATE PROCEDURE [dbo].[USP_REGISTRAR_ADUANA]  
+(  
+ @CodigoAduana BIGINT=NULL,  
+ @CodigoPuerto BIGINT=NULL,
+ @CodigoViaTransporte BIGINT=NULL,
+ @CodigoAduanaSunat INT=NULL,  
+ @NombreAduana VARCHAR(150)=NULL,  
+ @UsuarioRegistro VARCHAR(100)=NULL,  
+ @Accion VARCHAR(1)=NULL  
+)  
+AS  
+BEGIN TRY 
+ IF @Accion = 'I'  
+ BEGIN  
+  IF EXISTS(SELECT CodigoAduana FROM dbo.Aduana (NOLOCK)   
+  WHERE CodigoAduanaSunat = @CodigoAduanaSunat AND EstadoRegistro = 1)  
+  OR EXISTS(SELECT CodigoAduana FROM dbo.Aduana (NOLOCK)   
+  WHERE RTRIM(LTRIM(NombreAduana)) = RTRIM(LTRIM(@NombreAduana)) AND EstadoRegistro = 1)
+  BEGIN  
+		SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código o nombre de Aduana ya se encuentra registrado' AS Mensaje
+  END  
+  ELSE  
+  BEGIN  
+   INSERT dbo.Aduana  
+           ( CodigoPuerto ,  
+             CodigoViaTransporte ,  
+             CodigoAduanaSunat,
+             NombreAduana,  
+             UsuarioCreacion  
+           )  
+   VALUES  ( @CodigoPuerto,
+			 @CodigoViaTransporte ,   
+             @CodigoAduanaSunat,  
+             @NombreAduana,  
+             @UsuarioRegistro  
+           )  
+   SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se registró Aduana satisfactoriamente' AS Mensaje
+  END   
+ END  
+   
+ IF @Accion = 'U'  
+ BEGIN 
+	IF NOT EXISTS(SELECT CodigoAduana FROM dbo.Aduana (NOLOCK) 
+			WHERE CodigoAduana = @CodigoAduana AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de Aduana no existe, no se puede actualizar' AS Mensaje
+		END
+		ELSE IF EXISTS(SELECT CodigoAduana FROM dbo.Aduana (NOLOCK) 
+		WHERE CodigoAduanaSunat = @CodigoAduanaSunat AND EstadoRegistro = 1 AND CodigoAduana <> @CodigoAduana)
+		OR EXISTS(SELECT CodigoAduana FROM dbo.Aduana (NOLOCK) 
+		WHERE RTRIM(LTRIM(NombreAduana)) = RTRIM(LTRIM(@NombreAduana)) AND EstadoRegistro = 1 AND CodigoAduana <> @CodigoAduana)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código o nombre de Aduana ya se encuentra registrado, no se puede actualizar' AS Mensaje
+		END
+		ELSE
+		BEGIN 
+		  UPDATE dbo.Aduana SET   
+		  CodigoPuerto = @CodigoPuerto,  
+		  CodigoViaTransporte = @CodigoViaTransporte,
+		  CodigoAduanaSunat = @CodigoAduanaSunat,   
+		  NombreAduana = @NombreAduana,  
+		  UsuarioActualizacion = @UsuarioRegistro,  
+		  FechaHoraActualizacion = GETDATE()  
+		  WHERE CodigoAduana = @CodigoAduana 
+		    
+		  SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se Actualizó Aduana satisfactoriamente' AS Mensaje
+		END
+ END  
+   
+ IF @Accion = 'D'  
+ BEGIN 
+	IF NOT EXISTS(SELECT CodigoAduana FROM dbo.Aduana (NOLOCK) 
+			WHERE CodigoAduana = @CodigoAduana AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de Aduana no existe, No se puede Anular' AS Mensaje
+		END
+		ELSE
+		BEGIN 
+		  UPDATE dbo.Aduana SET  
+		  EstadoRegistro = 0,   
+		  UsuarioActualizacion = @UsuarioRegistro,  
+		  FechaHoraActualizacion = GETDATE()  
+		  WHERE CodigoAduana = @CodigoAduana  
+		  
+		  SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se anuló Aduana correctamente' AS Mensaje
+		END
+ END  
+END TRY
+BEGIN CATCH
+	 SELECT dbo.Funcion_TipoMensaje(3) AS CodigoMensaje,ISNULL(ERROR_MESSAGE(),'Ocurrio un error interno') AS Mensaje
+END CATCH
+
+GO
+-- USP_CONSULTAR_ADUANA NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1000,NULL,NULL
+CREATE PROCEDURE [dbo].[USP_CONSULTAR_ADUANA]       
+ (        
+  @CodigoAduana BIGINT=NULL
+ ,@CodigoPuerto BIGINT=NULL
+ ,@CodigoViaTransporte BIGINT=NULL
+ ,@CodigoAduanaSunat INT=NULL       
+ ,@NombreAduana VARCHAR(150)=NULL    
+ ,@OrdenCampo VARCHAR(50)=NULL         
+ ,@OrdenOrientacion VARCHAR(4)=NULL         
+ ,@PaginaActual INT=1         
+ ,@NroRegistrosPorPagina INT=10         
+ ,@TotalRegistros INT OUTPUT         
+ ,@CantidadPaginas INT OUTPUT         
+ )         
+ AS      
+BEGIN     
+ DECLARE @vInicio int, @vFin INT,@vNumeroSerie int 
+ 
+ DECLARE @dtAduana AS  
+ TABLE( 
+ CodigoAduana BIGINT,
+ CodigoAduanaSunat INT, 
+ NombreAduana VARCHAR(150),
+ CodigoPuerto BIGINT,
+ NombrePuerto VARCHAR(100),   
+ CodigoViaTransporte BIGINT,
+ NombreViaTransporte VARCHAR(50),     
+ UsuarioCreacion VARCHAR(100),         
+ FechaHoraCreacion DATETIME,         
+ UsuarioActualizacion VARCHAR(100),         
+ FechaHoraActualizacion DATETIME)    
+ 
+ IF @PaginaActual IS NULL SET @PaginaActual = 1
+ IF @NroRegistrosPorPagina IS NULL SET @NroRegistrosPorPagina = 10
+           
+  SET @vInicio = ((@PaginaActual*@NroRegistrosPorPagina-@NroRegistrosPorPagina)+1);         
+  SET @vFin = (@PaginaActual*@NroRegistrosPorPagina);          
+            
+ INSERT INTO @dtAduana  
+ ( 
+ CodigoAduana, 
+ CodigoAduanaSunat, 
+ NombreAduana,
+ CodigoPuerto,
+ NombrePuerto,
+ CodigoViaTransporte,
+ NombreViaTransporte,        
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion
+ ) 
+ SELECT  
+ CodigoAduana,
+ CodigoAduanaSunat, 
+ NombreAduana,
+ a.CodigoPuerto,  
+ NombrePuerto,
+ a.CodigoViaTransporte,
+ NombreViaTransporte,          
+ a.UsuarioCreacion,         
+ a.FechaHoraCreacion,         
+ a.UsuarioActualizacion,         
+ a.FechaHoraActualizacion        
+ FROM dbo.Aduana a (NOLOCK) JOIN dbo.Puerto b (NOLOCK) ON a.CodigoPuerto = b.CodigoPuerto
+ JOIN dbo.ViaTransporte (NOLOCK) c ON a.CodigoViaTransporte = c.CodigoViaTransporte       
+ WHERE  
+ (@CodigoAduana IS NULL OR CodigoAduana=@CodigoAduana) AND
+ (@CodigoPuerto IS NULL OR a.CodigoPuerto=@CodigoPuerto) AND
+ (@CodigoViaTransporte IS NULL OR a.CodigoViaTransporte=@CodigoViaTransporte) AND
+ (@CodigoAduanaSunat IS NULL OR CodigoAduanaSunat=@CodigoAduanaSunat) AND
+ (@NombreAduana IS NULL OR NombreAduana LIKE '%' + @NombreAduana + '%') AND 
+  a.EstadoRegistro=1 
+        
+ SELECT 
+ CodigoAduana,
+ CodigoAduanaSunat, 
+ NombreAduana,
+ CodigoPuerto, 
+ NombrePuerto,
+ CodigoViaTransporte,
+ NombreViaTransporte,          
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion        
+ FROM (         
+ SELECT          
+ CASE WHEN UPPER(@OrdenOrientacion)='ASC' OR @OrdenOrientacion IS NULL THEN         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoAduana') THEN ROW_NUMBER()OVER(ORDER BY CodigoAduana ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoAduanaSunat') THEN ROW_NUMBER()OVER(ORDER BY CodigoAduanaSunat ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreAduana') THEN ROW_NUMBER()OVER(ORDER BY NombreAduana ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombrePuerto') THEN ROW_NUMBER()OVER(ORDER BY NombrePuerto ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreViaTransporte') THEN ROW_NUMBER()OVER(ORDER BY NombreViaTransporte ASC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion ASC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoAduana ASC)         
+  END         
+ ELSE         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoAduana') THEN ROW_NUMBER()OVER(ORDER BY CodigoAduana DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoAduanaSunat') THEN ROW_NUMBER()OVER(ORDER BY CodigoAduanaSunat DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreAduana') THEN ROW_NUMBER()OVER(ORDER BY NombreAduana DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombrePuerto') THEN ROW_NUMBER()OVER(ORDER BY NombrePuerto DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreViaTransporte') THEN ROW_NUMBER()OVER(ORDER BY NombreViaTransporte DESC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion DESC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoAduana DESC)        
+  END         
+ END AS [NROORDEN],
+ CodigoAduana,
+ CodigoAduanaSunat, 
+ NombreAduana,
+ CodigoPuerto,
+ NombrePuerto,
+ CodigoViaTransporte,
+ NombreViaTransporte,      
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion         
+ FROM @dtAduana         
+ )Info         
+ WHERE         
+   [NROORDEN] = CASE WHEN (@PaginaActual is null)THEN [NROORDEN] ELSE -1 END         
+   OR [NROORDEN] BETWEEN @vInicio AND @vFin         
+   ORDER BY         
+   [NROORDEN] ASC;         
+           
+ SELECT  @TotalRegistros = count(1),         
+   @CantidadPaginas =  CASE WHEN @NroRegistrosPorPagina is null THEN 1         
+   ELSE CAST(CEILING(count(1)/CAST(@NroRegistrosPorPagina as float)) as int)         
+   END          
+ FROM @dtAduana        
+END 
+
+GO
+
+-- EXEC USP_REGISTRAR_TIPOLUGARCARGA 9,301,'LUGAR CARGA 3','HEC','U'
+CREATE PROCEDURE [dbo].[USP_REGISTRAR_TIPOLUGARCARGA]
+  (
+	@CodigoTipoLugarCarga BIGINT=NULL,
+	@CodigoTipoLugarCargaSunat SMALLINT=NULL,
+	@NombreTipoLugarCarga VARCHAR(50)=NULL,
+	@UsuarioRegistro VARCHAR(100)=NULL,
+	@Accion VARCHAR(1)=NULL
+  )
+  AS
+BEGIN TRY 
+	IF @Accion = 'I'
+	BEGIN
+		IF EXISTS(SELECT CodigoTipoLugarCarga FROM dbo.TipoLugarCarga (NOLOCK) 
+		WHERE CodigoTipoLugarCargaSunat = @CodigoTipoLugarCargaSunat AND EstadoRegistro = 1)
+		OR EXISTS(SELECT CodigoTipoLugarCarga FROM dbo.TipoLugarCarga (NOLOCK) 
+		WHERE RTRIM(LTRIM(NombreTipoLugarCarga)) = RTRIM(LTRIM(@NombreTipoLugarCarga)) AND EstadoRegistro = 1)
+		BEGIN
+		-- Controlar Errores y enviar al Servicio
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código o nombre del Tipo de Lugar de Carga ya se encuentra registrado' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			INSERT dbo.TipoLugarCarga
+			        ( CodigoTipoLugarCargaSunat ,
+			          NombreTipoLugarCarga ,
+			          UsuarioCreacion
+			        )
+			VALUES  ( @CodigoTipoLugarCargaSunat , 
+			          @NombreTipoLugarCarga,
+			          @UsuarioRegistro
+			        )
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se registró Tipo de Lugar de Carga satisfactoriamente' AS Mensaje
+		END 
+	END
+	
+	IF @Accion = 'U'
+	BEGIN
+		IF NOT EXISTS(SELECT CodigoTipoLugarCarga FROM dbo.TipoLugarCarga (NOLOCK) 
+			WHERE CodigoTipoLugarCarga = @CodigoTipoLugarCarga AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código del Tipo de Lugar de Carga no existe, no se puede actualizar' AS Mensaje
+		END
+		ELSE IF EXISTS(SELECT CodigoTipoLugarCarga FROM dbo.TipoLugarCarga (NOLOCK) 
+		WHERE CodigoTipoLugarCargaSunat = @CodigoTipoLugarCargaSunat AND EstadoRegistro = 1 AND CodigoTipoLugarCarga <> @CodigoTipoLugarCarga)
+		OR EXISTS(SELECT CodigoTipoLugarCarga FROM dbo.TipoLugarCarga (NOLOCK) 
+		WHERE RTRIM(LTRIM(NombreTipoLugarCarga)) = RTRIM(LTRIM(@NombreTipoLugarCarga)) 
+		AND EstadoRegistro = 1 AND CodigoTipoLugarCarga <> @CodigoTipoLugarCarga)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código o nombre del Tipo de Lugar de Carga ya se encuentra registrado, no se puede actualizar' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			UPDATE dbo.TipoLugarCarga SET 
+			CodigoTipoLugarCargaSunat = @CodigoTipoLugarCargaSunat,
+			NombreTipoLugarCarga = @NombreTipoLugarCarga,
+			UsuarioActualizacion = @UsuarioRegistro,
+			FechaHoraActualizacion = GETDATE()
+			WHERE CodigoTipoLugarCarga = @CodigoTipoLugarCarga
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se Actualizó Tipo de Lugar de Carga satisfactoriamente' AS Mensaje
+		END
+	END
+	
+	IF @Accion = 'D'
+	BEGIN
+		IF NOT EXISTS(SELECT CodigoTipoLugarCarga FROM dbo.TipoLugarCarga (NOLOCK) 
+			WHERE CodigoTipoLugarCarga = @CodigoTipoLugarCarga AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de Tipo de Lugar de Carga no existe, No se puede Anular' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			UPDATE dbo.TipoLugarCarga SET
+			EstadoRegistro = 0, 
+			UsuarioActualizacion = @UsuarioRegistro,
+			FechaHoraActualizacion = GETDATE()
+			WHERE CodigoTipoLugarCarga = @CodigoTipoLugarCarga
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se anuló Tipo de Lugar de Carga satisfactoriamente' AS Mensaje
+		END
+	END
+END TRY
+BEGIN CATCH
+	SELECT dbo.Funcion_TipoMensaje(3) AS CodigoMensaje,ISNULL(ERROR_MESSAGE(),'Ocurrio un error interno') AS Mensaje
+END CATCH
+
+GO
+
+-- EXEC USP_CONSULTAR_TIPOLUGARCARGA NULL,NULL,NULL,NULL,NULL,NULL,300,NULL,NULL
+CREATE PROCEDURE [dbo].[USP_CONSULTAR_TIPOLUGARCARGA]       
+ (        
+  @CodigoTipoLugarCarga BIGINT=NULL,
+  @CodigoTipoLugarCargaSunat SMALLINT=NULL,
+  @NombreTipoLugarCarga VARCHAR(50)=NULL,      
+  @OrdenCampo VARCHAR(50)=NULL   
+ ,@OrdenOrientacion VARCHAR(4)=NULL         
+ ,@PaginaActual INT=1         
+ ,@NroRegistrosPorPagina INT=10         
+ ,@TotalRegistros INT OUTPUT         
+ ,@CantidadPaginas INT OUTPUT         
+ )         
+ AS         
+ BEGIN         
+  
+ DECLARE @vInicio int, @vFin INT,@vNumeroSerie int 
+
+ DECLARE @dtTipoLugarCarga AS  
+ TABLE( 
+ CodigoTipoLugarCarga BIGINT, 
+ CodigoTipoLugarCargaSunat SMALLINT, 
+ NombreTipoLugarCarga VARCHAR(50),        
+ UsuarioCreacion VARCHAR(100),         
+ FechaHoraCreacion DATETIME,         
+ UsuarioActualizacion VARCHAR(100),         
+ FechaHoraActualizacion DATETIME)         
+
+ IF @PaginaActual IS NULL SET @PaginaActual = 1
+ IF @NroRegistrosPorPagina IS NULL SET @NroRegistrosPorPagina = 10
+ 
+  set @vInicio = ((@PaginaActual*@NroRegistrosPorPagina-@NroRegistrosPorPagina)+1);         
+  set @vFin = (@PaginaActual*@NroRegistrosPorPagina)      
+ INSERT INTO @dtTipoLugarCarga  
+ ( 
+ CodigoTipoLugarCarga, 
+ CodigoTipoLugarCargaSunat, 
+ NombreTipoLugarCarga,        
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion
+ ) 
+ SELECT  
+ CodigoTipoLugarCarga, 
+ CodigoTipoLugarCargaSunat, 
+ NombreTipoLugarCarga,          
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion        
+ FROM dbo.TipoLugarCarga (NOLOCK)       
+ WHERE  
+ (@CodigoTipoLugarCarga IS NULL OR CodigoTipoLugarCarga=@CodigoTipoLugarCarga) AND
+ (@CodigoTipoLugarCargaSunat IS NULL OR CodigoTipoLugarCargaSunat=@CodigoTipoLugarCargaSunat) AND
+ (@NombreTipoLugarCarga IS NULL OR NombreTipoLugarCarga LIKE '%' + @NombreTipoLugarCarga + '%') AND
+ EstadoRegistro=1 
+        
+ SELECT         
+ CodigoTipoLugarCarga, 
+ CodigoTipoLugarCargaSunat, 
+ NombreTipoLugarCarga,        
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion        
+ FROM (         
+ SELECT          
+ CASE WHEN UPPER(@OrdenOrientacion)='ASC' OR @OrdenOrientacion IS NULL THEN         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoTipoLugarCarga') THEN ROW_NUMBER()OVER(ORDER BY CodigoTipoLugarCarga ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoTipoLugarCargaSunat') THEN ROW_NUMBER()OVER(ORDER BY CodigoTipoLugarCargaSunat ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreTipoLugarCarga') THEN ROW_NUMBER()OVER(ORDER BY NombreTipoLugarCarga ASC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion ASC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoTipoLugarCargaSunat ASC)         
+  END         
+ ELSE         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoTipoLugarCarga') THEN ROW_NUMBER()OVER(ORDER BY CodigoTipoLugarCarga DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoTipoLugarCargaSunat') THEN ROW_NUMBER()OVER(ORDER BY CodigoTipoLugarCargaSunat DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreTipoLugarCarga') THEN ROW_NUMBER()OVER(ORDER BY NombreTipoLugarCarga DESC)       
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion DESC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoTipoLugarCargaSunat DESC)        
+  END         
+ END AS [NROORDEN],         
+ CodigoTipoLugarCarga, 
+ CodigoTipoLugarCargaSunat, 
+ NombreTipoLugarCarga,        
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion         
+ FROM @dtTipoLugarCarga         
+ )Info         
+ WHERE         
+   [NROORDEN] = CASE WHEN (@PaginaActual is null)THEN [NROORDEN] ELSE -1 END         
+   OR [NROORDEN] BETWEEN @vInicio AND @vFin         
+   ORDER BY         
+   [NROORDEN] ASC;         
+           
+ SELECT  @TotalRegistros = count(1),         
+   @CantidadPaginas =  CASE WHEN @NroRegistrosPorPagina is null THEN 1         
+   ELSE CAST(CEILING(count(1)/CAST(@NroRegistrosPorPagina as float)) as int)         
+   END          
+ FROM @dtTipoLugarCarga              
+END
+
+GO
+
+-- EXEC USP_REGISTRAR_MEDIOTRANSPORTE NULL,10,'MEDIO 1','JAV','I'
+-- EXEC USP_REGISTRAR_MEDIOTRANSPORTE 7,9,'OTRAS','HEC','U'
+-- EXEC USP_REGISTRAR_MEDIOTRANSPORTE 7,9,'LUGAR CARGA 3','HEC','D'
+CREATE PROCEDURE [dbo].[USP_REGISTRAR_MEDIOTRANSPORTE]
+  (
+	@CodigoMedioTransporte BIGINT=NULL,
+	@CodigoMedioTransporteSunat TINYINT=NULL,
+	@NombreMedioTransporte VARCHAR(100)=NULL,
+	@UsuarioRegistro VARCHAR(100)=NULL,
+	@Accion VARCHAR(1)=NULL
+  )
+  AS
+BEGIN TRY 
+	IF @Accion = 'I'
+	BEGIN
+		IF EXISTS(SELECT CodigoMedioTransporte FROM dbo.MedioTransporte (NOLOCK) 
+		WHERE CodigoMedioTransporteSunat = @CodigoMedioTransporteSunat AND EstadoRegistro = 1)
+		OR EXISTS(SELECT CodigoMedioTransporte FROM dbo.MedioTransporte (NOLOCK) 
+		WHERE RTRIM(LTRIM(NombreMedioTransporte)) = RTRIM(LTRIM(@NombreMedioTransporte)) AND EstadoRegistro = 1)
+		BEGIN
+		-- Controlar Errores y enviar al Servicio
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código o nombre del Medio de Transporte ya se encuentra registrado' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			INSERT dbo.MedioTransporte
+			        ( CodigoMedioTransporteSunat,
+			          NombreMedioTransporte,
+			          UsuarioCreacion
+			        )
+			VALUES  ( @CodigoMedioTransporteSunat, 
+			          @NombreMedioTransporte,
+			          @UsuarioRegistro
+			        )
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se registró Medio de Transporte satisfactoriamente' AS Mensaje
+		END 
+	END
+	
+	IF @Accion = 'U'
+	BEGIN
+		IF NOT EXISTS(SELECT CodigoMedioTransporte FROM dbo.MedioTransporte (NOLOCK) 
+			WHERE CodigoMedioTransporte = @CodigoMedioTransporte AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código del Medio de Transporte no existe, no se puede actualizar' AS Mensaje
+		END
+		ELSE IF EXISTS(SELECT CodigoMedioTransporte FROM dbo.MedioTransporte (NOLOCK) 
+		WHERE CodigoMedioTransporteSunat = @CodigoMedioTransporteSunat AND EstadoRegistro = 1 AND CodigoMedioTransporte <> @CodigoMedioTransporte)
+		OR EXISTS(SELECT CodigoMedioTransporte FROM dbo.MedioTransporte (NOLOCK) 
+		WHERE RTRIM(LTRIM(NombreMedioTransporte)) = RTRIM(LTRIM(@NombreMedioTransporte)) 
+		AND EstadoRegistro = 1 AND CodigoMedioTransporte <> @CodigoMedioTransporte)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código o nombre del Medio de Transporte ya se encuentra registrado, no se puede actualizar' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			UPDATE dbo.MedioTransporte SET 
+			CodigoMedioTransporteSunat = @CodigoMedioTransporteSunat,
+			NombreMedioTransporte = @NombreMedioTransporte,
+			UsuarioActualizacion = @UsuarioRegistro,
+			FechaHoraActualizacion = GETDATE()
+			WHERE CodigoMedioTransporte = @CodigoMedioTransporte
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se Actualizó Medio de Transporte satisfactoriamente' AS Mensaje
+		END
+	END
+	
+	IF @Accion = 'D'
+	BEGIN
+		IF NOT EXISTS(SELECT CodigoMedioTransporte FROM dbo.MedioTransporte (NOLOCK) 
+			WHERE CodigoMedioTransporte = @CodigoMedioTransporte AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de Medio de Transporte no existe, No se puede Anular' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			UPDATE dbo.MedioTransporte SET
+			EstadoRegistro = 0, 
+			UsuarioActualizacion = @UsuarioRegistro,
+			FechaHoraActualizacion = GETDATE()
+			WHERE CodigoMedioTransporte = @CodigoMedioTransporte
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se anuló Medio de Transporte satisfactoriamente' AS Mensaje
+		END
+	END
+END TRY
+BEGIN CATCH
+	SELECT dbo.Funcion_TipoMensaje(3) AS CodigoMensaje,ISNULL(ERROR_MESSAGE(),'Ocurrio un error interno') AS Mensaje
+END CATCH
+
+GO
+
+-- EXEC USP_CONSULTAR_MEDIOTRANSPORTE NULL,NULL,NULL,NULL,NULL,NULL,300,NULL,NULL
+CREATE PROCEDURE [dbo].[USP_CONSULTAR_MEDIOTRANSPORTE]       
+ (        
+  @CodigoMedioTransporte BIGINT=NULL,
+  @CodigoMedioTransporteSunat TINYINT=NULL,
+  @NombreMedioTransporte VARCHAR(100)=NULL,     
+  @OrdenCampo VARCHAR(50)=NULL   
+ ,@OrdenOrientacion VARCHAR(4)=NULL         
+ ,@PaginaActual INT=1         
+ ,@NroRegistrosPorPagina INT=10         
+ ,@TotalRegistros INT OUTPUT         
+ ,@CantidadPaginas INT OUTPUT         
+ )         
+ AS         
+ BEGIN         
+  
+ DECLARE @vInicio int, @vFin INT,@vNumeroSerie int 
+
+ DECLARE @dtMedioTransporte AS  
+ TABLE( 
+ CodigoMedioTransporte BIGINT, 
+ CodigoMedioTransporteSunat TINYINT, 
+ NombreMedioTransporte VARCHAR(100),        
+ UsuarioCreacion VARCHAR(100),         
+ FechaHoraCreacion DATETIME,         
+ UsuarioActualizacion VARCHAR(100),         
+ FechaHoraActualizacion DATETIME)         
+
+ IF @PaginaActual IS NULL SET @PaginaActual = 1
+ IF @NroRegistrosPorPagina IS NULL SET @NroRegistrosPorPagina = 10
+ 
+  SET @vInicio = ((@PaginaActual*@NroRegistrosPorPagina-@NroRegistrosPorPagina)+1);         
+  SET @vFin = (@PaginaActual*@NroRegistrosPorPagina) 
+       
+ INSERT INTO @dtMedioTransporte  
+ ( 
+ CodigoMedioTransporte, 
+ CodigoMedioTransporteSunat, 
+ NombreMedioTransporte,        
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion
+ ) 
+ SELECT  
+ CodigoMedioTransporte, 
+ CodigoMedioTransporteSunat, 
+ NombreMedioTransporte,          
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion        
+ FROM dbo.MedioTransporte (NOLOCK)       
+ WHERE  
+ (@CodigoMedioTransporte IS NULL OR CodigoMedioTransporte=@CodigoMedioTransporte) AND
+ (@CodigoMedioTransporteSunat IS NULL OR CodigoMedioTransporteSunat=@CodigoMedioTransporteSunat) AND
+ (@NombreMedioTransporte IS NULL OR NombreMedioTransporte LIKE '%' + @NombreMedioTransporte + '%') AND
+ EstadoRegistro=1 
+        
+ SELECT         
+ CodigoMedioTransporte, 
+ CodigoMedioTransporteSunat, 
+ NombreMedioTransporte,       
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion        
+ FROM (         
+ SELECT          
+ CASE WHEN UPPER(@OrdenOrientacion)='ASC' OR @OrdenOrientacion IS NULL THEN         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoMedioTransporte') THEN ROW_NUMBER()OVER(ORDER BY CodigoMedioTransporte ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoMedioTransporteSunat') THEN ROW_NUMBER()OVER(ORDER BY CodigoMedioTransporteSunat ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreMedioTransporte') THEN ROW_NUMBER()OVER(ORDER BY NombreMedioTransporte ASC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion ASC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoMedioTransporteSunat ASC)         
+  END         
+ ELSE         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoMedioTransporte') THEN ROW_NUMBER()OVER(ORDER BY CodigoMedioTransporte DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoMedioTransporteSunat') THEN ROW_NUMBER()OVER(ORDER BY CodigoMedioTransporteSunat DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreMedioTransporte') THEN ROW_NUMBER()OVER(ORDER BY NombreMedioTransporte DESC)       
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion DESC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoMedioTransporteSunat DESC)        
+  END         
+ END AS [NROORDEN],         
+ CodigoMedioTransporte, 
+ CodigoMedioTransporteSunat, 
+ NombreMedioTransporte,        
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion         
+ FROM @dtMedioTransporte         
+ )Info         
+ WHERE         
+   [NROORDEN] = CASE WHEN (@PaginaActual is null)THEN [NROORDEN] ELSE -1 END         
+   OR [NROORDEN] BETWEEN @vInicio AND @vFin         
+   ORDER BY         
+   [NROORDEN] ASC;         
+           
+ SELECT  @TotalRegistros = count(1),         
+   @CantidadPaginas =  CASE WHEN @NroRegistrosPorPagina is null THEN 1         
+   ELSE CAST(CEILING(count(1)/CAST(@NroRegistrosPorPagina as float)) as int)         
+   END          
+ FROM @dtMedioTransporte              
+END
+
+GO
+
+-- EXEC USP_REGISTRAR_TIPONAVE NULL,'1502','TIPO NAVE','JAV','I'
+-- EXEC USP_REGISTRAR_TIPONAVE 12,9,'OTRAS','HEC','U'
+-- EXEC USP_REGISTRAR_TIPONAVE 13,9,'TIPO NAVE','HEC','D'
+CREATE PROCEDURE [dbo].[USP_REGISTRAR_TIPONAVE]
+  (
+	@CodigoTipoNave BIGINT=NULL,
+	@CodigoTipoNaveSunat VARCHAR(4)=NULL,
+	@NombreTipoNave VARCHAR(50)=NULL,
+	@UsuarioRegistro VARCHAR(100)=NULL,
+	@Accion VARCHAR(1)=NULL
+  )
+  AS
+BEGIN TRY 
+	IF @Accion = 'I'
+	BEGIN
+		IF EXISTS(SELECT CodigoTipoNave FROM dbo.TipoNave (NOLOCK) 
+		WHERE CodigoTipoNaveSunat = @CodigoTipoNaveSunat AND EstadoRegistro = 1)
+		OR EXISTS(SELECT CodigoTipoNave FROM dbo.TipoNave (NOLOCK) 
+		WHERE RTRIM(LTRIM(NombreTipoNave)) = RTRIM(LTRIM(@NombreTipoNave)) AND EstadoRegistro = 1)
+		BEGIN
+		-- Controlar Errores y enviar al Servicio
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código o nombre del Tipo de Nave ya se encuentra registrado' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			INSERT dbo.TipoNave
+			        ( CodigoTipoNaveSunat,
+			          NombreTipoNave,
+			          UsuarioCreacion
+			        )
+			VALUES  ( @CodigoTipoNaveSunat, 
+			          @NombreTipoNave,
+			          @UsuarioRegistro
+			        )
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se registró Tipo de Nave satisfactoriamente' AS Mensaje
+		END 
+	END
+	
+	IF @Accion = 'U'
+	BEGIN
+		IF NOT EXISTS(SELECT CodigoTipoNave FROM dbo.TipoNave (NOLOCK) 
+			WHERE CodigoTipoNave = @CodigoTipoNave AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código del Tipo de Nave no existe, no se puede actualizar' AS Mensaje
+		END
+		ELSE IF EXISTS(SELECT CodigoTipoNave FROM dbo.TipoNave (NOLOCK) 
+		WHERE CodigoTipoNaveSunat = @CodigoTipoNaveSunat AND EstadoRegistro = 1 AND CodigoTipoNave <> @CodigoTipoNave)
+		OR EXISTS(SELECT CodigoTipoNave FROM dbo.TipoNave (NOLOCK) 
+		WHERE RTRIM(LTRIM(NombreTipoNave)) = RTRIM(LTRIM(@NombreTipoNave)) 
+		AND EstadoRegistro = 1 AND CodigoTipoNave <> @CodigoTipoNave)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código o nombre del Tipo de Nave ya se encuentra registrado, no se puede actualizar' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			UPDATE dbo.TipoNave SET 
+			CodigoTipoNaveSunat = @CodigoTipoNaveSunat,
+			NombreTipoNave = @NombreTipoNave,
+			UsuarioActualizacion = @UsuarioRegistro,
+			FechaHoraActualizacion = GETDATE()
+			WHERE CodigoTipoNave = @CodigoTipoNave
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se Actualizó Tipo de Nave satisfactoriamente' AS Mensaje
+		END
+	END
+	
+	IF @Accion = 'D'
+	BEGIN
+		IF NOT EXISTS(SELECT CodigoTipoNave FROM dbo.TipoNave (NOLOCK) 
+			WHERE CodigoTipoNave = @CodigoTipoNave AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de Tipo de Nave no existe, No se puede Anular' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			UPDATE dbo.TipoNave SET
+			EstadoRegistro = 0, 
+			UsuarioActualizacion = @UsuarioRegistro,
+			FechaHoraActualizacion = GETDATE()
+			WHERE CodigoTipoNave = @CodigoTipoNave
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se anuló Tipo de Nave satisfactoriamente' AS Mensaje
+		END
+	END
+END TRY
+BEGIN CATCH
+	SELECT dbo.Funcion_TipoMensaje(3) AS CodigoMensaje,ISNULL(ERROR_MESSAGE(),'Ocurrio un error interno') AS Mensaje
+END CATCH
+
+GO	
+
+-- EXEC USP_CONSULTAR_TIPONAVE NULL,NULL,NULL,NULL,NULL,NULL,300,NULL,NULL
+CREATE PROCEDURE [dbo].[USP_CONSULTAR_TIPONAVE]       
+ (        
+  @CodigoTipoNave BIGINT=NULL,
+  @CodigoTipoNaveSunat VARCHAR(4)=NULL,
+  @NombreTipoNave VARCHAR(50)=NULL,    
+  @OrdenCampo VARCHAR(50)=NULL   
+ ,@OrdenOrientacion VARCHAR(4)=NULL         
+ ,@PaginaActual INT=1         
+ ,@NroRegistrosPorPagina INT=10         
+ ,@TotalRegistros INT OUTPUT         
+ ,@CantidadPaginas INT OUTPUT         
+ )         
+ AS         
+ BEGIN         
+  
+ DECLARE @vInicio int, @vFin INT,@vNumeroSerie int 
+
+ DECLARE @dtTipoNave AS  
+ TABLE( 
+ CodigoTipoNave BIGINT, 
+ CodigoTipoNaveSunat VARCHAR(4), 
+ NombreTipoNave VARCHAR(50),        
+ UsuarioCreacion VARCHAR(100),         
+ FechaHoraCreacion DATETIME,         
+ UsuarioActualizacion VARCHAR(100),         
+ FechaHoraActualizacion DATETIME)         
+
+ IF @PaginaActual IS NULL SET @PaginaActual = 1
+ IF @NroRegistrosPorPagina IS NULL SET @NroRegistrosPorPagina = 10
+ 
+  SET @vInicio = ((@PaginaActual*@NroRegistrosPorPagina-@NroRegistrosPorPagina)+1);         
+  SET @vFin = (@PaginaActual*@NroRegistrosPorPagina) 
+       
+ INSERT INTO @dtTipoNave  
+ ( 
+ CodigoTipoNave, 
+ CodigoTipoNaveSunat, 
+ NombreTipoNave,        
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion
+ ) 
+ SELECT  
+ CodigoTipoNave, 
+ CodigoTipoNaveSunat, 
+ NombreTipoNave,           
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion        
+ FROM dbo.TipoNave (NOLOCK)       
+ WHERE  
+ (@CodigoTipoNave IS NULL OR CodigoTipoNave=@CodigoTipoNave) AND
+ (@CodigoTipoNaveSunat IS NULL OR CodigoTipoNaveSunat=@CodigoTipoNaveSunat) AND
+ (@NombreTipoNave IS NULL OR NombreTipoNave LIKE '%' + @NombreTipoNave + '%') AND
+ EstadoRegistro=1 
+        
+ SELECT         
+ CodigoTipoNave, 
+ CodigoTipoNaveSunat, 
+ NombreTipoNave,        
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion        
+ FROM (         
+ SELECT          
+ CASE WHEN UPPER(@OrdenOrientacion)='ASC' OR @OrdenOrientacion IS NULL THEN         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoTipoNave') THEN ROW_NUMBER()OVER(ORDER BY CodigoTipoNave ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoTipoNaveSunat') THEN ROW_NUMBER()OVER(ORDER BY CodigoTipoNaveSunat ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreTipoNave') THEN ROW_NUMBER()OVER(ORDER BY NombreTipoNave ASC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion ASC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoTipoNaveSunat ASC)         
+  END         
+ ELSE         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoTipoNave') THEN ROW_NUMBER()OVER(ORDER BY CodigoTipoNave DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoTipoNaveSunat') THEN ROW_NUMBER()OVER(ORDER BY CodigoTipoNaveSunat DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreTipoNave') THEN ROW_NUMBER()OVER(ORDER BY NombreTipoNave DESC)       
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion DESC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoTipoNaveSunat DESC)        
+  END         
+ END AS [NROORDEN],         
+ CodigoTipoNave, 
+ CodigoTipoNaveSunat, 
+ NombreTipoNave,       
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion         
+ FROM @dtTipoNave         
+ )Info         
+ WHERE         
+   [NROORDEN] = CASE WHEN (@PaginaActual is null)THEN [NROORDEN] ELSE -1 END         
+   OR [NROORDEN] BETWEEN @vInicio AND @vFin         
+   ORDER BY         
+   [NROORDEN] ASC;         
+           
+ SELECT  @TotalRegistros = count(1),         
+   @CantidadPaginas =  CASE WHEN @NroRegistrosPorPagina is null THEN 1         
+   ELSE CAST(CEILING(count(1)/CAST(@NroRegistrosPorPagina as float)) as int)         
+   END          
+ FROM @dtTipoNave              
+END
+
+GO
+
+-- EXEC USP_REGISTRAR_LINEANAVIERA NULL,'LINEA 1','DESCONOCIDA',NULL,'JAV','I'
+-- EXEC USP_REGISTRAR_LINEANAVIERA 114,'LINEA 2','XXX','123','HEC','U'
+-- EXEC USP_REGISTRAR_LINEANAVIERA 114,'LINEA 2','XXX','123','HEC','D'
+CREATE PROCEDURE [dbo].[USP_REGISTRAR_LINEANAVIERA]
+  (
+	@CodigoLineaNaviera BIGINT=NULL,
+	@NombreLineaNaviera VARCHAR(80)=NULL,
+	@DireccionLineaNaviera VARCHAR(150)=NULL,
+	@RucLineaNaviera VARCHAR(11)=NULL,
+	@CodigoEquivalencia VARCHAR(10)=NULL,
+	@UsuarioRegistro VARCHAR(100)=NULL,
+	@Accion VARCHAR(1)=NULL
+  )
+  AS
+BEGIN TRY 
+	IF @Accion = 'I'
+	BEGIN
+		IF EXISTS(SELECT CodigoLineaNaviera FROM dbo.LineaNaviera (NOLOCK) 
+		WHERE RTRIM(LTRIM(NombreLineaNaviera)) = RTRIM(LTRIM(@NombreLineaNaviera)) AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Nombre de la Linea Naviera ya se encuentra registrado' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			INSERT dbo.LineaNaviera
+			        ( NombreLineaNaviera,
+			          DireccionLineaNaviera,
+			          RucLineaNaviera,
+			          CodigoEquivalencia,
+			          UsuarioCreacion
+			        )
+			VALUES  ( @NombreLineaNaviera, 
+			          @DireccionLineaNaviera,
+			          @RucLineaNaviera,
+			          @CodigoEquivalencia,
+			          @UsuarioRegistro
+			        )
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se registró Linea Naviera satisfactoriamente' AS Mensaje
+		END 
+	END
+	
+	IF @Accion = 'U'
+	BEGIN
+		IF NOT EXISTS(SELECT CodigoLineaNaviera FROM dbo.LineaNaviera (NOLOCK) 
+			WHERE CodigoLineaNaviera = @CodigoLineaNaviera AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de Linea Naviera no existe, no se puede actualizar' AS Mensaje
+		END
+		ELSE IF EXISTS(SELECT CodigoLineaNaviera FROM dbo.LineaNaviera (NOLOCK) 
+		WHERE RTRIM(LTRIM(NombreLineaNaviera)) = RTRIM(LTRIM(@NombreLineaNaviera)) 
+		AND EstadoRegistro = 1 AND CodigoLineaNaviera <> @CodigoLineaNaviera)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Nombre de Linea Naviera ya se encuentra registrado, no se puede actualizar' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			UPDATE dbo.LineaNaviera SET 
+			NombreLineaNaviera=@NombreLineaNaviera,
+			DireccionLineaNaviera=@DireccionLineaNaviera,
+			RucLineaNaviera=@RucLineaNaviera,
+			CodigoEquivalencia = @CodigoEquivalencia,
+			UsuarioActualizacion = @UsuarioRegistro,
+			FechaHoraActualizacion = GETDATE()
+			WHERE CodigoLineaNaviera = @CodigoLineaNaviera
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se Actualizó Linea Naviera satisfactoriamente' AS Mensaje
+		END
+	END
+	
+	IF @Accion = 'D'
+	BEGIN
+		IF NOT EXISTS(SELECT CodigoLineaNaviera FROM dbo.LineaNaviera (NOLOCK) 
+			WHERE CodigoLineaNaviera = @CodigoLineaNaviera AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de Linea Naviera no existe, No se puede Anular' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			UPDATE dbo.LineaNaviera SET
+			EstadoRegistro = 0, 
+			UsuarioActualizacion = @UsuarioRegistro,
+			FechaHoraActualizacion = GETDATE()
+			WHERE CodigoLineaNaviera = @CodigoLineaNaviera
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se anuló Linea Naviera satisfactoriamente' AS Mensaje
+		END
+	END
+END TRY
+BEGIN CATCH
+	SELECT dbo.Funcion_TipoMensaje(3) AS CodigoMensaje,ISNULL(ERROR_MESSAGE(),'Ocurrio un error interno') AS Mensaje
+END CATCH
+
+GO
+
+-- EXEC USP_CONSULTAR_LINEANAVIERA NULL,NULL,NULL,NULL,NULL,NULL,300,NULL,NULL
+CREATE PROCEDURE [dbo].[USP_CONSULTAR_LINEANAVIERA]       
+ (        
+  @CodigoLineaNaviera BIGINT=NULL,
+  @NombreLineaNaviera VARCHAR(80)=NULL,
+  @RucLineaNaviera VARCHAR(11)=NULL,  
+  @OrdenCampo VARCHAR(50)=NULL   
+ ,@OrdenOrientacion VARCHAR(4)=NULL         
+ ,@PaginaActual INT=1         
+ ,@NroRegistrosPorPagina INT=10         
+ ,@TotalRegistros INT OUTPUT         
+ ,@CantidadPaginas INT OUTPUT         
+ )         
+ AS         
+ BEGIN         
+  
+ DECLARE @vInicio int, @vFin INT,@vNumeroSerie int 
+
+ DECLARE @dtLineaNaviera AS  
+ TABLE( 
+ CodigoLineaNaviera BIGINT, 
+ NombreLineaNaviera VARCHAR(80),
+ DireccionLineaNaviera VARCHAR(150), 
+ RucLineaNaviera VARCHAR(11),  
+ CodigoEquivalencia VARCHAR(10),      
+ UsuarioCreacion VARCHAR(100),         
+ FechaHoraCreacion DATETIME,         
+ UsuarioActualizacion VARCHAR(100),         
+ FechaHoraActualizacion DATETIME)         
+
+ IF @PaginaActual IS NULL SET @PaginaActual = 1
+ IF @NroRegistrosPorPagina IS NULL SET @NroRegistrosPorPagina = 10
+ 
+  SET @vInicio = ((@PaginaActual*@NroRegistrosPorPagina-@NroRegistrosPorPagina)+1);         
+  SET @vFin = (@PaginaActual*@NroRegistrosPorPagina) 
+       
+ INSERT INTO @dtLineaNaviera  
+ ( 
+ CodigoLineaNaviera, 
+ NombreLineaNaviera, 
+ DireccionLineaNaviera, 
+ RucLineaNaviera,  
+ CodigoEquivalencia,     
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion
+ ) 
+ SELECT  
+ CodigoLineaNaviera, 
+ NombreLineaNaviera, 
+ DireccionLineaNaviera, 
+ RucLineaNaviera,  
+ CodigoEquivalencia,          
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion        
+ FROM dbo.LineaNaviera (NOLOCK)       
+ WHERE  
+ (@CodigoLineaNaviera IS NULL OR CodigoLineaNaviera=@CodigoLineaNaviera) AND
+ (@RucLineaNaviera IS NULL OR RucLineaNaviera=@RucLineaNaviera) AND
+ (@NombreLineaNaviera IS NULL OR NombreLineaNaviera LIKE '%' + @NombreLineaNaviera + '%') AND
+ EstadoRegistro=1 
+        
+ SELECT         
+ CodigoLineaNaviera, 
+ NombreLineaNaviera, 
+ DireccionLineaNaviera, 
+ RucLineaNaviera,  
+ CodigoEquivalencia,      
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion        
+ FROM (         
+ SELECT          
+ CASE WHEN UPPER(@OrdenOrientacion)='ASC' OR @OrdenOrientacion IS NULL THEN         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoLineaNaviera') THEN ROW_NUMBER()OVER(ORDER BY CodigoLineaNaviera ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreLineaNaviera') THEN ROW_NUMBER()OVER(ORDER BY NombreLineaNaviera ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('DireccionLineaNaviera') THEN ROW_NUMBER()OVER(ORDER BY DireccionLineaNaviera ASC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('RucLineaNaviera') THEN ROW_NUMBER()OVER(ORDER BY RucLineaNaviera ASC) 
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoEquivalencia') THEN ROW_NUMBER()OVER(ORDER BY CodigoEquivalencia ASC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion ASC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY NombreLineaNaviera ASC)         
+  END         
+ ELSE         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoLineaNaviera') THEN ROW_NUMBER()OVER(ORDER BY CodigoLineaNaviera DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreLineaNaviera') THEN ROW_NUMBER()OVER(ORDER BY NombreLineaNaviera DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('DireccionLineaNaviera') THEN ROW_NUMBER()OVER(ORDER BY DireccionLineaNaviera DESC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('RucLineaNaviera') THEN ROW_NUMBER()OVER(ORDER BY RucLineaNaviera DESC) 
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoEquivalencia') THEN ROW_NUMBER()OVER(ORDER BY CodigoEquivalencia DESC)       
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion DESC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY NombreLineaNaviera DESC)        
+  END         
+ END AS [NROORDEN],         
+ CodigoLineaNaviera, 
+ NombreLineaNaviera, 
+ DireccionLineaNaviera, 
+ RucLineaNaviera, 
+ CodigoEquivalencia,      
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion         
+ FROM @dtLineaNaviera         
+ )Info         
+ WHERE         
+   [NROORDEN] = CASE WHEN (@PaginaActual is null)THEN [NROORDEN] ELSE -1 END         
+   OR [NROORDEN] BETWEEN @vInicio AND @vFin         
+   ORDER BY         
+   [NROORDEN] ASC;         
+           
+ SELECT  @TotalRegistros = count(1),         
+   @CantidadPaginas =  CASE WHEN @NroRegistrosPorPagina is null THEN 1         
+   ELSE CAST(CEILING(count(1)/CAST(@NroRegistrosPorPagina as float)) as int)         
+   END          
+ FROM @dtLineaNaviera              
+END
+
+GO
+
+-- EXEC USP_REGISTRAR_NAVE NULL,1,1,1,'NAVE 1','123XXX',1.1,2.2,3.3,4.4,5.5,'JAV','I'
+-- EXEC USP_REGISTRAR_NAVE 31,233,2,3,'NAVE 2','123XXX',1.1,2.2,3.3,4.4,5.5,'HEC','U'
+-- EXEC USP_REGISTRAR_NAVE 31,1,1,1,'NAVE 1','123XXX',1.1,2.2,3.3,4.4,5.5,'JAV','D'
+CREATE PROCEDURE [dbo].[USP_REGISTRAR_NAVE]
+  (
+	@CodigoNave BIGINT=NULL,
+	@CodigoPais BIGINT=NULL,
+	@CodigoTipoNave BIGINT=NULL, 
+	@CodigoLineaNaviera BIGINT=NULL,
+    @NombreNave VARCHAR(50)=NULL,  
+	@MatriculaNave VARCHAR(20)=NULL,
+    @TrbNave DECIMAL(15,2)=NULL,
+    @TrnNave DECIMAL(15,2)=NULL,
+    @EsloraNave DECIMAL(15,2)=NULL,
+    @MangaNave DECIMAL(15,2)=NULL,     
+    @CaladoNave DECIMAL(15,2)=NULL,
+	@UsuarioRegistro VARCHAR(100)=NULL,
+	@Accion VARCHAR(1)=NULL
+  )
+  AS
+BEGIN TRY 
+	IF @Accion = 'I'
+	BEGIN
+		IF EXISTS(SELECT CodigoNave FROM dbo.Nave (NOLOCK) 
+		WHERE RTRIM(LTRIM(NombreNave)) = RTRIM(LTRIM(@NombreNave)) AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Nombre de la Nave ya se encuentra registrado' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			INSERT dbo.Nave
+			        (	CodigoPais,
+						CodigoTipoNave, 
+						CodigoLineaNaviera,
+						NombreNave,  
+						MatriculaNave,
+						TrbNave,
+						TrnNave,
+						EsloraNave,
+						MangaNave,     
+						CaladoNave,
+			            UsuarioCreacion
+			        )
+			VALUES  (   @CodigoPais,
+						@CodigoTipoNave, 
+						@CodigoLineaNaviera,
+						@NombreNave,  
+						@MatriculaNave,
+						@TrbNave,
+						@TrnNave,
+						@EsloraNave,
+						@MangaNave,     
+						@CaladoNave,
+			            @UsuarioRegistro
+			        )
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se registró Nave satisfactoriamente' AS Mensaje
+		END 
+	END
+	
+	IF @Accion = 'U'
+	BEGIN
+		IF NOT EXISTS(SELECT CodigoNave FROM dbo.Nave (NOLOCK) 
+			WHERE CodigoNave = @CodigoNave AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de Nave no existe, no se puede actualizar' AS Mensaje
+		END
+		ELSE IF EXISTS(SELECT CodigoNave FROM dbo.Nave (NOLOCK) 
+		WHERE RTRIM(LTRIM(NombreNave)) = RTRIM(LTRIM(@NombreNave)) 
+		AND EstadoRegistro = 1 AND CodigoNave <> @CodigoNave)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Nombre de Nave ya se encuentra registrado, no se puede actualizar' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			UPDATE dbo.Nave SET 
+			CodigoPais=@CodigoPais,
+			CodigoTipoNave=@CodigoTipoNave, 
+			CodigoLineaNaviera=@CodigoLineaNaviera,
+			NombreNave=@NombreNave,  
+			MatriculaNave=@MatriculaNave,
+			TrbNave=@TrbNave,
+			TrnNave=@TrnNave,
+			EsloraNave=@EsloraNave,
+			MangaNave=@MangaNave,     
+			CaladoNave=@CaladoNave,
+			UsuarioActualizacion = @UsuarioRegistro,
+			FechaHoraActualizacion = GETDATE()
+			WHERE CodigoNave = @CodigoNave
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se Actualizó Nave satisfactoriamente' AS Mensaje
+		END
+	END
+	
+	IF @Accion = 'D'
+	BEGIN
+		IF NOT EXISTS(SELECT CodigoNave FROM dbo.Nave (NOLOCK) 
+			WHERE CodigoNave = @CodigoNave AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de Nave no existe, No se puede Anular' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			UPDATE dbo.Nave SET
+			EstadoRegistro = 0, 
+			UsuarioActualizacion = @UsuarioRegistro,
+			FechaHoraActualizacion = GETDATE()
+			WHERE CodigoNave = @CodigoNave
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se anuló Nave satisfactoriamente' AS Mensaje
+		END
+	END
+END TRY
+BEGIN CATCH
+	SELECT dbo.Funcion_TipoMensaje(3) AS CodigoMensaje,ISNULL(ERROR_MESSAGE(),'Ocurrio un error interno') AS Mensaje
+END CATCH
+
+GO
+
+-- EXEC USP_CONSULTAR_NAVE NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,300,NULL,NULL
+CREATE PROCEDURE [dbo].[USP_CONSULTAR_NAVE]       
+ (        
+  @CodigoNave BIGINT=NULL,
+  @CodigoPais BIGINT=NULL,
+  @CodigoTipoNave BIGINT=NULL, 
+  @CodigoLineaNaviera BIGINT=NULL,
+  @NombreNave VARCHAR(50)=NULL, 
+  @OrdenCampo VARCHAR(50)=NULL   
+ ,@OrdenOrientacion VARCHAR(4)=NULL         
+ ,@PaginaActual INT=1         
+ ,@NroRegistrosPorPagina INT=10         
+ ,@TotalRegistros INT OUTPUT         
+ ,@CantidadPaginas INT OUTPUT         
+ )         
+ AS         
+ BEGIN         
+  
+ DECLARE @vInicio int, @vFin INT,@vNumeroSerie int 
+
+ DECLARE @dtNave AS  
+ TABLE( 
+ CodigoNave BIGINT,
+ CodigoPais BIGINT,
+ NombrePais VARCHAR(150),
+ CodigoTipoNave BIGINT,
+ NombreTipoNave VARCHAR(50), 
+ CodigoLineaNaviera BIGINT,
+ NombreLineaNaviera VARCHAR(80),
+ NombreNave VARCHAR(50) NOT NULL, 
+ MatriculaNave VARCHAR(20) NOT NULL,
+ TrbNave DECIMAL(15,2) NULL,
+ TrnNave DECIMAL(15,2) NULL,
+ EsloraNave DECIMAL(15,2) NULL,
+ MangaNave DECIMAL(15,2) NULL,
+ CaladoNave DECIMAL(15,2) NULL,    
+ UsuarioCreacion VARCHAR(100),         
+ FechaHoraCreacion DATETIME,         
+ UsuarioActualizacion VARCHAR(100),         
+ FechaHoraActualizacion DATETIME)         
+
+ IF @PaginaActual IS NULL SET @PaginaActual = 1
+ IF @NroRegistrosPorPagina IS NULL SET @NroRegistrosPorPagina = 10
+ 
+  SET @vInicio = ((@PaginaActual*@NroRegistrosPorPagina-@NroRegistrosPorPagina)+1);         
+  SET @vFin = (@PaginaActual*@NroRegistrosPorPagina) 
+       
+ INSERT INTO @dtNave  
+ ( 
+ CodigoNave, 
+ NombreNave,
+ CodigoPais,
+ NombrePais, 
+ CodigoTipoNave,
+ NombreTipoNave,
+ CodigoLineaNaviera, 
+ NombreLineaNaviera,  
+ MatriculaNave,
+ TrbNave,
+ TrnNave,
+ EsloraNave,
+ MangaNave,
+ CaladoNave,     
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion
+ ) 
+ SELECT  
+ CodigoNave, 
+ NombreNave,
+ a.CodigoPais, 
+ b.NombrePais,
+ a.CodigoTipoNave, 
+ c.NombreTipoNave, 
+ a.CodigoLineaNaviera,
+ d.NombreLineaNaviera,  
+ MatriculaNave,
+ TrbNave,
+ TrnNave,
+ EsloraNave,
+ MangaNave,
+ CaladoNave,          
+ a.UsuarioCreacion,         
+ a.FechaHoraCreacion,         
+ a.UsuarioActualizacion,         
+ a.FechaHoraActualizacion        
+ FROM dbo.Nave a (NOLOCK) JOIN dbo.Pais b (NOLOCK) ON a.CodigoPais = b.CodigoPais
+ JOIN dbo.TipoNave c (NOLOCK) ON a.CodigoTipoNave = c.CodigoTipoNave  
+ JOIN dbo.LineaNaviera d (NOLOCK) ON a.CodigoLineaNaviera = d.CodigoLineaNaviera   
+ WHERE  
+ (@CodigoNave IS NULL OR a.CodigoNave=@CodigoNave) AND
+ (@CodigoPais IS NULL OR b.CodigoPais=@CodigoPais) AND
+ (@CodigoTipoNave IS NULL OR c.CodigoTipoNave=@CodigoTipoNave) AND
+ (@CodigoLineaNaviera IS NULL OR d.CodigoLineaNaviera=@CodigoLineaNaviera) AND
+ (@NombreNave IS NULL OR NombreNave LIKE '%' + @NombreNave + '%') AND
+  a.EstadoRegistro=1 
+        
+ SELECT         
+ CodigoNave, 
+ NombreNave,
+ CodigoPais,
+ NombrePais, 
+ CodigoTipoNave,
+ NombreTipoNave,
+ CodigoLineaNaviera, 
+ NombreLineaNaviera,
+ MatriculaNave,
+ TrbNave,
+ TrnNave,
+ EsloraNave,
+ MangaNave,
+ CaladoNave,                 
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion        
+ FROM (         
+ SELECT          
+ CASE WHEN UPPER(@OrdenOrientacion)='ASC' OR @OrdenOrientacion IS NULL THEN         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoNave') THEN ROW_NUMBER()OVER(ORDER BY CodigoNave ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreNave') THEN ROW_NUMBER()OVER(ORDER BY NombreNave ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombrePais') THEN ROW_NUMBER()OVER(ORDER BY NombrePais ASC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreTipoNave') THEN ROW_NUMBER()OVER(ORDER BY NombreTipoNave ASC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreLineaNaviera') THEN ROW_NUMBER()OVER(ORDER BY NombreLineaNaviera ASC)   
+   WHEN  UPPER(@OrdenCampo) = UPPER('MatriculaNave') THEN ROW_NUMBER()OVER(ORDER BY MatriculaNave ASC)   
+   WHEN  UPPER(@OrdenCampo) = UPPER('TrbNave') THEN ROW_NUMBER()OVER(ORDER BY TrbNave ASC)   
+   WHEN  UPPER(@OrdenCampo) = UPPER('TrnNave') THEN ROW_NUMBER()OVER(ORDER BY TrnNave ASC)   
+   WHEN  UPPER(@OrdenCampo) = UPPER('EsloraNave') THEN ROW_NUMBER()OVER(ORDER BY EsloraNave ASC)   
+   WHEN  UPPER(@OrdenCampo) = UPPER('MangaNave') THEN ROW_NUMBER()OVER(ORDER BY MangaNave ASC)   
+   WHEN  UPPER(@OrdenCampo) = UPPER('CaladoNave') THEN ROW_NUMBER()OVER(ORDER BY CaladoNave ASC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion ASC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY NombreNave ASC)         
+  END         
+ ELSE         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoNave') THEN ROW_NUMBER()OVER(ORDER BY CodigoNave DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreNave') THEN ROW_NUMBER()OVER(ORDER BY NombreNave DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombrePais') THEN ROW_NUMBER()OVER(ORDER BY NombrePais DESC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreTipoNave') THEN ROW_NUMBER()OVER(ORDER BY NombreTipoNave DESC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreLineaNaviera') THEN ROW_NUMBER()OVER(ORDER BY NombreLineaNaviera DESC) 
+   WHEN  UPPER(@OrdenCampo) = UPPER('MatriculaNave') THEN ROW_NUMBER()OVER(ORDER BY MatriculaNave DESC)   
+   WHEN  UPPER(@OrdenCampo) = UPPER('TrbNave') THEN ROW_NUMBER()OVER(ORDER BY TrbNave DESC)   
+   WHEN  UPPER(@OrdenCampo) = UPPER('TrnNave') THEN ROW_NUMBER()OVER(ORDER BY TrnNave DESC)   
+   WHEN  UPPER(@OrdenCampo) = UPPER('EsloraNave') THEN ROW_NUMBER()OVER(ORDER BY EsloraNave DESC)   
+   WHEN  UPPER(@OrdenCampo) = UPPER('MangaNave') THEN ROW_NUMBER()OVER(ORDER BY MangaNave DESC)   
+   WHEN  UPPER(@OrdenCampo) = UPPER('CaladoNave') THEN ROW_NUMBER()OVER(ORDER BY CaladoNave DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion DESC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY NombreNave DESC)        
+  END         
+ END AS [NROORDEN],         
+ CodigoNave, 
+ NombreNave,
+ CodigoPais,
+ NombrePais, 
+ CodigoTipoNave,
+ NombreTipoNave,
+ CodigoLineaNaviera, 
+ NombreLineaNaviera, 
+ MatriculaNave,
+ TrbNave,
+ TrnNave,
+ EsloraNave,
+ MangaNave,
+ CaladoNave,             
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion         
+ FROM @dtNave         
+ )Info         
+ WHERE         
+   [NROORDEN] = CASE WHEN (@PaginaActual is null)THEN [NROORDEN] ELSE -1 END         
+   OR [NROORDEN] BETWEEN @vInicio AND @vFin         
+   ORDER BY         
+   [NROORDEN] ASC;         
+           
+ SELECT  @TotalRegistros = count(1),         
+   @CantidadPaginas =  CASE WHEN @NroRegistrosPorPagina is null THEN 1         
+   ELSE CAST(CEILING(count(1)/CAST(@NroRegistrosPorPagina as float)) as int)         
+   END          
+ FROM @dtNave             
+END
+
+GO
+-- EXEC USP_REGISTRAR_TIPODOCUMENTO NULL,10,'TIPO DOC 1','JAV','I'
+-- EXEC USP_REGISTRAR_TIPODOCUMENTO 9,11,'TIPO DOC 2','HEC','U'
+-- EXEC USP_REGISTRAR_TIPODOCUMENTO 9,11,'TIPO DOC 2','JAV','D'
+CREATE PROCEDURE [dbo].[USP_REGISTRAR_TIPODOCUMENTO]
+  (
+	@CodigoTipoDocumento BIGINT=NULL,
+	@CodigoTipoDocumentoSunat SMALLINT=NULL,
+    @NombreTipoDocumento VARCHAR(50)=NULL,
+	@UsuarioRegistro VARCHAR(100)=NULL,
+	@Accion VARCHAR(1)=NULL
+  )
+  AS
+BEGIN TRY 
+	IF @Accion = 'I'
+	BEGIN
+		IF EXISTS(SELECT CodigoTipoDocumento FROM dbo.TipoDocumento (NOLOCK) 
+		WHERE CodigoTipoDocumentoSunat = @CodigoTipoDocumentoSunat AND EstadoRegistro = 1)
+		OR EXISTS(SELECT CodigoTipoDocumento FROM dbo.TipoDocumento (NOLOCK) 
+		WHERE RTRIM(LTRIM(NombreTipoDocumento)) = RTRIM(LTRIM(@NombreTipoDocumento)) AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código o nombre de Tipo de Documento ya se encuentra registrado' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			INSERT dbo.TipoDocumento
+			        ( CodigoTipoDocumentoSunat ,
+			          NombreTipoDocumento ,
+			          UsuarioCreacion
+			        )
+			VALUES  ( @CodigoTipoDocumentoSunat , 
+			          @NombreTipoDocumento,
+			          @UsuarioRegistro
+			        )
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se registró Tipo de Documento satisfactoriamente' AS Mensaje
+		END 
+	END
+	
+	IF @Accion = 'U'
+	BEGIN
+		IF NOT EXISTS(SELECT CodigoTipoDocumento FROM dbo.TipoDocumento (NOLOCK) 
+			WHERE CodigoTipoDocumento = @CodigoTipoDocumento AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de Tipo de Documento no existe, no se puede actualizar' AS Mensaje
+		END
+		ELSE IF EXISTS(SELECT CodigoTipoDocumento FROM dbo.TipoDocumento (NOLOCK) 
+		WHERE CodigoTipoDocumentoSunat = @CodigoTipoDocumentoSunat AND EstadoRegistro = 1 AND CodigoTipoDocumento <> @CodigoTipoDocumento)
+		OR EXISTS(SELECT CodigoTipoDocumento FROM dbo.TipoDocumento (NOLOCK) 
+		WHERE RTRIM(LTRIM(NombreTipoDocumento)) = RTRIM(LTRIM(@NombreTipoDocumento)) AND EstadoRegistro = 1 AND CodigoTipoDocumento <> @CodigoTipoDocumento)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código o nombre de Tipo de Documento ya se encuentra registrado, no se puede actualizar' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			UPDATE dbo.TipoDocumento SET 
+			CodigoTipoDocumentoSunat = @CodigoTipoDocumentoSunat,
+			NombreTipoDocumento = @NombreTipoDocumento,
+			UsuarioActualizacion = @UsuarioRegistro,
+			FechaHoraActualizacion = GETDATE()
+			WHERE CodigoTipoDocumento = @CodigoTipoDocumento
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se Actualizó Tipo de Documento satisfactoriamente' AS Mensaje
+		END
+	END
+	
+	IF @Accion = 'D'
+	BEGIN
+		IF NOT EXISTS(SELECT CodigoTipoDocumento FROM dbo.TipoDocumento (NOLOCK) 
+			WHERE CodigoTipoDocumento = @CodigoTipoDocumento AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de Tipo de Documento no existe, No se puede Anular' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			UPDATE dbo.TipoDocumento SET
+			EstadoRegistro = 0, 
+			UsuarioActualizacion = @UsuarioRegistro,
+			FechaHoraActualizacion = GETDATE()
+			WHERE CodigoTipoDocumento = @CodigoTipoDocumento
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se anuló Pais satisfactoriamente' AS Mensaje
+		END
+	END
+END TRY
+BEGIN CATCH
+	SELECT dbo.Funcion_TipoMensaje(3) AS CodigoMensaje,ISNULL(ERROR_MESSAGE(),'Ocurrio un error interno') AS Mensaje
+END CATCH
+
+GO
+
+-- EXEC USP_CONSULTAR_TIPODOCUMENTO NULL,NULL,NULL,NULL,NULL,NULL,300,NULL,NULL
+CREATE PROCEDURE [dbo].[USP_CONSULTAR_TIPODOCUMENTO]       
+ (        
+  @CodigoTipoDocumento BIGINT=NULL,
+  @CodigoTipoDocumentoSunat SMALLINT=NULL,
+  @NombreTipoDocumento VARCHAR(50)=NULL      
+ ,@OrdenCampo VARCHAR(50)=NULL   
+ ,@OrdenOrientacion VARCHAR(4)=NULL         
+ ,@PaginaActual INT=1         
+ ,@NroRegistrosPorPagina INT=10         
+ ,@TotalRegistros INT OUTPUT         
+ ,@CantidadPaginas INT OUTPUT         
+ )         
+ AS         
+ BEGIN         
+  
+ DECLARE @vInicio int, @vFin INT,@vNumeroSerie int 
+
+ DECLARE @dtTipoDocumento AS  
+ TABLE( 
+ CodigoTipoDocumento BIGINT, 
+ CodigoTipoDocumentoSunat SMALLINT, 
+ NombreTipoDocumento VARCHAR(50),          
+ UsuarioCreacion VARCHAR(100),         
+ FechaHoraCreacion DATETIME,         
+ UsuarioActualizacion VARCHAR(100),         
+ FechaHoraActualizacion DATETIME)         
+
+ IF @PaginaActual IS NULL SET @PaginaActual = 1
+ IF @NroRegistrosPorPagina IS NULL SET @NroRegistrosPorPagina = 10
+ 
+  set @vInicio = ((@PaginaActual*@NroRegistrosPorPagina-@NroRegistrosPorPagina)+1);         
+  set @vFin = (@PaginaActual*@NroRegistrosPorPagina);          
+           
+            
+ INSERT INTO @dtTipoDocumento  
+ ( 
+ CodigoTipoDocumento, 
+ CodigoTipoDocumentoSunat, 
+ NombreTipoDocumento,        
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion
+ ) 
+ SELECT  
+ CodigoTipoDocumento, 
+ CodigoTipoDocumentoSunat, 
+ NombreTipoDocumento,          
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion        
+ FROM dbo.TipoDocumento (NOLOCK)       
+ WHERE  
+ (@CodigoTipoDocumento IS NULL OR CodigoTipoDocumento=@CodigoTipoDocumento) AND
+ (@CodigoTipoDocumentoSunat IS NULL OR CodigoTipoDocumentoSunat=@CodigoTipoDocumentoSunat) AND
+ (@NombreTipoDocumento IS NULL OR NombreTipoDocumento LIKE '%' + @NombreTipoDocumento + '%') AND
+ EstadoRegistro=1 
+        
+ SELECT         
+ CodigoTipoDocumento, 
+ CodigoTipoDocumentoSunat, 
+ NombreTipoDocumento,          
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion        
+ FROM (         
+ SELECT          
+ CASE WHEN UPPER(@OrdenOrientacion)='ASC' OR @OrdenOrientacion IS NULL THEN         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoTipoDocumento') THEN ROW_NUMBER()OVER(ORDER BY CodigoTipoDocumento ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoTipoDocumentoSunat') THEN ROW_NUMBER()OVER(ORDER BY CodigoTipoDocumentoSunat ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreTipoDocumento') THEN ROW_NUMBER()OVER(ORDER BY NombreTipoDocumento ASC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion ASC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoTipoDocumentoSunat ASC)         
+  END         
+ ELSE         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoTipoDocumento') THEN ROW_NUMBER()OVER(ORDER BY CodigoTipoDocumento DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoTipoDocumentoSunat') THEN ROW_NUMBER()OVER(ORDER BY CodigoTipoDocumentoSunat DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreTipoDocumento') THEN ROW_NUMBER()OVER(ORDER BY NombreTipoDocumento DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion DESC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoTipoDocumentoSunat DESC)        
+  END         
+ END AS [NROORDEN],         
+ CodigoTipoDocumento, 
+ CodigoTipoDocumentoSunat, 
+ NombreTipoDocumento,        
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion         
+ FROM @dtTipoDocumento         
+ )Info         
+ WHERE         
+   [NROORDEN] = CASE WHEN (@PaginaActual is null)THEN [NROORDEN] ELSE -1 END         
+   OR [NROORDEN] BETWEEN @vInicio AND @vFin         
+   ORDER BY         
+   [NROORDEN] ASC;         
+           
+ SELECT  @TotalRegistros = count(1),         
+   @CantidadPaginas =  CASE WHEN @NroRegistrosPorPagina is null THEN 1         
+   ELSE CAST(CEILING(count(1)/CAST(@NroRegistrosPorPagina as float)) as int)         
+   END          
+ FROM @dtTipoDocumento        
+            
+END
+
+GO
+
+CREATE PROCEDURE USP_LISTAR_ROLES
+AS
+BEGIN
+	SELECT CodigoRol,CodigoRolSunat,NombreRol FROM dbo.Rol (NOLOCK) WHERE EstadoRegistro = 1 
+END
+
+GO
+-- EXEC USP_REGISTRAR_ROL NULL,'X1','CONSIGNATARIO 2','JAV','I'
+-- EXEC USP_REGISTRAR_ROL 15,'X1','CONSIGNATARIO 3','HEC','U'
+-- EXEC USP_REGISTRAR_ROL 15,'X1','CONSIGNATARIO 3','JAV','D'
+CREATE PROCEDURE [dbo].[USP_REGISTRAR_ROL]
+  (
+	@CodigoRol BIGINT=NULL,
+	@CodigoRolSunat VARCHAR(2)=NULL,
+    @NombreRol VARCHAR(50)=NULL,
+	@UsuarioRegistro VARCHAR(100)=NULL,
+	@Accion VARCHAR(1)=NULL
+  )
+  AS
+BEGIN TRY 
+	IF @Accion = 'I'
+	BEGIN
+		IF EXISTS(SELECT CodigoRol FROM dbo.Rol (NOLOCK) 
+		WHERE CodigoRolSunat = @CodigoRolSunat AND EstadoRegistro = 1)
+		OR EXISTS(SELECT CodigoRol FROM dbo.Rol (NOLOCK) 
+		WHERE RTRIM(LTRIM(NombreRol)) = RTRIM(LTRIM(@NombreRol)) AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código o nombre de Rol ya se encuentra registrado' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			INSERT dbo.Rol
+			        ( CodigoRolSunat ,
+			          NombreRol ,
+			          UsuarioCreacion
+			        )
+			VALUES  ( @CodigoRolSunat , 
+			          @NombreRol,
+			          @UsuarioRegistro
+			        )
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se registró Rol satisfactoriamente' AS Mensaje
+		END 
+	END
+	
+	IF @Accion = 'U'
+	BEGIN
+		IF NOT EXISTS(SELECT CodigoRol FROM dbo.Rol (NOLOCK) 
+			WHERE CodigoRol = @CodigoRol AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de Rol no existe, no se puede actualizar' AS Mensaje
+		END
+		ELSE IF EXISTS(SELECT CodigoRol FROM dbo.Rol (NOLOCK) 
+		WHERE CodigoRolSunat = @CodigoRolSunat AND EstadoRegistro = 1 AND CodigoRol <> @CodigoRol)
+		OR EXISTS(SELECT CodigoRol FROM dbo.Rol (NOLOCK) 
+		WHERE RTRIM(LTRIM(NombreRol)) = RTRIM(LTRIM(@NombreRol)) 
+		AND EstadoRegistro = 1 AND CodigoRol <> @CodigoRol)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código o nombre de Rol ya se encuentra registrado, no se puede actualizar' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			UPDATE dbo.Rol SET 
+			CodigoRolSunat = @CodigoRolSunat,
+			NombreRol = @NombreRol,
+			UsuarioActualizacion = @UsuarioRegistro,
+			FechaHoraActualizacion = GETDATE()
+			WHERE CodigoRol = @CodigoRol
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se Actualizó Rol satisfactoriamente' AS Mensaje
+		END
+	END
+	
+	IF @Accion = 'D'
+	BEGIN
+		IF NOT EXISTS(SELECT CodigoRol FROM dbo.Rol (NOLOCK) 
+			WHERE CodigoRol = @CodigoRol AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de Rol no existe, No se puede Anular' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			UPDATE dbo.Rol SET
+			EstadoRegistro = 0, 
+			UsuarioActualizacion = @UsuarioRegistro,
+			FechaHoraActualizacion = GETDATE()
+			WHERE CodigoRol = @CodigoRol
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se anuló Rol satisfactoriamente' AS Mensaje
+		END
+	END
+END TRY
+BEGIN CATCH
+	SELECT dbo.Funcion_TipoMensaje(3) AS CodigoMensaje,ISNULL(ERROR_MESSAGE(),'Ocurrio un error interno') AS Mensaje
+END CATCH
+
+GO
+
+-- EXEC USP_CONSULTAR_ROL NULL,NULL,NULL,NULL,NULL,NULL,300,NULL,NULL
+CREATE PROCEDURE [dbo].[USP_CONSULTAR_ROL]       
+ (        
+  @CodigoRol BIGINT=NULL,
+  @CodigoRolSunat VARCHAR(2)=NULL,
+  @NombreRol VARCHAR(50)=NULL    
+ ,@OrdenCampo VARCHAR(50)=NULL   
+ ,@OrdenOrientacion VARCHAR(4)=NULL         
+ ,@PaginaActual INT=1         
+ ,@NroRegistrosPorPagina INT=10         
+ ,@TotalRegistros INT OUTPUT         
+ ,@CantidadPaginas INT OUTPUT         
+ )         
+ AS         
+ BEGIN         
+  
+ DECLARE @vInicio int, @vFin INT,@vNumeroSerie int 
+
+ DECLARE @dtRol AS  
+ TABLE( 
+ CodigoRol BIGINT, 
+ CodigoRolSunat VARCHAR(2), 
+ NombreRol VARCHAR(50),          
+ UsuarioCreacion VARCHAR(100),         
+ FechaHoraCreacion DATETIME,         
+ UsuarioActualizacion VARCHAR(100),         
+ FechaHoraActualizacion DATETIME)         
+
+ IF @PaginaActual IS NULL SET @PaginaActual = 1
+ IF @NroRegistrosPorPagina IS NULL SET @NroRegistrosPorPagina = 10
+ 
+  set @vInicio = ((@PaginaActual*@NroRegistrosPorPagina-@NroRegistrosPorPagina)+1);         
+  set @vFin = (@PaginaActual*@NroRegistrosPorPagina);          
+           
+            
+ INSERT INTO @dtRol  
+ ( 
+ CodigoRol, 
+ CodigoRolSunat, 
+ NombreRol,        
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion
+ ) 
+ SELECT  
+ CodigoRol, 
+ CodigoRolSunat, 
+ NombreRol,          
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion        
+ FROM dbo.Rol (NOLOCK)       
+ WHERE  
+ (@CodigoRol IS NULL OR CodigoRol=@CodigoRol) AND
+ (@CodigoRolSunat IS NULL OR CodigoRolSunat=@CodigoRolSunat) AND
+ (@NombreRol IS NULL OR NombreRol LIKE '%' + @NombreRol + '%') AND
+ EstadoRegistro=1 
+        
+ SELECT         
+ CodigoRol, 
+ CodigoRolSunat, 
+ NombreRol,          
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion        
+ FROM (         
+ SELECT          
+ CASE WHEN UPPER(@OrdenOrientacion)='ASC' OR @OrdenOrientacion IS NULL THEN         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoRol') THEN ROW_NUMBER()OVER(ORDER BY CodigoRol ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoRolSunat') THEN ROW_NUMBER()OVER(ORDER BY CodigoRolSunat ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreRol') THEN ROW_NUMBER()OVER(ORDER BY NombreRol ASC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion ASC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoRolSunat ASC)         
+  END         
+ ELSE         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoRol') THEN ROW_NUMBER()OVER(ORDER BY CodigoRol DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoRolSunat') THEN ROW_NUMBER()OVER(ORDER BY CodigoRolSunat DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreRol') THEN ROW_NUMBER()OVER(ORDER BY NombreRol DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion DESC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoRolSunat DESC)        
+  END         
+ END AS [NROORDEN],         
+ CodigoRol, 
+ CodigoRolSunat, 
+ NombreRol,        
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion         
+ FROM @dtRol         
+ )Info         
+ WHERE         
+   [NROORDEN] = CASE WHEN (@PaginaActual is null)THEN [NROORDEN] ELSE -1 END         
+   OR [NROORDEN] BETWEEN @vInicio AND @vFin         
+   ORDER BY         
+   [NROORDEN] ASC;         
+           
+ SELECT  @TotalRegistros = count(1),         
+   @CantidadPaginas =  CASE WHEN @NroRegistrosPorPagina is null THEN 1         
+   ELSE CAST(CEILING(count(1)/CAST(@NroRegistrosPorPagina as float)) as int)         
+   END          
+ FROM @dtRol        
+            
+END
+
+GO
+-- USP_REGISTRAR_PERSONA null,2,174,'PUERTO 1','20100120401','Dir 1','971338552','jalejosv@gmail.com','JAV123','www.jalejosv.com','JAV','I'
+-- USP_REGISTRAR_PERSONA 8758,3,174,'PUERTO 2','20100120402','Dir 2','971338551','jalejo@gmail.com','JAV1','www.jalejosv.com.pe','HEC','U'
+-- USP_REGISTRAR_PERSONA 8758,3,174,'PUERTO 2','20100120402','Dir 2','971338551','jalejo@gmail.com','JAV1','www.jalejosv.com.pe','HEC','D'
+
+CREATE PROCEDURE [dbo].[USP_REGISTRAR_PERSONA]  
+(  
+ @CodigoPersona BIGINT=NULL,
+ @CodigoTipoDocumento BIGINT=NULL,
+ @CodigoPais BIGINT=NULL,
+ @RazonSocialPersona VARCHAR(150)=NULL,
+ @NumeroDocumentoPersona VARCHAR(11)=NULL,-- Validar por SP que el RUC no se repita
+ @DireccionPersona VARCHAR(250)=NULL,
+ @TelefonoPersona VARCHAR(20)=NULL,
+ @EmailPersona VARCHAR(150)=NULL,
+ @ContactoPersona VARCHAR(80)=NULL,
+ @WebPersona VARCHAR(80)=NULL,  
+ @UsuarioRegistro VARCHAR(100)=NULL,  
+ @Accion VARCHAR(1)=NULL  
+)  
+AS  
+BEGIN TRY 
+ IF @Accion = 'I'  
+ BEGIN 
+  IF EXISTS(SELECT CodigoPersona FROM dbo.Persona (NOLOCK)   
+  WHERE NumeroDocumentoPersona = @NumeroDocumentoPersona AND EstadoRegistro = 1)  
+  OR EXISTS(SELECT CodigoPersona FROM dbo.Persona (NOLOCK)   
+  WHERE RTRIM(LTRIM(RazonSocialPersona)) = RTRIM(LTRIM(@RazonSocialPersona)) AND EstadoRegistro = 1)
+  BEGIN  
+		SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'RUC o Razon Social de Persona ya se encuentra registrado' AS Mensaje
+  END  
+  ELSE  
+  BEGIN  
+   INSERT dbo.Persona
+           ( CodigoTipoDocumento ,
+             CodigoPais ,
+             RazonSocialPersona ,
+             NumeroDocumentoPersona ,
+             DireccionPersona ,
+             TelefonoPersona ,
+             EmailPersona ,
+             ContactoPersona ,
+             WebPersona ,
+             UsuarioCreacion 
+           )
+   VALUES  ( @CodigoTipoDocumento ,
+             @CodigoPais ,
+             @RazonSocialPersona ,
+             @NumeroDocumentoPersona ,
+             @DireccionPersona ,
+             @TelefonoPersona ,
+             @EmailPersona ,
+             @ContactoPersona ,
+             @WebPersona ,
+             @UsuarioRegistro
+           ) 
+   SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se registró Persona satisfactoriamente' AS Mensaje
+  END   
+ END  
+   
+ IF @Accion = 'U'  
+ BEGIN 
+	IF NOT EXISTS(SELECT CodigoPersona FROM dbo.Persona (NOLOCK) 
+			WHERE CodigoPersona = @CodigoPersona AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de Persona no existe, no se puede actualizar' AS Mensaje
+		END
+		ELSE IF EXISTS(SELECT CodigoPersona FROM dbo.Persona (NOLOCK)   
+		  WHERE NumeroDocumentoPersona = @NumeroDocumentoPersona AND EstadoRegistro = 1 AND CodigoPersona <> @CodigoPersona)  
+		  OR EXISTS(SELECT CodigoPersona FROM dbo.Persona (NOLOCK)   
+		  WHERE RTRIM(LTRIM(RazonSocialPersona)) = RTRIM(LTRIM(@RazonSocialPersona)) AND EstadoRegistro = 1 AND CodigoPersona <> @CodigoPersona)
+		  BEGIN  
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'RUC o Razon Social de Persona ya se encuentra registrado' AS Mensaje
+		  END
+		ELSE
+		BEGIN 
+		  UPDATE dbo.Persona SET   
+		  CodigoTipoDocumento = @CodigoTipoDocumento,
+          CodigoPais = @CodigoPais ,
+          RazonSocialPersona = @RazonSocialPersona ,
+          NumeroDocumentoPersona = @NumeroDocumentoPersona,
+          DireccionPersona = @DireccionPersona,
+          TelefonoPersona = @TelefonoPersona ,
+          EmailPersona = @EmailPersona ,
+          ContactoPersona = @ContactoPersona,
+          WebPersona = @WebPersona,  
+		  UsuarioActualizacion = @UsuarioRegistro,  
+		  FechaHoraActualizacion = GETDATE()  
+		  WHERE CodigoPersona = @CodigoPersona  
+		    
+		  SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se Actualizó Persona satisfactoriamente' AS Mensaje
+		END
+ END  
+   
+ IF @Accion = 'D'  
+ BEGIN 
+	IF NOT EXISTS(SELECT CodigoPersona FROM dbo.Persona (NOLOCK) 
+			WHERE CodigoPersona = @CodigoPersona AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de Persona no existe, No se puede Anular' AS Mensaje
+		END
+		ELSE
+		BEGIN 
+		  UPDATE dbo.Persona SET  
+		  EstadoRegistro = 0,   
+		  UsuarioActualizacion = @UsuarioRegistro,  
+		  FechaHoraActualizacion = GETDATE()  
+		  WHERE CodigoPersona = @CodigoPersona  
+		  
+		  SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se anuló Persona correctamente' AS Mensaje
+		END
+ END  
+END TRY
+BEGIN CATCH
+	 SELECT dbo.Funcion_TipoMensaje(3) AS CodigoMensaje,ISNULL(ERROR_MESSAGE(),'Ocurrió un error interno') AS Mensaje
+END CATCH
+
+/****** Object:  StoredProcedure [dbo].[USP_REGISTRAR_ROLPERSONA]    Script Date: 08/26/2017 21:56:31 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- USP_REGISTRAR_ROLPERSONA null,10,1,'7770','JAV','I'
+-- USP_REGISTRAR_ROLPERSONA 11046,10,1,'7771','HEC','U'
+-- USP_REGISTRAR_ROLPERSONA 11046,null,null,null,'ROM','D'
+
+CREATE PROCEDURE [dbo].[USP_REGISTRAR_ROLPERSONA]  
+(  
+ @CodigoRolPersona BIGINT=NULL,  
+ @CodigoRol BIGINT=NULL,  
+ @CodigoPersona BIGINT=NULL,  
+ @CodigoAduanaRolPersona VARCHAR(4)=NULL,  
+ @UsuarioRegistro VARCHAR(100)=NULL,  
+ @Accion VARCHAR(1)=NULL  
+)  
+AS  
+BEGIN TRY 
+ IF @Accion = 'I'  
+ BEGIN  
+  IF EXISTS(SELECT CodigoRolPersona FROM dbo.RolPersona (NOLOCK)   
+  WHERE CodigoRol = @CodigoRol AND CodigoPersona = @CodigoPersona AND EstadoRegistro = 1)  
+  BEGIN  
+		SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Rol Persona ya se encuentra registrado' AS Mensaje
+  END  
+  ELSE  
+  BEGIN             
+   INSERT dbo.RolPersona
+           ( CodigoRol ,
+             CodigoPersona ,
+             CodigoAduanaRolPersona ,
+             UsuarioCreacion 
+           )
+   VALUES  ( @CodigoRol , 
+             @CodigoPersona , 
+             @CodigoAduanaRolPersona , 
+             @UsuarioRegistro
+           ) 
+           	           
+   SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se registró Rol Persona satisfactoriamente' AS Mensaje
+  END   
+ END  
+   
+ IF @Accion = 'U'  
+ BEGIN 
+	IF NOT EXISTS(SELECT CodigoRolPersona FROM dbo.RolPersona (NOLOCK) 
+			WHERE CodigoRolPersona = @CodigoRolPersona AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de Rol Persona no existe, no se puede actualizar' AS Mensaje
+		END
+		IF EXISTS(SELECT CodigoRolPersona FROM dbo.RolPersona (NOLOCK)   
+		WHERE CodigoRol = @CodigoRol AND CodigoPersona = @CodigoPersona AND EstadoRegistro = 1 AND CodigoRolPersona <> @CodigoRolPersona)  
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código o nombre de Rol Persona ya se encuentra registrado, no se puede actualizar' AS Mensaje
+		END
+		ELSE
+		BEGIN 
+		  UPDATE dbo.RolPersona SET   
+		  CodigoRol = @CodigoRol,
+          CodigoPersona = @CodigoPersona,
+          CodigoAduanaRolPersona = @CodigoAduanaRolPersona,
+		  UsuarioActualizacion = @UsuarioRegistro,  
+		  FechaHoraActualizacion = GETDATE()  
+		  WHERE CodigoRolPersona = @CodigoRolPersona  
+		    
+		  SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se Actualizó Rol Persona satisfactoriamente' AS Mensaje
+		END
+ END  
+   
+ IF @Accion = 'D'  
+ BEGIN 
+	IF NOT EXISTS(SELECT CodigoRolPersona FROM dbo.RolPersona (NOLOCK) 
+			WHERE CodigoRolPersona = @CodigoRolPersona AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de Rol Persona no existe, No se puede Anular' AS Mensaje
+		END
+		ELSE
+		BEGIN 
+		  UPDATE dbo.RolPersona SET  
+		  EstadoRegistro = 0,   
+		  UsuarioActualizacion = @UsuarioRegistro,  
+		  FechaHoraActualizacion = GETDATE()  
+		  WHERE CodigoRolPersona = @CodigoRolPersona  
+		  
+		  SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se anuló Rol Persona correctamente' AS Mensaje
+		END
+ END  
+END TRY
+BEGIN CATCH
+	 SELECT dbo.Funcion_TipoMensaje(3) AS CodigoMensaje,ISNULL(ERROR_MESSAGE(),'Ocurrio un error interno') AS Mensaje
+END CATCH
+
+GO
+
+-- USP_CONSULTAR_ROLPERSONA NULL,2,NULL,NULL,NULL,NULL,NULL,100000,NULL,NULL
+CREATE PROCEDURE [dbo].[USP_CONSULTAR_ROLPERSONA]       
+ (        
+  @CodigoRolPersona BIGINT=NULL,  
+  @CodigoRol BIGINT=NULL,  
+  @CodigoPersona BIGINT=NULL,  
+  @CodigoAduanaRolPersona VARCHAR(4)=NULL   
+ ,@OrdenCampo VARCHAR(50)=NULL         
+ ,@OrdenOrientacion VARCHAR(4)=NULL         
+ ,@PaginaActual INT=1         
+ ,@NroRegistrosPorPagina INT=10         
+ ,@TotalRegistros INT OUTPUT         
+ ,@CantidadPaginas INT OUTPUT         
+ )         
+ AS      
+BEGIN     
+ DECLARE @vInicio int, @vFin INT,@vNumeroSerie int 
+ 
+ DECLARE @dtRolPersona AS  
+ TABLE( 
+ CodigoRolPersona BIGINT,
+ NombreRol VARCHAR(50), 
+ RazonSocialPersona VARCHAR(150), 
+ CodigoAduanaRolPersona VARCHAR(4),          
+ UsuarioCreacion VARCHAR(100),         
+ FechaHoraCreacion DATETIME,         
+ UsuarioActualizacion VARCHAR(100),         
+ FechaHoraActualizacion DATETIME)    
+ 
+ IF @PaginaActual IS NULL SET @PaginaActual = 1
+ IF @NroRegistrosPorPagina IS NULL SET @NroRegistrosPorPagina = 10
+           
+  SET @vInicio = ((@PaginaActual*@NroRegistrosPorPagina-@NroRegistrosPorPagina)+1);         
+  SET @vFin = (@PaginaActual*@NroRegistrosPorPagina);          
+            
+ INSERT INTO @dtRolPersona  
+ ( 
+ CodigoRolPersona,
+ NombreRol, 
+ RazonSocialPersona,    
+ CodigoAduanaRolPersona,      
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion
+ ) 
+ SELECT  
+ CodigoRolPersona,
+ NombreRol, 
+ RazonSocialPersona,    
+ CodigoAduanaRolPersona,        
+ a.UsuarioCreacion,         
+ a.FechaHoraCreacion,         
+ a.UsuarioActualizacion,         
+ a.FechaHoraActualizacion        
+ FROM dbo.RolPersona a (NOLOCK) JOIN dbo.Rol b (NOLOCK) ON a.CodigoRol = b.CodigoRol
+ JOIN dbo.Persona c ON a.CodigoPersona = c.CodigoPersona   
+ WHERE  
+ (@CodigoRolPersona IS NULL OR a.CodigoRolPersona=@CodigoRolPersona) AND
+ (@CodigoRol IS NULL OR a.CodigoRol=@CodigoRol) AND
+ (@CodigoPersona IS NULL OR a.CodigoPersona=@CodigoPersona) AND
+ (@CodigoAduanaRolPersona IS NULL OR a.CodigoAduanaRolPersona LIKE '%' + @CodigoAduanaRolPersona + '%') AND 
+  a.EstadoRegistro=1 
+        
+ SELECT 
+ CodigoRolPersona,
+ NombreRol, 
+ RazonSocialPersona,    
+ CodigoAduanaRolPersona,        
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion        
+ FROM (         
+ SELECT          
+ CASE WHEN UPPER(@OrdenOrientacion)='ASC' OR @OrdenOrientacion IS NULL THEN         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoRolPersona') THEN ROW_NUMBER()OVER(ORDER BY CodigoRolPersona ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreRol') THEN ROW_NUMBER()OVER(ORDER BY NombreRol ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('RazonSocialPersona') THEN ROW_NUMBER()OVER(ORDER BY RazonSocialPersona ASC)   
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoAduanaRolPersona') THEN ROW_NUMBER()OVER(ORDER BY CodigoAduanaRolPersona ASC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion ASC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoRolPersona ASC)         
+  END         
+ ELSE         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoRolPersona') THEN ROW_NUMBER()OVER(ORDER BY CodigoRolPersona ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreRol') THEN ROW_NUMBER()OVER(ORDER BY NombreRol ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('RazonSocialPersona') THEN ROW_NUMBER()OVER(ORDER BY RazonSocialPersona ASC)   
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoAduanaRolPersona') THEN ROW_NUMBER()OVER(ORDER BY CodigoAduanaRolPersona ASC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion DESC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoRolPersona DESC)        
+  END         
+ END AS [NROORDEN],
+ CodigoRolPersona,
+ NombreRol, 
+ RazonSocialPersona,    
+ CodigoAduanaRolPersona,       
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion         
+ FROM @dtRolPersona         
+ )Info         
+ WHERE         
+   [NROORDEN] = CASE WHEN (@PaginaActual is null)THEN [NROORDEN] ELSE -1 END         
+   OR [NROORDEN] BETWEEN @vInicio AND @vFin         
+   ORDER BY         
+   [NROORDEN] ASC;         
+           
+ SELECT  @TotalRegistros = count(1),         
+   @CantidadPaginas =  CASE WHEN @NroRegistrosPorPagina is null THEN 1         
+   ELSE CAST(CEILING(count(1)/CAST(@NroRegistrosPorPagina as float)) as int)         
+   END          
+ FROM @dtRolPersona        
+END
+
+GO
+-- EXEC USP_REGISTRAR_TIPOOPERACION NULL,3,'Prueba 1','JAV','I'
+-- EXEC USP_REGISTRAR_TIPOOPERACION 3,4,'Prueba 2','HEC','U'
+-- EXEC USP_REGISTRAR_TIPOOPERACION 3,NULL,NULL,'ROM','D'
+CREATE PROCEDURE [dbo].[USP_REGISTRAR_TIPOOPERACION]
+  (
+	@CodigoTipoOperacion BIGINT=NULL,
+	@CodigoTipoOperacionSunat TINYINT=NULL,
+	@NombreTipoOperacion VARCHAR(150)=NULL,
+	@UsuarioRegistro VARCHAR(100)=NULL,
+	@Accion VARCHAR(1)=NULL
+  )
+  AS
+BEGIN TRY 
+	IF @Accion = 'I'
+	BEGIN
+		IF EXISTS(SELECT CodigoTipoOperacion FROM dbo.TipoOperacion (NOLOCK) 
+		WHERE CodigoTipoOperacionSunat = @CodigoTipoOperacionSunat AND EstadoRegistro = 1)
+		OR EXISTS(SELECT CodigoTipoOperacion FROM dbo.TipoOperacion (NOLOCK) 
+		WHERE RTRIM(LTRIM(NombreTipoOperacion)) = RTRIM(LTRIM(@NombreTipoOperacion)) AND EstadoRegistro = 1)
+		BEGIN
+		-- Controlar Errores y enviar al Servicio
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código o nombre de Tipo de Operacion ya se encuentra registrado' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			INSERT dbo.TipoOperacion
+			        ( CodigoTipoOperacionSunat ,
+			          NombreTipoOperacion ,
+			          UsuarioCreacion
+			        )
+			VALUES  ( @CodigoTipoOperacionSunat , 
+			          @NombreTipoOperacion,
+			          @UsuarioRegistro
+			        )
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se registró Tipo de Operacion satisfactoriamente' AS Mensaje
+		END 
+	END
+	
+	IF @Accion = 'U'
+	BEGIN
+		IF NOT EXISTS(SELECT CodigoTipoOperacion FROM dbo.TipoOperacion (NOLOCK) 
+			WHERE CodigoTipoOperacion = @CodigoTipoOperacion AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de Tipo de Operacion no existe, no se puede actualizar' AS Mensaje
+		END
+		ELSE IF EXISTS(SELECT CodigoTipoOperacion FROM dbo.TipoOperacion (NOLOCK) 
+		WHERE CodigoTipoOperacionSunat = @CodigoTipoOperacionSunat AND EstadoRegistro = 1 AND CodigoTipoOperacion <> @CodigoTipoOperacion)
+		OR EXISTS(SELECT CodigoTipoOperacion FROM dbo.TipoOperacion (NOLOCK) 
+		WHERE RTRIM(LTRIM(NombreTipoOperacion)) = RTRIM(LTRIM(@NombreTipoOperacion)) AND EstadoRegistro = 1 AND CodigoTipoOperacion <> @CodigoTipoOperacion)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código o nombre de Tipo de Operacion ya se encuentra registrado, no se puede actualizar' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			UPDATE dbo.TipoOperacion SET 
+			CodigoTipoOperacionSunat = @CodigoTipoOperacionSunat,
+			NombreTipoOperacion = @NombreTipoOperacion,
+			UsuarioActualizacion = @UsuarioRegistro,
+			FechaHoraActualizacion = GETDATE()
+			WHERE CodigoTipoOperacion = @CodigoTipoOperacion
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se Actualizó Tipo de Operacion satisfactoriamente' AS Mensaje
+		END
+	END
+	
+	IF @Accion = 'D'
+	BEGIN
+		IF NOT EXISTS(SELECT CodigoTipoOperacion FROM dbo.TipoOperacion (NOLOCK) 
+			WHERE CodigoTipoOperacion = @CodigoTipoOperacion AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de Tipo de Operacion no existe, No se puede Anular' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			UPDATE dbo.TipoOperacion SET
+			EstadoRegistro = 0, 
+			UsuarioActualizacion = @UsuarioRegistro,
+			FechaHoraActualizacion = GETDATE()
+			WHERE CodigoTipoOperacion = @CodigoTipoOperacion
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se anuló Tipo de Operacion satisfactoriamente' AS Mensaje
+		END
+	END
+END TRY
+BEGIN CATCH
+	SELECT dbo.Funcion_TipoMensaje(3) AS CodigoMensaje,ISNULL(ERROR_MESSAGE(),'Ocurrio un error interno') AS Mensaje
+END CATCH
+
+GO
+
+-- EXEC USP_CONSULTAR_TIPOOPERACION NULL,NULL,'EXPO',NULL,NULL,NULL,300,NULL,NULL
+CREATE PROCEDURE [dbo].[USP_CONSULTAR_TIPOOPERACION]       
+ (        
+  @CodigoTipoOperacion BIGINT=NULL,
+  @CodigoTipoOperacionSunat TINYINT=NULL,
+  @NombreTipoOperacion VARCHAR(150)=NULL     
+ ,@OrdenCampo VARCHAR(50)=NULL   
+ ,@OrdenOrientacion VARCHAR(4)=NULL         
+ ,@PaginaActual INT=1         
+ ,@NroRegistrosPorPagina INT=10         
+ ,@TotalRegistros INT OUTPUT         
+ ,@CantidadPaginas INT OUTPUT         
+ )         
+ AS         
+ BEGIN         
+  
+ DECLARE @vInicio int, @vFin INT,@vNumeroSerie int 
+
+ DECLARE @dtTipoOperacion AS  
+ TABLE( 
+ CodigoTipoOperacion BIGINT, 
+ CodigoTipoOperacionSunat TINYINT, 
+ NombreTipoOperacion VARCHAR(150),         
+ UsuarioCreacion VARCHAR(100),         
+ FechaHoraCreacion DATETIME,         
+ UsuarioActualizacion VARCHAR(100),         
+ FechaHoraActualizacion DATETIME)         
+
+ IF @PaginaActual IS NULL SET @PaginaActual = 1
+ IF @NroRegistrosPorPagina IS NULL SET @NroRegistrosPorPagina = 10
+ 
+  set @vInicio = ((@PaginaActual*@NroRegistrosPorPagina-@NroRegistrosPorPagina)+1);         
+  set @vFin = (@PaginaActual*@NroRegistrosPorPagina);          
+           
+            
+ INSERT INTO @dtTipoOperacion  
+ ( 
+ CodigoTipoOperacion, 
+ CodigoTipoOperacionSunat, 
+ NombreTipoOperacion,        
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion
+ ) 
+ SELECT  
+ CodigoTipoOperacion, 
+ CodigoTipoOperacionSunat, 
+ NombreTipoOperacion,         
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion        
+ FROM dbo.TipoOperacion (NOLOCK)       
+ WHERE  
+ (@CodigoTipoOperacion IS NULL OR CodigoTipoOperacion=@CodigoTipoOperacion) AND
+ (@CodigoTipoOperacionSunat IS NULL OR CodigoTipoOperacionSunat=@CodigoTipoOperacionSunat) AND
+ (@NombreTipoOperacion IS NULL OR NombreTipoOperacion LIKE '%' + @NombreTipoOperacion + '%') AND
+  EstadoRegistro=1 
+        
+ SELECT         
+ CodigoTipoOperacion, 
+ CodigoTipoOperacionSunat, 
+ NombreTipoOperacion,          
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion        
+ FROM (         
+ SELECT          
+ CASE WHEN UPPER(@OrdenOrientacion)='ASC' OR @OrdenOrientacion IS NULL THEN         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoTipoOperacion') THEN ROW_NUMBER()OVER(ORDER BY CodigoTipoOperacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoTipoOperacionSunat') THEN ROW_NUMBER()OVER(ORDER BY CodigoTipoOperacionSunat ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreTipoOperacion') THEN ROW_NUMBER()OVER(ORDER BY NombreTipoOperacion ASC)     
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion ASC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoTipoOperacionSunat ASC)         
+  END         
+ ELSE         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoTipoOperacion') THEN ROW_NUMBER()OVER(ORDER BY CodigoTipoOperacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoTipoOperacionSunat') THEN ROW_NUMBER()OVER(ORDER BY CodigoTipoOperacionSunat DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreTipoOperacion') THEN ROW_NUMBER()OVER(ORDER BY NombreTipoOperacion DESC)
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion DESC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoTipoOperacionSunat DESC)        
+  END         
+ END AS [NROORDEN],         
+ CodigoTipoOperacion, 
+ CodigoTipoOperacionSunat, 
+ NombreTipoOperacion,        
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion         
+ FROM @dtTipoOperacion         
+ )Info         
+ WHERE         
+   [NROORDEN] = CASE WHEN (@PaginaActual is null)THEN [NROORDEN] ELSE -1 END         
+   OR [NROORDEN] BETWEEN @vInicio AND @vFin         
+   ORDER BY         
+   [NROORDEN] ASC;         
+           
+ SELECT  @TotalRegistros = count(1),         
+   @CantidadPaginas =  CASE WHEN @NroRegistrosPorPagina is null THEN 1         
+   ELSE CAST(CEILING(count(1)/CAST(@NroRegistrosPorPagina as float)) as int)         
+   END          
+ FROM @dtTipoOperacion        
+            
+END
+
+GO
+-- USP_REGISTRAR_ITINERARIO NULL,8,6,1,1,5886,5886,136,1,14782,'0003SB','100',2017,'2017-08-27 00:10:50.343','2017-08-30 12:00:50.343','2017-08-28 01:15:50.343','2017-06-28 02:15:50.343',NULL,'CAPITAN HERSHEL 2','2017-08-25 12:15:50.343','JAV','I'
+
+CREATE PROCEDURE [dbo].[USP_REGISTRAR_ITINERARIO]  
+(  
+ @CodigoItinerario BIGINT=NULL,
+ @CodigoNave BIGINT=NULL,
+ @CodigoAduana BIGINT=NULL,
+ @CodigoTipoOperacion BIGINT=NULL,
+ @CodigoTipoLugarCarga BIGINT=NULL,
+ @CodigoOperadorEmbarqueItinerario BIGINT=NULL,
+ @CodigoOperadorDescargaItinerario BIGINT=NULL,
+ @CodigoAgenteMaritimoItinerario BIGINT=NULL,
+ @CodigoTipoLugarCargaPuertoIntermedio BIGINT=NULL,
+ @CodigoPuertoIntermedio BIGINT=NULL,
+ @NumeroViajeItinerario VARCHAR(6)=NULL,
+ @NumeroManifiestoItinerario VARCHAR(6)=NULL,
+ @AnioManifiestoItinerario INTEGER=NULL,
+ @FechaArriboItinerario DATETIME=NULL,
+ @FechaZarpeItinerario DATETIME=NULL,
+ @FechaAtraqueItinerario DATETIME=NULL,
+ @FechaTerminoDescargaItinerario DATETIME=NULL,
+ @DUEItinerario VARCHAR(15)=NULL,
+ @CapitanNaveItinerario VARCHAR(50)=NULL,
+ @FechaZarpePuertoIntermedio DATETIME=NULL,
+ @Voyage VARCHAR(10)=NULL,
+ --@UsuarioRegistro VARCHAR(100)=NULL,  
+ @UsuarioRegistro VARCHAR(100)='JAVITI',  
+ @Accion VARCHAR(1)=NULL  
+)  
+AS  
+BEGIN TRY 
+ IF @Accion = 'I'  
+ BEGIN 
+  IF EXISTS(SELECT CodigoItinerario FROM dbo.Itinerario (NOLOCK)   
+  WHERE CodigoNave = @CodigoNave AND NumeroViajeItinerario = @NumeroViajeItinerario 
+  AND CodigoAduana=@CodigoAduana AND CodigoTipoOperacion = @CodigoTipoOperacion
+  AND EstadoRegistro = 1)
+  BEGIN  
+		SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Itinerario ya se encuentra registrado' AS Mensaje
+  END  
+  ELSE  
+  BEGIN  
+   INSERT dbo.Itinerario
+           ( CodigoNave ,
+             CodigoAduana ,
+             CodigoTipoOperacion ,
+             CodigoTipoLugarCarga ,
+             CodigoOperadorEmbarqueItinerario ,
+             CodigoOperadorDescargaItinerario ,
+             CodigoAgenteMaritimoItinerario ,
+             CodigoTipoLugarCargaPuertoIntermedio ,
+             CodigoPuertoIntermedio ,
+             NumeroViajeItinerario ,
+             NumeroManifiestoItinerario ,
+             AnioManifiestoItinerario ,
+             FechaArriboItinerario ,
+             FechaZarpeItinerario ,
+             FechaAtraqueItinerario ,
+             FechaTerminoDescargaItinerario ,
+             DUEItinerario ,
+             CapitanNaveItinerario ,
+             FechaZarpePuertoIntermedio ,
+             Voyage,
+             UsuarioCreacion 
+           )
+   VALUES  ( @CodigoNave ,
+             @CodigoAduana ,
+             @CodigoTipoOperacion ,
+             @CodigoTipoLugarCarga ,
+             @CodigoOperadorEmbarqueItinerario ,
+             @CodigoOperadorDescargaItinerario ,
+             @CodigoAgenteMaritimoItinerario ,
+             @CodigoTipoLugarCargaPuertoIntermedio ,
+             @CodigoPuertoIntermedio ,
+             @NumeroViajeItinerario ,
+             @NumeroManifiestoItinerario ,
+             @AnioManifiestoItinerario ,
+             @FechaArriboItinerario ,
+             @FechaZarpeItinerario ,
+             @FechaAtraqueItinerario ,
+             @FechaTerminoDescargaItinerario ,
+             @DUEItinerario ,
+             @CapitanNaveItinerario ,
+             @FechaZarpePuertoIntermedio ,
+             @Voyage,
+             @UsuarioRegistro
+           )
+
+   SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se registró Itinerario satisfactoriamente' AS Mensaje
+  END   
+ END  
+   
+ IF @Accion = 'U'  
+ BEGIN 
+	IF NOT EXISTS(SELECT CodigoItinerario FROM dbo.Itinerario (NOLOCK) 
+			WHERE CodigoItinerario = @CodigoItinerario AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de Itinerario no existe, no se puede actualizar' AS Mensaje
+		END
+		ELSE IF EXISTS(SELECT CodigoItinerario FROM dbo.Itinerario (NOLOCK) 
+		WHERE CodigoNave = @CodigoNave AND NumeroViajeItinerario = @NumeroViajeItinerario 
+		  AND CodigoAduana=@CodigoAduana AND CodigoTipoOperacion = @CodigoTipoOperacion
+		  AND EstadoRegistro = 1 AND CodigoItinerario <> @CodigoItinerario)
+		  BEGIN  
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Itinerario ya se encuentra registrado' AS Mensaje
+		  END
+		ELSE
+		BEGIN 
+		  UPDATE dbo.Itinerario SET   
+		  CodigoNave = @CodigoNave,
+          CodigoAduana = @CodigoAduana,
+          CodigoTipoOperacion = @CodigoTipoOperacion,
+          CodigoTipoLugarCarga = @CodigoTipoLugarCarga ,
+          CodigoOperadorEmbarqueItinerario = @CodigoOperadorEmbarqueItinerario,
+          CodigoOperadorDescargaItinerario = @CodigoOperadorDescargaItinerario,
+          CodigoAgenteMaritimoItinerario = @CodigoAgenteMaritimoItinerario ,
+          CodigoTipoLugarCargaPuertoIntermedio = @CodigoTipoLugarCargaPuertoIntermedio ,
+          CodigoPuertoIntermedio = @CodigoPuertoIntermedio ,
+          NumeroViajeItinerario  = @NumeroViajeItinerario,
+          NumeroManifiestoItinerario = @NumeroManifiestoItinerario ,
+          AnioManifiestoItinerario = @AnioManifiestoItinerario ,
+          FechaArriboItinerario = @FechaArriboItinerario ,
+          FechaZarpeItinerario = @FechaZarpeItinerario ,
+          FechaAtraqueItinerario = @FechaAtraqueItinerario ,
+          FechaTerminoDescargaItinerario = @FechaTerminoDescargaItinerario ,
+          DUEItinerario = @DUEItinerario,
+          CapitanNaveItinerario = @CapitanNaveItinerario ,
+          FechaZarpePuertoIntermedio = @FechaZarpePuertoIntermedio ,
+          @Voyage = Voyage,
+		  UsuarioActualizacion = @UsuarioRegistro,  
+		  FechaHoraActualizacion = GETDATE()  
+		  WHERE CodigoItinerario = @CodigoItinerario  
+		    
+		  SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se Actualizó Itinerario satisfactoriamente' AS Mensaje
+		END
+ END  
+   
+ IF @Accion = 'D'  
+ BEGIN 
+	IF NOT EXISTS(SELECT CodigoItinerario FROM dbo.Itinerario (NOLOCK) 
+			WHERE CodigoItinerario = @CodigoItinerario AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de Itinerario no existe, No se puede Anular' AS Mensaje
+		END
+		ELSE
+		BEGIN 
+		  UPDATE dbo.Itinerario SET  
+		  EstadoRegistro = 0,   
+		  UsuarioActualizacion = @UsuarioRegistro,  
+		  FechaHoraActualizacion = GETDATE()  
+		  WHERE CodigoItinerario = @CodigoItinerario  
+		  
+		  SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se anuló Itinerario correctamente' AS Mensaje
+		END
+ END  
+END TRY
+BEGIN CATCH
+	 SELECT dbo.Funcion_TipoMensaje(3) AS CodigoMensaje,ISNULL(ERROR_MESSAGE(),'Ocurrió un error interno') AS Mensaje
+END CATCH
+
+GO
+-- USP_CONSULTAR_ITINERARIO NULL,NULL,NULL,NULL,NULL,NULL,NULL,'20160101','20190101',NULL,NULL,NULL,100000,NULL,NULL  
+CREATE PROCEDURE [dbo].[USP_CONSULTAR_ITINERARIO]         
+ (          
+  @CodigoItinerario BIGINT=NULL,  
+  @CodigoNave BIGINT=NULL,  
+  @CodigoAduana BIGINT=NULL,  
+  @CodigoTipoOperacion BIGINT=NULL,   
+  @NumeroViajeItinerario VARCHAR(6)=NULL,  
+  @NumeroManifiestoItinerario VARCHAR(6)=NULL,  
+  @AnioManifiestoItinerario INTEGER=NULL,  
+  @FechaArriboItinerarioInicio DATETIME=NULL,  
+  @FechaArriboItinerarioFin DATETIME=NULL,  
+  @OrdenCampo VARCHAR(50)=NULL           
+ ,@OrdenOrientacion VARCHAR(4)=NULL           
+ ,@PaginaActual INT=1           
+ ,@NroRegistrosPorPagina INT=10           
+ ,@TotalRegistros INT OUTPUT           
+ ,@CantidadPaginas INT OUTPUT           
+ )           
+ AS        
+BEGIN       
+ DECLARE @vInicio int, @vFin INT,@vNumeroSerie int   
+   
+ DECLARE @dtItinerario AS    
+ TABLE(    
+ CodigoItinerario BIGINT,  
+ CodigoNave BIGINT,  
+ NombreNave VARCHAR(50),  
+ NumeroViajeItinerario VARCHAR(6),  
+ CodigoAduana BIGINT,  
+ NombreAduana VARCHAR(150),  
+ CodigoTipoOperacion BIGINT,  
+ NombreTipoOperacion VARCHAR(50),   
+ CodigoTipoLugarCarga BIGINT,  
+ NombreTipoLugarCarga VARCHAR(50),  
+ CodigoOperadorEmbarqueItinerario BIGINT,  
+ NombreOperadorEmbarqueItinerario VARCHAR(150),  
+ CodigoOperadorDescargaItinerario BIGINT,  
+ NombreOperadorDescargaItinerario VARCHAR(150),  
+ CodigoAgenteMaritimoItinerario BIGINT,  
+ NombreAgenteMaritimoItinerario VARCHAR(150),  
+ CodigoTipoLugarCargaPuertoIntermedio BIGINT,  
+ NombreTipoLugarCargaPuertoIntermedio VARCHAR(50),  
+ CodigoPuertoIntermedio BIGINT,  
+ NombrePuertoIntermedio VARCHAR(100),  
+ NumeroManifiestoItinerario VARCHAR(6),  
+ AnioManifiestoItinerario INTEGER,  
+ FechaArriboItinerario DATETIME,    
+ FechaZarpeItinerario DATETIME,     
+ FechaAtraqueItinerario DATETIME,     
+ FechaTerminoDescargaItinerario DATETIME,     
+ DUEItinerario VARCHAR(15),     
+ CapitanNaveItinerario VARCHAR(50),   
+ FechaZarpePuertoIntermedio DATETIME,  
+ Voyage VARCHAR(10),       
+ UsuarioCreacion VARCHAR(100),           
+ FechaHoraCreacion DATETIME,           
+ UsuarioActualizacion VARCHAR(100),           
+ FechaHoraActualizacion DATETIME)      
+   
+ IF @PaginaActual IS NULL SET @PaginaActual = 1  
+ IF @NroRegistrosPorPagina IS NULL SET @NroRegistrosPorPagina = 10  
+             
+  SET @vInicio = ((@PaginaActual*@NroRegistrosPorPagina-@NroRegistrosPorPagina)+1);           
+  SET @vFin = (@PaginaActual*@NroRegistrosPorPagina);            
+              
+ INSERT INTO @dtItinerario    
+ (   
+ CodigoItinerario,  
+ CodigoNave,  
+ NombreNave,  
+ NumeroViajeItinerario,  
+ CodigoAduana,  
+ NombreAduana,  
+ CodigoTipoOperacion,  
+ NombreTipoOperacion,   
+ CodigoTipoLugarCarga,  
+ NombreTipoLugarCarga,  
+ CodigoOperadorEmbarqueItinerario,  
+ NombreOperadorEmbarqueItinerario,  
+ CodigoOperadorDescargaItinerario,  
+ NombreOperadorDescargaItinerario,  
+ CodigoAgenteMaritimoItinerario,  
+ NombreAgenteMaritimoItinerario,  
+ CodigoTipoLugarCargaPuertoIntermedio,  
+ NombreTipoLugarCargaPuertoIntermedio,  
+ CodigoPuertoIntermedio,  
+ NombrePuertoIntermedio,  
+ NumeroManifiestoItinerario,  
+ AnioManifiestoItinerario,  
+ FechaArriboItinerario,    
+ FechaZarpeItinerario,     
+ FechaAtraqueItinerario,     
+ FechaTerminoDescargaItinerario,     
+ DUEItinerario,     
+ CapitanNaveItinerario,   
+ FechaZarpePuertoIntermedio,  
+ Voyage,       
+ UsuarioCreacion,           
+ FechaHoraCreacion,           
+ UsuarioActualizacion,           
+ FechaHoraActualizacion  
+ )   
+ SELECT    
+ CodigoItinerario,  
+ a.CodigoNave,  
+ NombreNave,  
+ NumeroViajeItinerario,  
+ a.CodigoAduana,  
+ NombreAduana,  
+ a.CodigoTipoOperacion,  
+ NombreTipoOperacion,   
+ a.CodigoTipoLugarCarga,  
+ e.NombreTipoLugarCarga,  
+ a.CodigoOperadorEmbarqueItinerario,  
+ f.RazonSocialPersona NombreOperadorEmbarqueItinerario,  
+ a.CodigoOperadorDescargaItinerario,  
+ g.RazonSocialPersona NombreOperadorDescargaItinerario,  
+ a.CodigoAgenteMaritimoItinerario,  
+ h.RazonSocialPersona NombreAgenteMaritimoItinerario,  
+ a.CodigoTipoLugarCargaPuertoIntermedio,  
+ i.NombreTipoLugarCarga NombreTipoLugarCargaPuertoIntermedio,  
+ a.CodigoPuertoIntermedio,  
+ j.NombrePuerto NombrePuertoIntermedio,  
+ NumeroManifiestoItinerario,  
+ AnioManifiestoItinerario,  
+ FechaArriboItinerario,    
+ FechaZarpeItinerario,     
+ FechaAtraqueItinerario,     
+ FechaTerminoDescargaItinerario,     
+ DUEItinerario,     
+ CapitanNaveItinerario,   
+ FechaZarpePuertoIntermedio,  
+ Voyage,  
+ a.UsuarioCreacion,           
+ a.FechaHoraCreacion,           
+ a.UsuarioActualizacion,           
+ a.FechaHoraActualizacion          
+ FROM dbo.Itinerario a (NOLOCK)   
+ JOIN dbo.Nave b (NOLOCK) ON a.CodigoNave = b.CodigoNave  
+ JOIN dbo.Aduana c (NOLOCK) ON a.CodigoAduana = c.CodigoAduana  
+ JOIN dbo.TipoOperacion d (NOLOCK) ON a.CodigoTipoOperacion = d.CodigoTipoOperacion  
+ JOIN dbo.TipoLugarCarga e (NOLOCK) ON a.CodigoTipoLugarCarga = e.CodigoTipoLugarCarga  
+ JOIN dbo.Persona f (NOLOCK) ON a.CodigoOperadorEmbarqueItinerario = f.CodigoPersona  
+ JOIN dbo.Persona g (NOLOCK) ON a.CodigoOperadorDescargaItinerario = g.CodigoPersona  
+ JOIN dbo.Persona h (NOLOCK) ON a.CodigoAgenteMaritimoItinerario = h.CodigoPersona  
+ JOIN dbo.TipoLugarCarga i (NOLOCK) ON a.CodigoTipoLugarCarga = i.CodigoTipoLugarCarga  
+ JOIN dbo.Puerto j (NOLOCK) ON a.CodigoPuertoIntermedio = j.CodigoPuerto  
+ WHERE    
+ (@CodigoItinerario IS NULL OR a.CodigoItinerario=@CodigoItinerario) AND  
+ (@CodigoNave IS NULL OR a.CodigoNave=@CodigoNave) AND  
+ (@NumeroViajeItinerario IS NULL OR a.NumeroViajeItinerario=@NumeroViajeItinerario) AND  
+ (@CodigoAduana IS NULL OR a.CodigoAduana=@CodigoAduana) AND  
+ (@CodigoTipoOperacion IS NULL OR a.CodigoTipoOperacion=@CodigoTipoOperacion) AND  
+ (@CodigoAduana IS NULL OR a.CodigoAduana=@CodigoAduana) AND  
+ (@NumeroManifiestoItinerario IS NULL OR a.NumeroManifiestoItinerario=@NumeroManifiestoItinerario) AND  
+ (@AnioManifiestoItinerario IS NULL OR a.AnioManifiestoItinerario=@AnioManifiestoItinerario) AND     
+ (CONVERT(VARCHAR(10),a.FechaArriboItinerario,112) BETWEEN CONVERT(VARCHAR(10),@FechaArriboItinerarioInicio,112) AND CONVERT(VARCHAR(10),@FechaArriboItinerarioFin,112)) AND
+  a.EstadoRegistro=1   
+  
+ SELECT   
+ CodigoItinerario,  
+ CodigoNave,  
+ NombreNave,  
+ NumeroViajeItinerario,  
+ CodigoAduana,  
+ NombreAduana,  
+ CodigoTipoOperacion,  
+ NombreTipoOperacion,   
+ CodigoTipoLugarCarga,  
+ NombreTipoLugarCarga,  
+ CodigoOperadorEmbarqueItinerario,  
+ NombreOperadorEmbarqueItinerario,  
+ CodigoOperadorDescargaItinerario,  
+ NombreOperadorDescargaItinerario,  
+ CodigoAgenteMaritimoItinerario,  
+ NombreAgenteMaritimoItinerario,  
+ CodigoTipoLugarCargaPuertoIntermedio,  
+ NombreTipoLugarCargaPuertoIntermedio,  
+ CodigoPuertoIntermedio,  
+ NombrePuertoIntermedio,  
+ NumeroManifiestoItinerario,  
+ AnioManifiestoItinerario,  
+ FechaArriboItinerario,    
+ FechaZarpeItinerario,     
+ FechaAtraqueItinerario,     
+ FechaTerminoDescargaItinerario,     
+ DUEItinerario,     
+ CapitanNaveItinerario,   
+ FechaZarpePuertoIntermedio,  
+ Voyage,          
+ UsuarioCreacion,           
+ FechaHoraCreacion,           
+ UsuarioActualizacion,           
+ FechaHoraActualizacion          
+ FROM (           
+ SELECT            
+ CASE WHEN UPPER(@OrdenOrientacion)='ASC' OR @OrdenOrientacion IS NULL THEN           
+  CASE             
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoItinerario') THEN ROW_NUMBER()OVER(ORDER BY CodigoItinerario ASC)           
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreNave') THEN ROW_NUMBER()OVER(ORDER BY NombreNave ASC)           
+   WHEN  UPPER(@OrdenCampo) = UPPER('NumeroViajeItinerario') THEN ROW_NUMBER()OVER(ORDER BY NumeroViajeItinerario ASC)     
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreAduana') THEN ROW_NUMBER()OVER(ORDER BY NombreAduana ASC)   
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreTipoOperacion') THEN ROW_NUMBER()OVER(ORDER BY NombreTipoOperacion ASC)   
+   WHEN  UPPER(@OrdenCampo) = UPPER('NumeroManifiestoItinerario') THEN ROW_NUMBER()OVER(ORDER BY NumeroManifiestoItinerario ASC)   
+   WHEN  UPPER(@OrdenCampo) = UPPER('AnioManifiestoItinerario') THEN ROW_NUMBER()OVER(ORDER BY AnioManifiestoItinerario ASC)        
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaArriboItinerario') THEN ROW_NUMBER()OVER(ORDER BY FechaArriboItinerario ASC)        
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion ASC)           
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion ASC)           
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion ASC)           
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion ASC)           
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoItinerario ASC)           
+  END           
+ ELSE           
+  CASE             
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoItinerario') THEN ROW_NUMBER()OVER(ORDER BY CodigoItinerario DESC)           
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreNave') THEN ROW_NUMBER()OVER(ORDER BY NombreNave DESC)           
+   WHEN  UPPER(@OrdenCampo) = UPPER('NumeroViajeItinerario') THEN ROW_NUMBER()OVER(ORDER BY NumeroViajeItinerario DESC)     
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreAduana') THEN ROW_NUMBER()OVER(ORDER BY NombreAduana DESC)   
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreTipoOperacion') THEN ROW_NUMBER()OVER(ORDER BY NombreTipoOperacion DESC)   
+   WHEN  UPPER(@OrdenCampo) = UPPER('NumeroManifiestoItinerario') THEN ROW_NUMBER()OVER(ORDER BY NumeroManifiestoItinerario DESC)   
+   WHEN  UPPER(@OrdenCampo) = UPPER('AnioManifiestoItinerario') THEN ROW_NUMBER()OVER(ORDER BY AnioManifiestoItinerario DESC)        
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaArriboItinerario') THEN ROW_NUMBER()OVER(ORDER BY FechaArriboItinerario DESC)        
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion DESC)           
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion DESC)           
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion DESC)           
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion DESC)           
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoItinerario DESC)             
+  END           
+ END AS [NROORDEN],  
+ CodigoItinerario,  
+ CodigoNave,  
+ NombreNave,  
+ NumeroViajeItinerario,  
+ CodigoAduana,  
+ NombreAduana,  
+ CodigoTipoOperacion,  
+ NombreTipoOperacion,   
+ CodigoTipoLugarCarga,  
+ NombreTipoLugarCarga,  
+ CodigoOperadorEmbarqueItinerario,  
+ NombreOperadorEmbarqueItinerario,  
+ CodigoOperadorDescargaItinerario,  
+ NombreOperadorDescargaItinerario,  
+ CodigoAgenteMaritimoItinerario,  
+ NombreAgenteMaritimoItinerario,  
+ CodigoTipoLugarCargaPuertoIntermedio,  
+ NombreTipoLugarCargaPuertoIntermedio,  
+ CodigoPuertoIntermedio,  
+ NombrePuertoIntermedio,  
+ NumeroManifiestoItinerario,  
+ AnioManifiestoItinerario,  
+ FechaArriboItinerario,    
+ FechaZarpeItinerario,     
+ FechaAtraqueItinerario,     
+ FechaTerminoDescargaItinerario,     
+ DUEItinerario,     
+ CapitanNaveItinerario,   
+ FechaZarpePuertoIntermedio,  
+ Voyage,        
+ UsuarioCreacion,           
+ FechaHoraCreacion,           
+ UsuarioActualizacion,           
+ FechaHoraActualizacion           
+ FROM @dtItinerario           
+ )Info           
+ WHERE           
+   [NROORDEN] = CASE WHEN (@PaginaActual is null)THEN [NROORDEN] ELSE -1 END           
+   OR [NROORDEN] BETWEEN @vInicio AND @vFin           
+   ORDER BY           
+   [NROORDEN] ASC;           
+             
+ SELECT  @TotalRegistros = count(1),           
+   @CantidadPaginas =  CASE WHEN @NroRegistrosPorPagina is null THEN 1           
+   ELSE CAST(CEILING(count(1)/CAST(@NroRegistrosPorPagina as float)) as int)           
+   END            
+ FROM @dtItinerario          
+END  
+
+GO
+
+-- EXEC USP_REGISTRAR_CONDICIONPRECINTO NULL,6,'Prueba 1','JAV','I'
+-- EXEC USP_REGISTRAR_CONDICIONPRECINTO 7,6,'Prueba 2','HEC','U'
+-- EXEC USP_REGISTRAR_CONDICIONPRECINTO 7,6,'Prueba 1','ROM','D'
+
+CREATE PROCEDURE [dbo].[USP_REGISTRAR_CONDICIONPRECINTO]
+  (
+	@CodigoCondicionPrecinto BIGINT=NULL,
+	@CodigoCondicionPrecintoSunat VARCHAR(1)=NULL,
+	@NombreCondicionPrecinto VARCHAR(40)=NULL, 
+	@UsuarioRegistro VARCHAR(100)=NULL,
+	@Accion VARCHAR(1)=NULL
+  )
+  AS
+BEGIN TRY 
+	IF @Accion = 'I'
+	BEGIN
+		IF EXISTS(SELECT CodigoCondicionPrecinto FROM dbo.CondicionPrecinto (NOLOCK) 
+		WHERE CodigoCondicionPrecintoSunat = @CodigoCondicionPrecintoSunat AND EstadoRegistro = 1)
+		OR EXISTS(SELECT CodigoCondicionPrecinto FROM dbo.CondicionPrecinto (NOLOCK) 
+		WHERE RTRIM(LTRIM(NombreCondicionPrecinto)) = RTRIM(LTRIM(@NombreCondicionPrecinto)) AND EstadoRegistro = 1)
+		BEGIN
+		-- Controlar Errores y enviar al Servicio
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código o nombre de la Condicion de Precinto ya se encuentra Registrada' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			INSERT dbo.CondicionPrecinto
+			        ( CodigoCondicionPrecintoSunat,
+			          NombreCondicionPrecinto,
+			          UsuarioCreacion
+			        )
+			VALUES  ( @CodigoCondicionPrecintoSunat, 
+			          @NombreCondicionPrecinto,
+			          @UsuarioRegistro
+			        )
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se registró la Condicion de Precinto satisfactoriamente' AS Mensaje
+		END 
+	END
+	
+	IF @Accion = 'U'
+	BEGIN
+		IF NOT EXISTS(SELECT CodigoCondicionPrecinto FROM dbo.CondicionPrecinto (NOLOCK) 
+			WHERE CodigoCondicionPrecinto = @CodigoCondicionPrecinto AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de la Condicion de Precinto no existe, no se puede actualizar' AS Mensaje
+		END
+		ELSE IF EXISTS(SELECT CodigoCondicionPrecinto FROM dbo.CondicionPrecinto (NOLOCK) 
+		WHERE CodigoCondicionPrecintoSunat = @CodigoCondicionPrecintoSunat AND EstadoRegistro = 1 AND CodigoCondicionPrecinto <> @CodigoCondicionPrecinto)
+		OR EXISTS(SELECT CodigoCondicionPrecinto FROM dbo.CondicionPrecinto (NOLOCK) 
+		WHERE RTRIM(LTRIM(NombreCondicionPrecinto)) = RTRIM(LTRIM(@NombreCondicionPrecinto)) 
+		AND EstadoRegistro = 1 AND CodigoCondicionPrecinto <> @CodigoCondicionPrecinto)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código o nombre de la Condición de Precinto ya se encuentra Registrada, no se puede actualizar' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			UPDATE dbo.CondicionPrecinto SET 
+			CodigoCondicionPrecintoSunat = @CodigoCondicionPrecintoSunat,
+			NombreCondicionPrecinto = @NombreCondicionPrecinto,
+			UsuarioActualizacion = @UsuarioRegistro,
+			FechaHoraActualizacion = GETDATE()
+			WHERE CodigoCondicionPrecinto = @CodigoCondicionPrecinto
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se Actualizó Condición de Precinto satisfactoriamente' AS Mensaje
+		END
+	END
+	
+	IF @Accion = 'D'
+	BEGIN
+		IF NOT EXISTS(SELECT CodigoCondicionPrecinto FROM dbo.CondicionPrecinto (NOLOCK) 
+			WHERE CodigoCondicionPrecinto = @CodigoCondicionPrecinto AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de Condición de Precinto no existe, No se puede Anular' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			UPDATE dbo.CondicionPrecinto SET
+			EstadoRegistro = 0, 
+			UsuarioActualizacion = @UsuarioRegistro,
+			FechaHoraActualizacion = GETDATE()
+			WHERE CodigoCondicionPrecinto = @CodigoCondicionPrecinto
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se anuló Condición de Precinto satisfactoriamente' AS Mensaje
+		END
+	END
+END TRY
+BEGIN CATCH
+	SELECT dbo.Funcion_TipoMensaje(3) AS CodigoMensaje,ISNULL(ERROR_MESSAGE(),'Ocurrio un error interno') AS Mensaje
+END CATCH
+
+GO
+
+-- EXEC USP_CONSULTAR_CONDICIONPRECINTO NULL,NULL,NULL,NULL,NULL,NULL,300,NULL,NULL
+CREATE PROCEDURE [dbo].[USP_CONSULTAR_CONDICIONPRECINTO]       
+ (        
+  @CodigoCondicionPrecinto BIGINT=NULL,
+  @CodigoCondicionPrecintoSunat VARCHAR(1)=NULL,
+  @NombreCondicionPrecinto VARCHAR(40)=NULL,    
+  @OrdenCampo VARCHAR(50)=NULL   
+ ,@OrdenOrientacion VARCHAR(4)=NULL         
+ ,@PaginaActual INT=1         
+ ,@NroRegistrosPorPagina INT=10         
+ ,@TotalRegistros INT OUTPUT         
+ ,@CantidadPaginas INT OUTPUT         
+ )         
+ AS         
+ BEGIN         
+  
+ DECLARE @vInicio int, @vFin INT,@vNumeroSerie int 
+
+ DECLARE @dtTipoNave AS  
+ TABLE( 
+ CodigoCondicionPrecinto BIGINT,
+ CodigoCondicionPrecintoSunat VARCHAR(1),
+ NombreCondicionPrecinto VARCHAR(40),        
+ UsuarioCreacion VARCHAR(100),         
+ FechaHoraCreacion DATETIME,         
+ UsuarioActualizacion VARCHAR(100),         
+ FechaHoraActualizacion DATETIME)         
+
+ IF @PaginaActual IS NULL SET @PaginaActual = 1
+ IF @NroRegistrosPorPagina IS NULL SET @NroRegistrosPorPagina = 10
+ 
+  SET @vInicio = ((@PaginaActual*@NroRegistrosPorPagina-@NroRegistrosPorPagina)+1);         
+  SET @vFin = (@PaginaActual*@NroRegistrosPorPagina) 
+       
+ INSERT INTO @dtTipoNave  
+ ( 
+ CodigoCondicionPrecinto,
+ CodigoCondicionPrecintoSunat,
+ NombreCondicionPrecinto,         
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion
+ ) 
+ SELECT  
+ CodigoCondicionPrecinto,
+ CodigoCondicionPrecintoSunat,
+ NombreCondicionPrecinto,             
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion        
+ FROM dbo.CondicionPrecinto (NOLOCK)       
+ WHERE  
+ (@CodigoCondicionPrecinto IS NULL OR CodigoCondicionPrecinto=@CodigoCondicionPrecinto) AND
+ (@CodigoCondicionPrecintoSunat IS NULL OR CodigoCondicionPrecintoSunat=@CodigoCondicionPrecintoSunat) AND
+ (@NombreCondicionPrecinto IS NULL OR NombreCondicionPrecinto LIKE '%' + @NombreCondicionPrecinto + '%') AND
+ EstadoRegistro=1 
+        
+ SELECT         
+ CodigoCondicionPrecinto,
+ CodigoCondicionPrecintoSunat,
+ NombreCondicionPrecinto,         
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion        
+ FROM (         
+ SELECT          
+ CASE WHEN UPPER(@OrdenOrientacion)='ASC' OR @OrdenOrientacion IS NULL THEN         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoCondicionPrecinto') THEN ROW_NUMBER()OVER(ORDER BY CodigoCondicionPrecinto ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoCondicionPrecintoSunat') THEN ROW_NUMBER()OVER(ORDER BY CodigoCondicionPrecintoSunat ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreCondicionPrecinto') THEN ROW_NUMBER()OVER(ORDER BY NombreCondicionPrecinto ASC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion ASC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoCondicionPrecinto ASC)         
+  END         
+ ELSE         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoCondicionPrecinto') THEN ROW_NUMBER()OVER(ORDER BY CodigoCondicionPrecinto DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoCondicionPrecintoSunat') THEN ROW_NUMBER()OVER(ORDER BY CodigoCondicionPrecintoSunat DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreCondicionPrecinto') THEN ROW_NUMBER()OVER(ORDER BY NombreCondicionPrecinto DESC)       
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion DESC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoCondicionPrecinto DESC)        
+  END         
+ END AS [NROORDEN],         
+ CodigoCondicionPrecinto,
+ CodigoCondicionPrecintoSunat,
+ NombreCondicionPrecinto,         
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion         
+ FROM @dtTipoNave         
+ )Info         
+ WHERE         
+   [NROORDEN] = CASE WHEN (@PaginaActual is null)THEN [NROORDEN] ELSE -1 END         
+   OR [NROORDEN] BETWEEN @vInicio AND @vFin         
+   ORDER BY         
+   [NROORDEN] ASC;         
+           
+ SELECT  @TotalRegistros = count(1),         
+   @CantidadPaginas =  CASE WHEN @NroRegistrosPorPagina is null THEN 1         
+   ELSE CAST(CEILING(count(1)/CAST(@NroRegistrosPorPagina as float)) as int)         
+   END          
+ FROM @dtTipoNave              
+END
+
+GO
+
+-- EXEC USP_REGISTRAR_ENTIDADPRECINTO NULL,'Z1','Prueba 1','JAV','I'
+-- EXEC USP_REGISTRAR_ENTIDADPRECINTO 8,'CA','Prueba 2','HEC','U'
+-- EXEC USP_REGISTRAR_ENTIDADPRECINTO 8,6,'Prueba 1','ROM','D'
+
+CREATE PROCEDURE [dbo].[USP_REGISTRAR_ENTIDADPRECINTO]
+  (
+	@CodigoEntidadPrecinto BIGINT=NULL,
+	@CodigoEntidadPrecintoSunat VARCHAR(2)=NULL,
+	@NombreEntidadPrecinto VARCHAR(40)=NULL, 
+	@UsuarioRegistro VARCHAR(100)=NULL,
+	@Accion VARCHAR(1)=NULL
+  )
+  AS
+BEGIN TRY 
+	IF @Accion = 'I'
+	BEGIN
+		IF EXISTS(SELECT CodigoEntidadPrecinto FROM dbo.EntidadPrecinto (NOLOCK) 
+		WHERE CodigoEntidadPrecintoSunat = @CodigoEntidadPrecintoSunat AND EstadoRegistro = 1)
+		OR EXISTS(SELECT CodigoEntidadPrecinto FROM dbo.EntidadPrecinto (NOLOCK) 
+		WHERE RTRIM(LTRIM(NombreEntidadPrecinto)) = RTRIM(LTRIM(@NombreEntidadPrecinto)) AND EstadoRegistro = 1)
+		BEGIN
+		-- Controlar Errores y enviar al Servicio
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código o nombre de la Entidad de Precinto ya se encuentra Registrada' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			INSERT dbo.EntidadPrecinto
+			        ( CodigoEntidadPrecintoSunat,
+			          NombreEntidadPrecinto,
+			          UsuarioCreacion
+			        )
+			VALUES  ( @CodigoEntidadPrecintoSunat, 
+			          @NombreEntidadPrecinto,
+			          @UsuarioRegistro
+			        )
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se registró la Entidad de Precinto satisfactoriamente' AS Mensaje
+		END 
+	END
+	
+	IF @Accion = 'U'
+	BEGIN
+		IF NOT EXISTS(SELECT CodigoEntidadPrecinto FROM dbo.EntidadPrecinto (NOLOCK) 
+			WHERE CodigoEntidadPrecinto = @CodigoEntidadPrecinto AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de la Entidad de Precinto no existe, no se puede actualizar' AS Mensaje
+		END
+		ELSE IF EXISTS(SELECT CodigoEntidadPrecinto FROM dbo.EntidadPrecinto (NOLOCK) 
+		WHERE CodigoEntidadPrecintoSunat = @CodigoEntidadPrecintoSunat AND EstadoRegistro = 1 AND CodigoEntidadPrecinto <> @CodigoEntidadPrecinto)
+		OR EXISTS(SELECT CodigoEntidadPrecinto FROM dbo.EntidadPrecinto (NOLOCK) 
+		WHERE RTRIM(LTRIM(NombreEntidadPrecinto)) = RTRIM(LTRIM(@NombreEntidadPrecinto)) 
+		AND EstadoRegistro = 1 AND CodigoEntidadPrecinto <> @CodigoEntidadPrecinto)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código o nombre de la Entidad de Precinto ya se encuentra Registrada, no se puede actualizar' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			UPDATE dbo.EntidadPrecinto SET 
+			CodigoEntidadPrecintoSunat = @CodigoEntidadPrecintoSunat,
+			NombreEntidadPrecinto = @NombreEntidadPrecinto,
+			UsuarioActualizacion = @UsuarioRegistro,
+			FechaHoraActualizacion = GETDATE()
+			WHERE CodigoEntidadPrecinto = @CodigoEntidadPrecinto
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se Actualizó Entidad de Precinto satisfactoriamente' AS Mensaje
+		END
+	END
+	
+	IF @Accion = 'D'
+	BEGIN
+		IF NOT EXISTS(SELECT CodigoEntidadPrecinto FROM dbo.EntidadPrecinto (NOLOCK) 
+			WHERE CodigoEntidadPrecinto = @CodigoEntidadPrecinto AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de Entidad de Precinto no existe, No se puede Anular' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			UPDATE dbo.EntidadPrecinto SET
+			EstadoRegistro = 0, 
+			UsuarioActualizacion = @UsuarioRegistro,
+			FechaHoraActualizacion = GETDATE()
+			WHERE CodigoEntidadPrecinto = @CodigoEntidadPrecinto
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se anuló Entidad de Precinto satisfactoriamente' AS Mensaje
+		END
+	END
+END TRY
+BEGIN CATCH
+	SELECT dbo.Funcion_TipoMensaje(3) AS CodigoMensaje,ISNULL(ERROR_MESSAGE(),'Ocurrio un error interno') AS Mensaje
+END CATCH
+
+GO
+
+-- EXEC USP_CONSULTAR_ENTIDADPRECINTO NULL,NULL,NULL,NULL,NULL,NULL,300,NULL,NULL
+CREATE PROCEDURE [dbo].[USP_CONSULTAR_ENTIDADPRECINTO]       
+ (        
+  @CodigoEntidadPrecinto BIGINT=NULL,
+  @CodigoEntidadPrecintoSunat VARCHAR(2)=NULL,
+  @NombreEntidadPrecinto VARCHAR(40)=NULL,    
+  @OrdenCampo VARCHAR(50)=NULL   
+ ,@OrdenOrientacion VARCHAR(4)=NULL         
+ ,@PaginaActual INT=1         
+ ,@NroRegistrosPorPagina INT=10         
+ ,@TotalRegistros INT OUTPUT         
+ ,@CantidadPaginas INT OUTPUT         
+ )         
+ AS         
+ BEGIN         
+  
+ DECLARE @vInicio int, @vFin INT,@vNumeroSerie int 
+
+ DECLARE @dtTipoNave AS  
+ TABLE( 
+ CodigoEntidadPrecinto BIGINT,
+ CodigoEntidadPrecintoSunat VARCHAR(2),
+ NombreEntidadPrecinto VARCHAR(40),        
+ UsuarioCreacion VARCHAR(100),         
+ FechaHoraCreacion DATETIME,         
+ UsuarioActualizacion VARCHAR(100),         
+ FechaHoraActualizacion DATETIME)         
+
+ IF @PaginaActual IS NULL SET @PaginaActual = 1
+ IF @NroRegistrosPorPagina IS NULL SET @NroRegistrosPorPagina = 10
+ 
+  SET @vInicio = ((@PaginaActual*@NroRegistrosPorPagina-@NroRegistrosPorPagina)+1);         
+  SET @vFin = (@PaginaActual*@NroRegistrosPorPagina) 
+       
+ INSERT INTO @dtTipoNave  
+ ( 
+ CodigoEntidadPrecinto,
+ CodigoEntidadPrecintoSunat,
+ NombreEntidadPrecinto,         
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion
+ ) 
+ SELECT  
+ CodigoEntidadPrecinto,
+ CodigoEntidadPrecintoSunat,
+ NombreEntidadPrecinto,             
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion        
+ FROM dbo.EntidadPrecinto (NOLOCK)       
+ WHERE  
+ (@CodigoEntidadPrecinto IS NULL OR CodigoEntidadPrecinto=@CodigoEntidadPrecinto) AND
+ (@CodigoEntidadPrecintoSunat IS NULL OR CodigoEntidadPrecintoSunat=@CodigoEntidadPrecintoSunat) AND
+ (@NombreEntidadPrecinto IS NULL OR NombreEntidadPrecinto LIKE '%' + @NombreEntidadPrecinto + '%') AND
+ EstadoRegistro=1 
+        
+ SELECT         
+ CodigoEntidadPrecinto,
+ CodigoEntidadPrecintoSunat,
+ NombreEntidadPrecinto,         
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion        
+ FROM (         
+ SELECT          
+ CASE WHEN UPPER(@OrdenOrientacion)='ASC' OR @OrdenOrientacion IS NULL THEN         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoEntidadPrecinto') THEN ROW_NUMBER()OVER(ORDER BY CodigoEntidadPrecinto ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoEntidadPrecintoSunat') THEN ROW_NUMBER()OVER(ORDER BY CodigoEntidadPrecintoSunat ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreEntidadPrecinto') THEN ROW_NUMBER()OVER(ORDER BY NombreEntidadPrecinto ASC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion ASC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoEntidadPrecinto ASC)         
+  END         
+ ELSE         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoEntidadPrecinto') THEN ROW_NUMBER()OVER(ORDER BY CodigoEntidadPrecinto DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoEntidadPrecintoSunat') THEN ROW_NUMBER()OVER(ORDER BY CodigoEntidadPrecintoSunat DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreEntidadPrecinto') THEN ROW_NUMBER()OVER(ORDER BY NombreEntidadPrecinto DESC)       
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion DESC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoEntidadPrecinto DESC)        
+  END         
+ END AS [NROORDEN],         
+ CodigoEntidadPrecinto,
+ CodigoEntidadPrecintoSunat,
+ NombreEntidadPrecinto,         
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion         
+ FROM @dtTipoNave         
+ )Info         
+ WHERE         
+   [NROORDEN] = CASE WHEN (@PaginaActual is null)THEN [NROORDEN] ELSE -1 END         
+   OR [NROORDEN] BETWEEN @vInicio AND @vFin         
+   ORDER BY         
+   [NROORDEN] ASC;         
+           
+ SELECT  @TotalRegistros = count(1),         
+   @CantidadPaginas =  CASE WHEN @NroRegistrosPorPagina is null THEN 1         
+   ELSE CAST(CEILING(count(1)/CAST(@NroRegistrosPorPagina as float)) as int)         
+   END          
+ FROM @dtTipoNave              
+END
+
+GO
+
+-- EXEC USP_REGISTRAR_PRECINTO NULL,1,1,'PREC123','JAV','I'
+-- EXEC USP_REGISTRAR_PRECINTO 5,4,1,'PREC12356','HEC','U'
+-- EXEC USP_REGISTRAR_PRECINTO 5,1,1,'PREC123','ROM','D'
+
+CREATE PROCEDURE [dbo].[USP_REGISTRAR_PRECINTO]
+  (
+	@CodigoPrecinto BIGINT=NULL,
+	@CodigoCondicionPrecinto BIGINT=NULL,
+	@CodigoEntidadPrecinto BIGINT=NULL,
+	@NumeroPrecinto VARCHAR(15)=NULL, 
+	@UsuarioRegistro VARCHAR(100)=NULL,
+	@Accion VARCHAR(1)=NULL
+  )
+  AS
+BEGIN TRY 
+	IF @Accion = 'I'
+	BEGIN
+		IF EXISTS(SELECT CodigoPrecinto FROM dbo.Precinto (NOLOCK) 
+		WHERE NumeroPrecinto = @NumeroPrecinto AND CodigoEntidadPrecinto = @CodigoEntidadPrecinto AND EstadoRegistro = 1)
+		BEGIN
+		-- Controlar Errores y enviar al Servicio
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Precinto ya se encuentra registrado' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			        
+			INSERT dbo.Precinto
+			        ( CodigoCondicionPrecinto ,
+			          CodigoEntidadPrecinto ,
+			          NumeroPrecinto ,
+			          UsuarioCreacion 
+			        )
+			VALUES  ( 
+					  @CodigoCondicionPrecinto ,
+			          @CodigoEntidadPrecinto ,
+			          @NumeroPrecinto ,
+					  @UsuarioRegistro
+			        )
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se registró Precinto satisfactoriamente' AS Mensaje
+		END 
+	END
+	
+	IF @Accion = 'U'
+	BEGIN
+		IF NOT EXISTS(SELECT CodigoPrecinto FROM dbo.Precinto (NOLOCK) 
+			WHERE CodigoPrecinto = @CodigoPrecinto AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de Precinto no existe, no se puede actualizar' AS Mensaje
+		END
+		ELSE IF EXISTS(SELECT CodigoPrecinto FROM dbo.Precinto (NOLOCK) 
+		WHERE NumeroPrecinto = @NumeroPrecinto AND CodigoEntidadPrecinto = @CodigoEntidadPrecinto AND EstadoRegistro = 1
+		AND CodigoPrecinto <> @CodigoPrecinto)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Precinto ya se encuentra registrado, no se puede actualizar' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			UPDATE dbo.Precinto SET 
+			CodigoCondicionPrecinto =@CodigoCondicionPrecinto,
+			CodigoEntidadPrecinto = @CodigoEntidadPrecinto,
+			NumeroPrecinto = @NumeroPrecinto,
+			UsuarioActualizacion = @UsuarioRegistro,
+			FechaHoraActualizacion = GETDATE()
+			WHERE CodigoPrecinto = @CodigoPrecinto
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se Actualizó Precinto satisfactoriamente' AS Mensaje
+		END
+	END
+	
+	IF @Accion = 'D'
+	BEGIN
+		IF NOT EXISTS(SELECT CodigoPrecinto FROM dbo.Precinto (NOLOCK) 
+			WHERE CodigoPrecinto = @CodigoPrecinto AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de Entidad de Precinto no existe, No se puede Anular' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			UPDATE dbo.Precinto SET
+			EstadoRegistro = 0, 
+			UsuarioActualizacion = @UsuarioRegistro,
+			FechaHoraActualizacion = GETDATE()
+			WHERE CodigoPrecinto = @CodigoPrecinto
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se anuló Precinto satisfactoriamente' AS Mensaje
+		END
+	END
+END TRY
+BEGIN CATCH
+	SELECT dbo.Funcion_TipoMensaje(3) AS CodigoMensaje,ISNULL(ERROR_MESSAGE(),'Ocurrio un error interno') AS Mensaje
+END CATCH
+
+GO
+
+-- EXEC USP_CONSULTAR_PRECINTO NULL,NULL,NULL,NULL,NULL,NULL,NULL,300,NULL,NULL
+CREATE PROCEDURE [dbo].[USP_CONSULTAR_PRECINTO]       
+ (        
+  @CodigoPrecinto BIGINT=NULL,
+  @CodigoCondicionPrecinto BIGINT=NULL,
+  @CodigoEntidadPrecinto BIGINT=NULL,
+  @NumeroPrecinto VARCHAR(15)=NULL,    
+  @OrdenCampo VARCHAR(50)=NULL   
+ ,@OrdenOrientacion VARCHAR(4)=NULL         
+ ,@PaginaActual INT=1         
+ ,@NroRegistrosPorPagina INT=10         
+ ,@TotalRegistros INT OUTPUT         
+ ,@CantidadPaginas INT OUTPUT         
+ )         
+ AS         
+ BEGIN         
+  
+ DECLARE @vInicio int, @vFin INT,@vNumeroSerie int 
+
+ DECLARE @dtTipoNave AS  
+ TABLE( 
+ CodigoPrecinto BIGINT,
+ NumeroPrecinto VARCHAR(15),
+ CodigoCondicionPrecinto BIGINT,
+ NombreCondicionPrecinto VARCHAR(40),
+ CodigoEntidadPrecinto BIGINT,
+ NombreEntidadPrecinto VARCHAR(40),        
+ UsuarioCreacion VARCHAR(100),         
+ FechaHoraCreacion DATETIME,         
+ UsuarioActualizacion VARCHAR(100),         
+ FechaHoraActualizacion DATETIME)         
+
+ IF @PaginaActual IS NULL SET @PaginaActual = 1
+ IF @NroRegistrosPorPagina IS NULL SET @NroRegistrosPorPagina = 10
+ 
+  SET @vInicio = ((@PaginaActual*@NroRegistrosPorPagina-@NroRegistrosPorPagina)+1);         
+  SET @vFin = (@PaginaActual*@NroRegistrosPorPagina) 
+       
+ INSERT INTO @dtTipoNave  
+ ( 
+ CodigoPrecinto,
+ NumeroPrecinto,
+ CodigoCondicionPrecinto,
+ NombreCondicionPrecinto,
+ CodigoEntidadPrecinto,
+ NombreEntidadPrecinto,        
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion
+ ) 
+ SELECT  
+ CodigoPrecinto,
+ NumeroPrecinto,
+ a.CodigoCondicionPrecinto,
+ NombreCondicionPrecinto,
+ a.CodigoEntidadPrecinto,
+ NombreEntidadPrecinto,            
+ a.UsuarioCreacion,         
+ a.FechaHoraCreacion,         
+ a.UsuarioActualizacion,         
+ a.FechaHoraActualizacion        
+ FROM dbo.Precinto a (NOLOCK) 
+ JOIN dbo.CondicionPrecinto b (NOLOCK) ON a.CodigoCondicionPrecinto = b.CodigoCondicionPrecinto
+ JOIN dbo.EntidadPrecinto c (NOLOCK) ON a.CodigoEntidadPrecinto = c.CodigoEntidadPrecinto        
+ WHERE  
+ (@CodigoPrecinto IS NULL OR CodigoPrecinto=@CodigoPrecinto) AND
+ (@CodigoCondicionPrecinto IS NULL OR a.CodigoCondicionPrecinto=@CodigoCondicionPrecinto) AND
+ (@CodigoEntidadPrecinto IS NULL OR a.CodigoEntidadPrecinto=@CodigoEntidadPrecinto) AND
+ (@NumeroPrecinto IS NULL OR a.NumeroPrecinto=@NumeroPrecinto) AND
+ a.EstadoRegistro=1 
+        
+ SELECT         
+ CodigoPrecinto,
+ NumeroPrecinto,
+ CodigoCondicionPrecinto,
+ NombreCondicionPrecinto,
+ CodigoEntidadPrecinto,
+ NombreEntidadPrecinto,         
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion        
+ FROM (         
+ SELECT          
+ CASE WHEN UPPER(@OrdenOrientacion)='ASC' OR @OrdenOrientacion IS NULL THEN         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoPrecinto') THEN ROW_NUMBER()OVER(ORDER BY CodigoPrecinto ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NumeroPrecinto') THEN ROW_NUMBER()OVER(ORDER BY NumeroPrecinto ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreCondicionPrecinto') THEN ROW_NUMBER()OVER(ORDER BY NombreCondicionPrecinto ASC)
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreEntidadPrecinto') THEN ROW_NUMBER()OVER(ORDER BY NombreEntidadPrecinto ASC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion ASC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoPrecinto ASC)         
+  END         
+ ELSE         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoPrecinto') THEN ROW_NUMBER()OVER(ORDER BY CodigoPrecinto DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NumeroPrecinto') THEN ROW_NUMBER()OVER(ORDER BY NumeroPrecinto DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreCondicionPrecinto') THEN ROW_NUMBER()OVER(ORDER BY NombreCondicionPrecinto DESC)
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreEntidadPrecinto') THEN ROW_NUMBER()OVER(ORDER BY NombreEntidadPrecinto DESC)     
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion DESC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoPrecinto DESC)        
+  END         
+ END AS [NROORDEN],         
+ CodigoPrecinto,
+ NumeroPrecinto,
+ CodigoCondicionPrecinto,
+ NombreCondicionPrecinto,
+ CodigoEntidadPrecinto,
+ NombreEntidadPrecinto,         
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion         
+ FROM @dtTipoNave         
+ )Info         
+ WHERE         
+   [NROORDEN] = CASE WHEN (@PaginaActual is null)THEN [NROORDEN] ELSE -1 END         
+   OR [NROORDEN] BETWEEN @vInicio AND @vFin         
+   ORDER BY         
+   [NROORDEN] ASC;         
+           
+ SELECT  @TotalRegistros = count(1),         
+   @CantidadPaginas =  CASE WHEN @NroRegistrosPorPagina is null THEN 1         
+   ELSE CAST(CEILING(count(1)/CAST(@NroRegistrosPorPagina as float)) as int)         
+   END          
+ FROM @dtTipoNave              
+END
+
+GO
+
+-- EXEC USP_REGISTRAR_MONEDA NULL,'MO1','Moneda 1','JAV','I'
+-- EXEC USP_REGISTRAR_MONEDA 177,'MO2','Dólar zimbabuensex','HEC','U'
+-- EXEC USP_REGISTRAR_MONEDA 177,NULL,NULL,'HEC','D'
+
+CREATE PROCEDURE [dbo].[USP_REGISTRAR_MONEDA]
+  (
+	@CodigoMoneda BIGINT=NULL,
+	@CodigoMonedaSunat VARCHAR(3)=NULL,
+	@NombreMoneda VARCHAR(80)=NULL,
+	@UsuarioRegistro VARCHAR(100)=NULL,
+	@Accion VARCHAR(1)=NULL
+  )
+  AS
+BEGIN TRY 
+	IF @Accion = 'I'
+	BEGIN
+		IF EXISTS(SELECT CodigoMoneda FROM dbo.Moneda (NOLOCK) 
+		WHERE CodigoMonedaSunat = @CodigoMonedaSunat AND EstadoRegistro = 1)
+		OR EXISTS(SELECT CodigoMoneda FROM dbo.Moneda (NOLOCK) 
+		WHERE RTRIM(LTRIM(NombreMoneda)) = RTRIM(LTRIM(@NombreMoneda)) AND EstadoRegistro = 1)
+		BEGIN
+		-- Controlar Errores y enviar al Servicio
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código o nombre de Moneda ya se encuentra registrado' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			INSERT dbo.Moneda
+			        ( CodigoMonedaSunat,
+			          NombreMoneda,
+			          UsuarioCreacion
+			        )
+			VALUES  ( @CodigoMonedaSunat, 
+			          @NombreMoneda,
+			          @UsuarioRegistro
+			        )
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se registró Moneda satisfactoriamente' AS Mensaje
+		END 
+	END
+	
+	IF @Accion = 'U'
+	BEGIN
+		IF NOT EXISTS(SELECT CodigoMoneda FROM dbo.Moneda (NOLOCK) 
+			WHERE CodigoMoneda = @CodigoMoneda AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de Moneda no existe, no se puede actualizar' AS Mensaje
+		END
+		ELSE IF EXISTS(SELECT CodigoMoneda FROM dbo.Moneda (NOLOCK) 
+		WHERE CodigoMonedaSunat = @CodigoMonedaSunat AND EstadoRegistro = 1 AND CodigoMoneda <> @CodigoMoneda)
+		OR EXISTS(SELECT CodigoMoneda FROM dbo.Moneda (NOLOCK) 
+		WHERE RTRIM(LTRIM(NombreMoneda)) = RTRIM(LTRIM(@NombreMoneda)) 
+		AND EstadoRegistro = 1 AND CodigoMoneda <> @CodigoMoneda)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código o nombre de Moneda ya se encuentra registrado, no se puede actualizar' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			UPDATE dbo.Moneda SET 
+			CodigoMonedaSunat = @CodigoMonedaSunat,
+			NombreMoneda = @NombreMoneda,
+			UsuarioActualizacion = @UsuarioRegistro,
+			FechaHoraActualizacion = GETDATE()
+			WHERE CodigoMoneda = @CodigoMoneda
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se Actualizó Moneda satisfactoriamente' AS Mensaje
+		END
+	END
+	
+	IF @Accion = 'D'
+	BEGIN
+		IF NOT EXISTS(SELECT CodigoMoneda FROM dbo.Moneda (NOLOCK) 
+			WHERE CodigoMoneda = @CodigoMoneda AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de Moneda no existe, No se puede Anular' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			UPDATE dbo.Moneda SET
+			EstadoRegistro = 0, 
+			UsuarioActualizacion = @UsuarioRegistro,
+			FechaHoraActualizacion = GETDATE()
+			WHERE CodigoMoneda = @CodigoMoneda
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se anuló Moneda satisfactoriamente' AS Mensaje
+		END
+	END
+END TRY
+BEGIN CATCH
+	SELECT dbo.Funcion_TipoMensaje(3) AS CodigoMensaje,ISNULL(ERROR_MESSAGE(),'Ocurrio un error interno') AS Mensaje
+END CATCH
+
+GO
+
+-- EXEC USP_CONSULTAR_MONEDA NULL,NULL,NULL,NULL,NULL,NULL,300,NULL,NULL
+CREATE PROCEDURE [dbo].[USP_CONSULTAR_MONEDA]       
+ (        
+  @CodigoMoneda BIGINT=NULL,
+  @CodigoMonedaSunat VARCHAR(3)=NULL,
+  @NombreMoneda VARCHAR(80)=NULL,    
+  @OrdenCampo VARCHAR(50)=NULL   
+ ,@OrdenOrientacion VARCHAR(4)=NULL         
+ ,@PaginaActual INT=1         
+ ,@NroRegistrosPorPagina INT=10         
+ ,@TotalRegistros INT OUTPUT         
+ ,@CantidadPaginas INT OUTPUT         
+ )         
+ AS         
+ BEGIN         
+  
+ DECLARE @vInicio int, @vFin INT,@vNumeroSerie int 
+
+ DECLARE @dtMoneda AS  
+ TABLE( 
+ CodigoMoneda BIGINT, 
+ CodigoMonedaSunat VARCHAR(3), 
+ NombreMoneda VARCHAR(80),        
+ UsuarioCreacion VARCHAR(100),         
+ FechaHoraCreacion DATETIME,         
+ UsuarioActualizacion VARCHAR(100),         
+ FechaHoraActualizacion DATETIME)         
+
+ IF @PaginaActual IS NULL SET @PaginaActual = 1
+ IF @NroRegistrosPorPagina IS NULL SET @NroRegistrosPorPagina = 10
+ 
+  SET @vInicio = ((@PaginaActual*@NroRegistrosPorPagina-@NroRegistrosPorPagina)+1);         
+  SET @vFin = (@PaginaActual*@NroRegistrosPorPagina) 
+       
+ INSERT INTO @dtMoneda  
+ ( 
+ CodigoMoneda, 
+ CodigoMonedaSunat, 
+ NombreMoneda,        
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion
+ ) 
+ SELECT  
+ CodigoMoneda, 
+ CodigoMonedaSunat, 
+ NombreMoneda,           
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion        
+ FROM dbo.Moneda (NOLOCK)       
+ WHERE  
+ (@CodigoMoneda IS NULL OR CodigoMoneda=@CodigoMoneda) AND
+ (@CodigoMonedaSunat IS NULL OR CodigoMonedaSunat=@CodigoMonedaSunat) AND
+ (@NombreMoneda IS NULL OR NombreMoneda LIKE '%' + @NombreMoneda + '%') AND
+ EstadoRegistro=1 
+        
+ SELECT         
+ CodigoMoneda, 
+ CodigoMonedaSunat, 
+ NombreMoneda,        
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion        
+ FROM (         
+ SELECT          
+ CASE WHEN UPPER(@OrdenOrientacion)='ASC' OR @OrdenOrientacion IS NULL THEN         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoMoneda') THEN ROW_NUMBER()OVER(ORDER BY CodigoMoneda ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoMonedaSunat') THEN ROW_NUMBER()OVER(ORDER BY CodigoMonedaSunat ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreMoneda') THEN ROW_NUMBER()OVER(ORDER BY NombreMoneda ASC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion ASC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoMonedaSunat ASC)         
+  END         
+ ELSE         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoMoneda') THEN ROW_NUMBER()OVER(ORDER BY CodigoMoneda DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoMonedaSunat') THEN ROW_NUMBER()OVER(ORDER BY CodigoMonedaSunat DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreMoneda') THEN ROW_NUMBER()OVER(ORDER BY NombreMoneda DESC)       
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion DESC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoMonedaSunat DESC)        
+  END         
+ END AS [NROORDEN],         
+ CodigoMoneda, 
+ CodigoMonedaSunat, 
+ NombreMoneda,       
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion         
+ FROM @dtMoneda         
+ )Info         
+ WHERE         
+   [NROORDEN] = CASE WHEN (@PaginaActual is null)THEN [NROORDEN] ELSE -1 END         
+   OR [NROORDEN] BETWEEN @vInicio AND @vFin         
+   ORDER BY         
+   [NROORDEN] ASC;         
+           
+ SELECT  @TotalRegistros = count(1),         
+   @CantidadPaginas =  CASE WHEN @NroRegistrosPorPagina is null THEN 1         
+   ELSE CAST(CEILING(count(1)/CAST(@NroRegistrosPorPagina as float)) as int)         
+   END          
+ FROM @dtMoneda              
+END
+
+GO
+
+-- EXEC USP_REGISTRAR_TIPOENVIO NULL,30,'TipoEnvio 1','JAV','I'
+-- EXEC USP_REGISTRAR_TIPOENVIO 6,31,'TipoEnvio 2','HEC','U'
+-- EXEC USP_REGISTRAR_TIPOENVIO 6,31,'TipoEnvio 2','ROM','D'
+
+CREATE PROCEDURE [dbo].[USP_REGISTRAR_TIPOENVIO]
+  (
+	@CodigoTipoEnvio BIGINT=NULL,
+	@CodigoTipoEnvioSunat SMALLINT=NULL,
+	@NombreTipoEnvio VARCHAR(50)=NULL,
+	@UsuarioRegistro VARCHAR(100)=NULL,
+	@Accion VARCHAR(1)=NULL
+  )
+  AS
+BEGIN TRY 
+	IF @Accion = 'I'
+	BEGIN
+		IF EXISTS(SELECT CodigoTipoEnvio FROM dbo.TipoEnvio (NOLOCK) 
+		WHERE CodigoTipoEnvioSunat = @CodigoTipoEnvioSunat AND EstadoRegistro = 1)
+		OR EXISTS(SELECT CodigoTipoEnvio FROM dbo.TipoEnvio (NOLOCK) 
+		WHERE RTRIM(LTRIM(NombreTipoEnvio)) = RTRIM(LTRIM(@NombreTipoEnvio)) AND EstadoRegistro = 1)
+		BEGIN
+		-- Controlar Errores y enviar al Servicio
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código o nombre de Tipo de Envío ya se encuentra registrado' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			INSERT dbo.TipoEnvio
+			        ( CodigoTipoEnvioSunat,
+			          NombreTipoEnvio,
+			          UsuarioCreacion
+			        )
+			VALUES  ( @CodigoTipoEnvioSunat, 
+			          @NombreTipoEnvio,
+			          @UsuarioRegistro
+			        )
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se registró Tipo de Envío satisfactoriamente' AS Mensaje
+		END 
+	END
+	
+	IF @Accion = 'U'
+	BEGIN
+		IF NOT EXISTS(SELECT CodigoTipoEnvio FROM dbo.TipoEnvio (NOLOCK) 
+			WHERE CodigoTipoEnvio = @CodigoTipoEnvio AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de Tipo de Envío no existe, no se puede actualizar' AS Mensaje
+		END
+		ELSE IF EXISTS(SELECT CodigoTipoEnvio FROM dbo.TipoEnvio (NOLOCK) 
+		WHERE CodigoTipoEnvioSunat = @CodigoTipoEnvioSunat AND EstadoRegistro = 1 AND CodigoTipoEnvio <> @CodigoTipoEnvio)
+		OR EXISTS(SELECT CodigoTipoEnvio FROM dbo.TipoEnvio (NOLOCK) 
+		WHERE RTRIM(LTRIM(NombreTipoEnvio)) = RTRIM(LTRIM(@NombreTipoEnvio)) 
+		AND EstadoRegistro = 1 AND CodigoTipoEnvio <> @CodigoTipoEnvio)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código o nombre de Tipo de Envío ya se encuentra registrado, no se puede actualizar' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			UPDATE dbo.TipoEnvio SET 
+			CodigoTipoEnvioSunat = @CodigoTipoEnvioSunat,
+			NombreTipoEnvio = @NombreTipoEnvio,
+			UsuarioActualizacion = @UsuarioRegistro,
+			FechaHoraActualizacion = GETDATE()
+			WHERE CodigoTipoEnvio = @CodigoTipoEnvio
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se Actualizó Tipo de Envío satisfactoriamente' AS Mensaje
+		END
+	END
+	
+	IF @Accion = 'D'
+	BEGIN
+		IF NOT EXISTS(SELECT CodigoTipoEnvio FROM dbo.TipoEnvio (NOLOCK) 
+			WHERE CodigoTipoEnvio = @CodigoTipoEnvio AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de Tipo de Envío no existe, No se puede Anular' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			UPDATE dbo.TipoEnvio SET
+			EstadoRegistro = 0, 
+			UsuarioActualizacion = @UsuarioRegistro,
+			FechaHoraActualizacion = GETDATE()
+			WHERE CodigoTipoEnvio = @CodigoTipoEnvio
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se anuló Tipo de Envío satisfactoriamente' AS Mensaje
+		END
+	END
+END TRY
+BEGIN CATCH
+	SELECT dbo.Funcion_TipoMensaje(3) AS CodigoMensaje,ISNULL(ERROR_MESSAGE(),'Ocurrio un error interno') AS Mensaje
+END CATCH
+
+GO
+
+-- EXEC USP_CONSULTAR_TIPOENVIO NULL,NULL,NULL,NULL,NULL,NULL,300,NULL,NULL
+CREATE PROCEDURE [dbo].[USP_CONSULTAR_TIPOENVIO]       
+ (        
+  @CodigoTipoEnvio BIGINT=NULL,
+  @CodigoTipoEnvioSunat SMALLINT=NULL,
+  @NombreTipoEnvio VARCHAR(50)=NULL,   
+  @OrdenCampo VARCHAR(50)=NULL   
+ ,@OrdenOrientacion VARCHAR(4)=NULL         
+ ,@PaginaActual INT=1         
+ ,@NroRegistrosPorPagina INT=10         
+ ,@TotalRegistros INT OUTPUT         
+ ,@CantidadPaginas INT OUTPUT         
+ )         
+ AS         
+ BEGIN         
+  
+ DECLARE @vInicio int, @vFin INT,@vNumeroSerie int 
+
+ DECLARE @dtTipoEnvio AS  
+ TABLE( 
+ CodigoTipoEnvio BIGINT, 
+ CodigoTipoEnvioSunat SMALLINT, 
+ NombreTipoEnvio VARCHAR(50),        
+ UsuarioCreacion VARCHAR(100),         
+ FechaHoraCreacion DATETIME,         
+ UsuarioActualizacion VARCHAR(100),         
+ FechaHoraActualizacion DATETIME)         
+
+ IF @PaginaActual IS NULL SET @PaginaActual = 1
+ IF @NroRegistrosPorPagina IS NULL SET @NroRegistrosPorPagina = 10
+ 
+  SET @vInicio = ((@PaginaActual*@NroRegistrosPorPagina-@NroRegistrosPorPagina)+1);         
+  SET @vFin = (@PaginaActual*@NroRegistrosPorPagina) 
+       
+ INSERT INTO @dtTipoEnvio  
+ ( 
+ CodigoTipoEnvio, 
+ CodigoTipoEnvioSunat, 
+ NombreTipoEnvio,        
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion
+ ) 
+ SELECT  
+ CodigoTipoEnvio, 
+ CodigoTipoEnvioSunat, 
+ NombreTipoEnvio,           
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion        
+ FROM dbo.TipoEnvio (NOLOCK)       
+ WHERE  
+ (@CodigoTipoEnvio IS NULL OR CodigoTipoEnvio=@CodigoTipoEnvio) AND
+ (@CodigoTipoEnvioSunat IS NULL OR CodigoTipoEnvioSunat=@CodigoTipoEnvioSunat) AND
+ (@NombreTipoEnvio IS NULL OR NombreTipoEnvio LIKE '%' + @NombreTipoEnvio + '%') AND
+ EstadoRegistro=1 
+        
+ SELECT         
+ CodigoTipoEnvio, 
+ CodigoTipoEnvioSunat, 
+ NombreTipoEnvio,        
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion        
+ FROM (         
+ SELECT          
+ CASE WHEN UPPER(@OrdenOrientacion)='ASC' OR @OrdenOrientacion IS NULL THEN         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoTipoEnvio') THEN ROW_NUMBER()OVER(ORDER BY CodigoTipoEnvio ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoTipoEnvioSunat') THEN ROW_NUMBER()OVER(ORDER BY CodigoTipoEnvioSunat ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreTipoEnvio') THEN ROW_NUMBER()OVER(ORDER BY NombreTipoEnvio ASC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion ASC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoTipoEnvio ASC)         
+  END         
+ ELSE         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoTipoEnvio') THEN ROW_NUMBER()OVER(ORDER BY CodigoTipoEnvio DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoTipoEnvioSunat') THEN ROW_NUMBER()OVER(ORDER BY CodigoTipoEnvioSunat DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreTipoEnvio') THEN ROW_NUMBER()OVER(ORDER BY NombreTipoEnvio DESC)       
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion DESC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoTipoEnvio DESC)        
+  END         
+ END AS [NROORDEN],         
+ CodigoTipoEnvio, 
+ CodigoTipoEnvioSunat, 
+ NombreTipoEnvio,       
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion         
+ FROM @dtTipoEnvio         
+ )Info         
+ WHERE         
+   [NROORDEN] = CASE WHEN (@PaginaActual is null)THEN [NROORDEN] ELSE -1 END         
+   OR [NROORDEN] BETWEEN @vInicio AND @vFin         
+   ORDER BY         
+   [NROORDEN] ASC;         
+           
+ SELECT  @TotalRegistros = count(1),         
+   @CantidadPaginas =  CASE WHEN @NroRegistrosPorPagina is null THEN 1         
+   ELSE CAST(CEILING(count(1)/CAST(@NroRegistrosPorPagina as float)) as int)         
+   END          
+ FROM @dtTipoEnvio              
+END
+
+GO 
+
+-- EXEC USP_REGISTRAR_CONDICIONCONTRATO NULL,'33','CondicionContrato 1','JAV','I'
+-- EXEC USP_REGISTRAR_CONDICIONCONTRATO 4,'33','CondicionContrato 2','HEC','U'
+-- EXEC USP_REGISTRAR_CONDICIONCONTRATO 4,31,'CondicionContrato 2','ROM','D'
+
+CREATE PROCEDURE [dbo].[USP_REGISTRAR_CONDICIONCONTRATO]
+  (
+	@CodigoCondicionContrato BIGINT=NULL,
+	@CodigoCondicionContratoSunat VARCHAR(2)=NULL,
+	@NombreCondicionContrato VARCHAR(80)=NULL,
+	@UsuarioRegistro VARCHAR(100)=NULL,
+	@Accion VARCHAR(1)=NULL
+  )
+  AS
+BEGIN TRY 
+	IF @Accion = 'I'
+	BEGIN
+		IF EXISTS(SELECT CodigoCondicionContrato FROM dbo.CondicionContrato (NOLOCK) 
+		WHERE CodigoCondicionContratoSunat = @CodigoCondicionContratoSunat AND EstadoRegistro = 1)
+		OR EXISTS(SELECT CodigoCondicionContrato FROM dbo.CondicionContrato (NOLOCK) 
+		WHERE RTRIM(LTRIM(NombreCondicionContrato)) = RTRIM(LTRIM(@NombreCondicionContrato)) AND EstadoRegistro = 1)
+		BEGIN
+		-- Controlar Errores y enviar al Servicio
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código o nombre de Condición de Contrato ya se encuentra registrado' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			INSERT dbo.CondicionContrato
+			        ( CodigoCondicionContratoSunat,
+			          NombreCondicionContrato,
+			          UsuarioCreacion
+			        )
+			VALUES  ( @CodigoCondicionContratoSunat, 
+			          @NombreCondicionContrato,
+			          @UsuarioRegistro
+			        )
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se registró Condición de Contrato satisfactoriamente' AS Mensaje
+		END 
+	END
+	
+	IF @Accion = 'U'
+	BEGIN
+		IF NOT EXISTS(SELECT CodigoCondicionContrato FROM dbo.CondicionContrato (NOLOCK) 
+			WHERE CodigoCondicionContrato = @CodigoCondicionContrato AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de Condición de Contrato no existe, no se puede actualizar' AS Mensaje
+		END
+		ELSE IF EXISTS(SELECT CodigoCondicionContrato FROM dbo.CondicionContrato (NOLOCK) 
+		WHERE CodigoCondicionContratoSunat = @CodigoCondicionContratoSunat AND EstadoRegistro = 1 AND CodigoCondicionContrato <> @CodigoCondicionContrato)
+		OR EXISTS(SELECT CodigoCondicionContrato FROM dbo.CondicionContrato (NOLOCK) 
+		WHERE RTRIM(LTRIM(NombreCondicionContrato)) = RTRIM(LTRIM(@NombreCondicionContrato)) 
+		AND EstadoRegistro = 1 AND CodigoCondicionContrato <> @CodigoCondicionContrato)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código o nombre de Condición de Contrato ya se encuentra registrado, no se puede actualizar' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			UPDATE dbo.CondicionContrato SET 
+			CodigoCondicionContratoSunat = @CodigoCondicionContratoSunat,
+			NombreCondicionContrato = @NombreCondicionContrato,
+			UsuarioActualizacion = @UsuarioRegistro,
+			FechaHoraActualizacion = GETDATE()
+			WHERE CodigoCondicionContrato = @CodigoCondicionContrato
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se Actualizó Condición de Contrato satisfactoriamente' AS Mensaje
+		END
+	END
+	
+	IF @Accion = 'D'
+	BEGIN
+		IF NOT EXISTS(SELECT CodigoCondicionContrato FROM dbo.CondicionContrato (NOLOCK) 
+			WHERE CodigoCondicionContrato = @CodigoCondicionContrato AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de Condición de Contrato no existe, No se puede Anular' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			UPDATE dbo.CondicionContrato SET
+			EstadoRegistro = 0, 
+			UsuarioActualizacion = @UsuarioRegistro,
+			FechaHoraActualizacion = GETDATE()
+			WHERE CodigoCondicionContrato = @CodigoCondicionContrato
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se anuló Condición de Contrato satisfactoriamente' AS Mensaje
+		END
+	END
+END TRY
+BEGIN CATCH
+	SELECT dbo.Funcion_TipoMensaje(3) AS CodigoMensaje,ISNULL(ERROR_MESSAGE(),'Ocurrio un error interno') AS Mensaje
+END CATCH
+
+GO
+
+-- EXEC USP_CONSULTAR_CONDICIONCONTRATO NULL,'99',NULL,NULL,NULL,NULL,300,NULL,NULL
+CREATE PROCEDURE [dbo].[USP_CONSULTAR_CONDICIONCONTRATO]       
+ (        
+  @CodigoCondicionContrato BIGINT=NULL,
+  @CodigoCondicionContratoSunat VARCHAR(2)=NULL,
+  @NombreCondicionContrato VARCHAR(80)=NULL,   
+  @OrdenCampo VARCHAR(50)=NULL   
+ ,@OrdenOrientacion VARCHAR(4)=NULL         
+ ,@PaginaActual INT=1         
+ ,@NroRegistrosPorPagina INT=10         
+ ,@TotalRegistros INT OUTPUT         
+ ,@CantidadPaginas INT OUTPUT         
+ )         
+ AS         
+ BEGIN         
+  
+ DECLARE @vInicio int, @vFin INT,@vNumeroSerie int 
+
+ DECLARE @dtCondicionContrato AS  
+ TABLE( 
+ CodigoCondicionContrato BIGINT, 
+ CodigoCondicionContratoSunat VARCHAR(2), 
+ NombreCondicionContrato VARCHAR(80),        
+ UsuarioCreacion VARCHAR(100),         
+ FechaHoraCreacion DATETIME,         
+ UsuarioActualizacion VARCHAR(100),         
+ FechaHoraActualizacion DATETIME)         
+
+ IF @PaginaActual IS NULL SET @PaginaActual = 1
+ IF @NroRegistrosPorPagina IS NULL SET @NroRegistrosPorPagina = 10
+ 
+  SET @vInicio = ((@PaginaActual*@NroRegistrosPorPagina-@NroRegistrosPorPagina)+1);         
+  SET @vFin = (@PaginaActual*@NroRegistrosPorPagina) 
+       
+ INSERT INTO @dtCondicionContrato  
+ ( 
+ CodigoCondicionContrato, 
+ CodigoCondicionContratoSunat, 
+ NombreCondicionContrato,        
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion
+ ) 
+ SELECT  
+ CodigoCondicionContrato, 
+ CodigoCondicionContratoSunat, 
+ NombreCondicionContrato,           
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion        
+ FROM dbo.CondicionContrato (NOLOCK)       
+ WHERE  
+ (@CodigoCondicionContrato IS NULL OR CodigoCondicionContrato=@CodigoCondicionContrato) AND
+ (@CodigoCondicionContratoSunat IS NULL OR CodigoCondicionContratoSunat=@CodigoCondicionContratoSunat) AND
+ (@NombreCondicionContrato IS NULL OR NombreCondicionContrato LIKE '%' + @NombreCondicionContrato + '%') AND
+ EstadoRegistro=1 
+        
+ SELECT         
+ CodigoCondicionContrato, 
+ CodigoCondicionContratoSunat, 
+ NombreCondicionContrato,        
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion        
+ FROM (         
+ SELECT          
+ CASE WHEN UPPER(@OrdenOrientacion)='ASC' OR @OrdenOrientacion IS NULL THEN         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoCondicionContrato') THEN ROW_NUMBER()OVER(ORDER BY CodigoCondicionContrato ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoCondicionContratoSunat') THEN ROW_NUMBER()OVER(ORDER BY CodigoCondicionContratoSunat ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreCondicionContrato') THEN ROW_NUMBER()OVER(ORDER BY NombreCondicionContrato ASC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion ASC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoCondicionContrato ASC)         
+  END         
+ ELSE         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoCondicionContrato') THEN ROW_NUMBER()OVER(ORDER BY CodigoCondicionContrato DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoCondicionContratoSunat') THEN ROW_NUMBER()OVER(ORDER BY CodigoCondicionContratoSunat DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreCondicionContrato') THEN ROW_NUMBER()OVER(ORDER BY NombreCondicionContrato DESC)       
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion DESC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoCondicionContrato DESC)        
+  END         
+ END AS [NROORDEN],         
+ CodigoCondicionContrato, 
+ CodigoCondicionContratoSunat, 
+ NombreCondicionContrato,       
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion         
+ FROM @dtCondicionContrato         
+ )Info         
+ WHERE         
+   [NROORDEN] = CASE WHEN (@PaginaActual is null)THEN [NROORDEN] ELSE -1 END         
+   OR [NROORDEN] BETWEEN @vInicio AND @vFin         
+   ORDER BY         
+   [NROORDEN] ASC;         
+           
+ SELECT  @TotalRegistros = count(1),         
+   @CantidadPaginas =  CASE WHEN @NroRegistrosPorPagina is null THEN 1         
+   ELSE CAST(CEILING(count(1)/CAST(@NroRegistrosPorPagina as float)) as int)         
+   END          
+ FROM @dtCondicionContrato              
+END
+
+GO 
+
+-- EXEC USP_REGISTRAR_REQUERIMIENTOSERVICIO NULL,'61','RequerimientoServicio 1','JAV','I'
+-- EXEC USP_REGISTRAR_REQUERIMIENTOSERVICIO 62,'61','RequerimientoServicio 2','HEC','U'
+-- EXEC USP_REGISTRAR_REQUERIMIENTOSERVICIO 62,31,'RequerimientoServicio 2','ROM','D'
+
+CREATE PROCEDURE [dbo].[USP_REGISTRAR_REQUERIMIENTOSERVICIO]
+  (
+	@CodigoRequerimientoServicio BIGINT=NULL,
+	@CodigoRequerimientoServicioSunat VARCHAR(2)=NULL,
+	@NombreRequerimientoServicio VARCHAR(80)=NULL,
+	@UsuarioRegistro VARCHAR(100)=NULL,
+	@Accion VARCHAR(1)=NULL
+  )
+  AS
+BEGIN TRY 
+	IF @Accion = 'I'
+	BEGIN
+		IF EXISTS(SELECT CodigoRequerimientoServicio FROM dbo.RequerimientoServicio (NOLOCK) 
+		WHERE CodigoRequerimientoServicioSunat = @CodigoRequerimientoServicioSunat AND EstadoRegistro = 1)
+		OR EXISTS(SELECT CodigoRequerimientoServicio FROM dbo.RequerimientoServicio (NOLOCK) 
+		WHERE RTRIM(LTRIM(NombreRequerimientoServicio)) = RTRIM(LTRIM(@NombreRequerimientoServicio)) AND EstadoRegistro = 1)
+		BEGIN
+		-- Controlar Errores y enviar al Servicio
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código o nombre de Requerimiento de Servicio ya se encuentra registrado' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			INSERT dbo.RequerimientoServicio
+			        ( CodigoRequerimientoServicioSunat,
+			          NombreRequerimientoServicio,
+			          UsuarioCreacion
+			        )
+			VALUES  ( @CodigoRequerimientoServicioSunat, 
+			          @NombreRequerimientoServicio,
+			          @UsuarioRegistro
+			        )
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se registró Requerimiento de Servicio satisfactoriamente' AS Mensaje
+		END 
+	END
+	
+	IF @Accion = 'U'
+	BEGIN
+		IF NOT EXISTS(SELECT CodigoRequerimientoServicio FROM dbo.RequerimientoServicio (NOLOCK) 
+			WHERE CodigoRequerimientoServicio = @CodigoRequerimientoServicio AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de Requerimiento de Servicio no existe, no se puede actualizar' AS Mensaje
+		END
+		ELSE IF EXISTS(SELECT CodigoRequerimientoServicio FROM dbo.RequerimientoServicio (NOLOCK) 
+		WHERE CodigoRequerimientoServicioSunat = @CodigoRequerimientoServicioSunat AND EstadoRegistro = 1 AND CodigoRequerimientoServicio <> @CodigoRequerimientoServicio)
+		OR EXISTS(SELECT CodigoRequerimientoServicio FROM dbo.RequerimientoServicio (NOLOCK) 
+		WHERE RTRIM(LTRIM(NombreRequerimientoServicio)) = RTRIM(LTRIM(@NombreRequerimientoServicio)) 
+		AND EstadoRegistro = 1 AND CodigoRequerimientoServicio <> @CodigoRequerimientoServicio)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código o nombre de Requerimiento de Servicio ya se encuentra registrado, no se puede actualizar' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			UPDATE dbo.RequerimientoServicio SET 
+			CodigoRequerimientoServicioSunat = @CodigoRequerimientoServicioSunat,
+			NombreRequerimientoServicio = @NombreRequerimientoServicio,
+			UsuarioActualizacion = @UsuarioRegistro,
+			FechaHoraActualizacion = GETDATE()
+			WHERE CodigoRequerimientoServicio = @CodigoRequerimientoServicio
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se Actualizó Requerimiento de Servicio satisfactoriamente' AS Mensaje
+		END
+	END
+	
+	IF @Accion = 'D'
+	BEGIN
+		IF NOT EXISTS(SELECT CodigoRequerimientoServicio FROM dbo.RequerimientoServicio (NOLOCK) 
+			WHERE CodigoRequerimientoServicio = @CodigoRequerimientoServicio AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de Requerimiento de Servicio no existe, No se puede Anular' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			UPDATE dbo.RequerimientoServicio SET
+			EstadoRegistro = 0, 
+			UsuarioActualizacion = @UsuarioRegistro,
+			FechaHoraActualizacion = GETDATE()
+			WHERE CodigoRequerimientoServicio = @CodigoRequerimientoServicio
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se anuló Requerimiento de Servicio satisfactoriamente' AS Mensaje
+		END
+	END
+END TRY
+BEGIN CATCH
+	SELECT dbo.Funcion_TipoMensaje(3) AS CodigoMensaje,ISNULL(ERROR_MESSAGE(),'Ocurrio un error interno') AS Mensaje
+END CATCH
+
+GO
+
+-- EXEC USP_CONSULTAR_RequerimientoServicio NULL,NULL,NULL,NULL,NULL,NULL,300,NULL,NULL
+CREATE PROCEDURE [dbo].[USP_CONSULTAR_REQUERIMIENTOSERVICIO]       
+ (        
+  @CodigoRequerimientoServicio BIGINT=NULL,
+  @CodigoRequerimientoServicioSunat VARCHAR(2)=NULL,
+  @NombreRequerimientoServicio VARCHAR(80)=NULL,   
+  @OrdenCampo VARCHAR(50)=NULL   
+ ,@OrdenOrientacion VARCHAR(4)=NULL         
+ ,@PaginaActual INT=1         
+ ,@NroRegistrosPorPagina INT=10         
+ ,@TotalRegistros INT OUTPUT         
+ ,@CantidadPaginas INT OUTPUT         
+ )         
+ AS         
+ BEGIN         
+  
+ DECLARE @vInicio int, @vFin INT,@vNumeroSerie int 
+
+ DECLARE @dtRequerimientoServicio AS  
+ TABLE( 
+ CodigoRequerimientoServicio BIGINT, 
+ CodigoRequerimientoServicioSunat VARCHAR(2), 
+ NombreRequerimientoServicio VARCHAR(80),        
+ UsuarioCreacion VARCHAR(100),         
+ FechaHoraCreacion DATETIME,         
+ UsuarioActualizacion VARCHAR(100),         
+ FechaHoraActualizacion DATETIME)         
+
+ IF @PaginaActual IS NULL SET @PaginaActual = 1
+ IF @NroRegistrosPorPagina IS NULL SET @NroRegistrosPorPagina = 10
+ 
+  SET @vInicio = ((@PaginaActual*@NroRegistrosPorPagina-@NroRegistrosPorPagina)+1);         
+  SET @vFin = (@PaginaActual*@NroRegistrosPorPagina) 
+       
+ INSERT INTO @dtRequerimientoServicio  
+ ( 
+ CodigoRequerimientoServicio, 
+ CodigoRequerimientoServicioSunat, 
+ NombreRequerimientoServicio,        
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion
+ ) 
+ SELECT  
+ CodigoRequerimientoServicio, 
+ CodigoRequerimientoServicioSunat, 
+ NombreRequerimientoServicio,           
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion        
+ FROM dbo.RequerimientoServicio (NOLOCK)       
+ WHERE  
+ (@CodigoRequerimientoServicio IS NULL OR CodigoRequerimientoServicio=@CodigoRequerimientoServicio) AND
+ (@CodigoRequerimientoServicioSunat IS NULL OR CodigoRequerimientoServicioSunat=@CodigoRequerimientoServicioSunat) AND
+ (@NombreRequerimientoServicio IS NULL OR NombreRequerimientoServicio LIKE '%' + @NombreRequerimientoServicio + '%') AND
+ EstadoRegistro=1 
+        
+ SELECT         
+ CodigoRequerimientoServicio, 
+ CodigoRequerimientoServicioSunat, 
+ NombreRequerimientoServicio,        
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion        
+ FROM (         
+ SELECT          
+ CASE WHEN UPPER(@OrdenOrientacion)='ASC' OR @OrdenOrientacion IS NULL THEN         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoRequerimientoServicio') THEN ROW_NUMBER()OVER(ORDER BY CodigoRequerimientoServicio ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoRequerimientoServicioSunat') THEN ROW_NUMBER()OVER(ORDER BY CodigoRequerimientoServicioSunat ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreRequerimientoServicio') THEN ROW_NUMBER()OVER(ORDER BY NombreRequerimientoServicio ASC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion ASC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoRequerimientoServicio ASC)         
+  END         
+ ELSE         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoRequerimientoServicio') THEN ROW_NUMBER()OVER(ORDER BY CodigoRequerimientoServicio DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoRequerimientoServicioSunat') THEN ROW_NUMBER()OVER(ORDER BY CodigoRequerimientoServicioSunat DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreRequerimientoServicio') THEN ROW_NUMBER()OVER(ORDER BY NombreRequerimientoServicio DESC)       
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion DESC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoRequerimientoServicio DESC)        
+  END         
+ END AS [NROORDEN],         
+ CodigoRequerimientoServicio, 
+ CodigoRequerimientoServicioSunat, 
+ NombreRequerimientoServicio,       
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion         
+ FROM @dtRequerimientoServicio         
+ )Info         
+ WHERE         
+   [NROORDEN] = CASE WHEN (@PaginaActual is null)THEN [NROORDEN] ELSE -1 END         
+   OR [NROORDEN] BETWEEN @vInicio AND @vFin         
+   ORDER BY         
+   [NROORDEN] ASC;         
+           
+ SELECT  @TotalRegistros = count(1),         
+   @CantidadPaginas =  CASE WHEN @NroRegistrosPorPagina is null THEN 1         
+   ELSE CAST(CEILING(count(1)/CAST(@NroRegistrosPorPagina as float)) as int)         
+   END          
+ FROM @dtRequerimientoServicio              
+END
+
+GO 
+
+-- EXEC USP_REGISTRAR_TIPOBL NULL,'709','TipoBL 1','JAV','I'
+-- EXEC USP_REGISTRAR_TIPOBL 4,'710','TipoBL 2','HEC','U'
+-- EXEC USP_REGISTRAR_TIPOBL 4,'710','TipoBL 2','ROM','D'
+
+CREATE PROCEDURE [dbo].[USP_REGISTRAR_TIPOBL]
+  (
+	@CodigoTipoBL BIGINT=NULL,
+	@CodigoTipoBLSunat VARCHAR(3)=NULL,
+	@NombreTipoBL VARCHAR(80)=NULL,
+	@UsuarioRegistro VARCHAR(100)=NULL,
+	@Accion VARCHAR(1)=NULL
+  )
+  AS
+BEGIN TRY 
+	IF @Accion = 'I'
+	BEGIN
+		IF EXISTS(SELECT CodigoTipoBL FROM dbo.TipoBL (NOLOCK) 
+		WHERE CodigoTipoBLSunat = @CodigoTipoBLSunat AND EstadoRegistro = 1)
+		OR EXISTS(SELECT CodigoTipoBL FROM dbo.TipoBL (NOLOCK) 
+		WHERE RTRIM(LTRIM(NombreTipoBL)) = RTRIM(LTRIM(@NombreTipoBL)) AND EstadoRegistro = 1)
+		BEGIN
+		-- Controlar Errores y enviar al Servicio
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código o nombre de Tipo de BL ya se encuentra registrado' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			INSERT dbo.TipoBL
+			        ( CodigoTipoBLSunat,
+			          NombreTipoBL,
+			          UsuarioCreacion
+			        )
+			VALUES  ( @CodigoTipoBLSunat, 
+			          @NombreTipoBL,
+			          @UsuarioRegistro
+			        )
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se registró Tipo de BL satisfactoriamente' AS Mensaje
+		END 
+	END
+	
+	IF @Accion = 'U'
+	BEGIN
+		IF NOT EXISTS(SELECT CodigoTipoBL FROM dbo.TipoBL (NOLOCK) 
+			WHERE CodigoTipoBL = @CodigoTipoBL AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de Tipo de BL no existe, no se puede actualizar' AS Mensaje
+		END
+		ELSE IF EXISTS(SELECT CodigoTipoBL FROM dbo.TipoBL (NOLOCK) 
+		WHERE CodigoTipoBLSunat = @CodigoTipoBLSunat AND EstadoRegistro = 1 AND CodigoTipoBL <> @CodigoTipoBL)
+		OR EXISTS(SELECT CodigoTipoBL FROM dbo.TipoBL (NOLOCK) 
+		WHERE RTRIM(LTRIM(NombreTipoBL)) = RTRIM(LTRIM(@NombreTipoBL)) 
+		AND EstadoRegistro = 1 AND CodigoTipoBL <> @CodigoTipoBL)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código o nombre de Tipo de BL ya se encuentra registrado, no se puede actualizar' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			UPDATE dbo.TipoBL SET 
+			CodigoTipoBLSunat = @CodigoTipoBLSunat,
+			NombreTipoBL = @NombreTipoBL,
+			UsuarioActualizacion = @UsuarioRegistro,
+			FechaHoraActualizacion = GETDATE()
+			WHERE CodigoTipoBL = @CodigoTipoBL
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se Actualizó Tipo de BL satisfactoriamente' AS Mensaje
+		END
+	END
+	
+	IF @Accion = 'D'
+	BEGIN
+		IF NOT EXISTS(SELECT CodigoTipoBL FROM dbo.TipoBL (NOLOCK) 
+			WHERE CodigoTipoBL = @CodigoTipoBL AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de Tipo de BL no existe, No se puede Anular' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			UPDATE dbo.TipoBL SET
+			EstadoRegistro = 0, 
+			UsuarioActualizacion = @UsuarioRegistro,
+			FechaHoraActualizacion = GETDATE()
+			WHERE CodigoTipoBL = @CodigoTipoBL
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se anuló Tipo de BL satisfactoriamente' AS Mensaje
+		END
+	END
+END TRY
+BEGIN CATCH
+	SELECT dbo.Funcion_TipoMensaje(3) AS CodigoMensaje,ISNULL(ERROR_MESSAGE(),'Ocurrio un error interno') AS Mensaje
+END CATCH
+
+GO
+
+-- EXEC USP_CONSULTAR_TIPOBL NULL,NULL,NULL,NULL,NULL,NULL,300,NULL,NULL
+CREATE PROCEDURE [dbo].[USP_CONSULTAR_TIPOBL]       
+ (        
+  @CodigoTipoBL BIGINT=NULL,
+  @CodigoTipoBLSunat VARCHAR(3)=NULL,
+  @NombreTipoBL VARCHAR(80)=NULL,   
+  @OrdenCampo VARCHAR(50)=NULL   
+ ,@OrdenOrientacion VARCHAR(4)=NULL         
+ ,@PaginaActual INT=1         
+ ,@NroRegistrosPorPagina INT=10         
+ ,@TotalRegistros INT OUTPUT         
+ ,@CantidadPaginas INT OUTPUT         
+ )         
+ AS         
+ BEGIN         
+  
+ DECLARE @vInicio int, @vFin INT,@vNumeroSerie int 
+
+ DECLARE @dtTipoBL AS  
+ TABLE( 
+ CodigoTipoBL BIGINT, 
+ CodigoTipoBLSunat VARCHAR(3), 
+ NombreTipoBL VARCHAR(80),        
+ UsuarioCreacion VARCHAR(100),         
+ FechaHoraCreacion DATETIME,         
+ UsuarioActualizacion VARCHAR(100),         
+ FechaHoraActualizacion DATETIME)         
+
+ IF @PaginaActual IS NULL SET @PaginaActual = 1
+ IF @NroRegistrosPorPagina IS NULL SET @NroRegistrosPorPagina = 10
+ 
+  SET @vInicio = ((@PaginaActual*@NroRegistrosPorPagina-@NroRegistrosPorPagina)+1);         
+  SET @vFin = (@PaginaActual*@NroRegistrosPorPagina) 
+       
+ INSERT INTO @dtTipoBL  
+ ( 
+ CodigoTipoBL, 
+ CodigoTipoBLSunat, 
+ NombreTipoBL,        
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion
+ ) 
+ SELECT  
+ CodigoTipoBL, 
+ CodigoTipoBLSunat, 
+ NombreTipoBL,           
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion        
+ FROM dbo.TipoBL (NOLOCK)       
+ WHERE  
+ (@CodigoTipoBL IS NULL OR CodigoTipoBL=@CodigoTipoBL) AND
+ (@CodigoTipoBLSunat IS NULL OR CodigoTipoBLSunat=@CodigoTipoBLSunat) AND
+ (@NombreTipoBL IS NULL OR NombreTipoBL LIKE '%' + @NombreTipoBL + '%') AND
+ EstadoRegistro=1 
+        
+ SELECT         
+ CodigoTipoBL, 
+ CodigoTipoBLSunat, 
+ NombreTipoBL,        
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion        
+ FROM (         
+ SELECT          
+ CASE WHEN UPPER(@OrdenOrientacion)='ASC' OR @OrdenOrientacion IS NULL THEN         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoTipoBL') THEN ROW_NUMBER()OVER(ORDER BY CodigoTipoBL ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoTipoBLSunat') THEN ROW_NUMBER()OVER(ORDER BY CodigoTipoBLSunat ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreTipoBL') THEN ROW_NUMBER()OVER(ORDER BY NombreTipoBL ASC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion ASC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoTipoBL ASC)         
+  END         
+ ELSE         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoTipoBL') THEN ROW_NUMBER()OVER(ORDER BY CodigoTipoBL DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoTipoBLSunat') THEN ROW_NUMBER()OVER(ORDER BY CodigoTipoBLSunat DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreTipoBL') THEN ROW_NUMBER()OVER(ORDER BY NombreTipoBL DESC)       
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion DESC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoTipoBL DESC)        
+  END         
+ END AS [NROORDEN],         
+ CodigoTipoBL, 
+ CodigoTipoBLSunat, 
+ NombreTipoBL,       
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion         
+ FROM @dtTipoBL         
+ )Info         
+ WHERE         
+   [NROORDEN] = CASE WHEN (@PaginaActual is null)THEN [NROORDEN] ELSE -1 END         
+   OR [NROORDEN] BETWEEN @vInicio AND @vFin         
+   ORDER BY         
+   [NROORDEN] ASC;         
+           
+ SELECT  @TotalRegistros = count(1),         
+   @CantidadPaginas =  CASE WHEN @NroRegistrosPorPagina is null THEN 1         
+   ELSE CAST(CEILING(count(1)/CAST(@NroRegistrosPorPagina as float)) as int)         
+   END          
+ FROM @dtTipoBL              
+END
+
+GO 
+
+-- EXEC USP_REGISTRAR_TIPOFLETE NULL,'TipoFlete 1','105000','SM1','JAV','I'
+-- EXEC USP_REGISTRAR_TIPOFLETE 577,'TipoFlete 1','105000','SM2','JAV','U'
+-- EXEC USP_REGISTRAR_TIPOFLETE 577,'TipoFlete 1','105000','SM2','ROM','D'
+
+CREATE PROCEDURE [dbo].[USP_REGISTRAR_TIPOFLETE]
+  (
+	@CodigoTipoFlete BIGINT=NULL,
+	@NombreTipoFlete VARCHAR(80)=NULL,
+	@CodigoAduanaTipoFlete VARCHAR(6)=NULL,
+	@CodigoEquivalencia VARCHAR(6)=NULL,
+	@UsuarioRegistro VARCHAR(100)=NULL,
+	@Accion VARCHAR(1)=NULL
+  )
+  AS
+BEGIN TRY 
+	IF @Accion = 'I'
+	BEGIN
+		IF EXISTS(SELECT CodigoTipoFlete FROM dbo.TipoFlete (NOLOCK) 
+		WHERE CodigoEquivalencia = @CodigoEquivalencia AND EstadoRegistro = 1)
+		OR EXISTS(SELECT CodigoTipoFlete FROM dbo.TipoFlete (NOLOCK) 
+		WHERE RTRIM(LTRIM(NombreTipoFlete)) = RTRIM(LTRIM(@NombreTipoFlete)) AND EstadoRegistro = 1)
+		BEGIN
+		-- Controlar Errores y enviar al Servicio
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Nombre o Equivalendia de Tipo de Flete ya se encuentra registrado' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			INSERT dbo.TipoFlete
+			        ( NombreTipoFlete,
+			          CodigoAduanaTipoFlete,
+			          CodigoEquivalencia,
+			          UsuarioCreacion
+			        )
+			VALUES  ( @NombreTipoFlete, 
+			          @CodigoAduanaTipoFlete,
+			          @CodigoEquivalencia,
+			          @UsuarioRegistro
+			        )
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se registró Tipo de Flete satisfactoriamente' AS Mensaje
+		END 
+	END
+	
+	IF @Accion = 'U'
+	BEGIN
+		IF NOT EXISTS(SELECT CodigoTipoFlete FROM dbo.TipoFlete (NOLOCK) 
+			WHERE CodigoTipoFlete = @CodigoTipoFlete AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de Tipo de Flete no existe, no se puede actualizar' AS Mensaje
+		END
+		ELSE IF EXISTS(SELECT CodigoTipoFlete FROM dbo.TipoFlete (NOLOCK) 
+		WHERE CodigoEquivalencia = @CodigoEquivalencia AND EstadoRegistro = 1 AND CodigoTipoFlete <> @CodigoTipoFlete)
+		OR EXISTS(SELECT CodigoTipoFlete FROM dbo.TipoFlete (NOLOCK) 
+		WHERE RTRIM(LTRIM(NombreTipoFlete)) = RTRIM(LTRIM(@NombreTipoFlete)) 
+		AND EstadoRegistro = 1 AND CodigoTipoFlete <> @CodigoTipoFlete)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Nombre o Equivalencia de Tipo de Flete ya se encuentra registrado, no se puede actualizar' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			UPDATE dbo.TipoFlete SET 
+			NombreTipoFlete = @NombreTipoFlete,
+			CodigoAduanaTipoFlete = @CodigoAduanaTipoFlete,
+			CodigoEquivalencia = @CodigoEquivalencia,
+			UsuarioActualizacion = @UsuarioRegistro,
+			FechaHoraActualizacion = GETDATE()
+			WHERE CodigoTipoFlete = @CodigoTipoFlete
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se Actualizó Tipo de Flete satisfactoriamente' AS Mensaje
+		END
+	END
+	
+	IF @Accion = 'D'
+	BEGIN
+		IF NOT EXISTS(SELECT CodigoTipoFlete FROM dbo.TipoFlete (NOLOCK) 
+			WHERE CodigoTipoFlete = @CodigoTipoFlete AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de Tipo de Flete no existe, No se puede Anular' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			UPDATE dbo.TipoFlete SET
+			EstadoRegistro = 0, 
+			UsuarioActualizacion = @UsuarioRegistro,
+			FechaHoraActualizacion = GETDATE()
+			WHERE CodigoTipoFlete = @CodigoTipoFlete
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se anuló Tipo de Flete satisfactoriamente' AS Mensaje
+		END
+	END
+END TRY
+BEGIN CATCH
+	SELECT dbo.Funcion_TipoMensaje(3) AS CodigoMensaje,ISNULL(ERROR_MESSAGE(),'Ocurrio un error interno') AS Mensaje
+END CATCH
+
+GO
+
+-- EXEC USP_CONSULTAR_TIPOFLETE NULL,NULL,NULL,NULL,NULL,NULL,NULL,3000,NULL,NULL
+CREATE PROCEDURE [dbo].[USP_CONSULTAR_TIPOFLETE]       
+ (        
+  @CodigoTipoFlete BIGINT=NULL,
+  @NombreTipoFlete VARCHAR(80)=NULL,
+  @CodigoAduanaTipoFlete VARCHAR(6)=NULL,
+  @CodigoEquivalencia VARCHAR(6)=NULL,  
+  @OrdenCampo VARCHAR(50)=NULL   
+ ,@OrdenOrientacion VARCHAR(4)=NULL         
+ ,@PaginaActual INT=1         
+ ,@NroRegistrosPorPagina INT=10         
+ ,@TotalRegistros INT OUTPUT         
+ ,@CantidadPaginas INT OUTPUT         
+ )         
+ AS         
+ BEGIN         
+  
+ DECLARE @vInicio int, @vFin INT,@vNumeroSerie int 
+
+ DECLARE @dtTipoBL AS  
+ TABLE( 
+ CodigoTipoFlete BIGINT,
+ NombreTipoFlete VARCHAR(80),
+ CodigoAduanaTipoFlete VARCHAR(6),
+ CodigoEquivalencia VARCHAR(6),         
+ UsuarioCreacion VARCHAR(100),         
+ FechaHoraCreacion DATETIME,         
+ UsuarioActualizacion VARCHAR(100),         
+ FechaHoraActualizacion DATETIME)         
+
+ IF @PaginaActual IS NULL SET @PaginaActual = 1
+ IF @NroRegistrosPorPagina IS NULL SET @NroRegistrosPorPagina = 10
+ 
+  SET @vInicio = ((@PaginaActual*@NroRegistrosPorPagina-@NroRegistrosPorPagina)+1);         
+  SET @vFin = (@PaginaActual*@NroRegistrosPorPagina) 
+       
+ INSERT INTO @dtTipoBL  
+ ( 
+ CodigoTipoFlete,
+ NombreTipoFlete,
+ CodigoAduanaTipoFlete,
+ CodigoEquivalencia,         
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion
+ ) 
+ SELECT  
+ CodigoTipoFlete,
+ NombreTipoFlete,
+ CodigoAduanaTipoFlete,
+ CodigoEquivalencia,           
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion        
+ FROM dbo.TipoFlete (NOLOCK)       
+ WHERE  
+ (@CodigoTipoFlete IS NULL OR CodigoTipoFlete=@CodigoTipoFlete) AND
+ (@CodigoAduanaTipoFlete IS NULL OR CodigoAduanaTipoFlete=@CodigoAduanaTipoFlete) AND
+ (@CodigoEquivalencia IS NULL OR CodigoEquivalencia=@CodigoEquivalencia) AND
+ (@NombreTipoFlete IS NULL OR NombreTipoFlete LIKE '%' + @NombreTipoFlete + '%') AND
+ EstadoRegistro=1 
+        
+ SELECT         
+ CodigoTipoFlete,
+ NombreTipoFlete,
+ CodigoAduanaTipoFlete,
+ CodigoEquivalencia,         
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion        
+ FROM (         
+ SELECT          
+ CASE WHEN UPPER(@OrdenOrientacion)='ASC' OR @OrdenOrientacion IS NULL THEN         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoTipoFlete') THEN ROW_NUMBER()OVER(ORDER BY CodigoTipoFlete ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreTipoFlete') THEN ROW_NUMBER()OVER(ORDER BY NombreTipoFlete ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoAduanaTipoFlete') THEN ROW_NUMBER()OVER(ORDER BY CodigoAduanaTipoFlete ASC)  
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoEquivalencia') THEN ROW_NUMBER()OVER(ORDER BY CodigoEquivalencia ASC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion ASC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoTipoFlete ASC)         
+  END         
+ ELSE         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoTipoFlete') THEN ROW_NUMBER()OVER(ORDER BY CodigoTipoFlete DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreTipoFlete') THEN ROW_NUMBER()OVER(ORDER BY NombreTipoFlete DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoAduanaTipoFlete') THEN ROW_NUMBER()OVER(ORDER BY CodigoAduanaTipoFlete DESC)  
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoEquivalencia') THEN ROW_NUMBER()OVER(ORDER BY CodigoEquivalencia DESC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion DESC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoTipoFlete DESC)        
+  END         
+ END AS [NROORDEN],         
+ CodigoTipoFlete,
+ NombreTipoFlete,
+ CodigoAduanaTipoFlete,
+ CodigoEquivalencia,        
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion         
+ FROM @dtTipoBL         
+ )Info         
+ WHERE         
+   [NROORDEN] = CASE WHEN (@PaginaActual is null)THEN [NROORDEN] ELSE -1 END         
+   OR [NROORDEN] BETWEEN @vInicio AND @vFin         
+   ORDER BY         
+   [NROORDEN] ASC;         
+           
+ SELECT  @TotalRegistros = count(1),         
+   @CantidadPaginas =  CASE WHEN @NroRegistrosPorPagina is null THEN 1         
+   ELSE CAST(CEILING(count(1)/CAST(@NroRegistrosPorPagina as float)) as int)         
+   END          
+ FROM @dtTipoBL              
+END
+
+GO
+
+-- EXEC USP_REGISTRAR_MODOPAGO NULL,'AX','ModoPago 1111','1234','JAV','I'
+-- EXEC USP_REGISTRAR_MODOPAGO 4,'AA','ModoPago 2','JAV','U'
+-- EXEC USP_REGISTRAR_MODOPAGO 4,'AA','ModoPago 1','ROM','D'
+
+CREATE PROCEDURE [dbo].[USP_REGISTRAR_MODOPAGO]
+  (
+	@CodigoModoPago BIGINT=NULL,
+	@CodigoModoPagoSunat VARCHAR(2)=NULL,
+	@NombreModoPago VARCHAR(80)=NULL,
+	@CodigoEquivalencia VARCHAR(4)=NULL,
+	@UsuarioRegistro VARCHAR(100)=NULL,
+	@Accion VARCHAR(1)=NULL
+  )
+  AS
+BEGIN TRY 
+	IF @Accion = 'I'
+	BEGIN
+		IF EXISTS(SELECT CodigoModoPago FROM dbo.ModoPago (NOLOCK) 
+		WHERE CodigoModoPagoSunat = @CodigoModoPagoSunat AND EstadoRegistro = 1)
+		OR EXISTS(SELECT CodigoModoPago FROM dbo.ModoPago (NOLOCK) 
+		WHERE RTRIM(LTRIM(NombreModoPago)) = RTRIM(LTRIM(@NombreModoPago)) AND EstadoRegistro = 1)
+		BEGIN
+		-- Controlar Errores y enviar al Servicio
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código o nombre de Modo de Pago ya se encuentra registrado' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			INSERT dbo.ModoPago
+			        ( CodigoModoPagoSunat,
+			          NombreModoPago,
+			          CodigoEquivalencia,
+			          UsuarioCreacion
+			        )
+			VALUES  ( @CodigoModoPagoSunat, 
+			          @NombreModoPago,
+			          @CodigoEquivalencia,
+			          @UsuarioRegistro
+			        )
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se registró Modo de Pago satisfactoriamente' AS Mensaje
+		END 
+	END
+	
+	IF @Accion = 'U'
+	BEGIN
+		IF NOT EXISTS(SELECT CodigoModoPago FROM dbo.ModoPago (NOLOCK) 
+			WHERE CodigoModoPago = @CodigoModoPago AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de Modo de Pago no existe, no se puede actualizar' AS Mensaje
+		END
+		ELSE IF EXISTS(SELECT CodigoModoPago FROM dbo.ModoPago (NOLOCK) 
+		WHERE CodigoModoPagoSunat = @CodigoModoPagoSunat AND EstadoRegistro = 1 AND CodigoModoPago <> @CodigoModoPago)
+		OR EXISTS(SELECT CodigoModoPago FROM dbo.ModoPago (NOLOCK) 
+		WHERE RTRIM(LTRIM(NombreModoPago)) = RTRIM(LTRIM(@NombreModoPago)) 
+		AND EstadoRegistro = 1 AND CodigoModoPago <> @CodigoModoPago)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código o nombre de Modo de Pago ya se encuentra registrado, no se puede actualizar' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			UPDATE dbo.ModoPago SET 
+			CodigoModoPagoSunat = @CodigoModoPagoSunat,
+			NombreModoPago = @NombreModoPago,
+			CodigoEquivalencia = @CodigoEquivalencia,
+			UsuarioActualizacion = @UsuarioRegistro,
+			FechaHoraActualizacion = GETDATE()
+			WHERE CodigoModoPago = @CodigoModoPago
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se Actualizó Modo de Pago satisfactoriamente' AS Mensaje
+		END
+	END
+	
+	IF @Accion = 'D'
+	BEGIN
+		IF NOT EXISTS(SELECT CodigoModoPago FROM dbo.ModoPago (NOLOCK) 
+			WHERE CodigoModoPago = @CodigoModoPago AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de Modo de Pago no existe, No se puede Anular' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			UPDATE dbo.ModoPago SET
+			EstadoRegistro = 0, 
+			UsuarioActualizacion = @UsuarioRegistro,
+			FechaHoraActualizacion = GETDATE()
+			WHERE CodigoModoPago = @CodigoModoPago
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se anuló Modo de Pago satisfactoriamente' AS Mensaje
+		END
+	END
+END TRY
+BEGIN CATCH
+	SELECT dbo.Funcion_TipoMensaje(3) AS CodigoMensaje,ISNULL(ERROR_MESSAGE(),'Ocurrio un error interno') AS Mensaje
+END CATCH
+
+GO
+
+-- EXEC USP_CONSULTAR_MODOPAGO NULL,NULL,NULL,NULL,NULL,NULL,300,NULL,NULL
+CREATE PROCEDURE [dbo].[USP_CONSULTAR_MODOPAGO]       
+ (        
+  @CodigoModoPago BIGINT=NULL,
+  @CodigoModoPagoSunat VARCHAR(2)=NULL,
+  @NombreModoPago VARCHAR(80)=NULL,   
+  @OrdenCampo VARCHAR(50)=NULL   
+ ,@OrdenOrientacion VARCHAR(4)=NULL         
+ ,@PaginaActual INT=1         
+ ,@NroRegistrosPorPagina INT=10         
+ ,@TotalRegistros INT OUTPUT         
+ ,@CantidadPaginas INT OUTPUT         
+ )         
+ AS         
+ BEGIN         
+  
+ DECLARE @vInicio int, @vFin INT,@vNumeroSerie int 
+
+ DECLARE @dtModoPago AS  
+ TABLE( 
+ CodigoModoPago BIGINT, 
+ CodigoModoPagoSunat VARCHAR(2), 
+ NombreModoPago VARCHAR(80),
+ CodigoEquivalencia VARCHAR(4),       
+ UsuarioCreacion VARCHAR(100),         
+ FechaHoraCreacion DATETIME,         
+ UsuarioActualizacion VARCHAR(100),         
+ FechaHoraActualizacion DATETIME)         
+
+ IF @PaginaActual IS NULL SET @PaginaActual = 1
+ IF @NroRegistrosPorPagina IS NULL SET @NroRegistrosPorPagina = 10
+ 
+  SET @vInicio = ((@PaginaActual*@NroRegistrosPorPagina-@NroRegistrosPorPagina)+1);         
+  SET @vFin = (@PaginaActual*@NroRegistrosPorPagina) 
+       
+ INSERT INTO @dtModoPago  
+ ( 
+ CodigoModoPago, 
+ CodigoModoPagoSunat, 
+ NombreModoPago,  
+ CodigoEquivalencia,      
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion
+ ) 
+ SELECT  
+ CodigoModoPago, 
+ CodigoModoPagoSunat, 
+ NombreModoPago,
+ CodigoEquivalencia,           
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion        
+ FROM dbo.ModoPago (NOLOCK)       
+ WHERE  
+ (@CodigoModoPago IS NULL OR CodigoModoPago=@CodigoModoPago) AND
+ (@CodigoModoPagoSunat IS NULL OR CodigoModoPagoSunat=@CodigoModoPagoSunat) AND
+ (@NombreModoPago IS NULL OR NombreModoPago LIKE '%' + @NombreModoPago + '%') AND
+ EstadoRegistro=1 
+        
+ SELECT         
+ CodigoModoPago, 
+ CodigoModoPagoSunat, 
+ NombreModoPago, 
+ CodigoEquivalencia,       
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion        
+ FROM (         
+ SELECT          
+ CASE WHEN UPPER(@OrdenOrientacion)='ASC' OR @OrdenOrientacion IS NULL THEN         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoModoPago') THEN ROW_NUMBER()OVER(ORDER BY CodigoModoPago ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoModoPagoSunat') THEN ROW_NUMBER()OVER(ORDER BY CodigoModoPagoSunat ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreModoPago') THEN ROW_NUMBER()OVER(ORDER BY NombreModoPago ASC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoEquivalencia') THEN ROW_NUMBER()OVER(ORDER BY CodigoEquivalencia ASC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion ASC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoModoPago ASC)         
+  END         
+ ELSE         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoModoPago') THEN ROW_NUMBER()OVER(ORDER BY CodigoModoPago DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoModoPagoSunat') THEN ROW_NUMBER()OVER(ORDER BY CodigoModoPagoSunat DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreModoPago') THEN ROW_NUMBER()OVER(ORDER BY NombreModoPago DESC) 
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoEquivalencia') THEN ROW_NUMBER()OVER(ORDER BY CodigoEquivalencia DESC)       
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion DESC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoModoPago DESC)        
+  END         
+ END AS [NROORDEN],         
+ CodigoModoPago, 
+ CodigoModoPagoSunat, 
+ NombreModoPago,  
+ CodigoEquivalencia,     
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion         
+ FROM @dtModoPago         
+ )Info         
+ WHERE         
+   [NROORDEN] = CASE WHEN (@PaginaActual is null)THEN [NROORDEN] ELSE -1 END         
+   OR [NROORDEN] BETWEEN @vInicio AND @vFin         
+   ORDER BY         
+   [NROORDEN] ASC;         
+           
+ SELECT  @TotalRegistros = count(1),         
+   @CantidadPaginas =  CASE WHEN @NroRegistrosPorPagina is null THEN 1         
+   ELSE CAST(CEILING(count(1)/CAST(@NroRegistrosPorPagina as float)) as int)         
+   END          
+ FROM @dtModoPago              
+END
+
+GO
+
+CREATE PROCEDURE [dbo].[USP_REGISTRAR_TIPOCONTENEDOR]  
+(  
+ @CodigoTipoContenedor BIGINT=NULL,
+ @CodigoIsoTipoContenedor VARCHAR(4)=NULL,
+ @CodigoIsoGrupoTipoContenedor VARCHAR(4)=NULL,
+ @NombreTipoContenedor VARCHAR(80)=NULL,   
+ @CodigoAduanaTipoContenedor VARCHAR(2)=NULL,  
+ @CodTipoContenedor VARCHAR(2)=NULL,  	 
+ @TamanioTipoContenedor VARCHAR(2)=NULL,  
+ @IsoTipoContenedor VARCHAR(4)=NULL, 
+ @UsuarioRegistro VARCHAR(100)=NULL,  
+ @Accion VARCHAR(1)=NULL  
+)  
+AS  
+BEGIN TRY 
+ IF @Accion = 'I'  
+ BEGIN  
+  IF EXISTS(SELECT CodigoTipoContenedor FROM dbo.TipoContenedor (NOLOCK)   
+  WHERE CodigoIsoTipoContenedor = @CodigoIsoTipoContenedor AND @CodigoIsoGrupoTipoContenedor = CodigoIsoGrupoTipoContenedor 
+  AND RTRIM(LTRIM(NombreTipoContenedor)) = RTRIM(LTRIM(@NombreTipoContenedor)) AND EstadoRegistro = 1)
+  BEGIN  
+   -- Controlar Errores y enviar al Servicio
+		SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Tipo de Contenedor ya se encuentra registrado' AS Mensaje
+  END  
+  ELSE  
+  BEGIN  
+   INSERT dbo.TipoContenedor
+           ( CodigoIsoTipoContenedor ,
+             CodigoIsoGrupoTipoContenedor ,
+             NombreTipoContenedor ,
+             CodigoAduanaTipoContenedor ,
+             CodTipoContenedor ,
+             TamanioTipoContenedor ,
+             IsoTipoContenedor ,
+             UsuarioCreacion 
+           )
+   VALUES  ( @CodigoIsoTipoContenedor ,
+             @CodigoIsoGrupoTipoContenedor ,
+             @NombreTipoContenedor ,
+             @CodigoAduanaTipoContenedor ,
+             @CodTipoContenedor ,
+             @TamanioTipoContenedor ,
+             @IsoTipoContenedor ,
+             @UsuarioRegistro
+           )
+   
+   SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se registró Tipo de Contenedor satisfactoriamente' AS Mensaje
+  END   
+ END  
+   
+ IF @Accion = 'U'  
+ BEGIN 
+	IF NOT EXISTS(SELECT CodigoTipoContenedor FROM dbo.TipoContenedor (NOLOCK) 
+			WHERE CodigoTipoContenedor = @CodigoTipoContenedor AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de Tipo de Contenedor no existe, no se puede actualizar' AS Mensaje
+		END
+		ELSE IF EXISTS(SELECT CodigoTipoContenedor FROM dbo.TipoContenedor (NOLOCK)   
+  WHERE CodigoIsoTipoContenedor = @CodigoIsoTipoContenedor AND @CodigoIsoGrupoTipoContenedor = CodigoIsoGrupoTipoContenedor 
+  AND RTRIM(LTRIM(NombreTipoContenedor)) = RTRIM(LTRIM(@NombreTipoContenedor)) AND EstadoRegistro = 1 AND CodigoTipoContenedor<>@CodigoTipoContenedor)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Tipo de Contenedor ya se encuentra registrado, no se puede actualizar' AS Mensaje
+		END
+		ELSE
+		BEGIN 
+		  UPDATE dbo.TipoContenedor SET   
+		  CodigoIsoTipoContenedor = @CodigoIsoTipoContenedor ,
+          CodigoIsoGrupoTipoContenedor = @CodigoIsoGrupoTipoContenedor ,
+          NombreTipoContenedor = @NombreTipoContenedor ,
+          CodigoAduanaTipoContenedor = @CodigoAduanaTipoContenedor ,
+          CodTipoContenedor = @CodTipoContenedor ,
+          TamanioTipoContenedor = @TamanioTipoContenedor ,
+          IsoTipoContenedor = @IsoTipoContenedor ,  
+		  UsuarioActualizacion = @UsuarioRegistro,  
+		  FechaHoraActualizacion = GETDATE()  
+		  WHERE CodigoTipoContenedor = @CodigoTipoContenedor  
+		    
+		  SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se Actualizó Tipo de Contenedor satisfactoriamente' AS Mensaje
+		END
+ END  
+   
+ IF @Accion = 'D'  
+ BEGIN 
+	IF NOT EXISTS(SELECT CodigoTipoContenedor FROM dbo.TipoContenedor (NOLOCK) 
+			WHERE CodigoTipoContenedor = @CodigoTipoContenedor  AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de Tipo de Contenedor no existe, No se puede Anular' AS Mensaje
+		END
+		ELSE
+		BEGIN 
+		  UPDATE dbo.TipoContenedor SET  
+		  EstadoRegistro = 0,   
+		  UsuarioActualizacion = @UsuarioRegistro,  
+		  FechaHoraActualizacion = GETDATE()  
+		  WHERE CodigoTipoContenedor = @CodigoTipoContenedor   
+		  
+		  SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se anuló Tipo de Contenedor correctamente' AS Mensaje
+		END
+ END  
+END TRY
+BEGIN CATCH
+	 SELECT dbo.Funcion_TipoMensaje(3) AS CodigoMensaje,ISNULL(ERROR_MESSAGE(),'Ocurrio un error interno') AS Mensaje
+END CATCH
+
+GO
+
+-- EXEC USP_CONSULTAR_TIPOCONTENEDOR NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,300,NULL,NULL
+CREATE PROCEDURE [dbo].[USP_CONSULTAR_TIPOCONTENEDOR]       
+ (        
+  @CodigoTipoContenedor BIGINT=NULL,
+  @CodigoIsoTipoContenedor VARCHAR(4)=NULL,
+  @CodigoIsoGrupoTipoContenedor VARCHAR(4)=NULL,
+  @NombreTipoContenedor VARCHAR(80)=NULL,    
+  @CodTipoContenedor VARCHAR(2)=NULL,  	 
+  @TamanioTipoContenedor VARCHAR(2)=NULL,  
+  @OrdenCampo VARCHAR(50)=NULL   
+ ,@OrdenOrientacion VARCHAR(4)=NULL         
+ ,@PaginaActual INT=1         
+ ,@NroRegistrosPorPagina INT=10         
+ ,@TotalRegistros INT OUTPUT         
+ ,@CantidadPaginas INT OUTPUT         
+ )         
+ AS         
+ BEGIN         
+  
+ DECLARE @vInicio int, @vFin INT,@vNumeroSerie int 
+
+ DECLARE @dtTipoContenedor AS  
+ TABLE( 
+ CodigoTipoContenedor BIGINT,
+ CodigoIsoTipoContenedor VARCHAR(4),
+ CodigoIsoGrupoTipoContenedor VARCHAR(4),
+ NombreTipoContenedor VARCHAR(80),    
+ CodigoAduanaTipoContenedor VARCHAR(2),
+ CodTipoContenedor VARCHAR(2),   
+ TamanioTipoContenedor VARCHAR(2), 
+ IsoTipoContenedor VARCHAR(4),    
+ UsuarioCreacion VARCHAR(100),         
+ FechaHoraCreacion DATETIME,         
+ UsuarioActualizacion VARCHAR(100),         
+ FechaHoraActualizacion DATETIME)         
+
+ IF @PaginaActual IS NULL SET @PaginaActual = 1
+ IF @NroRegistrosPorPagina IS NULL SET @NroRegistrosPorPagina = 10
+ 
+  SET @vInicio = ((@PaginaActual*@NroRegistrosPorPagina-@NroRegistrosPorPagina)+1);         
+  SET @vFin = (@PaginaActual*@NroRegistrosPorPagina) 
+       
+ INSERT INTO @dtTipoContenedor  
+ ( 
+ CodigoTipoContenedor,
+ CodigoIsoTipoContenedor,
+ CodigoIsoGrupoTipoContenedor,
+ NombreTipoContenedor,    
+ CodigoAduanaTipoContenedor,
+ CodTipoContenedor,
+ TamanioTipoContenedor,
+ IsoTipoContenedor,        
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion
+ ) 
+ SELECT  
+ CodigoTipoContenedor,
+ CodigoIsoTipoContenedor,
+ CodigoIsoGrupoTipoContenedor,
+ NombreTipoContenedor,  
+ CodigoAduanaTipoContenedor,  
+ CodTipoContenedor,
+ TamanioTipoContenedor,   
+ IsoTipoContenedor,         
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion        
+ FROM dbo.TipoContenedor (NOLOCK)       
+ WHERE  
+ (@CodigoTipoContenedor IS NULL OR CodigoTipoContenedor=@CodigoTipoContenedor) AND
+ (@CodigoIsoTipoContenedor IS NULL OR CodigoIsoTipoContenedor=@CodigoIsoTipoContenedor) AND
+ (@CodigoIsoGrupoTipoContenedor IS NULL OR CodigoIsoGrupoTipoContenedor=@CodigoIsoGrupoTipoContenedor) AND
+ (@CodTipoContenedor IS NULL OR CodTipoContenedor=@CodTipoContenedor) AND
+ (@TamanioTipoContenedor IS NULL OR TamanioTipoContenedor=@TamanioTipoContenedor) AND
+ (@NombreTipoContenedor IS NULL OR NombreTipoContenedor LIKE '%' + @NombreTipoContenedor + '%') AND
+ EstadoRegistro=1 
+        
+ SELECT         
+ CodigoTipoContenedor,
+ CodigoIsoTipoContenedor,
+ CodigoIsoGrupoTipoContenedor,
+ NombreTipoContenedor,  
+ CodigoAduanaTipoContenedor,  
+ CodTipoContenedor, 
+ TamanioTipoContenedor,
+ IsoTipoContenedor,       
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion        
+ FROM (         
+ SELECT          
+ CASE WHEN UPPER(@OrdenOrientacion)='ASC' OR @OrdenOrientacion IS NULL THEN         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoTipoContenedor') THEN ROW_NUMBER()OVER(ORDER BY CodigoTipoContenedor ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoIsoTipoContenedor') THEN ROW_NUMBER()OVER(ORDER BY CodigoIsoTipoContenedor ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoIsoGrupoTipoContenedor') THEN ROW_NUMBER()OVER(ORDER BY CodigoIsoGrupoTipoContenedor ASC) 
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreTipoContenedor') THEN ROW_NUMBER()OVER(ORDER BY NombreTipoContenedor ASC) 
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoAduanaTipoContenedor') THEN ROW_NUMBER()OVER(ORDER BY CodigoAduanaTipoContenedor ASC) 
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodTipoContenedor') THEN ROW_NUMBER()OVER(ORDER BY CodTipoContenedor ASC) 
+   WHEN  UPPER(@OrdenCampo) = UPPER('TamanioTipoContenedor') THEN ROW_NUMBER()OVER(ORDER BY TamanioTipoContenedor ASC) 
+   WHEN  UPPER(@OrdenCampo) = UPPER('IsoTipoContenedor') THEN ROW_NUMBER()OVER(ORDER BY IsoTipoContenedor ASC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion ASC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoTipoContenedor ASC)         
+  END         
+ ELSE         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoTipoContenedor') THEN ROW_NUMBER()OVER(ORDER BY CodigoTipoContenedor DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoIsoTipoContenedor') THEN ROW_NUMBER()OVER(ORDER BY CodigoIsoTipoContenedor DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoIsoGrupoTipoContenedor') THEN ROW_NUMBER()OVER(ORDER BY CodigoIsoGrupoTipoContenedor DESC) 
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreTipoContenedor') THEN ROW_NUMBER()OVER(ORDER BY NombreTipoContenedor DESC) 
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoAduanaTipoContenedor') THEN ROW_NUMBER()OVER(ORDER BY CodigoAduanaTipoContenedor DESC) 
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodTipoContenedor') THEN ROW_NUMBER()OVER(ORDER BY CodTipoContenedor DESC) 
+   WHEN  UPPER(@OrdenCampo) = UPPER('TamanioTipoContenedor') THEN ROW_NUMBER()OVER(ORDER BY TamanioTipoContenedor DESC)   
+   WHEN  UPPER(@OrdenCampo) = UPPER('IsoTipoContenedor') THEN ROW_NUMBER()OVER(ORDER BY IsoTipoContenedor DESC)       
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion DESC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoTipoContenedor DESC)        
+  END         
+ END AS [NROORDEN],         
+ CodigoTipoContenedor,
+ CodigoIsoTipoContenedor,
+ CodigoIsoGrupoTipoContenedor,
+ NombreTipoContenedor, 
+ CodigoAduanaTipoContenedor,   
+ CodTipoContenedor, 
+ TamanioTipoContenedor, 
+ IsoTipoContenedor,     
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion         
+ FROM @dtTipoContenedor         
+ )Info         
+ WHERE         
+   [NROORDEN] = CASE WHEN (@PaginaActual is null)THEN [NROORDEN] ELSE -1 END         
+   OR [NROORDEN] BETWEEN @vInicio AND @vFin         
+   ORDER BY         
+   [NROORDEN] ASC;         
+           
+ SELECT  @TotalRegistros = count(1),         
+   @CantidadPaginas =  CASE WHEN @NroRegistrosPorPagina is null THEN 1         
+   ELSE CAST(CEILING(count(1)/CAST(@NroRegistrosPorPagina as float)) as int)         
+   END          
+ FROM @dtTipoContenedor              
+END
+
+GO
+
+-- EXEC USP_REGISTRAR_TEMPERATURA NULL,'TE1','Temperatura 1','JAV','I'
+-- EXEC USP_REGISTRAR_TEMPERATURA 4,'TE1','Temperatura 2','HEC','U'
+-- EXEC USP_REGISTRAR_TEMPERATURA 4,'TE1','Temperatura 1','ROM','D'
+
+CREATE PROCEDURE [dbo].[USP_REGISTRAR_TEMPERATURA]
+  (
+	@CodigoTemperatura BIGINT=NULL,
+    @CodigoTemperaturaSunat VARCHAR(3)=NULL,
+    @NombreTemperatura VARCHAR(50)=NULL, 
+	@UsuarioRegistro VARCHAR(100)=NULL,
+	@Accion VARCHAR(1)=NULL
+  )
+  AS
+BEGIN TRY 
+	IF @Accion = 'I'
+	BEGIN
+		IF EXISTS(SELECT CodigoTemperatura FROM dbo.Temperatura (NOLOCK) 
+		WHERE CodigoTemperaturaSunat = @CodigoTemperaturaSunat AND EstadoRegistro = 1)
+		OR EXISTS(SELECT CodigoTemperatura FROM dbo.Temperatura (NOLOCK) 
+		WHERE RTRIM(LTRIM(NombreTemperatura)) = RTRIM(LTRIM(@NombreTemperatura)) AND EstadoRegistro = 1)
+		BEGIN
+		-- Controlar Errores y enviar al Servicio
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código o nombre de Temperatura ya se encuentra registrado' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			INSERT dbo.Temperatura
+			        ( CodigoTemperaturaSunat,
+			          NombreTemperatura,
+			          UsuarioCreacion
+			        )
+			VALUES  ( @CodigoTemperaturaSunat, 
+			          @NombreTemperatura,
+			          @UsuarioRegistro
+			        )
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se registró Temperatura satisfactoriamente' AS Mensaje
+		END 
+	END
+	
+	IF @Accion = 'U'
+	BEGIN
+		IF NOT EXISTS(SELECT CodigoTemperatura FROM dbo.Temperatura (NOLOCK) 
+			WHERE CodigoTemperatura = @CodigoTemperatura AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de Temperatura no existe, no se puede actualizar' AS Mensaje
+		END
+		ELSE IF EXISTS(SELECT CodigoTemperatura FROM dbo.Temperatura (NOLOCK) 
+		WHERE CodigoTemperaturaSunat = @CodigoTemperaturaSunat AND EstadoRegistro = 1 AND CodigoTemperatura <> @CodigoTemperatura)
+		OR EXISTS(SELECT CodigoTemperatura FROM dbo.Temperatura (NOLOCK) 
+		WHERE RTRIM(LTRIM(NombreTemperatura)) = RTRIM(LTRIM(@NombreTemperatura)) 
+		AND EstadoRegistro = 1 AND CodigoTemperatura <> @CodigoTemperatura)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código o nombre de Temperatura ya se encuentra registrado, no se puede actualizar' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			UPDATE dbo.Temperatura SET 
+			CodigoTemperaturaSunat = @CodigoTemperaturaSunat,
+			NombreTemperatura = @NombreTemperatura,
+			UsuarioActualizacion = @UsuarioRegistro,
+			FechaHoraActualizacion = GETDATE()
+			WHERE CodigoTemperatura = @CodigoTemperatura
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se Actualizó Temperatura satisfactoriamente' AS Mensaje
+		END
+	END
+	
+	IF @Accion = 'D'
+	BEGIN
+		IF NOT EXISTS(SELECT CodigoTemperatura FROM dbo.Temperatura (NOLOCK) 
+			WHERE CodigoTemperatura = @CodigoTemperatura AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de Temperatura no existe, No se puede Anular' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			UPDATE dbo.Temperatura SET
+			EstadoRegistro = 0, 
+			UsuarioActualizacion = @UsuarioRegistro,
+			FechaHoraActualizacion = GETDATE()
+			WHERE CodigoTemperatura = @CodigoTemperatura
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se anuló Temperatura satisfactoriamente' AS Mensaje
+		END
+	END
+END TRY
+BEGIN CATCH
+	SELECT dbo.Funcion_TipoMensaje(3) AS CodigoMensaje,ISNULL(ERROR_MESSAGE(),'Ocurrio un error interno') AS Mensaje
+END CATCH
+
+GO
+
+-- EXEC USP_CONSULTAR_TEMPERATURA NULL,NULL,NULL,'CodigoTemperatura','asc',NULL,300,NULL,NULL
+CREATE PROCEDURE [dbo].[USP_CONSULTAR_TEMPERATURA]       
+ (        
+  @CodigoTemperatura BIGINT=NULL,
+  @CodigoTemperaturaSunat VARCHAR(3)=NULL,
+  @NombreTemperatura VARCHAR(50)=NULL,
+  @OrdenCampo VARCHAR(50)=NULL   
+ ,@OrdenOrientacion VARCHAR(4)=NULL         
+ ,@PaginaActual INT=1         
+ ,@NroRegistrosPorPagina INT=10         
+ ,@TotalRegistros INT OUTPUT         
+ ,@CantidadPaginas INT OUTPUT         
+ )         
+ AS         
+ BEGIN         
+  
+ DECLARE @vInicio int, @vFin INT,@vNumeroSerie int 
+
+ DECLARE @dtTemperatura AS  
+ TABLE( 
+ CodigoTemperatura BIGINT, 
+ CodigoTemperaturaSunat VARCHAR(3), 
+ NombreTemperatura VARCHAR(50),        
+ UsuarioCreacion VARCHAR(100),         
+ FechaHoraCreacion DATETIME,         
+ UsuarioActualizacion VARCHAR(100),         
+ FechaHoraActualizacion DATETIME)         
+
+ IF @PaginaActual IS NULL SET @PaginaActual = 1
+ IF @NroRegistrosPorPagina IS NULL SET @NroRegistrosPorPagina = 10
+ 
+  SET @vInicio = ((@PaginaActual*@NroRegistrosPorPagina-@NroRegistrosPorPagina)+1);         
+  SET @vFin = (@PaginaActual*@NroRegistrosPorPagina) 
+       
+ INSERT INTO @dtTemperatura  
+ ( 
+ CodigoTemperatura, 
+ CodigoTemperaturaSunat, 
+ NombreTemperatura,        
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion
+ ) 
+ SELECT  
+ CodigoTemperatura, 
+ CodigoTemperaturaSunat, 
+ NombreTemperatura,           
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion        
+ FROM dbo.Temperatura (NOLOCK)       
+ WHERE  
+ (@CodigoTemperatura IS NULL OR CodigoTemperatura=@CodigoTemperatura) AND
+ (@CodigoTemperaturaSunat IS NULL OR CodigoTemperaturaSunat=@CodigoTemperaturaSunat) AND
+ (@NombreTemperatura IS NULL OR NombreTemperatura LIKE '%' + @NombreTemperatura + '%') AND
+ EstadoRegistro=1 
+        
+ SELECT         
+ CodigoTemperatura, 
+ CodigoTemperaturaSunat, 
+ NombreTemperatura,        
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion        
+ FROM (         
+ SELECT          
+ CASE WHEN UPPER(@OrdenOrientacion)='ASC' OR @OrdenOrientacion IS NULL THEN         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoTemperatura') THEN ROW_NUMBER()OVER(ORDER BY CodigoTemperatura ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoTemperaturaSunat') THEN ROW_NUMBER()OVER(ORDER BY CodigoTemperaturaSunat ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreTemperatura') THEN ROW_NUMBER()OVER(ORDER BY NombreTemperatura ASC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion ASC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoTemperatura ASC)         
+  END         
+ ELSE         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoTemperatura') THEN ROW_NUMBER()OVER(ORDER BY CodigoTemperatura DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoTemperaturaSunat') THEN ROW_NUMBER()OVER(ORDER BY CodigoTemperaturaSunat DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreTemperatura') THEN ROW_NUMBER()OVER(ORDER BY NombreTemperatura DESC)       
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion DESC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoTemperatura DESC)        
+  END         
+ END AS [NROORDEN],         
+ CodigoTemperatura, 
+ CodigoTemperaturaSunat, 
+ NombreTemperatura,       
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion         
+ FROM @dtTemperatura         
+ )Info         
+ WHERE         
+   [NROORDEN] = CASE WHEN (@PaginaActual is null)THEN [NROORDEN] ELSE -1 END         
+   OR [NROORDEN] BETWEEN @vInicio AND @vFin         
+   ORDER BY         
+   [NROORDEN] ASC;         
+           
+ SELECT  @TotalRegistros = count(1),         
+   @CantidadPaginas =  CASE WHEN @NroRegistrosPorPagina is null THEN 1         
+   ELSE CAST(CEILING(count(1)/CAST(@NroRegistrosPorPagina as float)) as int)         
+   END          
+ FROM @dtTemperatura              
+END
+
+GO
+
+-- EXEC USP_REGISTRAR_CONDICIONTRANSPORTE NULL,'CN1','CondicionTransporte 1','11','JAV','I'
+-- EXEC USP_REGISTRAR_CONDICIONTRANSPORTE 7,'CN2','CondicionTransporte 2','11','HEC','U'
+-- EXEC USP_REGISTRAR_CONDICIONTRANSPORTE 7,'CN2','CondicionTransporte 2','11','ROM','D'
+
+CREATE PROCEDURE [dbo].[USP_REGISTRAR_CONDICIONTRANSPORTE]
+  (
+	@CodigoCondicionTransporte BIGINT=NULL,
+    @CodigoCondicionTransporteSunat VARCHAR(3)=NULL,
+    @NombreCondicionTransporte VARCHAR(50)=NULL, 
+    @CodigoAduanaCondicionTransporte VARCHAR(2)=NULL, 
+	@UsuarioRegistro VARCHAR(100)=NULL,
+	@Accion VARCHAR(1)=NULL
+  )
+  AS
+BEGIN TRY 
+	IF @Accion = 'I'
+	BEGIN
+		IF EXISTS(SELECT CodigoCondicionTransporte FROM dbo.CondicionTransporte (NOLOCK) 
+		WHERE CodigoCondicionTransporteSunat = @CodigoCondicionTransporteSunat AND EstadoRegistro = 1)
+		OR EXISTS(SELECT CodigoCondicionTransporte FROM dbo.CondicionTransporte (NOLOCK) 
+		WHERE RTRIM(LTRIM(NombreCondicionTransporte)) = RTRIM(LTRIM(@NombreCondicionTransporte)) AND EstadoRegistro = 1)
+		BEGIN
+		-- Controlar Errores y enviar al Servicio
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código o nombre de Condición de Transporte ya se encuentra registrado' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			INSERT dbo.CondicionTransporte
+			        ( CodigoCondicionTransporteSunat,
+			          NombreCondicionTransporte,
+			          CodigoAduanaCondicionTransporte,
+			          UsuarioCreacion
+			        )
+			VALUES  ( @CodigoCondicionTransporteSunat, 
+			          @NombreCondicionTransporte,
+			          @CodigoAduanaCondicionTransporte,
+			          @UsuarioRegistro
+			        )
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se registró Condición de Transporte satisfactoriamente' AS Mensaje
+		END 
+	END
+	
+	IF @Accion = 'U'
+	BEGIN
+		IF NOT EXISTS(SELECT CodigoCondicionTransporte FROM dbo.CondicionTransporte (NOLOCK) 
+			WHERE CodigoCondicionTransporte = @CodigoCondicionTransporte AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de Condición de Transporte no existe, no se puede actualizar' AS Mensaje
+		END
+		ELSE IF EXISTS(SELECT CodigoCondicionTransporte FROM dbo.CondicionTransporte (NOLOCK) 
+		WHERE CodigoCondicionTransporteSunat = @CodigoCondicionTransporteSunat AND EstadoRegistro = 1 AND CodigoCondicionTransporte <> @CodigoCondicionTransporte)
+		OR EXISTS(SELECT CodigoCondicionTransporte FROM dbo.CondicionTransporte (NOLOCK) 
+		WHERE RTRIM(LTRIM(NombreCondicionTransporte)) = RTRIM(LTRIM(@NombreCondicionTransporte)) 
+		AND EstadoRegistro = 1 AND CodigoCondicionTransporte <> @CodigoCondicionTransporte)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código o nombre de Condición de Transporte ya se encuentra registrado, no se puede actualizar' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			UPDATE dbo.CondicionTransporte SET 
+			CodigoCondicionTransporteSunat = @CodigoCondicionTransporteSunat,
+			NombreCondicionTransporte = @NombreCondicionTransporte,
+			CodigoAduanaCondicionTransporte = @CodigoAduanaCondicionTransporte,
+			UsuarioActualizacion = @UsuarioRegistro,
+			FechaHoraActualizacion = GETDATE()
+			WHERE CodigoCondicionTransporte = @CodigoCondicionTransporte
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se Actualizó Condición de Transporte satisfactoriamente' AS Mensaje
+		END
+	END
+	
+	IF @Accion = 'D'
+	BEGIN
+		IF NOT EXISTS(SELECT CodigoCondicionTransporte FROM dbo.CondicionTransporte (NOLOCK) 
+			WHERE CodigoCondicionTransporte = @CodigoCondicionTransporte AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de Condición de Transporte no existe, No se puede Anular' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			UPDATE dbo.CondicionTransporte SET
+			EstadoRegistro = 0, 
+			UsuarioActualizacion = @UsuarioRegistro,
+			FechaHoraActualizacion = GETDATE()
+			WHERE CodigoCondicionTransporte = @CodigoCondicionTransporte
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se anuló Condición de Transporte satisfactoriamente' AS Mensaje
+		END
+	END
+END TRY
+BEGIN CATCH
+	SELECT dbo.Funcion_TipoMensaje(3) AS CodigoMensaje,ISNULL(ERROR_MESSAGE(),'Ocurrio un error interno') AS Mensaje
+END CATCH
+
+GO
+
+-- EXEC USP_CONSULTAR_CONDICIONTRANSPORTE NULL,'F/F',NULL,NULL,NULL,NULL,NULL,300,NULL,NULL
+CREATE PROCEDURE [dbo].[USP_CONSULTAR_CONDICIONTRANSPORTE]       
+ (        
+  @CodigoCondicionTransporte BIGINT=NULL,
+  @CodigoCondicionTransporteSunat VARCHAR(3)=NULL,
+  @NombreCondicionTransporte VARCHAR(50)=NULL, 
+  @CodigoAduanaCondicionTransporte VARCHAR(2)=NULL, 
+  @OrdenCampo VARCHAR(50)=NULL   
+ ,@OrdenOrientacion VARCHAR(4)=NULL         
+ ,@PaginaActual INT=1         
+ ,@NroRegistrosPorPagina INT=10         
+ ,@TotalRegistros INT OUTPUT         
+ ,@CantidadPaginas INT OUTPUT         
+ )         
+ AS         
+ BEGIN         
+  
+ DECLARE @vInicio int, @vFin INT,@vNumeroSerie int 
+
+ DECLARE @dtCondicionTransporte AS  
+ TABLE( 
+ CodigoCondicionTransporte BIGINT, 
+ CodigoCondicionTransporteSunat VARCHAR(3), 
+ NombreCondicionTransporte VARCHAR(50),
+ CodigoAduanaCondicionTransporte VARCHAR(2),        
+ UsuarioCreacion VARCHAR(100),         
+ FechaHoraCreacion DATETIME,         
+ UsuarioActualizacion VARCHAR(100),         
+ FechaHoraActualizacion DATETIME)         
+
+ IF @PaginaActual IS NULL SET @PaginaActual = 1
+ IF @NroRegistrosPorPagina IS NULL SET @NroRegistrosPorPagina = 10
+ 
+  SET @vInicio = ((@PaginaActual*@NroRegistrosPorPagina-@NroRegistrosPorPagina)+1);         
+  SET @vFin = (@PaginaActual*@NroRegistrosPorPagina) 
+       
+ INSERT INTO @dtCondicionTransporte  
+ ( 
+ CodigoCondicionTransporte, 
+ CodigoCondicionTransporteSunat, 
+ NombreCondicionTransporte, 
+ CodigoAduanaCondicionTransporte,       
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion
+ ) 
+ SELECT  
+ CodigoCondicionTransporte, 
+ CodigoCondicionTransporteSunat, 
+ NombreCondicionTransporte,
+ CodigoAduanaCondicionTransporte,           
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion        
+ FROM dbo.CondicionTransporte (NOLOCK)       
+ WHERE  
+ (@CodigoCondicionTransporte IS NULL OR CodigoCondicionTransporte=@CodigoCondicionTransporte) AND
+ (@CodigoCondicionTransporteSunat IS NULL OR CodigoCondicionTransporteSunat=@CodigoCondicionTransporteSunat) AND
+ (@NombreCondicionTransporte IS NULL OR NombreCondicionTransporte LIKE '%' + @NombreCondicionTransporte + '%') AND
+ (@CodigoAduanaCondicionTransporte IS NULL OR CodigoAduanaCondicionTransporte=@CodigoAduanaCondicionTransporte) AND
+ EstadoRegistro=1 
+        
+ SELECT         
+ CodigoCondicionTransporte, 
+ CodigoCondicionTransporteSunat, 
+ NombreCondicionTransporte, 
+ CodigoAduanaCondicionTransporte,       
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion        
+ FROM (         
+ SELECT          
+ CASE WHEN UPPER(@OrdenOrientacion)='ASC' OR @OrdenOrientacion IS NULL THEN         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoCondicionTransporte') THEN ROW_NUMBER()OVER(ORDER BY CodigoCondicionTransporte ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoCondicionTransporteSunat') THEN ROW_NUMBER()OVER(ORDER BY CodigoCondicionTransporteSunat ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreCondicionTransporte') THEN ROW_NUMBER()OVER(ORDER BY NombreCondicionTransporte ASC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoAduanaCondicionTransporte') THEN ROW_NUMBER()OVER(ORDER BY CodigoAduanaCondicionTransporte ASC) 
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion ASC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoCondicionTransporte ASC)         
+  END         
+ ELSE         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoCondicionTransporte') THEN ROW_NUMBER()OVER(ORDER BY CodigoCondicionTransporte DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoCondicionTransporteSunat') THEN ROW_NUMBER()OVER(ORDER BY CodigoCondicionTransporteSunat DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreCondicionTransporte') THEN ROW_NUMBER()OVER(ORDER BY NombreCondicionTransporte DESC) 
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoAduanaCondicionTransporte') THEN ROW_NUMBER()OVER(ORDER BY CodigoAduanaCondicionTransporte ASC)       
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion DESC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoCondicionTransporte DESC)        
+  END         
+ END AS [NROORDEN],         
+ CodigoCondicionTransporte, 
+ CodigoCondicionTransporteSunat, 
+ NombreCondicionTransporte, 
+ CodigoAduanaCondicionTransporte,      
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion         
+ FROM @dtCondicionTransporte         
+ )Info         
+ WHERE         
+   [NROORDEN] = CASE WHEN (@PaginaActual is null)THEN [NROORDEN] ELSE -1 END         
+   OR [NROORDEN] BETWEEN @vInicio AND @vFin         
+   ORDER BY         
+   [NROORDEN] ASC;         
+           
+ SELECT  @TotalRegistros = count(1),         
+   @CantidadPaginas =  CASE WHEN @NroRegistrosPorPagina is null THEN 1         
+   ELSE CAST(CEILING(count(1)/CAST(@NroRegistrosPorPagina as float)) as int)         
+   END          
+ FROM @dtCondicionTransporte              
+END
+
+GO
+
+-- EXEC USP_REGISTRAR_TIPOMOVIMIENTO NULL,'50','TipoMovimiento 1','JAV','I'
+-- EXEC USP_REGISTRAR_TIPOMOVIMIENTO 19,'50','TipoMovimiento 2','HEC','U'
+-- EXEC USP_REGISTRAR_TIPOMOVIMIENTO 19,'50','TipoMovimiento 2','ROM','D'
+
+CREATE PROCEDURE [dbo].[USP_REGISTRAR_TIPOMOVIMIENTO]
+  (
+	@CodigoTipoMovimiento BIGINT=NULL,
+	@CodigoTipoMovimientoSunat VARCHAR(2)=NULL,
+	@NombreTipoMovimiento VARCHAR(50)=NULL,
+	@UsuarioRegistro VARCHAR(100)=NULL,
+	@Accion VARCHAR(1)=NULL
+  )
+  AS
+BEGIN TRY 
+	IF @Accion = 'I'
+	BEGIN
+		IF EXISTS(SELECT CodigoTipoMovimiento FROM dbo.TipoMovimiento (NOLOCK) 
+		WHERE CodigoTipoMovimientoSunat = @CodigoTipoMovimientoSunat AND EstadoRegistro = 1)
+		OR EXISTS(SELECT CodigoTipoMovimiento FROM dbo.TipoMovimiento (NOLOCK) 
+		WHERE RTRIM(LTRIM(NombreTipoMovimiento)) = RTRIM(LTRIM(@NombreTipoMovimiento)) AND EstadoRegistro = 1)
+		BEGIN
+		-- Controlar Errores y enviar al Servicio
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código o nombre de Tipo de Movimiento ya se encuentra registrado' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			INSERT dbo.TipoMovimiento
+			        ( CodigoTipoMovimientoSunat,
+			          NombreTipoMovimiento,
+			          UsuarioCreacion
+			        )
+			VALUES  ( @CodigoTipoMovimientoSunat, 
+			          @NombreTipoMovimiento,
+			          @UsuarioRegistro
+			        )
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se registró Tipo de Movimiento satisfactoriamente' AS Mensaje
+		END 
+	END
+	
+	IF @Accion = 'U'
+	BEGIN
+		IF NOT EXISTS(SELECT CodigoTipoMovimiento FROM dbo.TipoMovimiento (NOLOCK) 
+			WHERE CodigoTipoMovimiento = @CodigoTipoMovimiento AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de Tipo de Movimiento no existe, no se puede actualizar' AS Mensaje
+		END
+		ELSE IF EXISTS(SELECT CodigoTipoMovimiento FROM dbo.TipoMovimiento (NOLOCK) 
+		WHERE CodigoTipoMovimientoSunat = @CodigoTipoMovimientoSunat AND EstadoRegistro = 1 AND CodigoTipoMovimiento <> @CodigoTipoMovimiento)
+		OR EXISTS(SELECT CodigoTipoMovimiento FROM dbo.TipoMovimiento (NOLOCK) 
+		WHERE RTRIM(LTRIM(NombreTipoMovimiento)) = RTRIM(LTRIM(@NombreTipoMovimiento)) 
+		AND EstadoRegistro = 1 AND CodigoTipoMovimiento <> @CodigoTipoMovimiento)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código o nombre de Tipo de Movimiento ya se encuentra registrado, no se puede actualizar' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			UPDATE dbo.TipoMovimiento SET 
+			CodigoTipoMovimientoSunat = @CodigoTipoMovimientoSunat,
+			NombreTipoMovimiento = @NombreTipoMovimiento,
+			UsuarioActualizacion = @UsuarioRegistro,
+			FechaHoraActualizacion = GETDATE()
+			WHERE CodigoTipoMovimiento = @CodigoTipoMovimiento
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se Actualizó Tipo de Movimiento satisfactoriamente' AS Mensaje
+		END
+	END
+	
+	IF @Accion = 'D'
+	BEGIN
+		IF NOT EXISTS(SELECT CodigoTipoMovimiento FROM dbo.TipoMovimiento (NOLOCK) 
+			WHERE CodigoTipoMovimiento = @CodigoTipoMovimiento AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de Tipo de Movimiento no existe, No se puede Anular' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			UPDATE dbo.TipoMovimiento SET
+			EstadoRegistro = 0, 
+			UsuarioActualizacion = @UsuarioRegistro,
+			FechaHoraActualizacion = GETDATE()
+			WHERE CodigoTipoMovimiento = @CodigoTipoMovimiento
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se anuló Tipo de Movimiento satisfactoriamente' AS Mensaje
+		END
+	END
+END TRY
+BEGIN CATCH
+	SELECT dbo.Funcion_TipoMensaje(3) AS CodigoMensaje,ISNULL(ERROR_MESSAGE(),'Ocurrio un error interno') AS Mensaje
+END CATCH
+
+GO
+
+-- EXEC USP_CONSULTAR_TIPOMOVIMIENTO NULL,NULL,NULL,NULL,NULL,NULL,300,NULL,NULL
+CREATE PROCEDURE [dbo].[USP_CONSULTAR_TIPOMOVIMIENTO]       
+ (        
+  @CodigoTipoMovimiento BIGINT=NULL,
+  @CodigoTipoMovimientoSunat VARCHAR(2)=NULL,
+  @NombreTipoMovimiento VARCHAR(50)=NULL,   
+  @OrdenCampo VARCHAR(50)=NULL   
+ ,@OrdenOrientacion VARCHAR(4)=NULL         
+ ,@PaginaActual INT=1         
+ ,@NroRegistrosPorPagina INT=10         
+ ,@TotalRegistros INT OUTPUT         
+ ,@CantidadPaginas INT OUTPUT         
+ )         
+ AS         
+ BEGIN         
+  
+ DECLARE @vInicio int, @vFin INT,@vNumeroSerie int 
+
+ DECLARE @dtTipoMovimiento AS  
+ TABLE( 
+ CodigoTipoMovimiento BIGINT, 
+ CodigoTipoMovimientoSunat VARCHAR(2), 
+ NombreTipoMovimiento VARCHAR(50),        
+ UsuarioCreacion VARCHAR(100),         
+ FechaHoraCreacion DATETIME,         
+ UsuarioActualizacion VARCHAR(100),         
+ FechaHoraActualizacion DATETIME)         
+
+ IF @PaginaActual IS NULL SET @PaginaActual = 1
+ IF @NroRegistrosPorPagina IS NULL SET @NroRegistrosPorPagina = 10
+ 
+  SET @vInicio = ((@PaginaActual*@NroRegistrosPorPagina-@NroRegistrosPorPagina)+1);         
+  SET @vFin = (@PaginaActual*@NroRegistrosPorPagina) 
+       
+ INSERT INTO @dtTipoMovimiento  
+ ( 
+ CodigoTipoMovimiento, 
+ CodigoTipoMovimientoSunat, 
+ NombreTipoMovimiento,        
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion
+ ) 
+ SELECT  
+ CodigoTipoMovimiento, 
+ CodigoTipoMovimientoSunat, 
+ NombreTipoMovimiento,           
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion        
+ FROM dbo.TipoMovimiento (NOLOCK)       
+ WHERE  
+ (@CodigoTipoMovimiento IS NULL OR CodigoTipoMovimiento=@CodigoTipoMovimiento) AND
+ (@CodigoTipoMovimientoSunat IS NULL OR CodigoTipoMovimientoSunat=@CodigoTipoMovimientoSunat) AND
+ (@NombreTipoMovimiento IS NULL OR NombreTipoMovimiento LIKE '%' + @NombreTipoMovimiento + '%') AND
+ EstadoRegistro=1 
+        
+ SELECT         
+ CodigoTipoMovimiento, 
+ CodigoTipoMovimientoSunat, 
+ NombreTipoMovimiento,        
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion        
+ FROM (         
+ SELECT          
+ CASE WHEN UPPER(@OrdenOrientacion)='ASC' OR @OrdenOrientacion IS NULL THEN         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoTipoMovimiento') THEN ROW_NUMBER()OVER(ORDER BY CodigoTipoMovimiento ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoTipoMovimientoSunat') THEN ROW_NUMBER()OVER(ORDER BY CodigoTipoMovimientoSunat ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreTipoMovimiento') THEN ROW_NUMBER()OVER(ORDER BY NombreTipoMovimiento ASC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion ASC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoTipoMovimiento ASC)         
+  END         
+ ELSE         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoTipoMovimiento') THEN ROW_NUMBER()OVER(ORDER BY CodigoTipoMovimiento DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoTipoMovimientoSunat') THEN ROW_NUMBER()OVER(ORDER BY CodigoTipoMovimientoSunat DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreTipoMovimiento') THEN ROW_NUMBER()OVER(ORDER BY NombreTipoMovimiento DESC)       
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion DESC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoTipoMovimiento DESC)        
+  END         
+ END AS [NROORDEN],         
+ CodigoTipoMovimiento, 
+ CodigoTipoMovimientoSunat, 
+ NombreTipoMovimiento,       
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion         
+ FROM @dtTipoMovimiento         
+ )Info         
+ WHERE         
+   [NROORDEN] = CASE WHEN (@PaginaActual is null)THEN [NROORDEN] ELSE -1 END         
+   OR [NROORDEN] BETWEEN @vInicio AND @vFin         
+   ORDER BY         
+   [NROORDEN] ASC;         
+           
+ SELECT  @TotalRegistros = count(1),         
+   @CantidadPaginas =  CASE WHEN @NroRegistrosPorPagina is null THEN 1         
+   ELSE CAST(CEILING(count(1)/CAST(@NroRegistrosPorPagina as float)) as int)         
+   END          
+ FROM @dtTipoMovimiento              
+END
+
+GO
+
+-- EXEC USP_REGISTRAR_UNIDADMERCANCIA NULL,'XX','UnidadMercancia 1','X1','JAV','I'
+-- EXEC USP_REGISTRAR_UNIDADMERCANCIA 72,'XX','UnidadMercancia 2','X1','JAV','U'
+-- EXEC USP_REGISTRAR_UNIDADMERCANCIA 72,'XX','UnidadMercancia 2','X1','ROM','D'
+
+CREATE PROCEDURE [dbo].[USP_REGISTRAR_UNIDADMERCANCIA]
+  (
+	@CodigoUnidadMercancia BIGINT=NULL,
+    @CodigoUnidadMercanciaSunat VARCHAR(2)=NULL,
+    @NombreUnidadMercancia VARCHAR(100)=NULL, 
+    @CodigoAduanaUnidadMercancia VARCHAR(2)=NULL, 
+	@UsuarioRegistro VARCHAR(100)=NULL,
+	@Accion VARCHAR(1)=NULL
+  )
+  AS
+BEGIN TRY 
+	IF @Accion = 'I'
+	BEGIN
+		IF EXISTS(SELECT CodigoUnidadMercancia FROM dbo.UnidadMercancia (NOLOCK) 
+		WHERE CodigoUnidadMercanciaSunat = @CodigoUnidadMercanciaSunat AND EstadoRegistro = 1)
+		OR EXISTS(SELECT CodigoUnidadMercancia FROM dbo.UnidadMercancia (NOLOCK) 
+		WHERE RTRIM(LTRIM(NombreUnidadMercancia)) = RTRIM(LTRIM(@NombreUnidadMercancia)) AND EstadoRegistro = 1)
+		BEGIN
+		-- Controlar Errores y enviar al Servicio
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código o nombre de Unidad de Mercancia ya se encuentra registrado' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			INSERT dbo.UnidadMercancia
+			        ( CodigoUnidadMercanciaSunat,
+			          NombreUnidadMercancia,
+			          CodigoAduanaUnidadMercancia,
+			          UsuarioCreacion
+			        )
+			VALUES  ( @CodigoUnidadMercanciaSunat, 
+			          @NombreUnidadMercancia,
+			          @CodigoAduanaUnidadMercancia,
+			          @UsuarioRegistro
+			        )
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se registró Unidad de Mercancia satisfactoriamente' AS Mensaje
+		END 
+	END
+	
+	IF @Accion = 'U'
+	BEGIN
+		IF NOT EXISTS(SELECT CodigoUnidadMercancia FROM dbo.UnidadMercancia (NOLOCK) 
+			WHERE CodigoUnidadMercancia = @CodigoUnidadMercancia AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de Unidad de Mercancia no existe, no se puede actualizar' AS Mensaje
+		END
+		ELSE IF EXISTS(SELECT CodigoUnidadMercancia FROM dbo.UnidadMercancia (NOLOCK) 
+		WHERE CodigoUnidadMercanciaSunat = @CodigoUnidadMercanciaSunat AND EstadoRegistro = 1 AND CodigoUnidadMercancia <> @CodigoUnidadMercancia)
+		OR EXISTS(SELECT CodigoUnidadMercancia FROM dbo.UnidadMercancia (NOLOCK) 
+		WHERE RTRIM(LTRIM(NombreUnidadMercancia)) = RTRIM(LTRIM(@NombreUnidadMercancia)) 
+		AND EstadoRegistro = 1 AND CodigoUnidadMercancia <> @CodigoUnidadMercancia)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código o nombre de Unidad de Mercancia ya se encuentra registrado, no se puede actualizar' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			UPDATE dbo.UnidadMercancia SET 
+			CodigoUnidadMercanciaSunat = @CodigoUnidadMercanciaSunat,
+			NombreUnidadMercancia = @NombreUnidadMercancia,
+			CodigoAduanaUnidadMercancia = @CodigoAduanaUnidadMercancia,
+			UsuarioActualizacion = @UsuarioRegistro,
+			FechaHoraActualizacion = GETDATE()
+			WHERE CodigoUnidadMercancia = @CodigoUnidadMercancia
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se Actualizó Unidad de Mercancia satisfactoriamente' AS Mensaje
+		END
+	END
+	
+	IF @Accion = 'D'
+	BEGIN
+		IF NOT EXISTS(SELECT CodigoUnidadMercancia FROM dbo.UnidadMercancia (NOLOCK) 
+			WHERE CodigoUnidadMercancia = @CodigoUnidadMercancia AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de Unidad de Mercancia no existe, No se puede Anular' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			UPDATE dbo.UnidadMercancia SET
+			EstadoRegistro = 0, 
+			UsuarioActualizacion = @UsuarioRegistro,
+			FechaHoraActualizacion = GETDATE()
+			WHERE CodigoUnidadMercancia = @CodigoUnidadMercancia
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se anuló Unidad de Mercancia satisfactoriamente' AS Mensaje
+		END
+	END
+END TRY
+BEGIN CATCH
+	SELECT dbo.Funcion_TipoMensaje(3) AS CodigoMensaje,ISNULL(ERROR_MESSAGE(),'Ocurrio un error interno') AS Mensaje
+END CATCH
+
+GO
+
+-- EXEC USP_CONSULTAR_UNIDADMERCANCIA NULL,NULL,NULL,NULL,NULL,NULL,NULL,300,NULL,NULL
+CREATE PROCEDURE [dbo].[USP_CONSULTAR_UNIDADMERCANCIA]       
+ (        
+  @CodigoUnidadMercancia BIGINT=NULL,
+  @CodigoUnidadMercanciaSunat VARCHAR(2)=NULL,
+  @NombreUnidadMercancia VARCHAR(100)=NULL, 
+  @CodigoAduanaUnidadMercancia VARCHAR(2)=NULL, 
+  @OrdenCampo VARCHAR(50)=NULL   
+ ,@OrdenOrientacion VARCHAR(4)=NULL         
+ ,@PaginaActual INT=1         
+ ,@NroRegistrosPorPagina INT=10         
+ ,@TotalRegistros INT OUTPUT         
+ ,@CantidadPaginas INT OUTPUT         
+ )         
+ AS         
+ BEGIN         
+  
+ DECLARE @vInicio int, @vFin INT,@vNumeroSerie int 
+
+ DECLARE @dtUnidadMercancia AS  
+ TABLE( 
+ CodigoUnidadMercancia BIGINT, 
+ CodigoUnidadMercanciaSunat VARCHAR(3), 
+ NombreUnidadMercancia VARCHAR(50),
+ CodigoAduanaUnidadMercancia VARCHAR(2),        
+ UsuarioCreacion VARCHAR(100),         
+ FechaHoraCreacion DATETIME,         
+ UsuarioActualizacion VARCHAR(100),         
+ FechaHoraActualizacion DATETIME)         
+
+ IF @PaginaActual IS NULL SET @PaginaActual = 1
+ IF @NroRegistrosPorPagina IS NULL SET @NroRegistrosPorPagina = 10
+ 
+  SET @vInicio = ((@PaginaActual*@NroRegistrosPorPagina-@NroRegistrosPorPagina)+1);         
+  SET @vFin = (@PaginaActual*@NroRegistrosPorPagina) 
+       
+ INSERT INTO @dtUnidadMercancia  
+ ( 
+ CodigoUnidadMercancia, 
+ CodigoUnidadMercanciaSunat, 
+ NombreUnidadMercancia, 
+ CodigoAduanaUnidadMercancia,       
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion
+ ) 
+ SELECT  
+ CodigoUnidadMercancia, 
+ CodigoUnidadMercanciaSunat, 
+ NombreUnidadMercancia,
+ CodigoAduanaUnidadMercancia,           
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion        
+ FROM dbo.UnidadMercancia (NOLOCK)       
+ WHERE  
+ (@CodigoUnidadMercancia IS NULL OR CodigoUnidadMercancia=@CodigoUnidadMercancia) AND
+ (@CodigoUnidadMercanciaSunat IS NULL OR CodigoUnidadMercanciaSunat=@CodigoUnidadMercanciaSunat) AND
+ (@CodigoAduanaUnidadMercancia IS NULL OR CodigoAduanaUnidadMercancia=@CodigoAduanaUnidadMercancia) AND
+ (@NombreUnidadMercancia IS NULL OR NombreUnidadMercancia LIKE '%' + @NombreUnidadMercancia + '%') AND
+ EstadoRegistro=1 
+        
+ SELECT         
+ CodigoUnidadMercancia, 
+ CodigoUnidadMercanciaSunat, 
+ NombreUnidadMercancia, 
+ CodigoAduanaUnidadMercancia,       
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion        
+ FROM (         
+ SELECT          
+ CASE WHEN UPPER(@OrdenOrientacion)='ASC' OR @OrdenOrientacion IS NULL THEN         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoUnidadMercancia') THEN ROW_NUMBER()OVER(ORDER BY CodigoUnidadMercancia ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoUnidadMercanciaSunat') THEN ROW_NUMBER()OVER(ORDER BY CodigoUnidadMercanciaSunat ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreUnidadMercancia') THEN ROW_NUMBER()OVER(ORDER BY NombreUnidadMercancia ASC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoAduanaUnidadMercancia') THEN ROW_NUMBER()OVER(ORDER BY CodigoAduanaUnidadMercancia ASC) 
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion ASC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoUnidadMercancia ASC)         
+  END         
+ ELSE         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoUnidadMercancia') THEN ROW_NUMBER()OVER(ORDER BY CodigoUnidadMercancia DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoUnidadMercanciaSunat') THEN ROW_NUMBER()OVER(ORDER BY CodigoUnidadMercanciaSunat DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreUnidadMercancia') THEN ROW_NUMBER()OVER(ORDER BY NombreUnidadMercancia DESC) 
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoAduanaUnidadMercancia') THEN ROW_NUMBER()OVER(ORDER BY CodigoAduanaUnidadMercancia ASC)       
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion DESC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoUnidadMercancia DESC)        
+  END         
+ END AS [NROORDEN],         
+ CodigoUnidadMercancia, 
+ CodigoUnidadMercanciaSunat, 
+ NombreUnidadMercancia, 
+ CodigoAduanaUnidadMercancia,      
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion         
+ FROM @dtUnidadMercancia         
+ )Info         
+ WHERE         
+   [NROORDEN] = CASE WHEN (@PaginaActual is null)THEN [NROORDEN] ELSE -1 END         
+   OR [NROORDEN] BETWEEN @vInicio AND @vFin         
+   ORDER BY         
+   [NROORDEN] ASC;         
+           
+ SELECT  @TotalRegistros = count(1),         
+   @CantidadPaginas =  CASE WHEN @NroRegistrosPorPagina is null THEN 1         
+   ELSE CAST(CEILING(count(1)/CAST(@NroRegistrosPorPagina as float)) as int)         
+   END          
+ FROM @dtUnidadMercancia              
+END
+
+GO
+
+-- EXEC USP_REGISTRAR_CONDICIONCARGA NULL,'10','Tránsito Internacional 1','JAV','I'
+-- EXEC USP_REGISTRAR_CONDICIONCARGA 7,'12','Tránsito Internacional','JAV','U'
+-- EXEC USP_REGISTRAR_CONDICIONCARGA 7,'12','Tránsito Internacional','ROM','D'
+
+CREATE PROCEDURE [dbo].[USP_REGISTRAR_CONDICIONCARGA]
+  (
+	@CodigoCondicionCarga BIGINT=NULL,
+	@CodigoCondicionCargaSunat VARCHAR(2)=NULL,
+	@NombreCondicionCarga VARCHAR(80)=NULL,
+	@UsuarioRegistro VARCHAR(100)=NULL,
+	@Accion VARCHAR(1)=NULL
+  )
+  AS
+BEGIN TRY 
+	IF @Accion = 'I'
+	BEGIN
+		IF EXISTS(SELECT CodigoCondicionCarga FROM dbo.CondicionCarga (NOLOCK) 
+		WHERE CodigoCondicionCargaSunat = @CodigoCondicionCargaSunat AND EstadoRegistro = 1)
+		OR EXISTS(SELECT CodigoCondicionCarga FROM dbo.CondicionCarga (NOLOCK) 
+		WHERE RTRIM(LTRIM(NombreCondicionCarga)) = RTRIM(LTRIM(@NombreCondicionCarga)) AND EstadoRegistro = 1)
+		BEGIN
+		-- Controlar Errores y enviar al Servicio
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código o nombre de Condición de Carga ya se encuentra registrado' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			INSERT dbo.CondicionCarga
+			        ( CodigoCondicionCargaSunat,
+			          NombreCondicionCarga,
+			          UsuarioCreacion
+			        )
+			VALUES  ( @CodigoCondicionCargaSunat, 
+			          @NombreCondicionCarga,
+			          @UsuarioRegistro
+			        )
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se registró Condición de Carga satisfactoriamente' AS Mensaje
+		END 
+	END
+	
+	IF @Accion = 'U'
+	BEGIN
+		IF NOT EXISTS(SELECT CodigoCondicionCarga FROM dbo.CondicionCarga (NOLOCK) 
+			WHERE CodigoCondicionCarga = @CodigoCondicionCarga AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de Condición de Carga no existe, no se puede actualizar' AS Mensaje
+		END
+		ELSE IF EXISTS(SELECT CodigoCondicionCarga FROM dbo.CondicionCarga (NOLOCK) 
+		WHERE CodigoCondicionCargaSunat = @CodigoCondicionCargaSunat AND EstadoRegistro = 1 AND CodigoCondicionCarga <> @CodigoCondicionCarga)
+		OR EXISTS(SELECT CodigoCondicionCarga FROM dbo.CondicionCarga (NOLOCK) 
+		WHERE RTRIM(LTRIM(NombreCondicionCarga)) = RTRIM(LTRIM(@NombreCondicionCarga)) 
+		AND EstadoRegistro = 1 AND CodigoCondicionCarga <> @CodigoCondicionCarga)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código o nombre de Condición de Carga ya se encuentra registrado, no se puede actualizar' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			UPDATE dbo.CondicionCarga SET 
+			CodigoCondicionCargaSunat = @CodigoCondicionCargaSunat,
+			NombreCondicionCarga = @NombreCondicionCarga,
+			UsuarioActualizacion = @UsuarioRegistro,
+			FechaHoraActualizacion = GETDATE()
+			WHERE CodigoCondicionCarga = @CodigoCondicionCarga
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se Actualizó Condición de Carga satisfactoriamente' AS Mensaje
+		END
+	END
+	
+	IF @Accion = 'D'
+	BEGIN
+		IF NOT EXISTS(SELECT CodigoCondicionCarga FROM dbo.CondicionCarga (NOLOCK) 
+			WHERE CodigoCondicionCarga = @CodigoCondicionCarga AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de Condición de Carga no existe, No se puede Anular' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			UPDATE dbo.CondicionCarga SET
+			EstadoRegistro = 0, 
+			UsuarioActualizacion = @UsuarioRegistro,
+			FechaHoraActualizacion = GETDATE()
+			WHERE CodigoCondicionCarga = @CodigoCondicionCarga
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se anuló Condición de Carga satisfactoriamente' AS Mensaje
+		END
+	END
+END TRY
+BEGIN CATCH
+	SELECT dbo.Funcion_TipoMensaje(3) AS CodigoMensaje,ISNULL(ERROR_MESSAGE(),'Ocurrio un error interno') AS Mensaje
+END CATCH
+
+GO
+
+-- EXEC USP_CONSULTAR_CONDICIONCARGA NULL,NULL,NULL,NULL,NULL,NULL,300,NULL,NULL
+CREATE PROCEDURE [dbo].[USP_CONSULTAR_CONDICIONCARGA]       
+ (        
+  @CodigoCondicionCarga BIGINT=NULL,
+  @CodigoCondicionCargaSunat VARCHAR(2)=NULL,
+  @NombreCondicionCarga VARCHAR(80)=NULL,   
+  @OrdenCampo VARCHAR(50)=NULL   
+ ,@OrdenOrientacion VARCHAR(4)=NULL         
+ ,@PaginaActual INT=1         
+ ,@NroRegistrosPorPagina INT=10         
+ ,@TotalRegistros INT OUTPUT         
+ ,@CantidadPaginas INT OUTPUT         
+ )         
+ AS         
+ BEGIN         
+  
+ DECLARE @vInicio int, @vFin INT,@vNumeroSerie int 
+
+ DECLARE @dtCondicionCarga AS  
+ TABLE( 
+ CodigoCondicionCarga BIGINT, 
+ CodigoCondicionCargaSunat VARCHAR(2), 
+ NombreCondicionCarga VARCHAR(80),        
+ UsuarioCreacion VARCHAR(100),         
+ FechaHoraCreacion DATETIME,         
+ UsuarioActualizacion VARCHAR(100),         
+ FechaHoraActualizacion DATETIME)         
+
+ IF @PaginaActual IS NULL SET @PaginaActual = 1
+ IF @NroRegistrosPorPagina IS NULL SET @NroRegistrosPorPagina = 10
+ 
+  SET @vInicio = ((@PaginaActual*@NroRegistrosPorPagina-@NroRegistrosPorPagina)+1);         
+  SET @vFin = (@PaginaActual*@NroRegistrosPorPagina) 
+       
+ INSERT INTO @dtCondicionCarga  
+ ( 
+ CodigoCondicionCarga, 
+ CodigoCondicionCargaSunat, 
+ NombreCondicionCarga,        
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion
+ ) 
+ SELECT  
+ CodigoCondicionCarga, 
+ CodigoCondicionCargaSunat, 
+ NombreCondicionCarga,           
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion        
+ FROM dbo.CondicionCarga (NOLOCK)       
+ WHERE  
+ (@CodigoCondicionCarga IS NULL OR CodigoCondicionCarga=@CodigoCondicionCarga) AND
+ (@CodigoCondicionCargaSunat IS NULL OR CodigoCondicionCargaSunat=@CodigoCondicionCargaSunat) AND
+ (@NombreCondicionCarga IS NULL OR NombreCondicionCarga LIKE '%' + @NombreCondicionCarga + '%') AND
+ EstadoRegistro=1 
+        
+ SELECT         
+ CodigoCondicionCarga, 
+ CodigoCondicionCargaSunat, 
+ NombreCondicionCarga,        
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion        
+ FROM (         
+ SELECT          
+ CASE WHEN UPPER(@OrdenOrientacion)='ASC' OR @OrdenOrientacion IS NULL THEN         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoCondicionCarga') THEN ROW_NUMBER()OVER(ORDER BY CodigoCondicionCarga ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoCondicionCargaSunat') THEN ROW_NUMBER()OVER(ORDER BY CodigoCondicionCargaSunat ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreCondicionCarga') THEN ROW_NUMBER()OVER(ORDER BY NombreCondicionCarga ASC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion ASC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoCondicionCarga ASC)         
+  END         
+ ELSE         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoCondicionCarga') THEN ROW_NUMBER()OVER(ORDER BY CodigoCondicionCarga DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoCondicionCargaSunat') THEN ROW_NUMBER()OVER(ORDER BY CodigoCondicionCargaSunat DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreCondicionCarga') THEN ROW_NUMBER()OVER(ORDER BY NombreCondicionCarga DESC)       
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion DESC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoCondicionCarga DESC)        
+  END         
+ END AS [NROORDEN],         
+ CodigoCondicionCarga, 
+ CodigoCondicionCargaSunat, 
+ NombreCondicionCarga,       
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion         
+ FROM @dtCondicionCarga         
+ )Info         
+ WHERE         
+   [NROORDEN] = CASE WHEN (@PaginaActual is null)THEN [NROORDEN] ELSE -1 END         
+   OR [NROORDEN] BETWEEN @vInicio AND @vFin         
+   ORDER BY         
+   [NROORDEN] ASC;         
+           
+ SELECT  @TotalRegistros = count(1),         
+   @CantidadPaginas =  CASE WHEN @NroRegistrosPorPagina is null THEN 1         
+   ELSE CAST(CEILING(count(1)/CAST(@NroRegistrosPorPagina as float)) as int)         
+   END          
+ FROM @dtCondicionCarga              
+END
+
+GO
+
+-- EXEC USP_REGISTRAR_NATURALEZACARGA NULL,'15','Documentos 1','JAV','I'
+-- EXEC USP_REGISTRAR_NATURALEZACARGA 11,'15','Documentos 2','JAV','U'
+-- EXEC USP_REGISTRAR_NATURALEZACARGA 11,'15','Documentos 2','ROM','D'
+
+CREATE PROCEDURE [dbo].[USP_REGISTRAR_NATURALEZACARGA]
+  (
+	@CodigoNaturalezaCarga BIGINT=NULL,
+	@CodigoNaturalezaCargaSunat VARCHAR(2)=NULL,
+	@NombreNaturalezaCarga VARCHAR(80)=NULL,
+	@UsuarioRegistro VARCHAR(100)=NULL,
+	@Accion VARCHAR(1)=NULL
+  )
+  AS
+BEGIN TRY 
+	IF @Accion = 'I'
+	BEGIN
+		IF EXISTS(SELECT CodigoNaturalezaCarga FROM dbo.NaturalezaCarga (NOLOCK) 
+		WHERE CodigoNaturalezaCargaSunat = @CodigoNaturalezaCargaSunat AND EstadoRegistro = 1)
+		OR EXISTS(SELECT CodigoNaturalezaCarga FROM dbo.NaturalezaCarga (NOLOCK) 
+		WHERE RTRIM(LTRIM(NombreNaturalezaCarga)) = RTRIM(LTRIM(@NombreNaturalezaCarga)) AND EstadoRegistro = 1)
+		BEGIN
+		-- Controlar Errores y enviar al Servicio
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código o nombre de Naturaleza de Carga ya se encuentra registrado' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			INSERT dbo.NaturalezaCarga
+			        ( CodigoNaturalezaCargaSunat,
+			          NombreNaturalezaCarga,
+			          UsuarioCreacion
+			        )
+			VALUES  ( @CodigoNaturalezaCargaSunat, 
+			          @NombreNaturalezaCarga,
+			          @UsuarioRegistro
+			        )
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se registró Naturaleza de Carga satisfactoriamente' AS Mensaje
+		END 
+	END
+	
+	IF @Accion = 'U'
+	BEGIN
+		IF NOT EXISTS(SELECT CodigoNaturalezaCarga FROM dbo.NaturalezaCarga (NOLOCK) 
+			WHERE CodigoNaturalezaCarga = @CodigoNaturalezaCarga AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de Naturaleza de Carga no existe, no se puede actualizar' AS Mensaje
+		END
+		ELSE IF EXISTS(SELECT CodigoNaturalezaCarga FROM dbo.NaturalezaCarga (NOLOCK) 
+		WHERE CodigoNaturalezaCargaSunat = @CodigoNaturalezaCargaSunat AND EstadoRegistro = 1 AND CodigoNaturalezaCarga <> @CodigoNaturalezaCarga)
+		OR EXISTS(SELECT CodigoNaturalezaCarga FROM dbo.NaturalezaCarga (NOLOCK) 
+		WHERE RTRIM(LTRIM(NombreNaturalezaCarga)) = RTRIM(LTRIM(@NombreNaturalezaCarga)) 
+		AND EstadoRegistro = 1 AND CodigoNaturalezaCarga <> @CodigoNaturalezaCarga)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código o nombre de Naturaleza de Carga ya se encuentra registrado, no se puede actualizar' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			UPDATE dbo.NaturalezaCarga SET 
+			CodigoNaturalezaCargaSunat = @CodigoNaturalezaCargaSunat,
+			NombreNaturalezaCarga = @NombreNaturalezaCarga,
+			UsuarioActualizacion = @UsuarioRegistro,
+			FechaHoraActualizacion = GETDATE()
+			WHERE CodigoNaturalezaCarga = @CodigoNaturalezaCarga
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se Actualizó Naturaleza de Carga satisfactoriamente' AS Mensaje
+		END
+	END
+	
+	IF @Accion = 'D'
+	BEGIN
+		IF NOT EXISTS(SELECT CodigoNaturalezaCarga FROM dbo.NaturalezaCarga (NOLOCK) 
+			WHERE CodigoNaturalezaCarga = @CodigoNaturalezaCarga AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de Naturaleza de Carga no existe, No se puede Anular' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			UPDATE dbo.NaturalezaCarga SET
+			EstadoRegistro = 0, 
+			UsuarioActualizacion = @UsuarioRegistro,
+			FechaHoraActualizacion = GETDATE()
+			WHERE CodigoNaturalezaCarga = @CodigoNaturalezaCarga
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se anuló Naturaleza de Carga satisfactoriamente' AS Mensaje
+		END
+	END
+END TRY
+BEGIN CATCH
+	SELECT dbo.Funcion_TipoMensaje(3) AS CodigoMensaje,ISNULL(ERROR_MESSAGE(),'Ocurrio un error interno') AS Mensaje
+END CATCH
+
+GO
+
+-- EXEC USP_CONSULTAR_NATURALEZACARGA NULL,NULL,NULL,NULL,NULL,NULL,300,NULL,NULL
+CREATE PROCEDURE [dbo].[USP_CONSULTAR_NATURALEZACARGA]       
+ (        
+  @CodigoNaturalezaCarga BIGINT=NULL,
+  @CodigoNaturalezaCargaSunat VARCHAR(2)=NULL,
+  @NombreNaturalezaCarga VARCHAR(80)=NULL,   
+  @OrdenCampo VARCHAR(50)=NULL   
+ ,@OrdenOrientacion VARCHAR(4)=NULL         
+ ,@PaginaActual INT=1         
+ ,@NroRegistrosPorPagina INT=10         
+ ,@TotalRegistros INT OUTPUT         
+ ,@CantidadPaginas INT OUTPUT         
+ )         
+ AS         
+ BEGIN         
+  
+ DECLARE @vInicio int, @vFin INT,@vNumeroSerie int 
+
+ DECLARE @dtNaturalezaCarga AS  
+ TABLE( 
+ CodigoNaturalezaCarga BIGINT, 
+ CodigoNaturalezaCargaSunat VARCHAR(2), 
+ NombreNaturalezaCarga VARCHAR(80),        
+ UsuarioCreacion VARCHAR(100),         
+ FechaHoraCreacion DATETIME,         
+ UsuarioActualizacion VARCHAR(100),         
+ FechaHoraActualizacion DATETIME)         
+
+ IF @PaginaActual IS NULL SET @PaginaActual = 1
+ IF @NroRegistrosPorPagina IS NULL SET @NroRegistrosPorPagina = 10
+ 
+  SET @vInicio = ((@PaginaActual*@NroRegistrosPorPagina-@NroRegistrosPorPagina)+1);         
+  SET @vFin = (@PaginaActual*@NroRegistrosPorPagina) 
+       
+ INSERT INTO @dtNaturalezaCarga  
+ ( 
+ CodigoNaturalezaCarga, 
+ CodigoNaturalezaCargaSunat, 
+ NombreNaturalezaCarga,        
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion
+ ) 
+ SELECT  
+ CodigoNaturalezaCarga, 
+ CodigoNaturalezaCargaSunat, 
+ NombreNaturalezaCarga,           
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion        
+ FROM dbo.NaturalezaCarga (NOLOCK)       
+ WHERE  
+ (@CodigoNaturalezaCarga IS NULL OR CodigoNaturalezaCarga=@CodigoNaturalezaCarga) AND
+ (@CodigoNaturalezaCargaSunat IS NULL OR CodigoNaturalezaCargaSunat=@CodigoNaturalezaCargaSunat) AND
+ (@NombreNaturalezaCarga IS NULL OR NombreNaturalezaCarga LIKE '%' + @NombreNaturalezaCarga + '%') AND
+ EstadoRegistro=1 
+        
+ SELECT         
+ CodigoNaturalezaCarga, 
+ CodigoNaturalezaCargaSunat, 
+ NombreNaturalezaCarga,        
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion        
+ FROM (         
+ SELECT          
+ CASE WHEN UPPER(@OrdenOrientacion)='ASC' OR @OrdenOrientacion IS NULL THEN         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoNaturalezaCarga') THEN ROW_NUMBER()OVER(ORDER BY CodigoNaturalezaCarga ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoNaturalezaCargaSunat') THEN ROW_NUMBER()OVER(ORDER BY CodigoNaturalezaCargaSunat ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreNaturalezaCarga') THEN ROW_NUMBER()OVER(ORDER BY NombreNaturalezaCarga ASC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion ASC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoNaturalezaCarga ASC)         
+  END         
+ ELSE         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoNaturalezaCarga') THEN ROW_NUMBER()OVER(ORDER BY CodigoNaturalezaCarga DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoNaturalezaCargaSunat') THEN ROW_NUMBER()OVER(ORDER BY CodigoNaturalezaCargaSunat DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreNaturalezaCarga') THEN ROW_NUMBER()OVER(ORDER BY NombreNaturalezaCarga DESC)       
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion DESC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoNaturalezaCarga DESC)        
+  END         
+ END AS [NROORDEN],         
+ CodigoNaturalezaCarga, 
+ CodigoNaturalezaCargaSunat, 
+ NombreNaturalezaCarga,       
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion         
+ FROM @dtNaturalezaCarga         
+ )Info         
+ WHERE         
+   [NROORDEN] = CASE WHEN (@PaginaActual is null)THEN [NROORDEN] ELSE -1 END         
+   OR [NROORDEN] BETWEEN @vInicio AND @vFin         
+   ORDER BY         
+   [NROORDEN] ASC;         
+           
+ SELECT  @TotalRegistros = count(1),         
+   @CantidadPaginas =  CASE WHEN @NroRegistrosPorPagina is null THEN 1         
+   ELSE CAST(CEILING(count(1)/CAST(@NroRegistrosPorPagina as float)) as int)         
+   END          
+ FROM @dtNaturalezaCarga              
+END
+
+GO
+
+-- EXEC USP_REGISTRAR_CLASEIMO NULL,'55.5','Clase Imo 1','JAV','I'
+-- EXEC USP_REGISTRAR_CLASEIMO 21,'55.6','Clase Imo 2','HEC','U'
+-- EXEC USP_REGISTRAR_CLASEIMO 21,'55.6','Clase Imo 2','ROM','D'
+
+CREATE PROCEDURE [dbo].[USP_REGISTRAR_CLASEIMO]
+  (
+	@CodigoClaseIMO BIGINT=NULL,
+	@CodigoClaseIMOSunat VARCHAR(4)=NULL,
+	@NombreClaseIMO VARCHAR(255)=NULL,
+	@UsuarioRegistro VARCHAR(100)=NULL,
+	@Accion VARCHAR(1)=NULL
+  )
+  AS
+BEGIN TRY 
+	IF @Accion = 'I'
+	BEGIN
+		IF EXISTS(SELECT CodigoClaseIMO FROM dbo.ClaseIMO (NOLOCK) 
+		WHERE CodigoClaseIMOSunat = @CodigoClaseIMOSunat AND EstadoRegistro = 1)
+		OR EXISTS(SELECT CodigoClaseIMO FROM dbo.ClaseIMO (NOLOCK) 
+		WHERE RTRIM(LTRIM(NombreClaseIMO)) = RTRIM(LTRIM(@NombreClaseIMO)) AND EstadoRegistro = 1)
+		BEGIN
+		-- Controlar Errores y enviar al Servicio
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código o nombre de Clase IMO ya se encuentra registrado' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			INSERT dbo.ClaseIMO
+			        ( CodigoClaseIMOSunat,
+			          NombreClaseIMO,
+			          UsuarioCreacion
+			        )
+			VALUES  ( @CodigoClaseIMOSunat, 
+			          @NombreClaseIMO,
+			          @UsuarioRegistro
+			        )
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se registró Clase IMO satisfactoriamente' AS Mensaje
+		END 
+	END
+	
+	IF @Accion = 'U'
+	BEGIN
+		IF NOT EXISTS(SELECT CodigoClaseIMO FROM dbo.ClaseIMO (NOLOCK) 
+			WHERE CodigoClaseIMO = @CodigoClaseIMO AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de Clase IMO no existe, no se puede actualizar' AS Mensaje
+		END
+		ELSE IF EXISTS(SELECT CodigoClaseIMO FROM dbo.ClaseIMO (NOLOCK) 
+		WHERE CodigoClaseIMOSunat = @CodigoClaseIMOSunat AND EstadoRegistro = 1 AND CodigoClaseIMO <> @CodigoClaseIMO)
+		OR EXISTS(SELECT CodigoClaseIMO FROM dbo.ClaseIMO (NOLOCK) 
+		WHERE RTRIM(LTRIM(NombreClaseIMO)) = RTRIM(LTRIM(@NombreClaseIMO)) 
+		AND EstadoRegistro = 1 AND CodigoClaseIMO <> @CodigoClaseIMO)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código o nombre de Clase IMO ya se encuentra registrado, no se puede actualizar' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			UPDATE dbo.ClaseIMO SET 
+			CodigoClaseIMOSunat = @CodigoClaseIMOSunat,
+			NombreClaseIMO = @NombreClaseIMO,
+			UsuarioActualizacion = @UsuarioRegistro,
+			FechaHoraActualizacion = GETDATE()
+			WHERE CodigoClaseIMO = @CodigoClaseIMO
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se Actualizó Clase IMO satisfactoriamente' AS Mensaje
+		END
+	END
+	
+	IF @Accion = 'D'
+	BEGIN
+		IF NOT EXISTS(SELECT CodigoClaseIMO FROM dbo.ClaseIMO (NOLOCK) 
+			WHERE CodigoClaseIMO = @CodigoClaseIMO AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de Clase IMO no existe, No se puede Anular' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			UPDATE dbo.ClaseIMO SET
+			EstadoRegistro = 0, 
+			UsuarioActualizacion = @UsuarioRegistro,
+			FechaHoraActualizacion = GETDATE()
+			WHERE CodigoClaseIMO = @CodigoClaseIMO
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se anuló Clase IMO satisfactoriamente' AS Mensaje
+		END
+	END
+END TRY
+BEGIN CATCH
+	SELECT dbo.Funcion_TipoMensaje(3) AS CodigoMensaje,ISNULL(ERROR_MESSAGE(),'Ocurrio un error interno') AS Mensaje
+END CATCH
+
+GO
+
+-- EXEC USP_CONSULTAR_CLASEIMO NULL,NULL,NULL,NULL,NULL,NULL,300,NULL,NULL
+CREATE PROCEDURE [dbo].[USP_CONSULTAR_CLASEIMO]       
+ (        
+  @CodigoClaseIMO BIGINT=NULL,
+  @CodigoClaseIMOSunat VARCHAR(4)=NULL,
+  @NombreClaseIMO VARCHAR(255)=NULL,   
+  @OrdenCampo VARCHAR(50)=NULL   
+ ,@OrdenOrientacion VARCHAR(4)=NULL         
+ ,@PaginaActual INT=1         
+ ,@NroRegistrosPorPagina INT=10         
+ ,@TotalRegistros INT OUTPUT         
+ ,@CantidadPaginas INT OUTPUT         
+ )         
+ AS         
+ BEGIN         
+  
+ DECLARE @vInicio int, @vFin INT,@vNumeroSerie int 
+
+ DECLARE @dtClaseIMO AS  
+ TABLE( 
+ CodigoClaseIMO BIGINT, 
+ CodigoClaseIMOSunat VARCHAR(4), 
+ NombreClaseIMO VARCHAR(255),        
+ UsuarioCreacion VARCHAR(100),         
+ FechaHoraCreacion DATETIME,         
+ UsuarioActualizacion VARCHAR(100),         
+ FechaHoraActualizacion DATETIME)         
+
+ IF @PaginaActual IS NULL SET @PaginaActual = 1
+ IF @NroRegistrosPorPagina IS NULL SET @NroRegistrosPorPagina = 10
+ 
+  SET @vInicio = ((@PaginaActual*@NroRegistrosPorPagina-@NroRegistrosPorPagina)+1);         
+  SET @vFin = (@PaginaActual*@NroRegistrosPorPagina) 
+       
+ INSERT INTO @dtClaseIMO  
+ ( 
+ CodigoClaseIMO, 
+ CodigoClaseIMOSunat, 
+ NombreClaseIMO,        
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion
+ ) 
+ SELECT  
+ CodigoClaseIMO, 
+ CodigoClaseIMOSunat, 
+ NombreClaseIMO,           
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion        
+ FROM dbo.ClaseIMO (NOLOCK)       
+ WHERE  
+ (@CodigoClaseIMO IS NULL OR CodigoClaseIMO=@CodigoClaseIMO) AND
+ (@CodigoClaseIMOSunat IS NULL OR CodigoClaseIMOSunat=@CodigoClaseIMOSunat) AND
+ (@NombreClaseIMO IS NULL OR NombreClaseIMO LIKE '%' + @NombreClaseIMO + '%') AND
+ EstadoRegistro=1 
+        
+ SELECT         
+ CodigoClaseIMO, 
+ CodigoClaseIMOSunat, 
+ NombreClaseIMO,        
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion        
+ FROM (         
+ SELECT          
+ CASE WHEN UPPER(@OrdenOrientacion)='ASC' OR @OrdenOrientacion IS NULL THEN         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoClaseIMO') THEN ROW_NUMBER()OVER(ORDER BY CodigoClaseIMO ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoClaseIMOSunat') THEN ROW_NUMBER()OVER(ORDER BY CodigoClaseIMOSunat ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreClaseIMO') THEN ROW_NUMBER()OVER(ORDER BY NombreClaseIMO ASC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion ASC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoClaseIMO ASC)         
+  END         
+ ELSE         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoClaseIMO') THEN ROW_NUMBER()OVER(ORDER BY CodigoClaseIMO DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoClaseIMOSunat') THEN ROW_NUMBER()OVER(ORDER BY CodigoClaseIMOSunat DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreClaseIMO') THEN ROW_NUMBER()OVER(ORDER BY NombreClaseIMO DESC)       
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion DESC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoClaseIMO DESC)        
+  END         
+ END AS [NROORDEN],         
+ CodigoClaseIMO, 
+ CodigoClaseIMOSunat, 
+ NombreClaseIMO,       
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion         
+ FROM @dtClaseIMO         
+ )Info         
+ WHERE         
+   [NROORDEN] = CASE WHEN (@PaginaActual is null)THEN [NROORDEN] ELSE -1 END         
+   OR [NROORDEN] BETWEEN @vInicio AND @vFin         
+   ORDER BY         
+   [NROORDEN] ASC;         
+           
+ SELECT  @TotalRegistros = count(1),         
+   @CantidadPaginas =  CASE WHEN @NroRegistrosPorPagina is null THEN 1         
+   ELSE CAST(CEILING(count(1)/CAST(@NroRegistrosPorPagina as float)) as int)         
+   END          
+ FROM @dtClaseIMO              
+END
+
+GO
+
+-- EXEC USP_REGISTRAR_NUMEROIMO NULL,1,'5','PICRATO AMONICO 1',1000,'JAV','I'
+-- EXEC USP_REGISTRAR_NUMEROIMO 1278,1,'4','PICRATO AMONICO 1',1001,'HEC','U'
+-- EXEC USP_REGISTRAR_NUMEROIMO 1278,1,'4','PICRATO AMONICO 1',1001,'HEC','D'
+
+CREATE PROCEDURE [dbo].[USP_REGISTRAR_NUMEROIMO]
+  (
+	@CodigoNumeroIMO BIGINT=NULL,
+    @CodigoClaseIMO BIGINT=NULL,
+    @NumberIMO VARCHAR(4)=NULL,
+    @NombreNumeroIMO VARCHAR(255)=NULL,   
+	@PaginaNumeroIMO INT=NULL,
+	@UsuarioRegistro VARCHAR(100)=NULL,
+	@Accion VARCHAR(1)=NULL
+  )
+  AS
+BEGIN TRY 
+	IF @Accion = 'I'
+	BEGIN
+		IF EXISTS(SELECT CodigoNumeroIMO FROM dbo.NumeroIMO (NOLOCK) 
+		WHERE CodigoClaseIMO = @CodigoClaseIMO AND NumberIMO = @NumberIMO 
+		AND RTRIM(LTRIM(NombreNumeroIMO)) = RTRIM(LTRIM(@NombreNumeroIMO)) AND EstadoRegistro = 1)
+		BEGIN
+		-- Controlar Errores y enviar al Servicio
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Número de IMO ya se encuentra registrado' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			INSERT dbo.NumeroIMO
+			        ( CodigoClaseIMO,
+			          NumberIMO,
+			          NombreNumeroIMO,
+			          PaginaNumeroIMO,
+			          UsuarioCreacion
+			        )
+			VALUES  ( @CodigoClaseIMO, 
+					  @NumberIMO,
+			          @NombreNumeroIMO,
+			          @PaginaNumeroIMO,
+			          @UsuarioRegistro
+			        )
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se registró Número de IMO satisfactoriamente' AS Mensaje
+		END 
+	END
+	
+	IF @Accion = 'U'
+	BEGIN
+		IF NOT EXISTS(SELECT CodigoNumeroIMO FROM dbo.NumeroIMO (NOLOCK) 
+			WHERE CodigoNumeroIMO = @CodigoNumeroIMO AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de Número de IMO no existe, no se puede actualizar' AS Mensaje
+		END
+		ELSE IF EXISTS(SELECT CodigoNumeroIMO FROM dbo.NumeroIMO (NOLOCK) 
+		WHERE CodigoClaseIMO = @CodigoClaseIMO AND NumberIMO = @NumberIMO 
+		AND RTRIM(LTRIM(NombreNumeroIMO)) = RTRIM(LTRIM(@NombreNumeroIMO)) AND EstadoRegistro = 1
+		AND CodigoNumeroIMO <> @CodigoNumeroIMO)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Número de IMO ya se encuentra registrado, no se puede actualizar' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			UPDATE dbo.NumeroIMO SET 
+			CodigoClaseIMO = @CodigoClaseIMO,
+			NumberIMO = @NumberIMO,
+			NombreNumeroIMO = @NombreNumeroIMO,
+			PaginaNumeroIMO = @PaginaNumeroIMO,
+			UsuarioActualizacion = @UsuarioRegistro,
+			FechaHoraActualizacion = GETDATE()
+			WHERE CodigoNumeroIMO = @CodigoNumeroIMO
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se Actualizó Número de IMO satisfactoriamente' AS Mensaje
+		END
+	END
+	
+	IF @Accion = 'D'
+	BEGIN
+		IF NOT EXISTS(SELECT CodigoNumeroIMO FROM dbo.NumeroIMO (NOLOCK) 
+			WHERE CodigoNumeroIMO = @CodigoNumeroIMO AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de Número de IMO no existe, No se puede Anular' AS Mensaje
+		END
+		ELSE
+		BEGIN
+			UPDATE dbo.NumeroIMO SET
+			EstadoRegistro = 0, 
+			UsuarioActualizacion = @UsuarioRegistro,
+			FechaHoraActualizacion = GETDATE()
+			WHERE CodigoNumeroIMO = @CodigoNumeroIMO
+			
+			SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se anuló Número de IMO satisfactoriamente' AS Mensaje
+		END
+	END
+END TRY
+BEGIN CATCH
+	SELECT dbo.Funcion_TipoMensaje(3) AS CodigoMensaje,ISNULL(ERROR_MESSAGE(),'Ocurrio un error interno') AS Mensaje
+END CATCH
+
+GO
+
+-- EXEC USP_CONSULTAR_NUMEROIMO NULL,NULL,NULL,NULL,NULL,'NombreNumeroIMO','asc',NULL,10000,NULL,NULL
+CREATE PROCEDURE [dbo].[USP_CONSULTAR_NUMEROIMO]       
+ (        
+  @CodigoNumeroIMO BIGINT=NULL,
+  @CodigoClaseIMO BIGINT=NULL,
+  @NumberIMO VARCHAR(4)=NULL,
+  @NombreNumeroIMO VARCHAR(255)=NULL,   
+  @PaginaNumeroIMO INT=NULL, 
+  @OrdenCampo VARCHAR(50)=NULL   
+ ,@OrdenOrientacion VARCHAR(4)=NULL         
+ ,@PaginaActual INT=1         
+ ,@NroRegistrosPorPagina INT=10         
+ ,@TotalRegistros INT OUTPUT         
+ ,@CantidadPaginas INT OUTPUT         
+ )         
+ AS         
+ BEGIN         
+  
+ DECLARE @vInicio int, @vFin INT,@vNumeroSerie int 
+
+ DECLARE @dtNumeroIMO AS  
+ TABLE( 
+ CodigoNumeroIMO BIGINT,
+ NumberIMO VARCHAR(4),
+ NombreNumeroIMO VARCHAR(255),   
+ PaginaNumeroIMO INT,     
+ CodigoClaseIMO BIGINT,  
+ NombreClaseIMO VARCHAR(255),  
+ UsuarioCreacion VARCHAR(100),         
+ FechaHoraCreacion DATETIME,         
+ UsuarioActualizacion VARCHAR(100),         
+ FechaHoraActualizacion DATETIME)         
+
+ IF @PaginaActual IS NULL SET @PaginaActual = 1
+ IF @NroRegistrosPorPagina IS NULL SET @NroRegistrosPorPagina = 10
+ 
+  SET @vInicio = ((@PaginaActual*@NroRegistrosPorPagina-@NroRegistrosPorPagina)+1);         
+  SET @vFin = (@PaginaActual*@NroRegistrosPorPagina) 
+       
+ INSERT INTO @dtNumeroIMO  
+ ( 
+ CodigoNumeroIMO,
+ NumberIMO,
+ NombreNumeroIMO,   
+ PaginaNumeroIMO, 
+ CodigoClaseIMO,
+ NombreClaseIMO,        
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion
+ ) 
+ SELECT  
+ CodigoNumeroIMO,
+ NumberIMO,
+ NombreNumeroIMO,   
+ PaginaNumeroIMO,  
+ a.CodigoClaseIMO,
+ b.NombreClaseIMO,         
+ a.UsuarioCreacion,         
+ a.FechaHoraCreacion,         
+ a.UsuarioActualizacion,         
+ a.FechaHoraActualizacion        
+ FROM dbo.NumeroIMO a (NOLOCK) 
+ JOIN dbo.ClaseIMO b (NOLOCK) ON a.CodigoClaseIMO = b.CodigoClaseIMO    
+ WHERE  
+ (@CodigoNumeroIMO IS NULL OR a.CodigoNumeroIMO=@CodigoNumeroIMO) AND
+ (@CodigoClaseIMO IS NULL OR a.CodigoClaseIMO=@CodigoClaseIMO) AND
+ (@NumberIMO IS NULL OR NumberIMO=@NumberIMO) AND
+ (@PaginaNumeroIMO IS NULL OR PaginaNumeroIMO=@PaginaNumeroIMO) AND
+ (@NombreNumeroIMO IS NULL OR NombreNumeroIMO LIKE '%' + @NombreNumeroIMO + '%') AND
+ a.EstadoRegistro=1 
+        
+ SELECT         
+ CodigoNumeroIMO,
+ NumberIMO,
+ NombreNumeroIMO,   
+ PaginaNumeroIMO,
+ CodigoClaseIMO, 
+ NombreClaseIMO,      
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion        
+ FROM (         
+ SELECT          
+ CASE WHEN UPPER(@OrdenOrientacion)='ASC' OR @OrdenOrientacion IS NULL THEN         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoNumeroIMO') THEN ROW_NUMBER()OVER(ORDER BY CodigoNumeroIMO ASC)                 
+   WHEN  UPPER(@OrdenCampo) = UPPER('NumberIMO') THEN ROW_NUMBER()OVER(ORDER BY NumberIMO ASC)  
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreNumeroIMO') THEN ROW_NUMBER()OVER(ORDER BY NombreNumeroIMO ASC)  
+   WHEN  UPPER(@OrdenCampo) = UPPER('PaginaNumeroIMO') THEN ROW_NUMBER()OVER(ORDER BY PaginaNumeroIMO ASC) 
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreClaseIMO') THEN ROW_NUMBER()OVER(ORDER BY NombreClaseIMO ASC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion ASC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoNumeroIMO ASC)         
+  END         
+ ELSE         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoNumeroIMO') THEN ROW_NUMBER()OVER(ORDER BY CodigoNumeroIMO DESC)               
+   WHEN  UPPER(@OrdenCampo) = UPPER('NumberIMO') THEN ROW_NUMBER()OVER(ORDER BY NumberIMO DESC)  
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreNumeroIMO') THEN ROW_NUMBER()OVER(ORDER BY NombreNumeroIMO DESC)  
+   WHEN  UPPER(@OrdenCampo) = UPPER('PaginaNumeroIMO') THEN ROW_NUMBER()OVER(ORDER BY PaginaNumeroIMO DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreClaseIMO') THEN ROW_NUMBER()OVER(ORDER BY NombreClaseIMO DESC) 
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion DESC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoNumeroIMO DESC)        
+  END         
+ END AS [NROORDEN],         
+ CodigoNumeroIMO,
+ NumberIMO,
+ NombreNumeroIMO,   
+ PaginaNumeroIMO, 
+ CodigoClaseIMO,
+ NombreClaseIMO,      
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion         
+ FROM @dtNumeroIMO         
+ )Info         
+ WHERE         
+   [NROORDEN] = CASE WHEN (@PaginaActual is null)THEN [NROORDEN] ELSE -1 END         
+   OR [NROORDEN] BETWEEN @vInicio AND @vFin         
+   ORDER BY         
+   [NROORDEN] ASC;         
+           
+ SELECT  @TotalRegistros = count(1),         
+   @CantidadPaginas =  CASE WHEN @NroRegistrosPorPagina is null THEN 1         
+   ELSE CAST(CEILING(count(1)/CAST(@NroRegistrosPorPagina as float)) as int)         
+   END          
+ FROM @dtNumeroIMO              
+END
+
+GO
+-- USP_REGISTRAR_CONTENEDOR NULL,1,'CAIU123456',1500,'JAV','I'
+-- USP_REGISTRAR_CONTENEDOR 5,2,'CAIU123456',1500,'HEC','U'
+-- USP_REGISTRAR_CONTENEDOR 5,2,'CAIU123456',1500,'ROM','D'
+CREATE PROCEDURE [dbo].[USP_REGISTRAR_CONTENEDOR]  
+(  
+ @CodigoContenedor BIGINT=NULL,
+ @CodigoTipoContenedor BIGINT=NULL,
+ @NumeroContenedor VARCHAR(15)=NULL,
+ @TaraContenedor DECIMAL(15,2)=NULL,  
+ @UsuarioRegistro VARCHAR(100)=NULL,  
+ @Accion VARCHAR(1)=NULL  
+)  
+AS  
+BEGIN TRY 
+ IF @Accion = 'I'  
+ BEGIN  
+  IF EXISTS(SELECT CodigoContenedor FROM dbo.Contenedor (NOLOCK)   
+  WHERE NumeroContenedor = @NumeroContenedor AND EstadoRegistro = 1)  
+  BEGIN  
+   -- Controlar Errores y enviar al Servicio
+		SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Número de Contenedor ya se encuentra registrado' AS Mensaje
+  END  
+  ELSE  
+  BEGIN  
+   INSERT dbo.Contenedor
+           ( CodigoTipoContenedor ,
+             NumeroContenedor ,
+             TaraContenedor ,
+             UsuarioCreacion 
+           )
+   VALUES  ( @CodigoTipoContenedor ,
+             @NumeroContenedor ,
+             @TaraContenedor , 
+             @UsuarioRegistro  
+           )  
+   SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se registró Contenedor satisfactoriamente' AS Mensaje
+  END   
+ END  
+   
+ IF @Accion = 'U'  
+ BEGIN 
+	IF NOT EXISTS(SELECT CodigoContenedor FROM dbo.Contenedor (NOLOCK) 
+			WHERE CodigoContenedor = @CodigoContenedor AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de Contenedor no existe, no se puede actualizar' AS Mensaje
+		END
+		ELSE IF EXISTS(SELECT CodigoContenedor FROM dbo.Contenedor (NOLOCK)   
+		WHERE NumeroContenedor = @NumeroContenedor AND EstadoRegistro = 1 AND CodigoContenedor<>@CodigoContenedor)
+  		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Número de Contenedor ya se encuentra registrado, no se puede actualizar' AS Mensaje
+		END
+		ELSE
+		BEGIN 
+		  UPDATE dbo.Contenedor SET   
+		  CodigoTipoContenedor = @CodigoTipoContenedor,
+          NumeroContenedor = @NumeroContenedor ,
+          TaraContenedor = @TaraContenedor,  
+		  UsuarioActualizacion = @UsuarioRegistro,  
+		  FechaHoraActualizacion = GETDATE()  
+		  WHERE CodigoContenedor = @CodigoContenedor
+		    
+		  SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se Actualizó Contenedor satisfactoriamente' AS Mensaje
+		END
+ END  
+   
+ IF @Accion = 'D'  
+ BEGIN 
+	IF NOT EXISTS(SELECT CodigoContenedor FROM dbo.Contenedor (NOLOCK) 
+			WHERE CodigoContenedor = @CodigoContenedor AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de Contenedor no existe, No se puede Anular' AS Mensaje
+		END
+		ELSE
+		BEGIN 
+		  UPDATE dbo.Contenedor SET  
+		  EstadoRegistro = 0,   
+		  UsuarioActualizacion = @UsuarioRegistro,  
+		  FechaHoraActualizacion = GETDATE()  
+		  WHERE CodigoContenedor = @CodigoContenedor  
+		  
+		  SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se anuló Contenedor correctamente' AS Mensaje
+		END
+ END  
+END TRY
+BEGIN CATCH
+	 SELECT dbo.Funcion_TipoMensaje(3) AS CodigoMensaje,ISNULL(ERROR_MESSAGE(),'Ocurrio un error interno') AS Mensaje
+END CATCH
+
+GO
+-- USP_CONSULTAR_CONTENEDOR NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,100000,NULL,NULL
+CREATE PROCEDURE [dbo].[USP_CONSULTAR_CONTENEDOR]       
+ (        
+  @CodigoContenedor BIGINT=NULL,
+  @CodigoTipoContenedor BIGINT=NULL,
+  @NumeroContenedor VARCHAR(15)=NULL,
+  @TaraContenedor DECIMAL(15,2)=NULL,
+  @CodTipoContenedor VARCHAR(2)=NULL,
+  @TamanioTipoContenedor VARCHAR(2)=NULL 
+ ,@OrdenCampo VARCHAR(50)=NULL         
+ ,@OrdenOrientacion VARCHAR(4)=NULL         
+ ,@PaginaActual INT=1         
+ ,@NroRegistrosPorPagina INT=10         
+ ,@TotalRegistros INT OUTPUT         
+ ,@CantidadPaginas INT OUTPUT         
+ )         
+ AS      
+BEGIN     
+ DECLARE @vInicio int, @vFin INT,@vNumeroSerie int 
+ 
+ DECLARE @dtContenedor AS  
+ TABLE( 
+ CodigoContenedor BIGINT,
+ NumeroContenedor VARCHAR(15),
+ TaraContenedor DECIMAL(15,2),   
+ CodigoTipoContenedor BIGINT,
+ NombreTipoContenedor VARCHAR(80), 
+ CodTipoContenedor VARCHAR(2),
+ TamanioTipoContenedor VARCHAR(2),    
+ UsuarioCreacion VARCHAR(100),         
+ FechaHoraCreacion DATETIME,         
+ UsuarioActualizacion VARCHAR(100),         
+ FechaHoraActualizacion DATETIME)    
+ 
+ IF @PaginaActual IS NULL SET @PaginaActual = 1
+ IF @NroRegistrosPorPagina IS NULL SET @NroRegistrosPorPagina = 10
+           
+  SET @vInicio = ((@PaginaActual*@NroRegistrosPorPagina-@NroRegistrosPorPagina)+1);         
+  SET @vFin = (@PaginaActual*@NroRegistrosPorPagina);          
+            
+ INSERT INTO @dtContenedor  
+ ( 
+ CodigoContenedor,
+ NumeroContenedor,
+ TaraContenedor,   
+ CodigoTipoContenedor,
+ NombreTipoContenedor,
+ CodTipoContenedor, 
+ TamanioTipoContenedor,      
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion
+ ) 
+ SELECT  
+ CodigoContenedor,
+ NumeroContenedor,
+ TaraContenedor,  
+ a.CodigoTipoContenedor, 
+ b.NombreTipoContenedor, 
+ b.CodTipoContenedor, 
+ b.TamanioTipoContenedor,         
+ a.UsuarioCreacion,         
+ a.FechaHoraCreacion,         
+ a.UsuarioActualizacion,         
+ a.FechaHoraActualizacion        
+ FROM dbo.Contenedor a (NOLOCK) JOIN dbo.TipoContenedor b (NOLOCK) ON a.CodigoTipoContenedor = b.CodigoTipoContenedor
+ WHERE  
+ (@CodigoContenedor IS NULL OR CodigoContenedor=@CodigoContenedor) AND
+ (@CodigoTipoContenedor IS NULL OR a.CodigoTipoContenedor=@CodigoTipoContenedor) AND
+ (@NumeroContenedor IS NULL OR a.NumeroContenedor=@NumeroContenedor) AND
+ (@TaraContenedor IS NULL OR a.TaraContenedor=@TaraContenedor) AND
+ (@CodTipoContenedor IS NULL OR b.CodTipoContenedor=@CodTipoContenedor) AND
+ (@TamanioTipoContenedor IS NULL OR b.TamanioTipoContenedor=@TamanioTipoContenedor) AND
+  a.EstadoRegistro=1 
+        
+ SELECT 
+ CodigoContenedor,
+ NumeroContenedor,
+ TaraContenedor,  
+ CodigoTipoContenedor, 
+ NombreTipoContenedor, 
+ CodTipoContenedor, 
+ TamanioTipoContenedor,      
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion        
+ FROM (         
+ SELECT          
+ CASE WHEN UPPER(@OrdenOrientacion)='ASC' OR @OrdenOrientacion IS NULL THEN         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoContenedor') THEN ROW_NUMBER()OVER(ORDER BY CodigoContenedor ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NumeroContenedor') THEN ROW_NUMBER()OVER(ORDER BY NumeroContenedor ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('TaraContenedor') THEN ROW_NUMBER()OVER(ORDER BY TaraContenedor ASC)   
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreTipoContenedor') THEN ROW_NUMBER()OVER(ORDER BY NombreTipoContenedor ASC)  
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodTipoContenedor') THEN ROW_NUMBER()OVER(ORDER BY CodTipoContenedor ASC)  
+   WHEN  UPPER(@OrdenCampo) = UPPER('TamanioTipoContenedor') THEN ROW_NUMBER()OVER(ORDER BY TamanioTipoContenedor ASC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion ASC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoContenedor ASC)         
+  END         
+ ELSE         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoContenedor') THEN ROW_NUMBER()OVER(ORDER BY CodigoContenedor DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NumeroContenedor') THEN ROW_NUMBER()OVER(ORDER BY NumeroContenedor DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('TaraContenedor') THEN ROW_NUMBER()OVER(ORDER BY TaraContenedor DESC)   
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreTipoContenedor') THEN ROW_NUMBER()OVER(ORDER BY NombreTipoContenedor DESC)
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodTipoContenedor') THEN ROW_NUMBER()OVER(ORDER BY CodTipoContenedor DESC)  
+   WHEN  UPPER(@OrdenCampo) = UPPER('TamanioTipoContenedor') THEN ROW_NUMBER()OVER(ORDER BY TamanioTipoContenedor DESC)            
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion DESC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoContenedor DESC)        
+  END         
+ END AS [NROORDEN],
+ CodigoContenedor,
+ NumeroContenedor,
+ TaraContenedor,  
+ CodigoTipoContenedor, 
+ NombreTipoContenedor, 
+ CodTipoContenedor, 
+ TamanioTipoContenedor,     
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion         
+ FROM @dtContenedor         
+ )Info         
+ WHERE         
+   [NROORDEN] = CASE WHEN (@PaginaActual is null)THEN [NROORDEN] ELSE -1 END         
+   OR [NROORDEN] BETWEEN @vInicio AND @vFin         
+   ORDER BY         
+   [NROORDEN] ASC;         
+           
+ SELECT  @TotalRegistros = count(1),         
+   @CantidadPaginas =  CASE WHEN @NroRegistrosPorPagina is null THEN 1         
+   ELSE CAST(CEILING(count(1)/CAST(@NroRegistrosPorPagina as float)) as int)         
+   END          
+ FROM @dtContenedor        
+END
+
+GO
+
+-- USP_REGISTRAR_DOCUMENTO NULL,1,14782,14782,12745,12745,40,6,1,1,1,2,'HLCU2064985314560289','20170901','20170901','JAV','I'
+-- USP_REGISTRAR_DOCUMENTO 3,1,14783,14783,12745,12745,40,6,1,1,1,2,'HLCU2064985314560285','20170901','20170901','HEC','U'
+-- USP_REGISTRAR_DOCUMENTO 3,1,14783,14783,12745,12745,40,6,1,1,1,2,'HLCU2064985314560285','20170901','20170901','ROM','D'
+CREATE PROCEDURE [dbo].[USP_REGISTRAR_DOCUMENTO]  
+(  
+ @CodigoDocumento BIGINT=NULL,
+ @CodigoItinerario BIGINT=NULL,
+ @CodigoPuertoOrigenDocumento BIGINT=NULL,
+ @CodigoPuertoEmbarqueDocumento BIGINT=NULL,
+ @CodigoPuertoDescargaDocumento BIGINT=NULL,
+ @CodigoPuertoFinalDocumento BIGINT=NULL,
+ @CodigoLineaNaviera BIGINT=NULL,
+ @CodigoAduana BIGINT=NULL,
+ @CodigoTipoBL BIGINT=NULL,
+ @CodigoTipoEnvio BIGINT=NULL,
+ @CodigoCondicionContrato BIGINT=NULL,
+ @CodigoRequerimientoServicio BIGINT=NULL,
+ @NumeroDocumento VARCHAR(25)=NULL,
+ @FechaEmisionDocumento DATETIME=NULL,
+ @FechaEmbarqueDocumento DATETIME=NULL,  
+ @UsuarioRegistro VARCHAR(100)=NULL,  
+ @Accion VARCHAR(1)=NULL  
+)  
+AS  
+BEGIN TRY 
+ IF @Accion = 'I'  
+ BEGIN  
+  IF EXISTS(SELECT CodigoDocumento FROM dbo.Documento (NOLOCK)   
+  WHERE CodigoItinerario = @CodigoItinerario AND CodigoPuertoOrigenDocumento = @CodigoPuertoOrigenDocumento
+  AND CodigoPuertoEmbarqueDocumento = @CodigoPuertoEmbarqueDocumento 
+  AND CodigoPuertoDescargaDocumento = @CodigoPuertoDescargaDocumento
+  AND CodigoPuertoFinalDocumento = @CodigoPuertoFinalDocumento
+  AND CodigoLineaNaviera = @CodigoLineaNaviera AND CodigoAduana = @CodigoAduana
+  AND CodigoTipoBL = @CodigoTipoBL AND CodigoTipoEnvio = @CodigoTipoEnvio
+  AND NumeroDocumento = @NumeroDocumento AND EstadoRegistro = 1)  
+  BEGIN  
+   -- Controlar Errores y enviar al Servicio
+		SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Documento ya se encuentra registrado' AS Mensaje
+  END  
+  ELSE  
+  BEGIN             
+	INSERT dbo.Documento
+	        ( CodigoItinerario ,
+	          CodigoPuertoOrigenDocumento ,
+	          CodigoPuertoEmbarqueDocumento ,
+	          CodigoPuertoDescargaDocumento ,
+	          CodigoPuertoFinalDocumento ,
+	          CodigoLineaNaviera ,
+	          CodigoAduana ,
+	          CodigoTipoBL ,
+	          CodigoTipoEnvio ,
+	          CodigoCondicionContrato ,
+	          CodigoRequerimientoServicio ,
+	          NumeroDocumento ,
+	          FechaEmisionDocumento ,
+	          FechaEmbarqueDocumento ,
+	          UsuarioCreacion 
+	        )
+	VALUES  ( @CodigoItinerario ,
+	          @CodigoPuertoOrigenDocumento ,
+	          @CodigoPuertoEmbarqueDocumento ,
+	          @CodigoPuertoDescargaDocumento ,
+	          @CodigoPuertoFinalDocumento ,
+	          @CodigoLineaNaviera ,
+	          @CodigoAduana ,
+	          @CodigoTipoBL ,
+	          @CodigoTipoEnvio ,
+	          @CodigoCondicionContrato ,
+	          @CodigoRequerimientoServicio ,
+	          @NumeroDocumento ,
+	          @FechaEmisionDocumento ,
+	          @FechaEmbarqueDocumento ,
+	          @UsuarioRegistro
+	        ) 
+   SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se registró Documento satisfactoriamente' AS Mensaje
+  END   
+ END  
+   
+ IF @Accion = 'U'  
+ BEGIN 
+	IF NOT EXISTS(SELECT CodigoDocumento FROM dbo.Documento (NOLOCK) 
+			WHERE CodigoDocumento = @CodigoDocumento AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de Documento no existe, no se puede actualizar' AS Mensaje
+		END
+		ELSE IF EXISTS(SELECT CodigoDocumento FROM dbo.Documento (NOLOCK)   
+		  WHERE CodigoItinerario = @CodigoItinerario AND CodigoPuertoOrigenDocumento = @CodigoPuertoOrigenDocumento
+		  AND CodigoPuertoEmbarqueDocumento = @CodigoPuertoEmbarqueDocumento 
+		  AND CodigoPuertoDescargaDocumento = @CodigoPuertoDescargaDocumento
+		  AND CodigoPuertoFinalDocumento = @CodigoPuertoFinalDocumento
+		  AND CodigoLineaNaviera = @CodigoLineaNaviera AND CodigoAduana = @CodigoAduana
+		  AND CodigoTipoBL = @CodigoTipoBL AND CodigoTipoEnvio = @CodigoTipoEnvio
+		  AND NumeroDocumento = @NumeroDocumento AND EstadoRegistro = 1
+		  AND CodigoDocumento <> @CodigoDocumento)
+  		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Documento ya se encuentra registrado, no se puede actualizar' AS Mensaje
+		END
+		ELSE
+		BEGIN 
+		  UPDATE dbo.Documento SET   
+		  CodigoItinerario = @CodigoItinerario,
+	      CodigoPuertoOrigenDocumento = @CodigoPuertoOrigenDocumento,
+	      CodigoPuertoEmbarqueDocumento = @CodigoPuertoEmbarqueDocumento,
+	      CodigoPuertoDescargaDocumento = @CodigoPuertoDescargaDocumento,
+	      CodigoPuertoFinalDocumento = @CodigoPuertoFinalDocumento,
+	      CodigoLineaNaviera = @CodigoLineaNaviera,
+	      CodigoAduana = @CodigoAduana,
+	      CodigoTipoBL = @CodigoTipoBL,
+	      CodigoTipoEnvio = @CodigoTipoEnvio,
+	      CodigoCondicionContrato = @CodigoCondicionContrato,
+	      CodigoRequerimientoServicio = @CodigoRequerimientoServicio,
+	      NumeroDocumento = @NumeroDocumento,
+	      FechaEmisionDocumento = @FechaEmisionDocumento,
+	      FechaEmbarqueDocumento = @FechaEmbarqueDocumento, 
+		  UsuarioActualizacion = @UsuarioRegistro,  
+		  FechaHoraActualizacion = GETDATE()  
+		  WHERE CodigoDocumento = @CodigoDocumento
+		    
+		  SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se Actualizó Documento satisfactoriamente' AS Mensaje
+		END
+ END  
+   
+ IF @Accion = 'D'  
+ BEGIN 
+	IF NOT EXISTS(SELECT CodigoDocumento FROM dbo.Documento (NOLOCK) 
+			WHERE CodigoDocumento = @CodigoDocumento AND EstadoRegistro = 1)
+		BEGIN
+			SELECT dbo.Funcion_TipoMensaje(2) AS CodigoMensaje,'Código de Documento no existe, No se puede Anular' AS Mensaje
+		END
+		ELSE
+		BEGIN 
+		  UPDATE dbo.Documento SET  
+		  EstadoRegistro = 0,   
+		  UsuarioActualizacion = @UsuarioRegistro,  
+		  FechaHoraActualizacion = GETDATE()  
+		  WHERE CodigoDocumento = @CodigoDocumento  
+		  
+		  SELECT dbo.Funcion_TipoMensaje(1) AS CodigoMensaje,'Se anuló Documento correctamente' AS Mensaje
+		END
+ END  
+END TRY
+BEGIN CATCH
+	 SELECT dbo.Funcion_TipoMensaje(3) AS CodigoMensaje,ISNULL(ERROR_MESSAGE(),'Ocurrio un error interno') AS Mensaje
+END CATCH
+
+GO
+-- USP_CONSULTAR_DOCUMENTO NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'20180101','20190331',NULL,NULL,NULL,100000,NULL,NULL
+CREATE PROCEDURE [dbo].[USP_CONSULTAR_DOCUMENTO]       
+ (        
+  @CodigoDocumento BIGINT=NULL,
+  @CodigoItinerario BIGINT=NULL,
+  @CodigoPuertoOrigenDocumento BIGINT=NULL,
+  @CodigoPuertoEmbarqueDocumento BIGINT=NULL,
+  @CodigoPuertoDescargaDocumento BIGINT=NULL,
+  @CodigoPuertoFinalDocumento BIGINT=NULL,
+  @CodigoLineaNaviera BIGINT=NULL,
+  @CodigoAduana BIGINT=NULL,
+  @CodigoTipoBL BIGINT=NULL,
+  @CodigoTipoEnvio BIGINT=NULL,
+  @NumeroDocumento VARCHAR(25)=NULL,
+  @FechaEmisionDocumentoInicio DATETIME= NULL,
+  @FechaEmisionDocumentoFin DATETIME= NULL 
+ ,@OrdenCampo VARCHAR(50)=NULL         
+ ,@OrdenOrientacion VARCHAR(4)=NULL         
+ ,@PaginaActual INT=1         
+ ,@NroRegistrosPorPagina INT=10         
+ ,@TotalRegistros INT OUTPUT         
+ ,@CantidadPaginas INT OUTPUT         
+ )         
+ AS      
+BEGIN     
+ DECLARE @vInicio int, @vFin INT,@vNumeroSerie int 
+ 
+ DECLARE @dtDocumento AS  
+ TABLE( 
+ CodigoDocumento BIGINT,
+ NombreNave VARCHAR(50),
+ NumeroViajeItinerario VARCHAR(6),
+ NombrePuertoOrigenDocumento VARCHAR(100),
+ NombrePuertoEmbarqueDocumento VARCHAR(100),
+ NombrePuertoDescargaDocumento VARCHAR(100),
+ NombrePuertoFinalDocumento VARCHAR(100),
+ NombreLineaNaviera VARCHAR(80),
+ NumeroDocumento VARCHAR(25),
+ NombreAduana VARCHAR(150),
+ NombreTipoBL VARCHAR(80),
+ NombreTipoEnvio VARCHAR(50),
+ FechaEmisionDocumento DATETIME,
+ FechaEmbarqueDocumento DATETIME,     
+ UsuarioCreacion VARCHAR(100),         
+ FechaHoraCreacion DATETIME,         
+ UsuarioActualizacion VARCHAR(100),         
+ FechaHoraActualizacion DATETIME)    
+ 
+ IF @PaginaActual IS NULL SET @PaginaActual = 1
+ IF @NroRegistrosPorPagina IS NULL SET @NroRegistrosPorPagina = 10
+ --IF @FechaEmisionDocumentoInicio IS NULL SET @FechaEmisionDocumentoInicio = '20170101'
+ --IF @FechaEmisionDocumentoFin IS NULL SET @FechaEmisionDocumentoFin = '20180101'
+           
+  SET @vInicio = ((@PaginaActual*@NroRegistrosPorPagina-@NroRegistrosPorPagina)+1);         
+  SET @vFin = (@PaginaActual*@NroRegistrosPorPagina);          
+            
+ INSERT INTO @dtDocumento  
+ ( 
+ CodigoDocumento,
+ NombreNave,
+ NumeroViajeItinerario,
+ NombrePuertoOrigenDocumento,
+ NombrePuertoEmbarqueDocumento,
+ NombrePuertoDescargaDocumento,
+ NombrePuertoFinalDocumento,
+ NombreLineaNaviera,
+ NumeroDocumento,
+ NombreAduana,
+ NombreTipoBL,
+ NombreTipoEnvio,
+ FechaEmisionDocumento,
+ FechaEmbarqueDocumento,       
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion
+ ) 
+ SELECT  
+ a.CodigoDocumento,
+ c.NombreNave,
+ b.NumeroViajeItinerario,
+ d.NombrePuerto,
+ e.NombrePuerto,
+ f.NombrePuerto,
+ g.NombrePuerto,
+ h.NombreLineaNaviera,
+ NumeroDocumento,
+ i.NombreAduana,
+ j.NombreTipoBL,
+ k.NombreTipoEnvio,
+ a.FechaEmisionDocumento,
+ a.FechaEmbarqueDocumento,         
+ a.UsuarioCreacion,         
+ a.FechaHoraCreacion,         
+ a.UsuarioActualizacion,         
+ a.FechaHoraActualizacion        
+ FROM dbo.Documento a (NOLOCK) JOIN dbo.Itinerario b (NOLOCK) ON a.CodigoItinerario = b.CodigoItinerario
+ JOIN dbo.Nave c (NOLOCK) ON b.CodigoNave = c.CodigoNave
+ JOIN dbo.Puerto d (NOLOCK) ON a.CodigoPuertoOrigenDocumento = d.CodigoPuerto
+ JOIN dbo.Puerto e (NOLOCK) ON a.CodigoPuertoEmbarqueDocumento = e.CodigoPuerto
+ JOIN dbo.Puerto f (NOLOCK) ON a.CodigoPuertoDescargaDocumento = f.CodigoPuerto
+ JOIN dbo.Puerto g (NOLOCK) ON a.CodigoPuertoFinalDocumento = g.CodigoPuerto
+ JOIN dbo.LineaNaviera h (NOLOCK) ON a.CodigoLineaNaviera = h.CodigoLineaNaviera 
+ JOIN dbo.Aduana i (NOLOCK) ON a.CodigoAduana = i.CodigoAduana
+ JOIN dbo.TipoBL j (NOLOCK) ON a.CodigoTipoBL = j.CodigoTipoBL
+ JOIN dbo.TipoEnvio k (NOLOCK) ON a.CodigoTipoEnvio = k.CodigoTipoEnvio
+ WHERE  
+ (@CodigoDocumento IS NULL OR CodigoDocumento=@CodigoDocumento) AND
+ (@CodigoItinerario IS NULL OR a.CodigoItinerario=@CodigoItinerario) AND
+ (@CodigoPuertoOrigenDocumento IS NULL OR a.CodigoPuertoOrigenDocumento = @CodigoPuertoOrigenDocumento) AND
+ (@CodigoPuertoEmbarqueDocumento IS NULL OR a.CodigoPuertoEmbarqueDocumento = @CodigoPuertoEmbarqueDocumento) AND
+ (@CodigoPuertoDescargaDocumento IS NULL OR a.CodigoPuertoDescargaDocumento = @CodigoPuertoDescargaDocumento) AND
+ (@CodigoPuertoFinalDocumento IS NULL OR a.CodigoPuertoFinalDocumento = @CodigoPuertoFinalDocumento ) AND
+ (@CodigoLineaNaviera IS NULL OR a.CodigoLineaNaviera  = @CodigoLineaNaviera) AND
+ (@CodigoAduana IS NULL OR a.CodigoAduana = @CodigoAduana) AND
+ (@CodigoTipoBL IS NULL OR a.CodigoTipoBL = @CodigoTipoBL) AND
+ (@CodigoTipoEnvio IS NULL OR a.CodigoTipoEnvio = @CodigoTipoEnvio) AND
+ (@NumeroDocumento IS NULL OR a.NumeroDocumento = @NumeroDocumento) AND
+ (CONVERT(VARCHAR(10),FechaEmisionDocumento,112) BETWEEN CONVERT(VARCHAR(10),@FechaEmisionDocumentoInicio,112) AND CONVERT(VARCHAR(10),@FechaEmisionDocumentoFin,112)) AND
+  a.EstadoRegistro=1 
+        
+ SELECT 
+ CodigoDocumento,
+ NombreNave,
+ NumeroViajeItinerario,
+ NombrePuertoOrigenDocumento,
+ NombrePuertoEmbarqueDocumento,
+ NombrePuertoDescargaDocumento,
+ NombrePuertoFinalDocumento,
+ NombreLineaNaviera,
+ NumeroDocumento,
+ NombreAduana,
+ NombreTipoBL,
+ NombreTipoEnvio,
+ FechaEmisionDocumento,
+ FechaEmbarqueDocumento,       
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion        
+ FROM (         
+ SELECT          
+ CASE WHEN UPPER(@OrdenOrientacion)='ASC' OR @OrdenOrientacion IS NULL THEN         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoDocumento') THEN ROW_NUMBER()OVER(ORDER BY CodigoDocumento ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreNave') THEN ROW_NUMBER()OVER(ORDER BY NombreNave ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NumeroViajeItinerario') THEN ROW_NUMBER()OVER(ORDER BY NumeroViajeItinerario ASC)   
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombrePuertoOrigenDocumento') THEN ROW_NUMBER()OVER(ORDER BY NombrePuertoOrigenDocumento ASC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombrePuertoEmbarqueDocumento') THEN ROW_NUMBER()OVER(ORDER BY NombrePuertoEmbarqueDocumento ASC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombrePuertoDescargaDocumento') THEN ROW_NUMBER()OVER(ORDER BY NombrePuertoDescargaDocumento ASC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombrePuertoFinalDocumento') THEN ROW_NUMBER()OVER(ORDER BY NombrePuertoFinalDocumento ASC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreLineaNaviera') THEN ROW_NUMBER()OVER(ORDER BY NombreLineaNaviera ASC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('NumeroDocumento') THEN ROW_NUMBER()OVER(ORDER BY NumeroDocumento ASC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreAduana') THEN ROW_NUMBER()OVER(ORDER BY NombreAduana ASC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreTipoEnvio') THEN ROW_NUMBER()OVER(ORDER BY NombreTipoEnvio ASC)  
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaEmisionDocumento') THEN ROW_NUMBER()OVER(ORDER BY FechaEmisionDocumento ASC)  
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaEmbarqueDocumento') THEN ROW_NUMBER()OVER(ORDER BY FechaEmbarqueDocumento ASC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion ASC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoDocumento ASC)         
+  END         
+ ELSE         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoDocumento') THEN ROW_NUMBER()OVER(ORDER BY CodigoDocumento DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreNave') THEN ROW_NUMBER()OVER(ORDER BY NombreNave DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NumeroViajeItinerario') THEN ROW_NUMBER()OVER(ORDER BY NumeroViajeItinerario DESC)   
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombrePuertoOrigenDocumento') THEN ROW_NUMBER()OVER(ORDER BY NombrePuertoOrigenDocumento DESC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombrePuertoEmbarqueDocumento') THEN ROW_NUMBER()OVER(ORDER BY NombrePuertoEmbarqueDocumento DESC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombrePuertoDescargaDocumento') THEN ROW_NUMBER()OVER(ORDER BY NombrePuertoDescargaDocumento DESC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombrePuertoFinalDocumento') THEN ROW_NUMBER()OVER(ORDER BY NombrePuertoFinalDocumento DESC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreLineaNaviera') THEN ROW_NUMBER()OVER(ORDER BY NombreLineaNaviera DESC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('NumeroDocumento') THEN ROW_NUMBER()OVER(ORDER BY NumeroDocumento DESC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreAduana') THEN ROW_NUMBER()OVER(ORDER BY NombreAduana DESC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreTipoEnvio') THEN ROW_NUMBER()OVER(ORDER BY NombreTipoEnvio DESC)  
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaEmisionDocumento') THEN ROW_NUMBER()OVER(ORDER BY FechaEmisionDocumento DESC)  
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaEmbarqueDocumento') THEN ROW_NUMBER()OVER(ORDER BY FechaEmbarqueDocumento DESC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion DESC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoDocumento DESC)        
+  END         
+ END AS [NROORDEN],
+ CodigoDocumento,
+ NombreNave,
+ NumeroViajeItinerario,
+ NombrePuertoOrigenDocumento,
+ NombrePuertoEmbarqueDocumento,
+ NombrePuertoDescargaDocumento,
+ NombrePuertoFinalDocumento,
+ NombreLineaNaviera,
+ NumeroDocumento,
+ NombreAduana,
+ NombreTipoBL,
+ NombreTipoEnvio,
+ FechaEmisionDocumento,
+ FechaEmbarqueDocumento,    
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion         
+ FROM @dtDocumento         
+ )Info         
+ WHERE         
+   [NROORDEN] = CASE WHEN (@PaginaActual is null)THEN [NROORDEN] ELSE -1 END         
+   OR [NROORDEN] BETWEEN @vInicio AND @vFin         
+   ORDER BY         
+   [NROORDEN] ASC;         
+           
+ SELECT  @TotalRegistros = count(1),         
+   @CantidadPaginas =  CASE WHEN @NroRegistrosPorPagina is null THEN 1         
+   ELSE CAST(CEILING(count(1)/CAST(@NroRegistrosPorPagina as float)) as int)         
+   END          
+ FROM @dtDocumento        
+END
+
+GO
+
+-- USP_CONSULTAR_DOCUMENTO 1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,100000,NULL,NULL
+-- USP_CONSULTAR_DETALLE_DOCUMENTO 1
+-- USP_CONSULTAR_PERSONA 136,NULL,NULL,NULL,NULL,NULL,100000,NULL,NULL
+--CodigoPersona  RazonSocialPersona                 NumeroDocumentoPersona NombreTipoDocumento                    NombrePais   UsuarioCreacion  FechaHoraCreacion       UsuarioActualizacion  FechaHoraActualizacion
+---------------- ---------------------------------- ---------------------- -------------------------------------- ------------ ---------------- ----------------------- --------------------- -----------------------
+--136            TRABAJOS MARITIMOS S.A. TRAMARSA   20101395031            RUC - Registro Unico de Contribuyente  Peru         dbo              2017-12-15 09:41:55.680 TRAMARSA\JAlejosV     2017-12-15 09:44:20.780
+
+---- USP_CONSULTAR_DETALLE_PERSONA 136
+
+--CodigoPersona        CodigoTipoDocumento  NombreTipoDocumento                    CodigoPais  NombrePais   RazonSocialPersona                 NumeroDocumentoPersona DireccionPersona                                TelefonoPersona      EmailPersona  ContactoPersona   WebPersona  EstadoRegistro UsuarioCreacion  FechaHoraCreacion       UsuarioActualizacion  FechaHoraActualizacion
+---------------------- -------------------- -------------------------------------- ----------- ------------ ---------------------------------- ---------------------- ----------------------------------------------- -------------------- ------------- ----------------- ----------- -------------- ---------------- ----------------------- --------------------- -----------------------
+--136                  2                    RUC - Registro Unico de Contribuyente  174         Peru         TRABAJOS MARITIMOS S.A. TRAMARSA   20101395031            AV. SAENZ PEñA NRO. 177 URB. CERCADO (3 PISO)   4130400              NULL          NULL              NULL        1              dbo              2017-12-15 09:41:55.680 TRAMARSA\JAlejosV     2017-12-15 09:44:20.780
+
+
+--CodigoPersonaRol     CodigoPersona        CodigoRol            NombreRol                                          CodigoAduanaPersonaRol
+---------------------- -------------------- -------------------- -------------------------------------------------- ----------------------
+--2613                 136                  1                    CONSIGNATARIO                                      NULL
+--2616                 136                  2                    NOTIFICANTE                                        NULL
+--11017                136                  3                    EXPORTADOR                                         NULL
+--2610                 136                  4                    CLIENTE                                            NULL
+--2614                 136                  5                    AGENTE MARITIMO                                    7770
+--2612                 136                  6                    AGENTE DE CARGA                                    NULL
+--2611                 136                  7                    AGENTE ADUANA                                      NULL
+--2615                 136                  12                   TERMINAL DE ALMACENAMIENTO                         3636
+
+-- USP_CONSULTAR_DETALLE_DOCUMENTO 1
+CREATE PROCEDURE [dbo].[USP_CONSULTAR_DETALLE_DOCUMENTO]  
+    (  
+      @CodigoDocumento BIGINT=NULL
+    )  
+AS   
+    BEGIN  
+  
+-- Documento 
+        SELECT
+          a.CodigoDocumento, 
+		  a.CodigoItinerario ,
+		  m.NombreNave,
+		  l.NumeroViajeItinerario,
+          n.NombreAduana NombreAduanaNave,
+		  o.NombreTipoOperacion,
+          a.CodigoPuertoOrigenDocumento,
+          b.NombrePuerto NombrePuertoOrigen,
+          a.CodigoPuertoEmbarqueDocumento ,
+          c.NombrePuerto NombrePuertoEmbarque,
+          a.CodigoPuertoDescargaDocumento ,
+          d.NombrePuerto NombrePuertoDescarga,
+          a.CodigoPuertoFinalDocumento ,
+          e.NombrePuerto NombrePuertoFinal,
+          a.CodigoLineaNaviera ,
+          f.NombreLineaNaviera,
+          a.CodigoAduana ,
+          g.NombreAduana,
+          a.CodigoTipoBL ,
+          h.NombreTipoBL,
+          a.CodigoTipoEnvio ,
+          i.NombreTipoEnvio,
+          a.CodigoCondicionContrato ,
+          j.NombreCondicionContrato,
+          a.CodigoRequerimientoServicio ,
+          k.NombreRequerimientoServicio,
+          a.NumeroDocumento ,
+          a.FechaEmisionDocumento ,
+          a.FechaEmbarqueDocumento ,
+          a.EstadoRegistro ,
+          a.UsuarioCreacion ,
+          a.FechaHoraCreacion ,
+          a.UsuarioActualizacion ,
+          a.FechaHoraActualizacion
+        FROM dbo.Documento a WITH (NOLOCK)
+        JOIN dbo.Puerto b (NOLOCK) ON  a.CodigoPuertoOrigenDocumento = b.CodigoPuerto
+        JOIN dbo.Puerto c (NOLOCK) ON  a.CodigoPuertoEmbarqueDocumento = c.CodigoPuerto
+        JOIN dbo.Puerto d (NOLOCK) ON  a.CodigoPuertoDescargaDocumento = d.CodigoPuerto
+        JOIN dbo.Puerto e (NOLOCK) ON  a.CodigoPuertoFinalDocumento = e.CodigoPuerto
+        JOIN dbo.LineaNaviera f (NOLOCK) ON  a.CodigoLineaNaviera = f.CodigoLineaNaviera
+        JOIN dbo.Aduana g (NOLOCK) ON a.CodigoAduana = g.CodigoAduana
+        JOIN dbo.TipoBL h (NOLOCK) ON a.CodigoTipoBL = h.CodigoTipoBL
+        JOIN dbo.TipoEnvio i (NOLOCK) ON a.CodigoTipoEnvio = i.CodigoTipoEnvio
+        JOIN dbo.CondicionContrato j (NOLOCK) ON a.CodigoCondicionContrato = j.CodigoCondicionContrato
+        JOIN dbo.RequerimientoServicio k (NOLOCK) ON a.CodigoRequerimientoServicio = k.CodigoRequerimientoServicio
+        JOIN dbo.Itinerario l (NOLOCK) ON a.CodigoItinerario = l.CodigoItinerario
+        JOIN dbo.Nave m (NOLOCK) ON l.CodigoNave = m.CodigoNave
+        JOIN dbo.Aduana n (NOLOCK) ON n.CodigoAduana = l.CodigoAduana
+        JOIN dbo.TipoOperacion o (NOLOCK) ON o.CodigoTipoOperacion = l.CodigoTipoOperacion
+        WHERE   CodigoDocumento = @CodigoDocumento
+  
+-- Documento Detalle Carga
+        SELECT  
+				a.CodigoDocumentoDetalleCarga,
+				a.CodigoDocumento, 
+			    a.CodigoContenedor, 
+                c.NumeroContenedor,
+                o.NombreTipoContenedor,
+                o.TamanioTipoContenedor,
+                a.CodigoCondicionTransporte,
+                d.NombreCondicionTransporte,
+                a.CodigoTipoMovimiento,
+                e.NombreTipoMovimiento,
+                a.CodigoUnidadMercancia,
+                f.NombreUnidadMercancia,
+                a.CodigoNaturalezaCarga,
+                g.NombreNaturalezaCarga,
+                a.CodigoCondicionCarga,
+                h.NombreCondicionCarga,
+                a.CodigoTemperatura,
+                i.NombreTemperatura,
+                a.CodigoClaseIMO,
+                j.NombreClaseIMO,
+                a.CodigoNumeroIMO,
+                k.NombreNumeroIMO,
+                a.CodigoAlmacenDocumentoDetalleCarga,
+                l.RazonSocialPersona NombreAlmacen,
+                a.CodigoDepositoDocumentoDetalleCarga,
+                m.RazonSocialPersona NombreDeposito,
+                a.CodigoPrecinto,
+                n.NumeroPrecinto,
+                a.ItemDocumentoDetalleCarga,
+                a.CantidadBultoDocumentoDetalleCarga,
+                a.PesoBrutoDocumentoDetalleCarga,
+                a.VolumenBrutoDocumentoDetalleCarga,
+                a.TemperaturaMinimaDocumentoDetalleCarga,
+                a.TemperaturaMaximaDocumentoDetalleCarga,
+                a.PropietarioDocumentoDetalleCarga,
+                a.ObservacionDocumentoDetalleCarga,
+                a.DescripcionDocumentoDetalleCarga,
+                a.MarcasNumerosDocumentoDetalleCarga,
+                a.FaltoDocumentoDetalleCarga,
+                a.EstadoRegistro,
+                a.UsuarioCreacion,
+                a.FechaHoraCreacion,
+                a.UsuarioActualizacion,
+                a.FechaHoraActualizacion
+        FROM    dbo.DocumentoDetalleCarga a WITH ( NOLOCK ) 
+        JOIN dbo.Documento b (NOLOCK) ON a.CodigoDocumento = b.CodigoDocumento 
+        JOIN dbo.Contenedor c (NOLOCK) ON a.CodigoContenedor = c.CodigoContenedor 
+        JOIN dbo.CondicionTransporte d (NOLOCK) ON a.CodigoCondicionTransporte = d.CodigoCondicionTransporte 
+        JOIN dbo.TipoMovimiento e (NOLOCK) ON a.CodigoTipoMovimiento = e.CodigoTipoMovimiento 
+        JOIN dbo.UnidadMercancia f (NOLOCK) ON a.CodigoUnidadMercancia = f.CodigoUnidadMercancia 
+        JOIN dbo.NaturalezaCarga g (NOLOCK) ON a.CodigoNaturalezaCarga = g.CodigoNaturalezaCarga 
+        JOIN dbo.CondicionCarga h (NOLOCK) ON a.CodigoCondicionCarga = h.CodigoCondicionCarga 
+        JOIN dbo.Temperatura i (NOLOCK) ON a.CodigoTemperatura = i.CodigoTemperatura 
+        JOIN dbo.ClaseIMO j (NOLOCK) ON a.CodigoClaseIMO = j.CodigoClaseIMO 
+        JOIN dbo.NumeroIMO k (NOLOCK) ON a.CodigoNumeroIMO = k.CodigoNumeroIMO
+        JOIN dbo.Persona l (NOLOCK) ON a.CodigoAlmacenDocumentoDetalleCarga = l.CodigoPersona
+        JOIN dbo.Persona m (NOLOCK) ON a.CodigoDepositoDocumentoDetalleCarga = m.CodigoPersona 
+        JOIN dbo.Precinto n (NOLOCK) ON a.CodigoPrecinto = n.CodigoPrecinto 
+        JOIN TipoContenedor o (nolock) on c.CodigoTipoContenedor = o.CodigoTipoContenedor 
+        WHERE a.CodigoDocumento = @CodigoDocumento
+		AND a.EstadoRegistro = 1
+        ORDER BY a.ItemDocumentoDetalleCarga
+
+-- Documento Detalle Cliente
+		SELECT 
+			a.CodigoDocumentoDetalleCliente,
+			a.CodigoDocumento,
+			a.CodigoRol,
+			c.NombreRol,
+			a.CodigoPersona,
+			b.RazonSocialPersona,
+			a.EstadoRegistro,
+			a.UsuarioCreacion,
+			a.FechaHoraCreacion,
+			a.UsuarioActualizacion,
+			a.FechaHoraActualizacion
+		FROM dbo.DocumentoDetalleCliente a (NOLOCK) 
+		JOIN dbo.Persona b (NOLOCK) ON a.CodigoPersona = b.CodigoPersona
+		JOIN dbo.Rol c (NOLOCK) ON a.CodigoRol = c.CodigoRol
+		WHERE a.CodigoDocumento = @CodigoDocumento
+		AND a.EstadoRegistro = 1
+		    
+-- Documento Detalle Flete
+		SELECT 
+			a.CodigoDocumentoDetalleFlete,
+			a.CodigoDocumento,
+			a.CodigoTipoFlete,
+			c.NombreTipoFlete,
+			a.CodigoMoneda,
+			d.NombreMoneda,
+			a.CodigoModoPago,
+			e.NombreModoPago,
+			a.MontoDocumentoDetalleFlete,
+			a.EstadoRegistro,
+			a.UsuarioCreacion,
+			a.FechaHoraCreacion,
+			a.UsuarioActualizacion,
+			a.FechaHoraActualizacion
+		FROM dbo.DocumentoDetalleFlete a (NOLOCK) 
+		JOIN dbo.Documento b (NOLOCK) ON a.CodigoDocumento = b.CodigoDocumento
+		JOIN dbo.TipoFlete c (NOLOCK) ON a.CodigoTipoFlete = c.CodigoTipoFlete
+		JOIN dbo.Moneda d (NOLOCK) ON a.CodigoMoneda = d.CodigoMoneda
+		JOIN dbo.ModoPago e (NOLOCK) ON a.CodigoModoPago = e.CodigoModoPago
+		WHERE a.CodigoDocumento = @CodigoDocumento
+		AND a.EstadoRegistro = 1
+        
+    END  
+
+GO
+
+CREATE PROCEDURE USP_INSERTAR_DOCUMENTO
+(
+	 @CodigoItinerario BIGINT=NULL,
+	 @CodigoPuertoOrigenDocumento BIGINT=NULL,
+	 @CodigoPuertoEmbarqueDocumento BIGINT=NULL,
+	 @CodigoPuertoDescargaDocumento BIGINT=NULL,
+	 @CodigoPuertoFinalDocumento BIGINT=NULL,
+	 @CodigoLineaNaviera BIGINT=NULL,
+	 @CodigoAduana BIGINT=NULL,
+	 @CodigoTipoBL BIGINT=NULL,
+	 @CodigoTipoEnvio BIGINT=NULL,
+	 @CodigoCondicionContrato BIGINT=NULL,
+	 @CodigoRequerimientoServicio BIGINT=NULL,
+	 @NumeroDocumento VARCHAR(25)=NULL,
+	 @FechaEmisionDocumento DATETIME=NULL,
+	 @FechaEmbarqueDocumento DATETIME=NULL,
+     @UsuarioRegistro VARCHAR(100)=NULL,
+	 @CodigoDocumento BIGINT OUTPUT  
+)
+AS
+BEGIN
+
+INSERT dbo.Documento
+        ( CodigoItinerario ,
+          CodigoPuertoOrigenDocumento ,
+          CodigoPuertoEmbarqueDocumento ,
+          CodigoPuertoDescargaDocumento ,
+          CodigoPuertoFinalDocumento ,
+          CodigoLineaNaviera ,
+          CodigoAduana ,
+          CodigoTipoBL ,
+          CodigoTipoEnvio ,
+          CodigoCondicionContrato ,
+          CodigoRequerimientoServicio ,
+          NumeroDocumento ,
+          FechaEmisionDocumento ,
+          FechaEmbarqueDocumento ,
+          UsuarioCreacion 
+        )
+VALUES  ( @CodigoItinerario ,
+          @CodigoPuertoOrigenDocumento ,
+          @CodigoPuertoEmbarqueDocumento ,
+          @CodigoPuertoDescargaDocumento ,
+          @CodigoPuertoFinalDocumento ,
+          @CodigoLineaNaviera ,
+          @CodigoAduana ,
+          @CodigoTipoBL ,
+          @CodigoTipoEnvio ,
+          @CodigoCondicionContrato ,
+          @CodigoRequerimientoServicio ,
+          @NumeroDocumento ,
+          @FechaEmisionDocumento ,
+          @FechaEmbarqueDocumento ,
+          'JAV'--@UsuarioRegistro 
+        )
+
+SET @CodigoDocumento=@@IDENTITY; 
+
+END
+
+GO
+
+CREATE PROCEDURE USP_MODIFICAR_DOCUMENTO
+(
+	 @CodigoDocumento BIGINT=NULL, 
+	 @CodigoItinerario BIGINT=NULL,
+	 @CodigoPuertoOrigenDocumento BIGINT=NULL,
+	 @CodigoPuertoEmbarqueDocumento BIGINT=NULL,
+	 @CodigoPuertoDescargaDocumento BIGINT=NULL,
+	 @CodigoPuertoFinalDocumento BIGINT=NULL,
+	 @CodigoLineaNaviera BIGINT=NULL,
+	 @CodigoAduana BIGINT=NULL,
+	 @CodigoTipoBL BIGINT=NULL,
+	 @CodigoTipoEnvio BIGINT=NULL,
+	 @CodigoCondicionContrato BIGINT=NULL,
+	 @CodigoRequerimientoServicio BIGINT=NULL,
+	 @NumeroDocumento VARCHAR(25)=NULL,
+	 @FechaEmisionDocumento DATETIME=NULL,
+	 @FechaEmbarqueDocumento DATETIME=NULL,
+	 @EstadoRegistro BIT=NULL,
+     @UsuarioRegistro VARCHAR(100)=NULL
+)
+AS
+BEGIN
+	UPDATE dbo.Documento SET 
+			  CodigoItinerario = @CodigoItinerario ,
+			  CodigoPuertoOrigenDocumento = @CodigoPuertoOrigenDocumento ,
+			  CodigoPuertoEmbarqueDocumento = @CodigoPuertoEmbarqueDocumento,
+			  CodigoPuertoDescargaDocumento = @CodigoPuertoDescargaDocumento,
+			  CodigoPuertoFinalDocumento = @CodigoPuertoFinalDocumento,
+			  CodigoLineaNaviera = @CodigoLineaNaviera,
+			  CodigoAduana = @CodigoAduana,
+			  CodigoTipoBL = @CodigoTipoBL,
+			  CodigoTipoEnvio = @CodigoTipoEnvio,
+			  CodigoCondicionContrato = @CodigoCondicionContrato,
+			  CodigoRequerimientoServicio = @CodigoRequerimientoServicio,
+			  NumeroDocumento = @NumeroDocumento,
+			  FechaEmisionDocumento = @FechaEmisionDocumento,
+			  FechaEmbarqueDocumento = @FechaEmbarqueDocumento,
+			  EstadoRegistro = @EstadoRegistro,
+			  UsuarioActualizacion = @UsuarioRegistro,
+			  FechaHoraActualizacion = GETDATE()
+	WHERE CodigoDocumento = @CodigoDocumento
+
+END
+
+GO
+
+CREATE TYPE [dbo].[dtItinerarios] AS TABLE(
+       CodigoItinerario BIGINT       
+)
+GO
+
+--declare @p1 dbo.dtItinerarios
+--DECLARE @TipoTransmision VARCHAR(4)='0101'
+--insert into @p1 values(1)
+--insert into @p1 values(2)
+
+-- SELECT lti.* FROM dbo.LogTransmisionItinerario lti order by CodigoLogTransmisionItinerario desc
+-- SELECT i.EstadoEnvioAduanas,* FROM dbo.Itinerario i WHERE i.CodigoItinerario = 1
+
+-- update dbo.Itinerario SET EstadoEnvioAduanas = 0 WHERE CodigoItinerario = 1
+
+-- EXEC USP_REGISTRA_TRANSMISION_SUNAT_NAVES @dtItinerarios=@p1,@TipoTransmision=@TipoTransmision
+CREATE PROCEDURE dbo.USP_REGISTRA_TRANSMISION_SUNAT_NAVES 
+    ( 
+      @dtItinerarios AS dbo.dtItinerarios READONLY,
+      @TipoTransmision VARCHAR(4) 
+    ) 
+AS  
+BEGIN 
+
+DECLARE @i int,@Max int,
+@CodigoItinerario bigint,
+@CodigoAduana bigint,
+@NumeracionAduana int,
+@NumeroViaje varchar(6),
+@TipoLugarDescarga smallint,
+@RucOperadorPortuario varchar(11),
+@FechaLlegada datetime,
+@PuertoLlegada varchar(5),
+@FechaTerminoDescarga datetime,
+@DUE varchar(15),
+@AgenciaMaritima varchar(15),
+@NombreNave varchar(50), 
+@PaisNave varchar(2), 
+@MatriculaNave varchar(20), 
+@TipoTransporteNave varchar(4), 
+@NombreLineaNaviera varchar(50), 
+@DireccionLineaNaviera varchar(140), 
+@CapitanNave varchar(80), 
+@NumeroManifiesto varchar(6), 
+@AnioManifiesto int, 
+@TipoManifiesto tinyint,
+@FechaZarpePIN datetime,
+@PuertoZarpePIN varchar(5),
+@TipoLugarPIN smallint,
+@Estado bit=0,
+@MaxNumeroManifiesto int,
+@NumeroManifiestoSunat varchar(6)
+
+DECLARE @CabeceraNave TABLE
+(
+	Id int IDENTITY(1,1),
+	CodigoItinerario bigint,
+	CodigoAduana bigint,
+	NumeracionAduana int,
+	NumeroViaje varchar(6),
+	TipoLugarDescarga smallint,
+	RucOperadorPortuario varchar(11),
+	FechaLlegada datetime,
+	PuertoLlegada varchar(5),
+	FechaTerminoDescarga datetime,
+	DUE varchar(15),
+	AgenciaMaritima varchar(15),
+	NombreNave varchar(50), 
+	PaisNave varchar(2), 
+	MatriculaNave varchar(20), 
+	TipoTransporteNave varchar(4), 
+	NombreLineaNaviera varchar(50), 
+	DireccionLineaNaviera varchar(140), 
+	CapitanNave varchar(80), 
+	NumeroManifiesto varchar(6), 
+	AnioManifiesto int, 
+	TipoManifiesto tinyint,
+	FechaZarpePIN datetime,
+	PuertoZarpePIN varchar(5),
+	TipoLugarPIN smallint 	
+)
+	IF @TipoTransmision IN ('0101','0103') -- Numeracion o Adicion
+	BEGIN
+					INSERT @CabeceraNave
+					SELECT 
+						i.CodigoItinerario,
+						i.CodigoAduana,
+						a.CodigoAduanaSunat,
+						i.NumeroViajeItinerario,
+						tlc.CodigoTipoLugarCargaSunat,
+						p.NumeroDocumentoPersona,
+						i.FechaArriboItinerario,
+						p2.CodigoPuertoSunat,
+						i.FechaTerminoDescargaItinerario,
+						i.DUEItinerario,
+						pr.CodigoAduanaPersonaRol,
+						n.NombreNave,
+						p4.CodigoPaisSunat,
+						n.MatriculaNave,
+						tn.CodigoTipoNaveSunat,
+						ln.NombreLineaNaviera,
+						ln.DireccionLineaNaviera,
+						i.CapitanNaveItinerario,
+						i.NumeroManifiestoItinerario,
+						i.AnioManifiestoItinerario,
+						tiop.CodigoTipoOperacionSunat,
+						i.FechaZarpePuertoIntermedio,
+						p5.CodigoPuertoSunat,
+						tlc2.CodigoTipoLugarCargaSunat
+					FROM dbo.Itinerario i (NOLOCK) 
+					INNER JOIN dbo.Aduana a (NOLOCK) ON i.CodigoAduana = a.CodigoAduana
+					INNER JOIN dbo.TipoLugarCarga tlc (NOLOCK) ON i.CodigoTipoLugarCarga = tlc.CodigoTipoLugarCarga
+					INNER JOIN dbo.Persona p (NOLOCK) ON i.CodigoOperadorDescargaItinerario = p.CodigoPersona
+					INNER JOIN dbo.Puerto p2 (NOLOCK) ON a.CodigoPuerto = p2.CodigoPuerto 
+					INNER JOIN dbo.Persona p3 (NOLOCK) ON i.CodigoAgenteMaritimoItinerario = p3.CodigoPersona
+					LEFT JOIN dbo.PersonaRol pr (NOLOCK) ON p3.CodigoPersona = pr.CodigoPersona  
+					INNER JOIN dbo.Nave n (NOLOCK) ON i.CodigoNave = n.CodigoNave
+					INNER JOIN dbo.Pais p4 (NOLOCK) ON n.CodigoPais = p4.CodigoPais 
+					INNER JOIN dbo.TipoNave tn (NOLOCK) ON n.CodigoTipoNave = tn.CodigoTipoNave
+					INNER JOIN dbo.LineaNaviera ln (NOLOCK) ON n.CodigoLineaNaviera = ln.CodigoLineaNaviera
+					INNER JOIN dbo.TipoOperacion tiop (NOLOCK) ON i.CodigoTipoOperacion = tiop.CodigoTipoOperacion
+					AND pr.CodigoRol = 5 -- 5: Rol Agente Maritimo (Obtener el codigo de Aduana del AGEMAR)
+					INNER JOIN dbo.Puerto p5 (NOLOCK) ON i.CodigoPuertoIntermedio = p5.CodigoPuerto
+					INNER JOIN dbo.TipoLugarCarga tlc2 (NOLOCK) ON i.CodigoTipoLugarCargaPuertoIntermedio = tlc2.CodigoTipoLugarCarga
+					INNER JOIN @dtItinerarios dti ON i.CodigoItinerario = dti.CodigoItinerario
+
+			SELECT @Max=max(Id) FROM @CabeceraNave
+			SET @i=1
+			WHILE (@i<=@Max)
+			BEGIN
+				SELECT  @CodigoItinerario=CodigoItinerario,
+						@CodigoAduana=CodigoAduana,
+						@NumeracionAduana=NumeracionAduana,
+						@NumeroViaje=NumeroViaje,
+						@TipoLugarDescarga=TipoLugarDescarga,
+						@RucOperadorPortuario=RucOperadorPortuario,
+						@FechaLlegada=FechaLlegada,
+						@PuertoLlegada=PuertoLlegada,
+						@FechaTerminoDescarga=FechaTerminoDescarga,
+						@DUE=DUE,
+						@AgenciaMaritima=AgenciaMaritima,
+						@NombreNave=NombreNave, 
+						@PaisNave=PaisNave, 
+						@MatriculaNave=MatriculaNave, 
+						@TipoTransporteNave=TipoTransporteNave, 
+						@NombreLineaNaviera=NombreLineaNaviera, 
+						@DireccionLineaNaviera=DireccionLineaNaviera, 
+						@CapitanNave=CapitanNave, 
+						@NumeroManifiesto=NumeroManifiesto, 
+						@AnioManifiesto=AnioManifiesto, 
+						@TipoManifiesto=TipoManifiesto,
+						@FechaZarpePIN=FechaZarpePIN,
+						@PuertoZarpePIN=PuertoZarpePIN,
+						@TipoLugarPIN=TipoLugarPIN 
+				FROM @CabeceraNave WHERE Id=@i
+
+				UPDATE dbo.LogTransmisionItinerario
+				SET
+				    EstadoRegistro = 0
+				WHERE CodigoItinerario = @CodigoItinerario
+
+				UPDATE dbo.Itinerario
+				SET
+				    EstadoEnvioAduanas = 1, 
+				    FechaCreacionEnvioAduanas = getdate(), 
+				    FechaModificacionEnvioAduanas = NULL, 
+				    TipoTransaccionTransmision = @TipoTransmision, 
+				    FechaCreacionTransmision = getdate()
+					WHERE CodigoItinerario = @CodigoItinerario
+
+				-- Validaciones de los Campos a Enviar a Sunat
+
+				IF NOT EXISTS(SELECT a.CodigoAduana FROM dbo.Aduana (nolock) a WHERE a.CodigoAduanaSunat = @NumeracionAduana AND EstadoRegistro=1)
+				BEGIN
+					SET @Estado = 1 
+					INSERT dbo.LogTransmisionItinerario
+					(
+						--CodigoLogTransmisionItinerario - this column value is auto-generated
+						CodigoItinerario,
+						EstadoLogTransmisionItinerario,
+						CampoLogTransmisionItinerario,
+						ValorLogTransmisionItinerario,
+						TextoLogTransmisionItinerario,
+						FechaLogTransmisionItinerario
+						--EstadoRegistro
+					)
+					VALUES
+					(
+						-- CodigoLogTransmisionItinerario - bigint
+						@CodigoItinerario, -- CodigoItinerario - bigint
+						0, -- EstadoLogTransmisionItinerario - bit
+						'NumeracionAduana', -- CampoLogTransmisionItinerario - varchar
+						@NumeracionAduana, -- ValorLogTransmisionItinerario - varchar
+						'Numeracion no registrada en SUNAT', -- TextoLogTransmisionItinerario - varchar
+						getdate() -- FechaLogTransmisionItinerario - datetime
+					)
+	
+				END
+
+				IF NOT EXISTS(SELECT CodigoTipoLugarCarga FROM dbo.TipoLugarCarga (nolock) WHERE CodigoTipoLugarCargaSunat = @TipoLugarDescarga AND EstadoRegistro=1)
+				BEGIN
+					SET @Estado = 1
+					INSERT dbo.LogTransmisionItinerario
+					(
+						--CodigoLogTransmisionItinerario - this column value is auto-generated
+						CodigoItinerario,
+						EstadoLogTransmisionItinerario,
+						CampoLogTransmisionItinerario,
+						ValorLogTransmisionItinerario,
+						TextoLogTransmisionItinerario,
+						FechaLogTransmisionItinerario
+						--EstadoRegistro
+					)
+					VALUES
+					(
+						-- CodigoLogTransmisionItinerario - bigint
+						@CodigoItinerario, -- CodigoItinerario - bigint
+						0, -- EstadoLogTransmisionItinerario - bit
+						'TipoLugarDescarga', -- CampoLogTransmisionItinerario - varchar
+						@TipoLugarDescarga, -- ValorLogTransmisionItinerario - varchar
+						'Tipo de Lugar no registrado en SUNAT', -- TextoLogTransmisionItinerario - varchar
+						getdate() -- FechaLogTransmisionItinerario - datetime
+					)
+	
+				END
+
+				IF NOT EXISTS(SELECT CodigoPersona FROM dbo.Persona (nolock) WHERE NumeroDocumentoPersona = @RucOperadorPortuario AND EstadoRegistro=1)
+				AND @TipoLugarDescarga IN (11,164)
+				BEGIN
+					SET @Estado = 1
+					INSERT dbo.LogTransmisionItinerario
+					(
+						--CodigoLogTransmisionItinerario - this column value is auto-generated
+						CodigoItinerario,
+						EstadoLogTransmisionItinerario,
+						CampoLogTransmisionItinerario,
+						ValorLogTransmisionItinerario,
+						TextoLogTransmisionItinerario,
+						FechaLogTransmisionItinerario
+						--EstadoRegistro
+					)
+					VALUES
+					(
+						-- CodigoLogTransmisionItinerario - bigint
+						@CodigoItinerario, -- CodigoItinerario - bigint
+						0, -- EstadoLogTransmisionItinerario - bit
+						'RUCOperadorPortuario', -- CampoLogTransmisionItinerario - varchar
+						@RucOperadorPortuario, -- ValorLogTransmisionItinerario - varchar
+						'RUC del Operador Portuario no registrado en SUNAT', -- TextoLogTransmisionItinerario - varchar
+						getdate() -- FechaLogTransmisionItinerario - datetime
+					)
+	
+				END
+
+				IF NOT EXISTS(SELECT CodigoPuerto FROM dbo.Puerto (nolock) WHERE CodigoPuertoSunat = @PuertoLlegada AND EstadoRegistro=1)
+				BEGIN
+					SET @Estado = 1
+					INSERT dbo.LogTransmisionItinerario
+					(
+						--CodigoLogTransmisionItinerario - this column value is auto-generated
+						CodigoItinerario,
+						EstadoLogTransmisionItinerario,
+						CampoLogTransmisionItinerario,
+						ValorLogTransmisionItinerario,
+						TextoLogTransmisionItinerario,
+						FechaLogTransmisionItinerario
+						--EstadoRegistro
+					)
+					VALUES
+					(
+						-- CodigoLogTransmisionItinerario - bigint
+						@CodigoItinerario, -- CodigoItinerario - bigint
+						0, -- EstadoLogTransmisionItinerario - bit
+						'PuertoLlegada', -- CampoLogTransmisionItinerario - varchar
+						@PuertoLlegada, -- ValorLogTransmisionItinerario - varchar
+						'Puerto de Llegada no registrado en SUNAT', -- TextoLogTransmisionItinerario - varchar
+						getdate() -- FechaLogTransmisionItinerario - datetime
+					)
+	
+				END
+
+				IF NOT EXISTS(SELECT CodigoPersonaRol FROM dbo.PersonaRol (nolock) WHERE CodigoAduanaPersonaRol = @AgenciaMaritima AND dbo.PersonaRol.CodigoRol = 5)
+				BEGIN
+					SET @Estado = 1
+					INSERT dbo.LogTransmisionItinerario
+					(
+						--CodigoLogTransmisionItinerario - this column value is auto-generated
+						CodigoItinerario,
+						EstadoLogTransmisionItinerario,
+						CampoLogTransmisionItinerario,
+						ValorLogTransmisionItinerario,
+						TextoLogTransmisionItinerario,
+						FechaLogTransmisionItinerario
+						--EstadoRegistro
+					)
+					VALUES
+					(
+						-- CodigoLogTransmisionItinerario - bigint
+						@CodigoItinerario, -- CodigoItinerario - bigint
+						0, -- EstadoLogTransmisionItinerario - bit
+						'AgenciaMaritima', -- CampoLogTransmisionItinerario - varchar
+						@AgenciaMaritima, -- ValorLogTransmisionItinerario - varchar
+						'Agencia Maritima no registrada en SUNAT', -- TextoLogTransmisionItinerario - varchar
+						getdate() -- FechaLogTransmisionItinerario - datetime
+					)
+	
+				END
+
+				IF LEN(@NombreNave)=0
+				BEGIN
+					SET @Estado = 1
+					INSERT dbo.LogTransmisionItinerario
+					(
+						--CodigoLogTransmisionItinerario - this column value is auto-generated
+						CodigoItinerario,
+						EstadoLogTransmisionItinerario,
+						CampoLogTransmisionItinerario,
+						ValorLogTransmisionItinerario,
+						TextoLogTransmisionItinerario,
+						FechaLogTransmisionItinerario
+						--EstadoRegistro
+					)
+					VALUES
+					(
+						-- CodigoLogTransmisionItinerario - bigint
+						@CodigoItinerario, -- CodigoItinerario - bigint
+						0, -- EstadoLogTransmisionItinerario - bit
+						'NombreNave', -- CampoLogTransmisionItinerario - varchar
+						'', -- ValorLogTransmisionItinerario - varchar
+						'No se esta enviando el nombre de la nave', -- TextoLogTransmisionItinerario - varchar
+						getdate() -- FechaLogTransmisionItinerario - datetime
+					)
+	
+				END
+
+				IF NOT EXISTS(SELECT CodigoPais FROM dbo.Pais (nolock) WHERE CodigoPaisSunat = @PaisNave AND EstadoRegistro = 1)
+				BEGIN
+					SET @Estado = 1
+					INSERT dbo.LogTransmisionItinerario
+					(
+						--CodigoLogTransmisionItinerario - this column value is auto-generated
+						CodigoItinerario,
+						EstadoLogTransmisionItinerario,
+						CampoLogTransmisionItinerario,
+						ValorLogTransmisionItinerario,
+						TextoLogTransmisionItinerario,
+						FechaLogTransmisionItinerario
+						--EstadoRegistro
+					)
+					VALUES
+					(
+						-- CodigoLogTransmisionItinerario - bigint
+						@CodigoItinerario, -- CodigoItinerario - bigint
+						0, -- EstadoLogTransmisionItinerario - bit
+						'PaisNave', -- CampoLogTransmisionItinerario - varchar
+						@PaisNave, -- ValorLogTransmisionItinerario - varchar
+						'Pais de la nave no registrada en SUNAT', -- TextoLogTransmisionItinerario - varchar
+						getdate() -- FechaLogTransmisionItinerario - datetime
+					)
+	
+				END
+
+				IF NOT EXISTS(SELECT CodigoNave FROM dbo.Nave (nolock) WHERE MatriculaNave = @MatriculaNave AND EstadoRegistro = 1)
+				BEGIN
+					SET @Estado = 1
+					INSERT dbo.LogTransmisionItinerario
+					(
+						--CodigoLogTransmisionItinerario - this column value is auto-generated
+						CodigoItinerario,
+						EstadoLogTransmisionItinerario,
+						CampoLogTransmisionItinerario,
+						ValorLogTransmisionItinerario,
+						TextoLogTransmisionItinerario,
+						FechaLogTransmisionItinerario
+						--EstadoRegistro
+					)
+					VALUES
+					(
+						-- CodigoLogTransmisionItinerario - bigint
+						@CodigoItinerario, -- CodigoItinerario - bigint
+						0, -- EstadoLogTransmisionItinerario - bit
+						'MatriculaNave', -- CampoLogTransmisionItinerario - varchar
+						@MatriculaNave, -- ValorLogTransmisionItinerario - varchar
+						'Matricula de nave no registrada en SUNAT', -- TextoLogTransmisionItinerario - varchar
+						getdate() -- FechaLogTransmisionItinerario - datetime
+					)
+	
+				END
+
+				IF NOT EXISTS(SELECT CodigoTipoNave FROM dbo.TipoNave (nolock) WHERE CodigoTipoNaveSunat = @TipoTransporteNave AND EstadoRegistro = 1)
+				BEGIN
+					SET @Estado = 1
+					INSERT dbo.LogTransmisionItinerario
+					(
+						--CodigoLogTransmisionItinerario - this column value is auto-generated
+						CodigoItinerario,
+						EstadoLogTransmisionItinerario,
+						CampoLogTransmisionItinerario,
+						ValorLogTransmisionItinerario,
+						TextoLogTransmisionItinerario,
+						FechaLogTransmisionItinerario
+						--EstadoRegistro
+					)
+					VALUES
+					(
+						-- CodigoLogTransmisionItinerario - bigint
+						@CodigoItinerario, -- CodigoItinerario - bigint
+						0, -- EstadoLogTransmisionItinerario - bit
+						'TipoTransporteNave', -- CampoLogTransmisionItinerario - varchar
+						@TipoTransporteNave, -- ValorLogTransmisionItinerario - varchar
+						'Tipo de Transporte de nave no registrada en SUNAT', -- TextoLogTransmisionItinerario - varchar
+						getdate() -- FechaLogTransmisionItinerario - datetime
+					)
+	
+				END
+
+				IF len(@NombreLineaNaviera)=0
+				BEGIN
+					SET @Estado = 1
+					INSERT dbo.LogTransmisionItinerario
+					(
+						--CodigoLogTransmisionItinerario - this column value is auto-generated
+						CodigoItinerario,
+						EstadoLogTransmisionItinerario,
+						CampoLogTransmisionItinerario,
+						ValorLogTransmisionItinerario,
+						TextoLogTransmisionItinerario,
+						FechaLogTransmisionItinerario
+						--EstadoRegistro
+					)
+					VALUES
+					(
+						-- CodigoLogTransmisionItinerario - bigint
+						@CodigoItinerario, -- CodigoItinerario - bigint
+						0, -- EstadoLogTransmisionItinerario - bit
+						'NombreLineaNaviera', -- CampoLogTransmisionItinerario - varchar
+						'', -- ValorLogTransmisionItinerario - varchar
+						'No se esta enviando el nombre de la Linea Naviera', -- TextoLogTransmisionItinerario - varchar
+						getdate() -- FechaLogTransmisionItinerario - datetime
+					)
+	
+				END
+
+				IF len(@DireccionLineaNaviera)=0
+				BEGIN
+					SET @Estado = 1
+					INSERT dbo.LogTransmisionItinerario
+					(
+						--CodigoLogTransmisionItinerario - this column value is auto-generated
+						CodigoItinerario,
+						EstadoLogTransmisionItinerario,
+						CampoLogTransmisionItinerario,
+						ValorLogTransmisionItinerario,
+						TextoLogTransmisionItinerario,
+						FechaLogTransmisionItinerario
+						--EstadoRegistro
+					)
+					VALUES
+					(
+						-- CodigoLogTransmisionItinerario - bigint
+						@CodigoItinerario, -- CodigoItinerario - bigint
+						0, -- EstadoLogTransmisionItinerario - bit
+						'DireccionLineaNaviera', -- CampoLogTransmisionItinerario - varchar
+						'', -- ValorLogTransmisionItinerario - varchar
+						'No se esta enviando la direccion de la Linea Naviera', -- TextoLogTransmisionItinerario - varchar
+						getdate() -- FechaLogTransmisionItinerario - datetime
+					)
+	
+				END
+
+				IF len(@CapitanNave)=0
+				BEGIN
+					SET @Estado = 1
+					INSERT dbo.LogTransmisionItinerario
+					(
+						--CodigoLogTransmisionItinerario - this column value is auto-generated
+						CodigoItinerario,
+						EstadoLogTransmisionItinerario,
+						CampoLogTransmisionItinerario,
+						ValorLogTransmisionItinerario,
+						TextoLogTransmisionItinerario,
+						FechaLogTransmisionItinerario
+						--EstadoRegistro
+					)
+					VALUES
+					(
+						-- CodigoLogTransmisionItinerario - bigint
+						@CodigoItinerario, -- CodigoItinerario - bigint
+						0, -- EstadoLogTransmisionItinerario - bit
+						'CapitanNave', -- CampoLogTransmisionItinerario - varchar
+						'', -- ValorLogTransmisionItinerario - varchar
+						'No se esta enviando el capitan de la nave', -- TextoLogTransmisionItinerario - varchar
+						getdate() -- FechaLogTransmisionItinerario - datetime
+					)
+	
+				END
+
+				IF @AnioManifiesto NOT IN (2017,2018,2019)
+				BEGIN
+					SET @Estado = 1
+					INSERT dbo.LogTransmisionItinerario
+					(
+						--CodigoLogTransmisionItinerario - this column value is auto-generated
+						CodigoItinerario,
+						EstadoLogTransmisionItinerario,
+						CampoLogTransmisionItinerario,
+						ValorLogTransmisionItinerario,
+						TextoLogTransmisionItinerario,
+						FechaLogTransmisionItinerario,
+						EstadoRegistro
+					)
+					VALUES
+					(
+						-- CodigoLogTransmisionItinerario - bigint
+						@CodigoItinerario, -- CodigoItinerario - bigint
+						0, -- EstadoLogTransmisionItinerario - bit
+						'AnioManifiesto', -- CampoLogTransmisionItinerario - varchar
+						@AnioManifiesto, -- ValorLogTransmisionItinerario - varchar
+						'Año de Manifiesto Incorrecto', -- TextoLogTransmisionItinerario - varchar
+						getdate(), -- FechaLogTransmisionItinerario - datetime
+						1
+					)
+	
+				END
+
+				IF NOT EXISTS(SELECT CodigoTipoOperacion FROM dbo.TipoOperacion (nolock) WHERE CodigoTipoOperacionSunat = @TipoManifiesto AND EstadoRegistro = 1)
+				BEGIN
+					SET @Estado = 1
+					INSERT dbo.LogTransmisionItinerario
+					(
+						--CodigoLogTransmisionItinerario - this column value is auto-generated
+						CodigoItinerario,
+						EstadoLogTransmisionItinerario,
+						CampoLogTransmisionItinerario,
+						ValorLogTransmisionItinerario,
+						TextoLogTransmisionItinerario,
+						FechaLogTransmisionItinerario
+						--EstadoRegistro
+					)
+					VALUES
+					(
+						-- CodigoLogTransmisionItinerario - bigint
+						@CodigoItinerario, -- CodigoItinerario - bigint
+						0, -- EstadoLogTransmisionItinerario - bit
+						'TipoManifiesto', -- CampoLogTransmisionItinerario - varchar
+						@TipoManifiesto, -- ValorLogTransmisionItinerario - varchar
+						'Tipo de Manifiesto no registrado en SUNAT', -- TextoLogTransmisionItinerario - varchar
+						getdate() -- FechaLogTransmisionItinerario - datetime
+					)
+	
+				END
+
+				IF ISNULL(@NumeroManifiesto,'')<>'' AND @TipoTransmision = '0101' -- No es Numeracion
+				BEGIN
+					SET @Estado = 1
+					INSERT dbo.LogTransmisionItinerario
+					(
+						--CodigoLogTransmisionItinerario - this column value is auto-generated
+						CodigoItinerario,
+						EstadoLogTransmisionItinerario,
+						CampoLogTransmisionItinerario,
+						ValorLogTransmisionItinerario,
+						TextoLogTransmisionItinerario,
+						FechaLogTransmisionItinerario
+						--EstadoRegistro
+					)
+					VALUES
+					(
+						-- CodigoLogTransmisionItinerario - bigint
+						@CodigoItinerario, -- CodigoItinerario - bigint
+						0, -- EstadoLogTransmisionItinerario - bit
+						'TipoManifiesto', -- CampoLogTransmisionItinerario - varchar
+						@TipoManifiesto, -- ValorLogTransmisionItinerario - varchar
+						'No puedes Numerar, la nave ya tiene Numero de Manifiesto SUNAT', -- TextoLogTransmisionItinerario - varchar
+						getdate() -- FechaLogTransmisionItinerario - datetime
+					)
+	
+				END
+
+				IF ISNULL(@NumeroManifiesto,'')='' AND @TipoTransmision = '0102' -- No es Numeracion
+				BEGIN
+					SET @Estado = 1
+					INSERT dbo.LogTransmisionItinerario
+					(
+						--CodigoLogTransmisionItinerario - this column value is auto-generated
+						CodigoItinerario,
+						EstadoLogTransmisionItinerario,
+						CampoLogTransmisionItinerario,
+						ValorLogTransmisionItinerario,
+						TextoLogTransmisionItinerario,
+						FechaLogTransmisionItinerario
+						--EstadoRegistro
+					)
+					VALUES
+					(
+						-- CodigoLogTransmisionItinerario - bigint
+						@CodigoItinerario, -- CodigoItinerario - bigint
+						0, -- EstadoLogTransmisionItinerario - bit
+						'TipoManifiesto', -- CampoLogTransmisionItinerario - varchar
+						@TipoManifiesto, -- ValorLogTransmisionItinerario - varchar
+						'No puedes Rectificar, la Nave no tiene Numero de Manifiesto SUNAT', -- TextoLogTransmisionItinerario - varchar
+						getdate() -- FechaLogTransmisionItinerario - datetime
+					)
+	
+				END
+
+				IF @Estado=0
+				BEGIN
+					IF @TipoTransmision = '0101' -- Es Numeracion
+					BEGIN
+						SELECT @MaxNumeroManifiesto=MAX(CAST(NumeroManifiestoItinerario AS int))+1 FROM dbo.Itinerario (nolock) 
+						WHERE AnioManifiestoItinerario = @AnioManifiesto AND CodigoAduana = @CodigoAduana
+
+						SET @NumeroManifiestoSunat = CAST(@MaxNumeroManifiesto AS varchar)
+
+					UPDATE dbo.Itinerario
+					SET
+						NumeroManifiestoItinerario = @NumeroManifiestoSunat,
+						EstadoTransmision = 1 -- Procesado con Exito
+						WHERE CodigoItinerario = @CodigoItinerario
+
+						INSERT dbo.LogTransmisionItinerario
+						(
+							CodigoItinerario,
+							EstadoLogTransmisionItinerario,
+							CampoLogTransmisionItinerario,
+							ValorLogTransmisionItinerario,
+							TextoLogTransmisionItinerario,
+							FechaLogTransmisionItinerario
+							--EstadoRegistro
+						)
+						VALUES
+						(
+							-- CodigoLogTransmisionItinerario - bigint
+							@CodigoItinerario, -- CodigoItinerario - bigint
+							1, -- EstadoLogTransmisionItinerario - bit
+							'NumeroManifiesto', -- CampoLogTransmisionItinerario - varchar
+							@NumeroManifiestoSunat, -- ValorLogTransmisionItinerario - varchar
+							'Nave Numerada a SUNAT con Exito', -- TextoLogTransmisionItinerario - varchar
+							getdate() -- FechaLogTransmisionItinerario - datetime
+						)
+					END
+					IF @TipoTransmision = '0102' -- Es Rectificacion
+					BEGIN
+
+					UPDATE dbo.Itinerario
+					SET
+						EstadoTransmision = 1 -- Procesado con Exito
+						WHERE CodigoItinerario = @CodigoItinerario
+
+						INSERT dbo.LogTransmisionItinerario
+						(
+							CodigoItinerario,
+							EstadoLogTransmisionItinerario,
+							CampoLogTransmisionItinerario,
+							ValorLogTransmisionItinerario,
+							TextoLogTransmisionItinerario,
+							FechaLogTransmisionItinerario
+							--EstadoRegistro
+						)
+						VALUES
+						(
+							-- CodigoLogTransmisionItinerario - bigint
+							@CodigoItinerario, -- CodigoItinerario - bigint
+							1, -- EstadoLogTransmisionItinerario - bit
+							'NumeroManifiesto', -- CampoLogTransmisionItinerario - varchar
+							@NumeroManifiestoSunat, -- ValorLogTransmisionItinerario - varchar
+							'Se Rectificó nave con Exito a SUNAT', -- TextoLogTransmisionItinerario - varchar
+							getdate() -- FechaLogTransmisionItinerario - datetime
+						)
+					END
+				END
+
+				SET @i=@i+1
+			END
+	END      
+END
+
+GO
+
+CREATE TYPE [dbo].[dtDocumentos] AS TABLE(
+       CodigoDocumento BIGINT       
+)
+GO
+
+--declare @p1 dbo.dtDocumentos
+--DECLARE @TipoTransmision VARCHAR(4)='0103'
+--insert into @p1 values(1)
+--insert into @p1 values(2)
+
+-- SELECT d.* FROM dbo.Documento d
+-- SELECT ltd.* FROM dbo.LogTransmisionDocumento ltd
+
+-- EXEC USP_REGISTRA_TRANSMISION_SUNAT_DOCUMENTOS @dtDocumentos=@p1,@TipoTransmision=@TipoTransmision
+CREATE PROCEDURE dbo.USP_REGISTRA_TRANSMISION_SUNAT_DOCUMENTOS 
+    ( 
+      @dtDocumentos AS dbo.dtDocumentos READONLY,
+      @TipoTransmision VARCHAR(4) 
+    ) 
+AS  
+BEGIN 
+
+DECLARE @i int,@Max int,
+@CodigoDocumento bigint,
+@NumeroDocumento varchar(25),
+@CodigoTipoEnvioSunat smallint,
+@FechaEmisionDocumento datetime,
+@CodigoPuertoOrigenSunat varchar(5),
+@FechaEmbarqueDocumento datetime,
+@CodigoPuertoEmbarqueSunat varchar(5),
+@CodigoPuertoDescargaSunat varchar(5),
+@CodigoPuertoFinalSunat varchar(5),
+@CodigoPaisSunat varchar(2),
+@CodigoAduanaPersonaRol varchar(4),
+@CodigoCondicionContratoSunat varchar(2),
+@CodigoRequerimientoServicioSunat varchar(2),
+@CodigoTipoBLSunat varchar(3),
+@CodigoTipoOperadorResponsable varchar(2),
+@TotalPesoBruto decimal(13,2),
+@TotalVolumen decimal(13,2),
+@TotalCantidadBultos int,
+@TotalCantidadContenedores int,
+@Estado bit=0
+
+DECLARE @BLs TABLE
+(
+	Id int IDENTITY(1,1),
+	CodigoDocumento bigint,
+	NumeroDocumento varchar(25),
+	CodigoTipoEnvioSunat smallint,
+	FechaEmision datetime,
+	PuertoEmision varchar(5),
+	FechaEmbarque datetime,
+	PuertoEmbarque varchar(5),
+	PuertoDescarga varchar(5),
+	PuertoFinal varchar(5),
+	PaisOrigen varchar(2),
+	CodigoTipoOperadorResponsable varchar(2),
+	IdentificacionTransportista varchar(4),
+	CondicionContrato varchar(2),
+	SolicitudServicio varchar(2),
+	CodigoTipoBLSunat varchar(3),
+	TotalPesoBruto decimal(13,2),
+	TotalVolumen decimal(13,2),
+	TotalCantidadBultos int,
+	TotalCantidadContenedores int
+)
+	IF @TipoTransmision IN ('0102','0103','0104') -- 0103=Adicion , 0102=Rectificacion , 0104=Anulacion
+	BEGIN
+
+	SELECT @CodigoTipoOperadorResponsable=Codigo FROM dbo.DetalleCatalogo (nolock) WHERE IdCatalogo = 8
+
+					INSERT @BLs
+					SELECT 
+						d.CodigoDocumento,
+						d.NumeroDocumento,
+						te.CodigoTipoEnvioSunat,
+						d.FechaEmisionDocumento,
+						p1.CodigoPuertoSunat,
+						d.FechaEmbarqueDocumento,
+						p2.CodigoPuertoSunat,
+						p3.CodigoPuertoSunat,
+						p4.CodigoPuertoSunat,
+						p.CodigoPaisSunat,
+						@CodigoTipoOperadorResponsable,
+						pr.CodigoAduanaPersonaRol,
+						cc.CodigoCondicionContratoSunat,
+						rs.CodigoRequerimientoServicioSunat,
+						tb2.CodigoTipoBLSunat,
+						0,
+						0,
+						0,
+						0
+					FROM dbo.Documento d (nolock)
+					INNER JOIN dbo.TipoEnvio te (nolock) ON d.CodigoTipoBL = te.CodigoTipoEnvio
+					INNER JOIN dbo.Puerto p1 (nolock) ON d.CodigoPuertoOrigenDocumento = p1.CodigoPuerto
+					INNER JOIN dbo.Puerto p2 (nolock) ON d.CodigoPuertoOrigenDocumento = p2.CodigoPuerto
+					INNER JOIN dbo.Puerto p3 (nolock) ON d.CodigoPuertoOrigenDocumento = p3.CodigoPuerto
+					INNER JOIN dbo.Puerto p4 (nolock) ON d.CodigoPuertoOrigenDocumento = p4.CodigoPuerto
+					INNER JOIN dbo.Pais p (nolock) ON p1.CodigoPais = p.CodigoPais
+					INNER JOIN dbo.Itinerario i (nolock) ON d.CodigoItinerario = i.CodigoItinerario
+					INNER JOIN dbo.Persona p5 (nolock) ON i.CodigoAgenteMaritimoItinerario = p5.CodigoPersona
+					LEFT JOIN dbo.PersonaRol pr (nolock) ON p5.CodigoPersona = pr.CodigoPersona AND pr.CodigoRol = 5
+					INNER JOIN dbo.CondicionContrato cc (nolock) ON d.CodigoCondicionContrato = cc.CodigoCondicionContrato
+					INNER JOIN dbo.RequerimientoServicio rs (nolock) ON d.CodigoCondicionContrato = rs.CodigoRequerimientoServicio
+					INNER JOIN dbo.TipoBL tb2 (nolock) ON d.CodigoTipoBL = tb2.CodigoTipoBL
+					INNER JOIN @dtDocumentos dtd ON d.CodigoDocumento = dtd.CodigoDocumento
+
+			SELECT * FROM @BLs
+
+			SELECT @Max=MAX(Id) FROM @BLs
+			SET @i=1
+			WHILE (@i<=@Max)
+			BEGIN
+				SELECT  
+						@CodigoDocumento=CodigoDocumento,
+						@NumeroDocumento=NumeroDocumento,
+						@CodigoTipoEnvioSunat=CodigoTipoEnvioSunat,
+						@FechaEmisionDocumento=FechaEmision,
+						@CodigoPuertoOrigenSunat=PuertoEmision,
+						@FechaEmbarqueDocumento=FechaEmbarque,
+						@CodigoPuertoEmbarqueSunat=PuertoEmbarque,
+						@CodigoPuertoDescargaSunat=PuertoDescarga,
+						@CodigoPuertoFinalSunat=PuertoFinal,
+						@CodigoPaisSunat=PaisOrigen,
+						@CodigoAduanaPersonaRol=IdentificacionTransportista,
+						@CodigoCondicionContratoSunat=CondicionContrato,
+						@CodigoRequerimientoServicioSunat=SolicitudServicio,
+						@CodigoTipoBLSunat=CodigoTipoBLSunat
+				FROM @BLs WHERE Id=@i
+
+				UPDATE dbo.LogTransmisionDocumento
+				SET
+				    EstadoRegistro = 0
+				WHERE CodigoDocumento = @CodigoDocumento
+
+				UPDATE dbo.Documento
+				SET
+				    EstadoEnvioAduanas = 1, 
+				    FechaCreacionEnvioAduanas = getdate(), 
+				    FechaModificacionEnvioAduanas = NULL, 
+				    TipoTransaccionTransmision = @TipoTransmision, 
+				    FechaCreacionTransmision = getdate()
+					WHERE CodigoDocumento = @CodigoDocumento
+
+				-- Validaciones de los Campos a Enviar a Sunat
+
+				IF NOT EXISTS(SELECT CodigoTipoEnvio FROM dbo.TipoEnvio (nolock) WHERE CodigoTipoEnvioSunat = @CodigoTipoEnvioSunat AND EstadoRegistro=1)
+				BEGIN
+					SET @Estado = 1 
+					INSERT dbo.LogTransmisionDocumento
+					(
+						--CodigoLogTransmisionDocumento - this column value is auto-generated
+						CodigoDocumento,
+						EstadoLogTransmisionDocumento,
+						CampoLogTransmisionDocumento,
+						ValorLogTransmisionDocumento,
+						TextoLogTransmisionDocumento,
+						FechaLogTransmisionDocumento
+						--EstadoRegistro
+					)
+					VALUES
+					(
+						-- CodigoLogTransmisionDocumento - bigint
+						@CodigoDocumento, -- CodigoDocumento - bigint
+						0, -- EstadoLogTransmisionDocumento - bit
+						'CodigoTipoEnvioSunat', -- CampoLogTransmisionDocumento - varchar
+						@CodigoTipoEnvioSunat, -- ValorLogTransmisionDocumento - varchar
+						'Tipo de Envio registrado en SUNAT', -- TextoLogTransmisionDocumento - varchar
+						getdate() -- FechaLogTransmisionDocumento - datetime
+					)
+	
+				END
+
+				IF NOT EXISTS(SELECT p.CodigoPuerto FROM dbo.Puerto p (nolock) WHERE p.CodigoPuertoSunat = @CodigoPuertoOrigenSunat AND EstadoRegistro=1)
+				BEGIN
+					SET @Estado = 1
+					INSERT dbo.LogTransmisionDocumento
+					(
+						--CodigoLogTransmisionDocumento - this column value is auto-generated
+						CodigoDocumento,
+						EstadoLogTransmisionDocumento,
+						CampoLogTransmisionDocumento,
+						ValorLogTransmisionDocumento,
+						TextoLogTransmisionDocumento,
+						FechaLogTransmisionDocumento
+						--EstadoRegistro
+					)
+					VALUES
+					(
+						-- CodigoLogTransmisionDocumento - bigint
+						@CodigoDocumento, -- CodigoDocumento - bigint
+						0, -- EstadoLogTransmisionDocumento - bit
+						'Puerto Origen', -- CampoLogTransmisionDocumento - varchar
+						@CodigoPuertoOrigenSunat, -- ValorLogTransmisionDocumento - varchar
+						'Puerto no registrado en SUNAT', -- TextoLogTransmisionDocumento - varchar
+						getdate() -- FechaLogTransmisionDocumento - datetime
+					)
+	
+				END
+
+				IF NOT EXISTS(SELECT p.CodigoPuerto FROM dbo.Puerto p (nolock) WHERE p.CodigoPuertoSunat = @CodigoPuertoEmbarqueSunat AND EstadoRegistro=1)
+				BEGIN
+					SET @Estado = 1
+					INSERT dbo.LogTransmisionDocumento
+					(
+						--CodigoLogTransmisionDocumento - this column value is auto-generated
+						CodigoDocumento,
+						EstadoLogTransmisionDocumento,
+						CampoLogTransmisionDocumento,
+						ValorLogTransmisionDocumento,
+						TextoLogTransmisionDocumento,
+						FechaLogTransmisionDocumento
+						--EstadoRegistro
+					)
+					VALUES
+					(
+						-- CodigoLogTransmisionDocumento - bigint
+						@CodigoDocumento, -- CodigoDocumento - bigint
+						0, -- EstadoLogTransmisionDocumento - bit
+						'Puerto Embarque', -- CampoLogTransmisionDocumento - varchar
+						@CodigoPuertoEmbarqueSunat, -- ValorLogTransmisionDocumento - varchar
+						'Puerto no registrado en SUNAT', -- TextoLogTransmisionDocumento - varchar
+						getdate() -- FechaLogTransmisionDocumento - datetime
+					)
+	
+				END
+
+				IF NOT EXISTS(SELECT p.CodigoPuerto FROM dbo.Puerto p (nolock) WHERE p.CodigoPuertoSunat = @CodigoPuertoDescargaSunat AND EstadoRegistro=1)
+				BEGIN
+					SET @Estado = 1
+					INSERT dbo.LogTransmisionDocumento
+					(
+						--CodigoLogTransmisionDocumento - this column value is auto-generated
+						CodigoDocumento,
+						EstadoLogTransmisionDocumento,
+						CampoLogTransmisionDocumento,
+						ValorLogTransmisionDocumento,
+						TextoLogTransmisionDocumento,
+						FechaLogTransmisionDocumento
+						--EstadoRegistro
+					)
+					VALUES
+					(
+						-- CodigoLogTransmisionDocumento - bigint
+						@CodigoDocumento, -- CodigoDocumento - bigint
+						0, -- EstadoLogTransmisionDocumento - bit
+						'Puerto Descarga', -- CampoLogTransmisionDocumento - varchar
+						@CodigoPuertoDescargaSunat, -- ValorLogTransmisionDocumento - varchar
+						'Puerto no registrado en SUNAT', -- TextoLogTransmisionDocumento - varchar
+						getdate() -- FechaLogTransmisionDocumento - datetime
+					)
+	
+				END
+
+				IF NOT EXISTS(SELECT p.CodigoPuerto FROM dbo.Puerto p (nolock) WHERE p.CodigoPuertoSunat = @CodigoPuertoFinalSunat AND EstadoRegistro=1)
+				BEGIN
+					SET @Estado = 1
+					INSERT dbo.LogTransmisionDocumento
+					(
+						--CodigoLogTransmisionDocumento - this column value is auto-generated
+						CodigoDocumento,
+						EstadoLogTransmisionDocumento,
+						CampoLogTransmisionDocumento,
+						ValorLogTransmisionDocumento,
+						TextoLogTransmisionDocumento,
+						FechaLogTransmisionDocumento
+						--EstadoRegistro
+					)
+					VALUES
+					(
+						-- CodigoLogTransmisionDocumento - bigint
+						@CodigoDocumento, -- CodigoDocumento - bigint
+						0, -- EstadoLogTransmisionDocumento - bit
+						'Puerto Final', -- CampoLogTransmisionDocumento - varchar
+						@CodigoPuertoFinalSunat, -- ValorLogTransmisionDocumento - varchar
+						'Puerto no registrado en SUNAT', -- TextoLogTransmisionDocumento - varchar
+						getdate() -- FechaLogTransmisionDocumento - datetime
+					)
+	
+				END
+
+				IF NOT EXISTS(SELECT p.CodigoPais FROM dbo.Pais p (nolock) WHERE p.CodigoPaisSunat = @CodigoPaisSunat AND EstadoRegistro=1)
+				BEGIN
+					SET @Estado = 1
+					INSERT dbo.LogTransmisionDocumento
+					(
+						--CodigoLogTransmisionDocumento - this column value is auto-generated
+						CodigoDocumento,
+						EstadoLogTransmisionDocumento,
+						CampoLogTransmisionDocumento,
+						ValorLogTransmisionDocumento,
+						TextoLogTransmisionDocumento,
+						FechaLogTransmisionDocumento
+						--EstadoRegistro
+					)
+					VALUES
+					(
+						-- CodigoLogTransmisionDocumento - bigint
+						@CodigoDocumento, -- CodigoDocumento - bigint
+						0, -- EstadoLogTransmisionDocumento - bit
+						'Pais Origen', -- CampoLogTransmisionDocumento - varchar
+						@CodigoPaisSunat, -- ValorLogTransmisionDocumento - varchar
+						'Pais no registrado en SUNAT', -- TextoLogTransmisionDocumento - varchar
+						getdate() -- FechaLogTransmisionDocumento - datetime
+					)
+	
+				END
+
+				IF @CodigoAduanaPersonaRol <> '7770'
+				BEGIN
+					SET @Estado = 1
+					INSERT dbo.LogTransmisionDocumento
+					(
+						--CodigoLogTransmisionDocumento - this column value is auto-generated
+						CodigoDocumento,
+						EstadoLogTransmisionDocumento,
+						CampoLogTransmisionDocumento,
+						ValorLogTransmisionDocumento,
+						TextoLogTransmisionDocumento,
+						FechaLogTransmisionDocumento
+						--EstadoRegistro
+					)
+					VALUES
+					(
+						-- CodigoLogTransmisionDocumento - bigint
+						@CodigoDocumento, -- CodigoDocumento - bigint
+						0, -- EstadoLogTransmisionDocumento - bit
+						'Aduana Agente Maritimo', -- CampoLogTransmisionDocumento - varchar
+						@CodigoAduanaPersonaRol, -- ValorLogTransmisionDocumento - varchar
+						'Codigo de Agente Maritimo no registrado en SUNAT', -- TextoLogTransmisionDocumento - varchar
+						getdate() -- FechaLogTransmisionDocumento - datetime
+					)
+	
+				END
+
+				IF NOT EXISTS(SELECT cc.CodigoCondicionContrato FROM dbo.CondicionContrato cc (nolock) WHERE cc.CodigoCondicionContratoSunat = @CodigoCondicionContratoSunat AND EstadoRegistro = 1)
+				BEGIN
+					SET @Estado = 1
+					INSERT dbo.LogTransmisionDocumento
+					(
+						--CodigoLogTransmisionDocumento - this column value is auto-generated
+						CodigoDocumento,
+						EstadoLogTransmisionDocumento,
+						CampoLogTransmisionDocumento,
+						ValorLogTransmisionDocumento,
+						TextoLogTransmisionDocumento,
+						FechaLogTransmisionDocumento
+						--EstadoRegistro
+					)
+					VALUES
+					(
+						-- CodigoLogTransmisionDocumento - bigint
+						@CodigoDocumento, -- CodigoDocumento - bigint
+						0, -- EstadoLogTransmisionDocumento - bit
+						'Condicion de Contrato', -- CampoLogTransmisionDocumento - varchar
+						@CodigoCondicionContratoSunat, -- ValorLogTransmisionDocumento - varchar
+						'Condicion de Contrato no registrada en SUNAT', -- TextoLogTransmisionDocumento - varchar
+						getdate() -- FechaLogTransmisionDocumento - datetime
+					)
+	
+				END
+
+				IF NOT EXISTS(SELECT rs.CodigoRequerimientoServicio FROM dbo.RequerimientoServicio rs (nolock) WHERE rs.CodigoRequerimientoServicioSunat = @CodigoRequerimientoServicioSunat AND EstadoRegistro = 1)
+				BEGIN
+					SET @Estado = 1
+					INSERT dbo.LogTransmisionDocumento
+					(
+						--CodigoLogTransmisionDocumento - this column value is auto-generated
+						CodigoDocumento,
+						EstadoLogTransmisionDocumento,
+						CampoLogTransmisionDocumento,
+						ValorLogTransmisionDocumento,
+						TextoLogTransmisionDocumento,
+						FechaLogTransmisionDocumento
+						--EstadoRegistro
+					)
+					VALUES
+					(
+						-- CodigoLogTransmisionDocumento - bigint
+						@CodigoDocumento, -- CodigoDocumento - bigint
+						0, -- EstadoLogTransmisionDocumento - bit
+						'Requermiento de Servicio', -- CampoLogTransmisionDocumento - varchar
+						@CodigoRequerimientoServicioSunat, -- ValorLogTransmisionDocumento - varchar
+						'Requermiento de Servicio no registrado en SUNAT', -- TextoLogTransmisionDocumento - varchar
+						getdate() -- FechaLogTransmisionDocumento - datetime
+					)
+	
+				END
+
+				IF NOT EXISTS(SELECT tb.CodigoTipoBL FROM dbo.TipoBL tb (nolock) WHERE tb.CodigoTipoBLSunat = @CodigoTipoBLSunat AND EstadoRegistro = 1)
+				BEGIN
+					SET @Estado = 1
+					INSERT dbo.LogTransmisionDocumento
+					(
+						--CodigoLogTransmisionDocumento - this column value is auto-generated
+						CodigoDocumento,
+						EstadoLogTransmisionDocumento,
+						CampoLogTransmisionDocumento,
+						ValorLogTransmisionDocumento,
+						TextoLogTransmisionDocumento,
+						FechaLogTransmisionDocumento
+						--EstadoRegistro
+					)
+					VALUES
+					(
+						-- CodigoLogTransmisionDocumento - bigint
+						@CodigoDocumento, -- CodigoDocumento - bigint
+						0, -- EstadoLogTransmisionDocumento - bit
+						'Tipo BL Sunat', -- CampoLogTransmisionDocumento - varchar
+						@CodigoTipoBLSunat, -- ValorLogTransmisionDocumento - varchar
+						'Tipo BL Sunat no registrado en SUNAT', -- TextoLogTransmisionDocumento - varchar
+						getdate() -- FechaLogTransmisionDocumento - datetime
+					)
+	
+				END
+
+				IF @CodigoTipoOperadorResponsable<>'12'
+				BEGIN
+					SET @Estado = 1
+					INSERT dbo.LogTransmisionDocumento
+					(
+						--CodigoLogTransmisionDocumento - this column value is auto-generated
+						CodigoDocumento,
+						EstadoLogTransmisionDocumento,
+						CampoLogTransmisionDocumento,
+						ValorLogTransmisionDocumento,
+						TextoLogTransmisionDocumento,
+						FechaLogTransmisionDocumento
+						--EstadoRegistro
+					)
+					VALUES
+					(
+						-- CodigoLogTransmisionDocumento - bigint
+						@CodigoDocumento, -- CodigoDocumento - bigint
+						0, -- EstadoLogTransmisionDocumento - bit
+						'Codigo del Operador Responsable', -- CampoLogTransmisionDocumento - varchar
+						@CodigoTipoOperadorResponsable, -- ValorLogTransmisionDocumento - varchar
+						'Codigo del Operador Responsable Incorrecto', -- TextoLogTransmisionDocumento - varchar
+						getdate() -- FechaLogTransmisionDocumento - datetime
+					)
+	
+				END
+				
+				IF @Estado=0
+				BEGIN
+
+				-- Obtiene Pesos y Cantidades Totales por Documento
+					SELECT 
+						--d.CodigoDocumento,
+						@TotalPesoBruto=
+						SUM(ISNULL(ddc.PesoBrutoDocumentoDetalleCarga,0)),
+						@TotalVolumen=
+						SUM(ISNULL(ddc.VolumenBrutoDocumentoDetalleCarga,0)),
+						@TotalCantidadBultos=
+						SUM(ISNULL(ddc.CantidadBultoDocumentoDetalleCarga,0)),
+						@TotalCantidadContenedores=
+						COUNT(DISTINCT ddc.CodigoContenedor)
+					FROM dbo.Documento d (nolock) INNER JOIN dbo.DocumentoDetalleCarga ddc (nolock) ON d.CodigoDocumento = ddc.CodigoDocumento
+					WHERE d.CodigoDocumento = @CodigoDocumento
+					GROUP BY d.CodigoDocumento
+
+					IF @TipoTransmision = '0103' -- Es Adicion
+					BEGIN
+
+					UPDATE dbo.Documento
+					SET
+						EstadoTransmision = 1, -- Procesado con Exito
+						TotalPesoBrutoTransmision = @TotalPesoBruto,
+						TotalBultosTransmision = @TotalCantidadBultos,
+						TotalContenedoresTransmision = @TotalCantidadContenedores
+						WHERE CodigoDocumento = @CodigoDocumento
+
+						INSERT dbo.LogTransmisionDocumento
+						(
+							CodigoDocumento,
+							EstadoLogTransmisionDocumento,
+							CampoLogTransmisionDocumento,
+							ValorLogTransmisionDocumento,
+							TextoLogTransmisionDocumento,
+							FechaLogTransmisionDocumento
+							--EstadoRegistro
+						)
+						VALUES
+						(
+							-- CodigoLogTransmisionDocumento - bigint
+							@CodigoDocumento, -- CodigoDocumento - bigint
+							1, -- EstadoLogTransmisionDocumento - bit
+							'Adicion Sunat', -- CampoLogTransmisionDocumento - varchar
+							'', -- ValorLogTransmisionDocumento - varchar
+							'Se Adiciono Documento a Sunat con Exito', -- TextoLogTransmisionDocumento - varchar
+							getdate() -- FechaLogTransmisionDocumento - datetime
+						)
+					END
+
+					IF @TipoTransmision = '0102' -- Es Rectificacion
+					BEGIN
+
+					UPDATE dbo.Documento
+					SET
+						EstadoTransmision = 1, -- Procesado con Exito
+						FechaModificacionTransmision = getdate(),
+						TotalPesoBrutoTransmision = @TotalPesoBruto,
+						TotalBultosTransmision = @TotalCantidadBultos,
+						TotalContenedoresTransmision = @TotalCantidadContenedores
+						WHERE CodigoDocumento = @CodigoDocumento
+
+						INSERT dbo.LogTransmisionDocumento
+						(
+							CodigoDocumento,
+							EstadoLogTransmisionDocumento,
+							CampoLogTransmisionDocumento,
+							ValorLogTransmisionDocumento,
+							TextoLogTransmisionDocumento,
+							FechaLogTransmisionDocumento
+							--EstadoRegistro
+						)
+						VALUES
+						(
+							-- CodigoLogTransmisionDocumento - bigint
+							@CodigoDocumento, -- CodigoDocumento - bigint
+							1, -- EstadoLogTransmisionDocumento - bit
+							'Rectificacion Sunat', -- CampoLogTransmisionDocumento - varchar
+							'', -- ValorLogTransmisionDocumento - varchar
+							'Se Rectifico Documento en Sunat con Exito', -- TextoLogTransmisionDocumento - varchar
+							getdate() -- FechaLogTransmisionDocumento - datetime
+						)
+					END
+
+					IF @TipoTransmision = '0104' -- Es Anulacion
+					BEGIN
+
+					UPDATE dbo.Documento
+					SET
+						EstadoTransmision = 1, -- Procesado con Exito
+						FechaModificacionTransmision = getdate()
+						WHERE CodigoDocumento = @CodigoDocumento
+
+						INSERT dbo.LogTransmisionDocumento
+						(
+							CodigoDocumento,
+							EstadoLogTransmisionDocumento,
+							CampoLogTransmisionDocumento,
+							ValorLogTransmisionDocumento,
+							TextoLogTransmisionDocumento,
+							FechaLogTransmisionDocumento
+							--EstadoRegistro
+						)
+						VALUES
+						(
+							-- CodigoLogTransmisionDocumento - bigint
+							@CodigoDocumento, -- CodigoDocumento - bigint
+							1, -- EstadoLogTransmisionDocumento - bit
+							'Anulacion Sunat', -- CampoLogTransmisionDocumento - varchar
+							'', -- ValorLogTransmisionDocumento - varchar
+							'Se Anulo Documento en Sunat con Exito', -- TextoLogTransmisionDocumento - varchar
+							getdate() -- FechaLogTransmisionDocumento - datetime
+						)
+					END
+
+				END
+
+				SET @i=@i+1
+			END
+	END
+END
+
+GO
+
+CREATE TYPE [dbo].[dtDocumentoDetalleFlete] AS TABLE(
+	 CodigoDocumentoDetalleFlete BIGINT,
+	 CodigoDocumento BIGINT NOT NULL,
+	 CodigoTipoFlete BIGINT NOT NULL,
+	 CodigoMoneda BIGINT NOT NULL,
+	 CodigoModoPago BIGINT NOT NULL,
+	 MontoDocumentoDetalleFlete DECIMAL(15,2) NOT NULL,
+	 --EstadoRegistro BIT NOT NULL,
+	 --UsuarioRegistro VARCHAR(100),
+	 Accion CHAR(1) NULL
+)
+GO
+
+--declare @p1 dbo.dtDocumentoDetalleFlete
+--DECLARE @Usuario VARCHAR(100)='JAV'
+--insert into @p1 values(NULL,1,2,147,2,10,1,'I')
+--insert into @p1 values(NULL,2,1,147,3,20,1,'I')
+
+--exec USP_REGISTRA_DOCUMENTODETALLEFLETE @dtDocumentoDetalleFlete=@p1,@UsuarioRegistro=@Usuario
+
+--declare @p1 dbo.dtDocumentoDetalleFlete
+--DECLARE @Usuario VARCHAR(100)='JAM'
+--insert into @p1 values(4,1,2,147,2,100,1,'D')
+--insert into @p1 values(5,2,1,147,3,200,1,'D')
+
+CREATE PROCEDURE dbo.USP_REGISTRAR_DOCUMENTODETALLEFLETE  
+    (  
+      @dtDocumentoDetalleFlete AS dbo.dtDocumentoDetalleFlete READONLY--,
+      --@UsuarioRegistro VARCHAR(100)  
+    )  
+AS   
+    BEGIN  
+        
+        DELETE a
+        FROM    DocumentoDetalleFlete (NOLOCK) a  
+                INNER JOIN @dtDocumentoDetalleFlete b ON   
+                a.CodigoDocumentoDetalleFlete = b.CodigoDocumentoDetalleFlete  
+                and a.CodigoDocumento=b.CodigoDocumento  
+        WHERE   b.Accion = 'D'
+        
+        INSERT dbo.DocumentoDetalleFlete
+                ( CodigoDocumento ,
+                  CodigoTipoFlete ,
+                  CodigoMoneda ,
+                  CodigoModoPago ,
+                  MontoDocumentoDetalleFlete --,
+                  --EstadoRegistro ,
+                  --UsuarioCreacion 
+                )
+		SELECT  CodigoDocumento ,  
+                CodigoTipoFlete ,  
+                CodigoMoneda,
+                CodigoModoPago,
+                MontoDocumentoDetalleFlete--,
+                --EstadoRegistro,
+                --UsuarioRegistro  
+                FROM @dtDocumentoDetalleFlete  
+                WHERE Accion = 'I' 
+        
+        UPDATE a SET 
+			a.CodigoTipoFlete = b.CodigoTipoFlete,
+			a.CodigoMoneda = b.CodigoMoneda,
+			a.CodigoModoPago = b.CodigoModoPago,
+			a.MontoDocumentoDetalleFlete = b.MontoDocumentoDetalleFlete--,
+			--a.EstadoRegistro = b.EstadoRegistro,
+			--a.UsuarioActualizacion = b.UsuarioRegistro,
+			--a.FechaHoraActualizacion = GETDATE()
+        FROM    DocumentoDetalleFlete (NOLOCK) a  
+                INNER JOIN @dtDocumentoDetalleFlete b   
+                ON   
+                a.CodigoDocumentoDetalleFlete = b.CodigoDocumentoDetalleFlete  
+                and a.CodigoDocumento=b.CodigoDocumento  
+        WHERE   b.Accion = 'U' 
+  
+    END  
+GO
+
+CREATE TYPE [dbo].[dtDocumentoDetalleCarga] AS TABLE(
+	 CodigoDocumentoDetalleCarga BIGINT,
+	 CodigoDocumento BIGINT NOT NULL,
+	 CodigoContenedor BIGINT NOT NULL,
+	 CodigoCondicionTransporte BIGINT NOT NULL,	
+	 CodigoTipoMovimiento BIGINT NOT NULL,
+	 CodigoUnidadMercancia BIGINT NOT NULL,
+	 CodigoNaturalezaCarga BIGINT NOT NULL,
+	 CodigoCondicionCarga BIGINT NOT NULL,	
+	 CodigoTemperatura BIGINT NOT NULL,
+	 CodigoClaseIMO BIGINT NOT NULL,
+	 CodigoNumeroIMO BIGINT NOT NULL,
+	 CodigoAlmacenDocumentoDetalleCarga BIGINT NOT NULL,
+	 CodigoDepositoDocumentoDetalleCarga BIGINT NOT NULL,
+	 CodigoPrecinto BIGINT NOT NULL,
+	 ItemDocumentoDetalleCarga INT NOT NULL,
+	 CantidadBultoDocumentoDetalleCarga INT NOT NULL,			 
+	 PesoBrutoDocumentoDetalleCarga DECIMAL(15,3) NOT NULL, 
+	 VolumenBrutoDocumentoDetalleCarga  DECIMAL(15,3) NOT NULL,	
+	 TemperaturaMinimaDocumentoDetalleCarga DECIMAL(15,2) NULL,	
+	 TemperaturaMaximaDocumentoDetalleCarga DECIMAL(15,2) NULL,
+	 PropietarioDocumentoDetalleCarga BIT NOT NULL,	
+	 ObservacionDocumentoDetalleCarga VARCHAR(150) NULL,
+	 DescripcionDocumentoDetalleCarga VARCHAR(4000) NOT NULL,
+	 MarcasNumerosDocumentoDetalleCarga VARCHAR(4000) NOT NULL,
+	 FaltoDocumentoDetalleCarga  BIT NOT NULL,
+	 EstadoRegistro BIT NOT NULL,
+	 UsuarioRegistro VARCHAR(100),
+	 Accion CHAR(1) NULL
+)
+GO
+
+CREATE PROCEDURE dbo.USP_REGISTRAR_DOCUMENTODETALLECARGA  
+    (  
+      @dtDocumentoDetalleCarga AS dbo.dtDocumentoDetalleCarga READONLY 
+    )  
+AS   
+    BEGIN  
+  
+        UPDATE a SET 
+			a.EstadoRegistro = 0,
+			a.UsuarioActualizacion = b.UsuarioRegistro,
+			a.FechaHoraActualizacion = GETDATE()
+        FROM    DocumentoDetalleCarga (NOLOCK) a  
+                INNER JOIN @dtDocumentoDetalleCarga b   
+                ON   
+                a.CodigoDocumentoDetalleCarga = b.CodigoDocumentoDetalleCarga  
+                and a.CodigoDocumento=b.CodigoDocumento  
+        WHERE   b.Accion = 'D'
+                
+		INSERT dbo.DocumentoDetalleCarga
+				( CodigoDocumento ,
+				  CodigoContenedor ,
+				  CodigoCondicionTransporte ,
+				  CodigoTipoMovimiento ,
+				  CodigoUnidadMercancia ,
+				  CodigoNaturalezaCarga ,
+				  CodigoCondicionCarga ,
+				  CodigoTemperatura ,
+				  CodigoClaseIMO ,
+				  CodigoNumeroIMO ,
+				  CodigoAlmacenDocumentoDetalleCarga ,
+				  CodigoDepositoDocumentoDetalleCarga ,
+				  CodigoPrecinto ,
+				  ItemDocumentoDetalleCarga ,
+				  CantidadBultoDocumentoDetalleCarga ,
+				  PesoBrutoDocumentoDetalleCarga ,
+				  VolumenBrutoDocumentoDetalleCarga ,
+				  TemperaturaMinimaDocumentoDetalleCarga ,
+				  TemperaturaMaximaDocumentoDetalleCarga ,
+				  PropietarioDocumentoDetalleCarga ,
+				  ObservacionDocumentoDetalleCarga ,
+				  DescripcionDocumentoDetalleCarga ,
+				  MarcasNumerosDocumentoDetalleCarga ,
+				  FaltoDocumentoDetalleCarga --,
+				  --EstadoRegistro ,
+				  --UsuarioCreacion 
+        )
+        SELECT	  CodigoDocumento ,
+				  CodigoContenedor ,
+				  CodigoCondicionTransporte ,
+				  CodigoTipoMovimiento ,
+				  CodigoUnidadMercancia ,
+				  CodigoNaturalezaCarga ,
+				  CodigoCondicionCarga ,
+				  CodigoTemperatura ,
+				  CodigoClaseIMO ,
+				  CodigoNumeroIMO ,
+				  CodigoAlmacenDocumentoDetalleCarga ,
+				  CodigoDepositoDocumentoDetalleCarga ,
+				  CodigoPrecinto ,
+				  ItemDocumentoDetalleCarga ,
+				  CantidadBultoDocumentoDetalleCarga ,
+				  PesoBrutoDocumentoDetalleCarga ,
+				  VolumenBrutoDocumentoDetalleCarga ,
+				  TemperaturaMinimaDocumentoDetalleCarga ,
+				  TemperaturaMaximaDocumentoDetalleCarga ,
+				  PropietarioDocumentoDetalleCarga ,
+				  ObservacionDocumentoDetalleCarga ,
+				  DescripcionDocumentoDetalleCarga ,
+				  MarcasNumerosDocumentoDetalleCarga ,
+				  FaltoDocumentoDetalleCarga --,
+				  --EstadoRegistro ,
+				  --UsuarioRegistro
+		FROM @dtDocumentoDetalleCarga  
+		WHERE Accion = 'I'
+        
+        UPDATE a SET 
+			  a.CodigoContenedor = b.CodigoContenedor,
+			  a.CodigoCondicionTransporte = b.CodigoCondicionTransporte,
+			  a.CodigoTipoMovimiento = b.CodigoTipoMovimiento,
+			  a.CodigoUnidadMercancia = b.CodigoUnidadMercancia,
+			  a.CodigoNaturalezaCarga = b.CodigoNaturalezaCarga,
+			  a.CodigoCondicionCarga = b.CodigoCondicionCarga,
+			  a.CodigoTemperatura = b.CodigoTemperatura,
+			  a.CodigoClaseIMO = b.CodigoClaseIMO,
+			  a.CodigoNumeroIMO = b.CodigoNumeroIMO,
+			  a.CodigoAlmacenDocumentoDetalleCarga = b.CodigoAlmacenDocumentoDetalleCarga,
+			  a.CodigoDepositoDocumentoDetalleCarga = b.CodigoDepositoDocumentoDetalleCarga,
+			  a.CodigoPrecinto = b.CodigoPrecinto,
+			  a.ItemDocumentoDetalleCarga = b.ItemDocumentoDetalleCarga,
+			  a.CantidadBultoDocumentoDetalleCarga = b.CantidadBultoDocumentoDetalleCarga,
+			  a.PesoBrutoDocumentoDetalleCarga = b.PesoBrutoDocumentoDetalleCarga,
+			  a.VolumenBrutoDocumentoDetalleCarga = a.VolumenBrutoDocumentoDetalleCarga,
+			  a.TemperaturaMinimaDocumentoDetalleCarga = b.TemperaturaMinimaDocumentoDetalleCarga,
+			  a.TemperaturaMaximaDocumentoDetalleCarga = b.TemperaturaMaximaDocumentoDetalleCarga,
+			  a.PropietarioDocumentoDetalleCarga = b.PropietarioDocumentoDetalleCarga,
+			  a.ObservacionDocumentoDetalleCarga = b.ObservacionDocumentoDetalleCarga,
+			  a.DescripcionDocumentoDetalleCarga = b.DescripcionDocumentoDetalleCarga,
+			  a.MarcasNumerosDocumentoDetalleCarga = b.MarcasNumerosDocumentoDetalleCarga,
+			  a.FaltoDocumentoDetalleCarga = b.FaltoDocumentoDetalleCarga,
+			  --a.EstadoRegistro = b.EstadoRegistro,
+			  --a.UsuarioActualizacion = b.UsuarioRegistro,
+			  a.FechaHoraActualizacion = GETDATE()
+        FROM    DocumentoDetalleCarga (NOLOCK) a  
+                INNER JOIN @dtDocumentoDetalleCarga b   
+                ON   
+                a.CodigoDocumentoDetalleCarga = b.CodigoDocumentoDetalleCarga  
+                and a.CodigoDocumento=b.CodigoDocumento  
+        WHERE   b.Accion = 'U' 
+  
+    END  
+GO
+CREATE TYPE [dbo].[dtDocumentoDetalleCliente] AS TABLE(
+	 CodigoDocumentoDetalleCliente BIGINT,
+	 CodigoDocumento BIGINT NOT NULL,
+	 CodigoRol BIGINT NOT NULL,
+	 CodigoPersona BIGINT NOT NULL,
+	 --EstadoRegistro BIT NOT NULL,
+	 --UsuarioRegistro VARCHAR(100),
+	 Accion CHAR(1) NULL
+)
+GO
+
+CREATE PROCEDURE dbo.USP_REGISTRAR_DOCUMENTODETALLECLIENTE 
+    (  
+      @dtDocumentoDetalleCliente AS dbo.dtDocumentoDetalleCliente READONLY 
+    )  
+AS   
+    BEGIN  
+  
+        UPDATE a SET 
+			a.EstadoRegistro = 0,
+			--a.UsuarioActualizacion = b.UsuarioRegistro,
+			a.FechaHoraActualizacion = GETDATE()
+        FROM    DocumentoDetalleCliente (NOLOCK) a  
+                INNER JOIN @dtDocumentoDetalleCliente b   
+                ON   
+                a.CodigoDocumentoDetalleCliente = b.CodigoDocumentoDetalleCliente 
+                and a.CodigoDocumento=b.CodigoDocumento  
+        WHERE   b.Accion = 'D'
+                
+       INSERT dbo.DocumentoDetalleCliente
+               ( CodigoDocumento ,
+                 CodigoRol ,
+                 CodigoPersona
+                 --EstadoRegistro ,
+                 --UsuarioCreacion 
+               )
+        
+        SELECT	 CodigoDocumento ,
+                 CodigoRol ,
+                 CodigoPersona 
+				 --EstadoRegistro ,
+				 --UsuarioRegistro
+		FROM @dtDocumentoDetalleCliente  
+		WHERE Accion = 'I'
+        
+        UPDATE a SET 
+			  a.CodigoDocumento = b.CodigoDocumento,
+              a.CodigoRol = b.CodigoRol,
+              a.CodigoPersona = b.CodigoPersona,
+			  --a.EstadoRegistro = b.EstadoRegistro,
+			  --a.UsuarioActualizacion = b.UsuarioRegistro,
+			  a.FechaHoraActualizacion = GETDATE()
+        FROM    DocumentoDetalleCliente (NOLOCK) a  
+                INNER JOIN @dtDocumentoDetalleCliente b   
+                ON   
+                a.CodigoDocumentoDetalleCliente = b.CodigoDocumentoDetalleCliente 
+                and a.CodigoDocumento=b.CodigoDocumento  
+        WHERE   b.Accion = 'U' 
+  
+    END  
+GO
+
+-- USP_VALIDAR_DOCUMENTO 1,1,1,1,1,1,1,'HLCU123'
+CREATE PROCEDURE [dbo].[USP_VALIDAR_DOCUMENTO]       
+ ( 
+  @CodigoDocumento BIGINT=NULL,       
+  @CodigoItinerario BIGINT=NULL,
+  @CodigoPuertoOrigenDocumento BIGINT=NULL,
+  @CodigoPuertoEmbarqueDocumento BIGINT=NULL,
+  @CodigoPuertoDescargaDocumento BIGINT=NULL,
+  @CodigoPuertoFinalDocumento BIGINT=NULL,
+  @CodigoLineaNaviera BIGINT=NULL,
+  @CodigoAduana BIGINT=NULL,
+  @NumeroDocumento VARCHAR(25)=NULL       
+ )         
+ AS      
+BEGIN     
+ 
+ SELECT  
+ NumeroDocumento     
+ FROM dbo.Documento a (NOLOCK) 
+ WHERE  
+ a.CodigoItinerario=@CodigoItinerario AND
+ a.CodigoPuertoOrigenDocumento = @CodigoPuertoOrigenDocumento AND
+ a.CodigoPuertoEmbarqueDocumento = @CodigoPuertoEmbarqueDocumento AND
+ a.CodigoPuertoDescargaDocumento = @CodigoPuertoDescargaDocumento AND
+ a.CodigoPuertoFinalDocumento = @CodigoPuertoFinalDocumento AND
+ a.CodigoLineaNaviera  = @CodigoLineaNaviera AND
+ a.CodigoAduana = @CodigoAduana AND
+ a.NumeroDocumento = @NumeroDocumento AND
+ a.CodigoDocumento <> @CodigoDocumento AND
+ a.EstadoRegistro=1 
+
+END
+
+GO
+CREATE PROCEDURE USP_INSERTAR_PERSONA
+(
+	 @CodigoTipoDocumento BIGINT=NULL,
+	 @CodigoPais BIGINT=NULL,
+	 @RazonSocialPersona VARCHAR(150)=NULL,
+	 @NumeroDocumentoPersona VARCHAR(11)=NULL,
+	 @DireccionPersona VARCHAR(250)=NULL,
+	 @TelefonoPersona VARCHAR(20)=NULL,
+	 @EmailPersona VARCHAR(150)=NULL,
+	 @ContactoPersona VARCHAR(80)=NULL,
+	 @WebPersona VARCHAR(80)=NULL,
+     @UsuarioRegistro VARCHAR(100)=NULL,
+	 @CodigoPersona BIGINT OUTPUT  
+)
+AS
+BEGIN
+
+INSERT dbo.Persona
+        ( CodigoTipoDocumento ,
+          CodigoPais ,
+          RazonSocialPersona ,
+          NumeroDocumentoPersona ,
+          DireccionPersona ,
+          TelefonoPersona ,
+          EmailPersona ,
+          ContactoPersona ,
+          WebPersona ,
+          UsuarioCreacion  
+        )
+VALUES  ( @CodigoTipoDocumento ,
+          @CodigoPais ,
+          @RazonSocialPersona ,
+          @NumeroDocumentoPersona ,
+          @DireccionPersona ,
+          @TelefonoPersona ,
+          @EmailPersona ,
+          @ContactoPersona ,
+          @WebPersona ,
+          @UsuarioRegistro 
+        )
+SET @CodigoPersona=@@IDENTITY; 
+
+END
+
+GO
+
+CREATE PROCEDURE USP_MODIFICAR_PERSONA
+(     
+     @CodigoPersona BIGINT=NULL,
+     @CodigoTipoDocumento BIGINT=NULL,
+	 @CodigoPais BIGINT=NULL,
+	 @RazonSocialPersona VARCHAR(150)=NULL,
+	 @NumeroDocumentoPersona VARCHAR(11)=NULL,
+	 @DireccionPersona VARCHAR(250)=NULL,
+	 @TelefonoPersona VARCHAR(20)=NULL,
+	 @EmailPersona VARCHAR(150)=NULL,
+	 @ContactoPersona VARCHAR(80)=NULL,
+	 @WebPersona VARCHAR(80)=NULL,
+	 @EstadoRegistro BIT=NULL,
+     @UsuarioRegistro VARCHAR(100)=NULL
+)
+AS
+BEGIN
+	
+	UPDATE dbo.Persona SET 
+			 CodigoTipoDocumento = @CodigoTipoDocumento,
+			 CodigoPais = @CodigoPais,
+			 RazonSocialPersona = @RazonSocialPersona,
+			 NumeroDocumentoPersona = @NumeroDocumentoPersona,
+			 DireccionPersona = @DireccionPersona,
+			 TelefonoPersona = @TelefonoPersona,
+			 EmailPersona = @EmailPersona,
+			 ContactoPersona = @ContactoPersona,
+			 WebPersona = @WebPersona,
+			 EstadoRegistro = @EstadoRegistro,
+			 UsuarioActualizacion = @UsuarioRegistro,
+			 FechaHoraActualizacion = GETDATE()
+	WHERE CodigoPersona = @CodigoPersona
+
+END
+
+GO
+
+CREATE TYPE [dbo].[dtPersonaRol] AS TABLE(
+	 CodigoPersonaRol BIGINT,
+	 CodigoPersona BIGINT NOT NULL,
+	 CodigoRol BIGINT NOT NULL,
+	 CodigoAduanaPersonaRol VARCHAR(4) NULL,
+	 --EstadoRegistro BIT NOT NULL,
+	 --UsuarioRegistro VARCHAR(100),
+	 Accion CHAR(1) NULL
+)
+GO
+
+--declare @p1 dbo.dtPersonaRol
+--DECLARE @Usuario VARCHAR(100)='JAV'
+--insert into @p1 values(NULL,1,1,'1234','I')
+--insert into @p1 values(NULL,2,2,'6789','I')
+
+--exec USP_REGISTRA_PERSONAROL @dtPersonaRol=@p1,@UsuarioRegistro=@Usuario
+
+--declare @p1 dbo.dtPersonaRol
+--DECLARE @Usuario VARCHAR(100)='JAM'
+--insert into @p1 values(9998,1,1,'1234','D')
+--insert into @p1 values(9999,2,2,'6789','D')
+
+CREATE PROCEDURE [dbo].[USP_REGISTRAR_PERSONAROL]  
+    (  
+      @dtPersonaRol AS dbo.dtPersonaRol READONLY 
+    )  
+AS   
+    BEGIN  
+  
+        DELETE a
+        FROM    PersonaRol (NOLOCK) a  
+                INNER JOIN @dtPersonaRol b ON   
+                a.CodigoPersona=b.CodigoPersona AND 
+                a.CodigoRol = b.CodigoRol
+        WHERE   b.Accion = 'D'
+                
+INSERT dbo.PersonaRol
+        ( CodigoPersona ,
+          CodigoRol ,
+          CodigoAduanaPersonaRol 
+          --EstadoRegistro ,
+          --UsuarioCreacion
+        )
+SELECT  CodigoPersona ,  
+                CodigoRol,   
+                CodigoAduanaPersonaRol
+                --EstadoRegistro,
+                --UsuarioRegistro  
+                FROM @dtPersonaRol  
+                WHERE Accion = 'I'
+        
+        UPDATE a SET 
+		a.CodigoPersona = b.CodigoPersona,
+		a.CodigoRol = b.CodigoRol,
+		a.CodigoAduanaPersonaRol = b.CodigoAduanaPersonaRol
+		--a.EstadoRegistro = b.EstadoRegistro,
+		--a.UsuarioActualizacion = b.UsuarioRegistro,
+		--a.FechaHoraActualizacion = GETDATE()
+        FROM    PersonaRol (NOLOCK) a  
+                INNER JOIN @dtPersonaRol b ON 
+                --a.CodigoPersonaRol = b.CodigoPersonaRol AND
+                a.CodigoPersona=b.CodigoPersona AND 
+                a.CodigoRol = b.CodigoRol
+        WHERE   b.Accion = 'U' 
+  
+    END   
+GO
+
+-- USP_CONSULTAR_PERSONA 136,NULL,NULL,NULL,NULL,NULL,100000,NULL,NULL
+CREATE PROCEDURE [dbo].[USP_CONSULTAR_PERSONA]       
+ (        
+  @CodigoPersona BIGINT=NULL,
+  --@CodigoRol BIGINT=NULL,
+  @RazonSocialPersona VARCHAR(150)=NULL,
+  @NumeroDocumentoPersona VARCHAR(11)=NULL   
+ ,@OrdenCampo VARCHAR(50)=NULL         
+ ,@OrdenOrientacion VARCHAR(4)=NULL         
+ ,@PaginaActual INT=1         
+ ,@NroRegistrosPorPagina INT=10         
+ ,@TotalRegistros INT OUTPUT         
+ ,@CantidadPaginas INT OUTPUT         
+ )         
+ AS      
+BEGIN     
+ DECLARE @vInicio int, @vFin INT,@vNumeroSerie int 
+ 
+ DECLARE @dtPersona AS  
+ TABLE( 
+ CodigoPersona BIGINT,
+ RazonSocialPersona VARCHAR(150),
+ NumeroDocumentoPersona VARCHAR(11),
+ NombreTipoDocumento VARCHAR(50),
+ NombrePais VARCHAR(150),       
+ UsuarioCreacion VARCHAR(100),         
+ FechaHoraCreacion DATETIME,         
+ UsuarioActualizacion VARCHAR(100),         
+ FechaHoraActualizacion DATETIME)    
+ 
+ IF @PaginaActual IS NULL SET @PaginaActual = 1
+ IF @NroRegistrosPorPagina IS NULL SET @NroRegistrosPorPagina = 10
+           
+  SET @vInicio = ((@PaginaActual*@NroRegistrosPorPagina-@NroRegistrosPorPagina)+1);         
+  SET @vFin = (@PaginaActual*@NroRegistrosPorPagina);          
+            
+ INSERT INTO @dtPersona  
+ ( 
+ CodigoPersona,
+ RazonSocialPersona,
+ NumeroDocumentoPersona,
+ NombreTipoDocumento,
+ NombrePais,      
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion
+ ) 
+ SELECT  
+ a.CodigoPersona,
+ a.RazonSocialPersona, 
+ a.NumeroDocumentoPersona, 
+ b.NombreTipoDocumento,
+ c.NombrePais,        
+ a.UsuarioCreacion,         
+ a.FechaHoraCreacion,         
+ a.UsuarioActualizacion,         
+ a.FechaHoraActualizacion        
+ FROM dbo.Persona a (NOLOCK) 
+ JOIN dbo.TipoDocumento b ON a.CodigoTipoDocumento = b.CodigoTipoDocumento
+ JOIN dbo.Pais c (NOLOCK) ON a.CodigoPais = c.CodigoPais 
+ --JOIN dbo.PersonaRol d (NOLOCK) ON a.CodigoPersona = d.CodigoPersona 
+ WHERE  
+ (@CodigoPersona IS NULL OR a.CodigoPersona=@CodigoPersona) AND
+ (@NumeroDocumentoPersona IS NULL OR a.NumeroDocumentoPersona=@NumeroDocumentoPersona) AND
+ (@RazonSocialPersona IS NULL OR a.RazonSocialPersona LIKE '%' + @RazonSocialPersona + '%') AND 
+ 
+  a.EstadoRegistro=1
+        
+ SELECT 
+ CodigoPersona,
+ RazonSocialPersona, 
+ NumeroDocumentoPersona, 
+ NombreTipoDocumento,  
+ NombrePais,      
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion        
+ FROM (         
+ SELECT          
+ CASE WHEN UPPER(@OrdenOrientacion)='ASC' OR @OrdenOrientacion IS NULL THEN         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoPersona') THEN ROW_NUMBER()OVER(ORDER BY CodigoPersona ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('RazonSocialPersona') THEN ROW_NUMBER()OVER(ORDER BY RazonSocialPersona ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NumeroDocumentoPersona') THEN ROW_NUMBER()OVER(ORDER BY NumeroDocumentoPersona ASC)
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreTipoDocumento') THEN ROW_NUMBER()OVER(ORDER BY NombreTipoDocumento ASC) 
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombrePais') THEN ROW_NUMBER()OVER(ORDER BY NombrePais ASC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion ASC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY RazonSocialPersona ASC)         
+  END         
+ ELSE         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoPersona') THEN ROW_NUMBER()OVER(ORDER BY CodigoPersona DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('RazonSocialPersona') THEN ROW_NUMBER()OVER(ORDER BY RazonSocialPersona DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NumeroDocumentoPersona') THEN ROW_NUMBER()OVER(ORDER BY NumeroDocumentoPersona DESC)   
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreTipoDocumento') THEN ROW_NUMBER()OVER(ORDER BY NombreTipoDocumento DESC)  
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombrePais') THEN ROW_NUMBER()OVER(ORDER BY NombrePais DESC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion DESC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY RazonSocialPersona DESC)         
+  END         
+ END AS [NROORDEN],
+ CodigoPersona,
+ RazonSocialPersona, 
+ NumeroDocumentoPersona, 
+ NombreTipoDocumento,  
+ NombrePais,      
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion         
+ FROM @dtPersona         
+ )Info         
+ WHERE         
+   [NROORDEN] = CASE WHEN (@PaginaActual is null)THEN [NROORDEN] ELSE -1 END         
+   OR [NROORDEN] BETWEEN @vInicio AND @vFin         
+   ORDER BY         
+   [NROORDEN] ASC;         
+           
+ SELECT  @TotalRegistros = count(1),         
+   @CantidadPaginas =  CASE WHEN @NroRegistrosPorPagina is null THEN 1         
+   ELSE CAST(CEILING(count(1)/CAST(@NroRegistrosPorPagina as float)) as int)         
+   END          
+ FROM @dtPersona        
+END
+
+GO
+
+-- USP_CONSULTAR_DETALLE_PERSONA 136
+CREATE PROCEDURE [dbo].[USP_CONSULTAR_DETALLE_PERSONA]  
+    (  
+      @CodigoPersona BIGINT=NULL
+    )  
+AS   
+    BEGIN  
+  
+-- Persona  
+        SELECT  
+			CodigoPersona,
+			a.CodigoTipoDocumento,
+			b.NombreTipoDocumento,
+			a.CodigoPais,
+			c.NombrePais,
+			RazonSocialPersona,                                                                                                                                     
+			NumeroDocumentoPersona, 
+			DireccionPersona,                                                                                                                                                                                                                                           
+			TelefonoPersona,      
+			EmailPersona,                                                                                                                                           
+			ContactoPersona,                                                                  
+			WebPersona,                                                                       
+			a.EstadoRegistro, 
+			a.UsuarioCreacion,                                                                                      
+			a.FechaHoraCreacion,       
+			a.UsuarioActualizacion,                                                                                 
+			a.FechaHoraActualizacion
+        FROM dbo.Persona a WITH (NOLOCK)
+        JOIN dbo.TipoDocumento b (NOLOCK) ON  a.CodigoTipoDocumento = b.CodigoTipoDocumento
+        JOIN dbo.Pais c (NOLOCK) ON c.CodigoPais = a.CodigoPais
+        WHERE   CodigoPersona = @CodigoPersona
+  
+-- Rol de la Persona  
+        SELECT  
+				a.CodigoPersonaRol,
+				a.CodigoPersona, 
+			    a.CodigoRol, 
+                c.NombreRol,
+                a.CodigoAduanaPersonaRol
+        FROM    dbo.PersonaRol a WITH ( NOLOCK ) 
+        JOIN dbo.Persona b (NOLOCK) ON a.CodigoPersona = b.CodigoPersona 
+        JOIN dbo.Rol c (NOLOCK) ON a.CodigoRol = c.CodigoRol 
+        WHERE a.CodigoPersona = @CodigoPersona
+        ORDER BY a.CodigoRol
+        
+    END  
+
+GO
+
+-- USP_VALIDAR_PERSONA 8763,2,'20100120403'  
+CREATE PROCEDURE [dbo].[USP_VALIDAR_PERSONA]         
+ (       
+  @CodigoPersona BIGINT=NULL, 
+  @CodigoTipoDocumento BIGINT=NULL,
+  @NumeroDocumentoPersona BIGINT=NULL     
+ )           
+ AS        
+BEGIN       
+   
+ SELECT    
+ NumeroDocumentoPersona       
+ FROM dbo.Persona (NOLOCK)   
+ WHERE    
+ NumeroDocumentoPersona = @NumeroDocumentoPersona AND 
+ CodigoTipoDocumento = @CodigoTipoDocumento AND
+ ISNULL(@NumeroDocumentoPersona,'')<>'' AND  
+ CodigoPersona <> @CodigoPersona AND  
+ EstadoRegistro=1   
+  
+END  
+
+GO
+
+-- USP_CONSULTAR_PERSONA_POR_ROL 5886,5,NULL,NULL,NULL,NULL,NULL,100000,NULL,NULL
+CREATE PROCEDURE [dbo].[USP_CONSULTAR_PERSONA_POR_ROL]       
+ (        
+  @CodigoPersona BIGINT=NULL,
+  @CodigoRol BIGINT=NULL,
+  @RazonSocialPersona VARCHAR(150)=NULL,
+  @NumeroDocumentoPersona VARCHAR(11)=NULL   
+ ,@OrdenCampo VARCHAR(50)=NULL         
+ ,@OrdenOrientacion VARCHAR(4)=NULL         
+ ,@PaginaActual INT=1         
+ ,@NroRegistrosPorPagina INT=10         
+ ,@TotalRegistros INT OUTPUT         
+ ,@CantidadPaginas INT OUTPUT         
+ )         
+ AS      
+BEGIN     
+ DECLARE @vInicio int, @vFin INT,@vNumeroSerie int 
+ 
+ DECLARE @dtPersona AS  
+ TABLE( 
+ CodigoPersona BIGINT,
+ RazonSocialPersona VARCHAR(150),
+ NumeroDocumentoPersona VARCHAR(11),
+ NombreTipoDocumento VARCHAR(50),
+ NombrePais VARCHAR(150),       
+ UsuarioCreacion VARCHAR(100),         
+ FechaHoraCreacion DATETIME,         
+ UsuarioActualizacion VARCHAR(100),         
+ FechaHoraActualizacion DATETIME)    
+ 
+ IF @PaginaActual IS NULL SET @PaginaActual = 1
+ IF @NroRegistrosPorPagina IS NULL SET @NroRegistrosPorPagina = 10
+           
+  SET @vInicio = ((@PaginaActual*@NroRegistrosPorPagina-@NroRegistrosPorPagina)+1);         
+  SET @vFin = (@PaginaActual*@NroRegistrosPorPagina);          
+            
+ INSERT INTO @dtPersona  
+ ( 
+ CodigoPersona,
+ RazonSocialPersona,
+ NumeroDocumentoPersona,
+ NombreTipoDocumento,
+ NombrePais,      
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion
+ ) 
+ SELECT  
+ a.CodigoPersona,
+ a.RazonSocialPersona, 
+ a.NumeroDocumentoPersona, 
+ b.NombreTipoDocumento,
+ c.NombrePais,        
+ a.UsuarioCreacion,         
+ a.FechaHoraCreacion,         
+ a.UsuarioActualizacion,         
+ a.FechaHoraActualizacion        
+ FROM dbo.Persona a (NOLOCK) 
+ JOIN dbo.TipoDocumento b ON a.CodigoTipoDocumento = b.CodigoTipoDocumento
+ JOIN dbo.Pais c (NOLOCK) ON a.CodigoPais = c.CodigoPais 
+ JOIN dbo.PersonaRol d (NOLOCK) ON a.CodigoPersona = d.CodigoPersona 
+ --JOIN dbo.Rol e (NOLOCK) ON d.CodigoRol = e.CodigoRol
+ WHERE  
+ (@CodigoPersona IS NULL OR a.CodigoPersona=@CodigoPersona) AND
+ (@NumeroDocumentoPersona IS NULL OR a.NumeroDocumentoPersona=@NumeroDocumentoPersona) AND
+ (@RazonSocialPersona IS NULL OR a.RazonSocialPersona LIKE '%' + @RazonSocialPersona + '%') AND
+ (@CodigoRol = d.CodigoRol) AND 
+  a.EstadoRegistro=1
+        
+ SELECT 
+ CodigoPersona,
+ RazonSocialPersona, 
+ NumeroDocumentoPersona, 
+ NombreTipoDocumento,  
+ NombrePais,      
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion        
+ FROM (         
+ SELECT          
+ CASE WHEN UPPER(@OrdenOrientacion)='ASC' OR @OrdenOrientacion IS NULL THEN         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoPersona') THEN ROW_NUMBER()OVER(ORDER BY CodigoPersona ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('RazonSocialPersona') THEN ROW_NUMBER()OVER(ORDER BY RazonSocialPersona ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NumeroDocumentoPersona') THEN ROW_NUMBER()OVER(ORDER BY NumeroDocumentoPersona ASC)
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreTipoDocumento') THEN ROW_NUMBER()OVER(ORDER BY NombreTipoDocumento ASC) 
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombrePais') THEN ROW_NUMBER()OVER(ORDER BY NombrePais ASC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion ASC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY RazonSocialPersona ASC)         
+  END         
+ ELSE         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoPersona') THEN ROW_NUMBER()OVER(ORDER BY CodigoPersona DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('RazonSocialPersona') THEN ROW_NUMBER()OVER(ORDER BY RazonSocialPersona DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('NumeroDocumentoPersona') THEN ROW_NUMBER()OVER(ORDER BY NumeroDocumentoPersona DESC)   
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreTipoDocumento') THEN ROW_NUMBER()OVER(ORDER BY NombreTipoDocumento DESC)  
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombrePais') THEN ROW_NUMBER()OVER(ORDER BY NombrePais DESC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioCreacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('UsuarioActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY UsuarioActualizacion DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraActualizacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraActualizacion DESC)         
+   ELSE ROW_NUMBER()OVER(ORDER BY RazonSocialPersona DESC)         
+  END         
+ END AS [NROORDEN],
+ CodigoPersona,
+ RazonSocialPersona, 
+ NumeroDocumentoPersona, 
+ NombreTipoDocumento,  
+ NombrePais,      
+ UsuarioCreacion,         
+ FechaHoraCreacion,         
+ UsuarioActualizacion,         
+ FechaHoraActualizacion         
+ FROM @dtPersona         
+ )Info         
+ WHERE         
+   [NROORDEN] = CASE WHEN (@PaginaActual is null)THEN [NROORDEN] ELSE -1 END         
+   OR [NROORDEN] BETWEEN @vInicio AND @vFin         
+   ORDER BY         
+   [NROORDEN] ASC;         
+           
+ SELECT  @TotalRegistros = count(1),         
+   @CantidadPaginas =  CASE WHEN @NroRegistrosPorPagina is null THEN 1         
+   ELSE CAST(CEILING(count(1)/CAST(@NroRegistrosPorPagina as float)) as int)         
+   END          
+ FROM @dtPersona        
+END
+
+GO
+  
+CREATE PROCEDURE USP_LISTAR_TIPOBL 
+AS  
+BEGIN  
+ SELECT CodigoTipoBL,NombreTipoBL FROM dbo.TipoBL (NOLOCK) WHERE EstadoRegistro = 1   
+END 
+
+GO 
+
+CREATE PROCEDURE USP_LISTAR_TIPOENVIO 
+AS  
+BEGIN  
+ SELECT CodigoTipoEnvio,NombreTipoEnvio FROM dbo.TipoEnvio (NOLOCK) WHERE EstadoRegistro = 1   
+END
+
+GO
+
+CREATE PROCEDURE USP_LISTAR_TIPOOPERACION
+AS  
+BEGIN  
+ SELECT CodigoTipoOperacion,NombreTipoOperacion FROM dbo.TipoOperacion (NOLOCK) WHERE EstadoRegistro = 1   
+END
+
+GO
+
+CREATE PROCEDURE USP_LISTAR_CONDICION_CONTRATO
+AS  
+BEGIN  
+ SELECT CodigoCondicionContrato,NombreCondicionContrato FROM dbo.CondicionContrato (NOLOCK) WHERE EstadoRegistro = 1   
+END
+
+GO
+
+CREATE PROCEDURE USP_LISTAR_MODO_PAGO
+AS  
+BEGIN  
+ SELECT CodigoModoPago,NombreModoPago FROM dbo.ModoPago (NOLOCK) WHERE EstadoRegistro = 1   
+END
+
+GO
+
+CREATE PROCEDURE USP_LISTAR_CONDICION_TRANSPORTE
+AS  
+BEGIN  
+ SELECT CodigoCondicionTransporte,NombreCondicionTransporte FROM dbo.CondicionTransporte (NOLOCK) WHERE EstadoRegistro = 1   
+END
+
+GO
+CREATE PROCEDURE USP_LISTAR_TEMPERATURA
+AS  
+BEGIN  
+ SELECT CodigoTemperatura,NombreTemperatura FROM dbo.Temperatura (NOLOCK) WHERE EstadoRegistro = 1   
+END
+
+GO
+CREATE PROCEDURE USP_LISTAR_CONDICION_CARGA
+AS  
+BEGIN  
+ SELECT CodigoCondicionCarga,NombreCondicionCarga FROM CondicionCarga (NOLOCK) WHERE EstadoRegistro = 1   
+END
+
+GO
+
+-- USP_CONSULTAR_TRANSMISION_NAVES NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'20160101','20190101',NULL,NULL,NULL,1000,NULL,NULL  
+CREATE PROCEDURE [dbo].[USP_CONSULTAR_TRANSMISION_NAVES]         
+ (          
+  @CodigoItinerario BIGINT=NULL,  
+  @CodigoNave BIGINT=NULL,  
+  @CodigoAduana BIGINT=NULL,  
+  @CodigoTipoOperacion BIGINT=NULL,   
+  @NumeroViajeItinerario VARCHAR(6)=NULL,  
+  @NumeroManifiestoItinerario VARCHAR(6)=NULL,  
+  @AnioManifiestoItinerario INTEGER=NULL,  
+  @EstadoEnvioAduanas BIT=NULL,
+  @EstadoTransmision BIT=NULL,
+  @FechaInicio DATETIME=NULL,  
+  @FechaFin DATETIME=NULL,  
+  @OrdenCampo VARCHAR(50)=NULL           
+ ,@OrdenOrientacion VARCHAR(4)=NULL           
+ ,@PaginaActual INT=1           
+ ,@NroRegistrosPorPagina INT=10           
+ ,@TotalRegistros INT OUTPUT           
+ ,@CantidadPaginas INT OUTPUT           
+ )           
+ AS        
+BEGIN       
+ DECLARE @vInicio int, @vFin INT 
+   
+ DECLARE @dtTransmisionNave AS    
+ TABLE(    
+ CodigoItinerario BIGINT, 
+ AnioManifiestoItinerario INTEGER,  
+ NumeroManifiestoItinerario VARCHAR(6),  
+ NombreNave VARCHAR(50),  
+ NumeroViajeItinerario VARCHAR(6),  
+ NombreAduana VARCHAR(150),  
+ NombreTipoOperacion VARCHAR(50),   
+ NombreOperadorDescargaItinerario VARCHAR(150),   
+ FechaArriboItinerario DATETIME,                          
+ TotalPesoBrutoTransmision DECIMAL(15,2),
+ TotalBultosTransmision BIGINT,
+ TotalContenedoresTransmision BIGINT,
+ EstadoEnvioAduanas BIT,
+ EstadoTransmision BIT,
+ FechaHoraCreacion DATETIME
+ )      
+  	  
+ IF @PaginaActual IS NULL SET @PaginaActual = 1  
+ IF @NroRegistrosPorPagina IS NULL SET @NroRegistrosPorPagina = 10  
+             
+  SET @vInicio = ((@PaginaActual*@NroRegistrosPorPagina-@NroRegistrosPorPagina)+1);           
+  SET @vFin = (@PaginaActual*@NroRegistrosPorPagina);            
+              
+ INSERT INTO @dtTransmisionNave    
+ (   
+ CodigoItinerario,  
+ AnioManifiestoItinerario, 
+ NumeroManifiestoItinerario,  
+ NombreNave,  
+ NumeroViajeItinerario,  
+ NombreAduana,  
+ NombreTipoOperacion,   
+ NombreOperadorDescargaItinerario,    
+ FechaArriboItinerario,                          
+ TotalPesoBrutoTransmision,
+ TotalBultosTransmision,
+ TotalContenedoresTransmision,
+ EstadoEnvioAduanas,
+ EstadoTransmision,
+ FechaHoraCreacion  
+ )   
+ SELECT 
+ i.CodigoItinerario, 
+ i.AnioManifiestoItinerario, 
+ i.NumeroManifiestoItinerario,  
+ n.NombreNave,  
+ i.NumeroViajeItinerario,  
+ a.NombreAduana,  
+ tiop.NombreTipoOperacion,   
+ p.RazonSocialPersona,    
+ i.FechaArriboItinerario,                         
+ i.TotalPesoBrutoTransmision,
+ i.TotalBultosTransmision,
+ i.TotalContenedoresTransmision,
+ i.EstadoEnvioAduanas,
+ i.EstadoTransmision,
+ i.FechaHoraCreacion
+FROM dbo.Itinerario i (NOLOCK) 
+INNER JOIN dbo.Nave n (NOLOCK) ON i.CodigoNave = n.CodigoNave
+INNER JOIN dbo.Aduana a (NOLOCK) ON i.CodigoAduana = a.CodigoAduana
+INNER JOIN dbo.TipoOperacion tiop (NOLOCK) ON i.CodigoTipoOperacion = tiop.CodigoTipoOperacion
+INNER JOIN dbo.Persona p (NOLOCK) ON i.CodigoOperadorDescargaItinerario = p.CodigoPersona
+WHERE   
+ (@CodigoItinerario IS NULL OR i.CodigoItinerario=@CodigoItinerario) AND  
+ (@CodigoNave IS NULL OR i.CodigoNave=@CodigoNave) AND  
+ (@NumeroViajeItinerario IS NULL OR i.NumeroViajeItinerario=@NumeroViajeItinerario) AND  
+ (@CodigoAduana IS NULL OR i.CodigoAduana=@CodigoAduana) AND  
+ (@CodigoTipoOperacion IS NULL OR i.CodigoTipoOperacion=@CodigoTipoOperacion) AND   
+ (@NumeroManifiestoItinerario IS NULL OR i.NumeroManifiestoItinerario=@NumeroManifiestoItinerario) AND  
+ (@AnioManifiestoItinerario IS NULL OR i.AnioManifiestoItinerario=@AnioManifiestoItinerario) AND     
+ (CONVERT(VARCHAR(10),i.FechaHoraCreacion,112) BETWEEN CONVERT(VARCHAR(10),@FechaInicio,112) AND CONVERT(VARCHAR(10),@FechaFin,112)) AND
+ (@EstadoEnvioAduanas IS NULL OR i.EstadoEnvioAduanas=@EstadoEnvioAduanas) AND   
+ (@EstadoTransmision IS NULL OR i.EstadoTransmision=@EstadoTransmision) AND   
+  a.EstadoRegistro=1   
+  
+ SELECT   
+ CodigoItinerario,  
+ AnioManifiestoItinerario, 
+ NumeroManifiestoItinerario,  
+ NombreNave,  
+ NumeroViajeItinerario,  
+ NombreAduana,  
+ NombreTipoOperacion,   
+ NombreOperadorDescargaItinerario,    
+ FechaArriboItinerario,                          
+ TotalPesoBrutoTransmision,
+ TotalBultosTransmision,
+ TotalContenedoresTransmision,
+ EstadoEnvioAduanas,
+ EstadoTransmision,
+ FechaHoraCreacion          
+ FROM (           
+ SELECT            
+ CASE WHEN UPPER(@OrdenOrientacion)='ASC' OR @OrdenOrientacion IS NULL THEN           
+  CASE             
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoItinerario') THEN ROW_NUMBER()OVER(ORDER BY CodigoItinerario ASC)           
+   WHEN  UPPER(@OrdenCampo) = UPPER('AnioManifiestoItinerario') THEN ROW_NUMBER()OVER(ORDER BY AnioManifiestoItinerario ASC)           
+   WHEN  UPPER(@OrdenCampo) = UPPER('NumeroManifiestoItinerario') THEN ROW_NUMBER()OVER(ORDER BY NumeroManifiestoItinerario ASC)     
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreNave') THEN ROW_NUMBER()OVER(ORDER BY NombreNave ASC)   
+   WHEN  UPPER(@OrdenCampo) = UPPER('NumeroViajeItinerario') THEN ROW_NUMBER()OVER(ORDER BY NumeroViajeItinerario ASC)   
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreAduana') THEN ROW_NUMBER()OVER(ORDER BY NombreAduana ASC)   
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreTipoOperacion') THEN ROW_NUMBER()OVER(ORDER BY NombreTipoOperacion ASC)        
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreOperadorDescargaItinerario') THEN ROW_NUMBER()OVER(ORDER BY NombreOperadorDescargaItinerario ASC)        
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaArriboItinerario')   THEN ROW_NUMBER()OVER(ORDER BY FechaArriboItinerario ASC)           
+   WHEN  UPPER(@OrdenCampo) = UPPER('TotalPesoBrutoTransmision')   THEN ROW_NUMBER()OVER(ORDER BY TotalPesoBrutoTransmision ASC)           
+   WHEN  UPPER(@OrdenCampo) = UPPER('TotalBultosTransmision')   THEN ROW_NUMBER()OVER(ORDER BY TotalBultosTransmision ASC)           
+   WHEN  UPPER(@OrdenCampo) = UPPER('TotalContenedoresTransmision')   THEN ROW_NUMBER()OVER(ORDER BY TotalContenedoresTransmision ASC)           
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion ASC)           
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoItinerario ASC)           
+  END           
+ ELSE           
+  CASE             
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoItinerario') THEN ROW_NUMBER()OVER(ORDER BY CodigoItinerario DESC)           
+   WHEN  UPPER(@OrdenCampo) = UPPER('AnioManifiestoItinerario') THEN ROW_NUMBER()OVER(ORDER BY AnioManifiestoItinerario DESC)           
+   WHEN  UPPER(@OrdenCampo) = UPPER('NumeroManifiestoItinerario') THEN ROW_NUMBER()OVER(ORDER BY NumeroManifiestoItinerario DESC)     
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreNave') THEN ROW_NUMBER()OVER(ORDER BY NombreNave DESC)   
+   WHEN  UPPER(@OrdenCampo) = UPPER('NumeroViajeItinerario') THEN ROW_NUMBER()OVER(ORDER BY NumeroViajeItinerario DESC)   
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreAduana') THEN ROW_NUMBER()OVER(ORDER BY NombreAduana DESC)   
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreTipoOperacion') THEN ROW_NUMBER()OVER(ORDER BY NombreTipoOperacion DESC)        
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreOperadorDescargaItinerario') THEN ROW_NUMBER()OVER(ORDER BY NombreOperadorDescargaItinerario DESC)        
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaArriboItinerario')   THEN ROW_NUMBER()OVER(ORDER BY FechaArriboItinerario DESC)           
+   WHEN  UPPER(@OrdenCampo) = UPPER('TotalPesoBrutoTransmision')   THEN ROW_NUMBER()OVER(ORDER BY TotalPesoBrutoTransmision DESC)           
+   WHEN  UPPER(@OrdenCampo) = UPPER('TotalBultosTransmision')   THEN ROW_NUMBER()OVER(ORDER BY TotalBultosTransmision DESC)           
+   WHEN  UPPER(@OrdenCampo) = UPPER('TotalContenedoresTransmision')   THEN ROW_NUMBER()OVER(ORDER BY TotalContenedoresTransmision DESC)           
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion DESC)           
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoItinerario DESC)             
+  END           
+ END AS [NROORDEN],  
+ CodigoItinerario,  
+ AnioManifiestoItinerario, 
+ NumeroManifiestoItinerario,  
+ NombreNave,  
+ NumeroViajeItinerario,  
+ NombreAduana,  
+ NombreTipoOperacion,   
+ NombreOperadorDescargaItinerario,    
+ FechaArriboItinerario,                          
+ TotalPesoBrutoTransmision,
+ TotalBultosTransmision,
+ TotalContenedoresTransmision,
+ EstadoEnvioAduanas,
+ EstadoTransmision,
+ FechaHoraCreacion            
+ FROM @dtTransmisionNave           
+ )Info           
+ WHERE           
+   [NROORDEN] = CASE WHEN (@PaginaActual is null)THEN [NROORDEN] ELSE -1 END           
+   OR [NROORDEN] BETWEEN @vInicio AND @vFin           
+   ORDER BY           
+   [NROORDEN] ASC;           
+             
+ SELECT  @TotalRegistros = count(1),           
+   @CantidadPaginas =  CASE WHEN @NroRegistrosPorPagina is null THEN 1           
+   ELSE CAST(CEILING(count(1)/CAST(@NroRegistrosPorPagina as float)) as int)           
+   END            
+ FROM @dtTransmisionNave          
+END  
+
+GO
+
+-- USP_CONSULTAR_TRANSMISION_DOCUMENTOS NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'20160101','20190101',NULL,NULL,NULL,1000,NULL,NULL
+CREATE PROCEDURE [dbo].[USP_CONSULTAR_TRANSMISION_DOCUMENTOS]         
+ (          
+  @CodigoDocumento BIGINT=NULL,  
+  @CodigoItinerario BIGINT=NULL,
+  @NumeroManifiestoItinerario VARCHAR(6)=NULL,  
+  @AnioManifiestoItinerario INTEGER=NULL,  
+  @NumeroDocumento VARCHAR(25)=NULL,
+  @CodigoTipoEnvio BIGINT=NULL,
+  @EstadoEnvioAduanas BIT=NULL,
+  @EstadoTransmision BIT=NULL,  
+  @FechaInicio DATETIME=NULL,  
+  @FechaFin DATETIME=NULL,
+  @OrdenCampo VARCHAR(50)=NULL           
+ ,@OrdenOrientacion VARCHAR(4)=NULL           
+ ,@PaginaActual INT=1           
+ ,@NroRegistrosPorPagina INT=10           
+ ,@TotalRegistros INT OUTPUT           
+ ,@CantidadPaginas INT OUTPUT           
+ )           
+ AS        
+BEGIN       
+ DECLARE @vInicio int, @vFin INT 
+   
+ DECLARE @dtTransmisionDocumento AS    
+ TABLE(    
+ CodigoDocumento BIGINT, 
+ NumeroDocumento VARCHAR(25),
+ NombreNave VARCHAR(50), 
+ NumeroViajeItinerario VARCHAR(6), 
+ AnioManifiestoItinerario INTEGER,  
+ NumeroManifiestoItinerario VARCHAR(6),    
+ NombreAduana VARCHAR(150),   
+ NombreTipoEnvio VARCHAR(50), 
+ TotalPesoBrutoTransmision DECIMAL(15,2),
+ TotalBultosTransmision BIGINT,
+ TotalContenedoresTransmision BIGINT,
+ Consignatario VARCHAR(150),
+ Embarcador VARCHAR(150),
+ PuertoEmbarque VARCHAR(100),
+ PuertoFinal VARCHAR(100),
+ --FechaCreacionTransmision DATETIME,
+ EstadoEnvioAduanas BIT,
+ EstadoTransmision BIT,
+ FechaHoraCreacion DATETIME
+ )      
+  	  
+ IF @PaginaActual IS NULL SET @PaginaActual = 1  
+ IF @NroRegistrosPorPagina IS NULL SET @NroRegistrosPorPagina = 10  
+             
+  SET @vInicio = ((@PaginaActual*@NroRegistrosPorPagina-@NroRegistrosPorPagina)+1);           
+  SET @vFin = (@PaginaActual*@NroRegistrosPorPagina);            
+              
+ INSERT INTO @dtTransmisionDocumento    
+ (   
+ CodigoDocumento, 
+ NumeroDocumento,
+ NombreNave, 
+ NumeroViajeItinerario, 
+ AnioManifiestoItinerario,  
+ NumeroManifiestoItinerario,    
+ NombreAduana,   
+ NombreTipoEnvio, 
+ TotalPesoBrutoTransmision,
+ TotalBultosTransmision,
+ TotalContenedoresTransmision,
+ Consignatario,
+ Embarcador,
+ PuertoEmbarque,
+ PuertoFinal,
+ --FechaCreacionTransmision DATETIME,
+ EstadoEnvioAduanas,
+ EstadoTransmision,
+ FechaHoraCreacion  
+ )   
+ SELECT 
+ d.CodigoDocumento, 
+ d.NumeroDocumento,
+ n.NombreNave, 
+ i.NumeroViajeItinerario, 
+ i.AnioManifiestoItinerario,  
+ i.NumeroManifiestoItinerario,    
+ a.NombreAduana,  
+ te.NombreTipoEnvio, 
+ d.TotalPesoBrutoTransmision,
+ d.TotalBultosTransmision,
+ d.TotalContenedoresTransmision,
+ p1.RazonSocialPersona Consignatario,
+ p2.RazonSocialPersona Embarcador,
+ pt1.CodigoPuertoSunat PuertoEmbarque,
+ pt2.CodigoPuertoSunat PuertoFinal,
+ --d.FechaCreacionTransmision,
+ d.EstadoEnvioAduanas,
+ d.EstadoTransmision,
+ d.FechaHoraCreacion 
+FROM dbo.Documento d (NOLOCK)
+INNER JOIN dbo.Itinerario i (NOLOCK) ON d.CodigoItinerario = i.CodigoItinerario
+INNER JOIN dbo.Nave n (NOLOCK) ON i.CodigoNave = n.CodigoNave
+INNER JOIN dbo.Aduana a (NOLOCK) ON i.CodigoAduana = a.CodigoAduana
+INNER JOIN dbo.TipoEnvio te (NOLOCK) ON d.CodigoTipoEnvio = te.CodigoTipoEnvio
+LEFT JOIN dbo.DocumentoDetalleCliente ddc1 (NOLOCK) ON d.CodigoDocumento = ddc1.CodigoDocumento AND ddc1.CodigoRol = 1 -- Consignatario
+LEFT JOIN dbo.DocumentoDetalleCliente ddc2 (NOLOCK) ON d.CodigoDocumento = ddc2.CodigoDocumento AND ddc2.CodigoRol = 3 -- Embarcador
+LEFT JOIN dbo.Persona p1 (NOLOCK) ON ddc1.CodigoPersona = p1.CodigoPersona
+LEFT JOIN dbo.Persona p2 (NOLOCK) ON ddc2.CodigoPersona = p2.CodigoPersona
+INNER JOIN dbo.Puerto pt1 (NOLOCK) ON d.CodigoPuertoEmbarqueDocumento = pt1.CodigoPuerto
+INNER JOIN dbo.Puerto pt2 (NOLOCK) ON d.CodigoPuertoFinalDocumento = pt2.CodigoPuerto
+WHERE 
+ (@CodigoDocumento IS NULL OR d.CodigoDocumento=@CodigoDocumento) AND  
+ (@CodigoItinerario IS NULL OR i.CodigoItinerario=@CodigoItinerario) AND     
+ (@NumeroManifiestoItinerario IS NULL OR i.NumeroManifiestoItinerario=@NumeroManifiestoItinerario) AND  
+ (@AnioManifiestoItinerario IS NULL OR i.AnioManifiestoItinerario=@AnioManifiestoItinerario) AND     
+ (CONVERT(VARCHAR(10),d.FechaHoraCreacion,112) BETWEEN CONVERT(VARCHAR(10),@FechaInicio,112) AND CONVERT(VARCHAR(10),@FechaFin,112)) AND
+ (@EstadoEnvioAduanas IS NULL OR d.EstadoEnvioAduanas=@EstadoEnvioAduanas) AND 
+ (@CodigoTipoEnvio IS NULL OR te.CodigoTipoEnvio=@CodigoTipoEnvio) AND   
+ (@NumeroDocumento IS NULL OR d.NumeroDocumento=@NumeroDocumento) AND
+ (@EstadoTransmision IS NULL OR d.EstadoTransmision=@EstadoTransmision) AND 
+  d.EstadoRegistro=1
+  
+ SELECT   
+ CodigoDocumento, 
+ NumeroDocumento,
+ NombreNave, 
+ NumeroViajeItinerario, 
+ AnioManifiestoItinerario,  
+ NumeroManifiestoItinerario,    
+ NombreAduana,   
+ NombreTipoEnvio, 
+ TotalPesoBrutoTransmision,
+ TotalBultosTransmision,
+ TotalContenedoresTransmision,
+ Consignatario,
+ Embarcador,
+ PuertoEmbarque,
+ PuertoFinal,
+ --FechaCreacionTransmision,
+ EstadoEnvioAduanas,
+ EstadoTransmision,
+ FechaHoraCreacion          
+ FROM (           
+ SELECT            
+ CASE WHEN UPPER(@OrdenOrientacion)='ASC' OR @OrdenOrientacion IS NULL THEN           
+  CASE             
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoDocumento') THEN ROW_NUMBER()OVER(ORDER BY CodigoDocumento ASC)           
+   WHEN  UPPER(@OrdenCampo) = UPPER('NumeroDocumento') THEN ROW_NUMBER()OVER(ORDER BY NumeroDocumento ASC)           
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreNave') THEN ROW_NUMBER()OVER(ORDER BY NombreNave ASC)     
+   WHEN  UPPER(@OrdenCampo) = UPPER('NumeroViajeItinerario') THEN ROW_NUMBER()OVER(ORDER BY NumeroViajeItinerario ASC)   
+   WHEN  UPPER(@OrdenCampo) = UPPER('AnioManifiestoItinerario') THEN ROW_NUMBER()OVER(ORDER BY AnioManifiestoItinerario ASC)   
+   WHEN  UPPER(@OrdenCampo) = UPPER('NumeroManifiestoItinerario') THEN ROW_NUMBER()OVER(ORDER BY NumeroManifiestoItinerario ASC)   
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreAduana') THEN ROW_NUMBER()OVER(ORDER BY NombreAduana ASC)        
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreTipoEnvio') THEN ROW_NUMBER()OVER(ORDER BY NombreTipoEnvio ASC)        
+   WHEN  UPPER(@OrdenCampo) = UPPER('TotalPesoBrutoTransmision')   THEN ROW_NUMBER()OVER(ORDER BY TotalPesoBrutoTransmision ASC)           
+   WHEN  UPPER(@OrdenCampo) = UPPER('TotalBultosTransmision')   THEN ROW_NUMBER()OVER(ORDER BY TotalBultosTransmision ASC)           
+   WHEN  UPPER(@OrdenCampo) = UPPER('TotalContenedoresTransmision')   THEN ROW_NUMBER()OVER(ORDER BY TotalContenedoresTransmision ASC)           
+   WHEN  UPPER(@OrdenCampo) = UPPER('Consignatario')   THEN ROW_NUMBER()OVER(ORDER BY Consignatario ASC)     
+   WHEN  UPPER(@OrdenCampo) = UPPER('Embarcador')   THEN ROW_NUMBER()OVER(ORDER BY Embarcador ASC)     
+   WHEN  UPPER(@OrdenCampo) = UPPER('PuertoEmbarque')   THEN ROW_NUMBER()OVER(ORDER BY PuertoEmbarque ASC)     
+   WHEN  UPPER(@OrdenCampo) = UPPER('PuertoFinal')   THEN ROW_NUMBER()OVER(ORDER BY PuertoFinal ASC)           
+   --WHEN  UPPER(@OrdenCampo) = UPPER('FechaCreacionTransmision')   THEN ROW_NUMBER()OVER(ORDER BY FechaCreacionTransmision ASC)           
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion ASC)           
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoDocumento ASC)           
+  END           
+ ELSE           
+  CASE             
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoDocumento') THEN ROW_NUMBER()OVER(ORDER BY CodigoDocumento DESC)           
+   WHEN  UPPER(@OrdenCampo) = UPPER('NumeroDocumento') THEN ROW_NUMBER()OVER(ORDER BY NumeroDocumento DESC)           
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreNave') THEN ROW_NUMBER()OVER(ORDER BY NombreNave DESC)     
+   WHEN  UPPER(@OrdenCampo) = UPPER('NumeroViajeItinerario') THEN ROW_NUMBER()OVER(ORDER BY NumeroViajeItinerario DESC)   
+   WHEN  UPPER(@OrdenCampo) = UPPER('AnioManifiestoItinerario') THEN ROW_NUMBER()OVER(ORDER BY AnioManifiestoItinerario DESC)   
+   WHEN  UPPER(@OrdenCampo) = UPPER('NumeroManifiestoItinerario') THEN ROW_NUMBER()OVER(ORDER BY NumeroManifiestoItinerario DESC)   
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreAduana') THEN ROW_NUMBER()OVER(ORDER BY NombreAduana DESC)        
+   WHEN  UPPER(@OrdenCampo) = UPPER('NombreTipoEnvio') THEN ROW_NUMBER()OVER(ORDER BY NombreTipoEnvio DESC)        
+   WHEN  UPPER(@OrdenCampo) = UPPER('TotalPesoBrutoTransmision')   THEN ROW_NUMBER()OVER(ORDER BY TotalPesoBrutoTransmision DESC)           
+   WHEN  UPPER(@OrdenCampo) = UPPER('TotalBultosTransmision')   THEN ROW_NUMBER()OVER(ORDER BY TotalBultosTransmision DESC)           
+   WHEN  UPPER(@OrdenCampo) = UPPER('TotalContenedoresTransmision')   THEN ROW_NUMBER()OVER(ORDER BY TotalContenedoresTransmision DESC)           
+   WHEN  UPPER(@OrdenCampo) = UPPER('Consignatario')   THEN ROW_NUMBER()OVER(ORDER BY Consignatario DESC)     
+   WHEN  UPPER(@OrdenCampo) = UPPER('Embarcador')   THEN ROW_NUMBER()OVER(ORDER BY Embarcador DESC)     
+   WHEN  UPPER(@OrdenCampo) = UPPER('PuertoEmbarque')   THEN ROW_NUMBER()OVER(ORDER BY PuertoEmbarque DESC)     
+   WHEN  UPPER(@OrdenCampo) = UPPER('PuertoFinal')   THEN ROW_NUMBER()OVER(ORDER BY PuertoFinal DESC)           
+   --WHEN  UPPER(@OrdenCampo) = UPPER('FechaCreacionTransmision')   THEN ROW_NUMBER()OVER(ORDER BY FechaCreacionTransmision DESC)           
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaHoraCreacion')   THEN ROW_NUMBER()OVER(ORDER BY FechaHoraCreacion DESC)           
+   ELSE ROW_NUMBER()OVER(ORDER BY CodigoDocumento DESC)             
+  END           
+ END AS [NROORDEN],  
+ CodigoDocumento, 
+ NumeroDocumento,
+ NombreNave, 
+ NumeroViajeItinerario, 
+ AnioManifiestoItinerario,  
+ NumeroManifiestoItinerario,    
+ NombreAduana,   
+ NombreTipoEnvio, 
+ TotalPesoBrutoTransmision,
+ TotalBultosTransmision,
+ TotalContenedoresTransmision,
+ Consignatario,
+ Embarcador,
+ PuertoEmbarque,
+ PuertoFinal,
+ --FechaCreacionTransmision,
+ EstadoEnvioAduanas,
+ EstadoTransmision,
+ FechaHoraCreacion            
+ FROM @dtTransmisionDocumento
+ )Info           
+ WHERE           
+   [NROORDEN] = CASE WHEN (@PaginaActual is null)THEN [NROORDEN] ELSE -1 END           
+   OR [NROORDEN] BETWEEN @vInicio AND @vFin           
+   ORDER BY           
+   [NROORDEN] ASC;           
+             
+ SELECT  @TotalRegistros = count(1),           
+   @CantidadPaginas =  CASE WHEN @NroRegistrosPorPagina is null THEN 1           
+   ELSE CAST(CEILING(count(1)/CAST(@NroRegistrosPorPagina as float)) as int)           
+   END            
+ FROM @dtTransmisionDocumento          
+END  
+
+GO
+-- EXEC USP_CONSULTAR_LOG_TRANSMISION_NAVES 1,NULL,NULL,NULL,300,NULL,NULL
+CREATE PROCEDURE [dbo].[USP_CONSULTAR_LOG_TRANSMISION_NAVES]       
+ (        
+  @CodigoItinerario BIGINT=NULL,
+  @OrdenCampo VARCHAR(50)=NULL   
+ ,@OrdenOrientacion VARCHAR(4)=NULL         
+ ,@PaginaActual INT=1         
+ ,@NroRegistrosPorPagina INT=10         
+ ,@TotalRegistros INT OUTPUT         
+ ,@CantidadPaginas INT OUTPUT         
+ )         
+ AS         
+ BEGIN         
+  
+ DECLARE @vInicio int, @vFin INT
+
+ DECLARE @dtLogTransmisionNave AS  
+ TABLE( 
+ CodigoItinerario BIGINT,
+ CampoLogTransmisionItinerario VARCHAR(100),
+ ValorLogTransmisionItinerario VARCHAR(100), 
+ TextoLogTransmisionItinerario VARCHAR(1000),
+ FechaLogTransmisionItinerario DATETIME)         
+
+ IF @PaginaActual IS NULL SET @PaginaActual = 1
+ IF @NroRegistrosPorPagina IS NULL SET @NroRegistrosPorPagina = 10
+ 
+  SET @vInicio = ((@PaginaActual*@NroRegistrosPorPagina-@NroRegistrosPorPagina)+1);         
+  SET @vFin = (@PaginaActual*@NroRegistrosPorPagina) 
+       
+ INSERT INTO @dtLogTransmisionNave  
+ ( 
+ CodigoItinerario,
+ CampoLogTransmisionItinerario, 
+ ValorLogTransmisionItinerario,
+ TextoLogTransmisionItinerario,
+ FechaLogTransmisionItinerario
+ ) 
+ SELECT  
+ CodigoItinerario,
+ CampoLogTransmisionItinerario, 
+ ValorLogTransmisionItinerario,
+ TextoLogTransmisionItinerario,
+ FechaLogTransmisionItinerario       
+ FROM dbo.LogTransmisionItinerario (NOLOCK) 
+ WHERE  
+ (@CodigoItinerario IS NULL OR CodigoItinerario=@CodigoItinerario)
+ --AND EstadoLogTransmisionItinerario = 1 
+ AND EstadoRegistro=1 
+        
+ SELECT   
+ CodigoItinerario,      
+ CampoLogTransmisionItinerario, 
+ ValorLogTransmisionItinerario,
+ TextoLogTransmisionItinerario,
+ FechaLogTransmisionItinerario        
+ FROM (         
+ SELECT          
+ CASE WHEN UPPER(@OrdenOrientacion)='ASC' OR @OrdenOrientacion IS NULL THEN         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoItinerario') THEN ROW_NUMBER()OVER(ORDER BY CodigoItinerario ASC)
+   WHEN  UPPER(@OrdenCampo) = UPPER('CampoLogTransmisionItinerario') THEN ROW_NUMBER()OVER(ORDER BY CampoLogTransmisionItinerario ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('ValorLogTransmisionItinerario') THEN ROW_NUMBER()OVER(ORDER BY ValorLogTransmisionItinerario ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('TextoLogTransmisionItinerario') THEN ROW_NUMBER()OVER(ORDER BY TextoLogTransmisionItinerario ASC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaLogTransmisionItinerario') THEN ROW_NUMBER()OVER(ORDER BY FechaLogTransmisionItinerario ASC)             
+   ELSE ROW_NUMBER()OVER(ORDER BY FechaLogTransmisionItinerario ASC)         
+  END         
+ ELSE         
+  CASE       
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoItinerario') THEN ROW_NUMBER()OVER(ORDER BY CodigoItinerario DESC)    
+   WHEN  UPPER(@OrdenCampo) = UPPER('CampoLogTransmisionItinerario') THEN ROW_NUMBER()OVER(ORDER BY CampoLogTransmisionItinerario DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('ValorLogTransmisionItinerario') THEN ROW_NUMBER()OVER(ORDER BY ValorLogTransmisionItinerario DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('TextoLogTransmisionItinerario') THEN ROW_NUMBER()OVER(ORDER BY TextoLogTransmisionItinerario DESC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaLogTransmisionItinerario') THEN ROW_NUMBER()OVER(ORDER BY FechaLogTransmisionItinerario DESC)             
+   ELSE ROW_NUMBER()OVER(ORDER BY FechaLogTransmisionItinerario DESC)      
+  END         
+ END AS [NROORDEN], 
+ CodigoItinerario,        
+ CampoLogTransmisionItinerario, 
+ ValorLogTransmisionItinerario,
+ TextoLogTransmisionItinerario,
+ FechaLogTransmisionItinerario         
+ FROM @dtLogTransmisionNave         
+ )Info         
+ WHERE         
+   [NROORDEN] = CASE WHEN (@PaginaActual is null)THEN [NROORDEN] ELSE -1 END         
+   OR [NROORDEN] BETWEEN @vInicio AND @vFin         
+   ORDER BY         
+   [NROORDEN] ASC;         
+           
+ SELECT  @TotalRegistros = count(1),         
+   @CantidadPaginas =  CASE WHEN @NroRegistrosPorPagina is null THEN 1         
+   ELSE CAST(CEILING(count(1)/CAST(@NroRegistrosPorPagina as float)) as int)         
+   END          
+ FROM @dtLogTransmisionNave             
+END
+
+GO
+
+-- EXEC USP_CONSULTAR_LOG_TRANSMISION_DOCUMENTOS 1,NULL,NULL,NULL,300,NULL,NULL
+CREATE PROCEDURE [dbo].[USP_CONSULTAR_LOG_TRANSMISION_DOCUMENTOS]       
+ (        
+  @CodigoDocumento BIGINT=NULL,
+  @OrdenCampo VARCHAR(50)=NULL   
+ ,@OrdenOrientacion VARCHAR(4)=NULL         
+ ,@PaginaActual INT=1         
+ ,@NroRegistrosPorPagina INT=10         
+ ,@TotalRegistros INT OUTPUT         
+ ,@CantidadPaginas INT OUTPUT         
+ )         
+ AS         
+ BEGIN         
+  
+ DECLARE @vInicio int, @vFin INT
+
+ DECLARE @dtLogTransmisionDocumento AS  
+ TABLE( 
+ CodigoDocumento BIGINT,
+ CampoLogTransmisionDocumento VARCHAR(100),
+ ValorLogTransmisionDocumento VARCHAR(100), 
+ TextoLogTransmisionDocumento VARCHAR(1000),
+ FechaLogTransmisionDocumento DATETIME)         
+
+ IF @PaginaActual IS NULL SET @PaginaActual = 1
+ IF @NroRegistrosPorPagina IS NULL SET @NroRegistrosPorPagina = 10
+ 
+  SET @vInicio = ((@PaginaActual*@NroRegistrosPorPagina-@NroRegistrosPorPagina)+1);         
+  SET @vFin = (@PaginaActual*@NroRegistrosPorPagina) 
+       
+ INSERT INTO @dtLogTransmisionDocumento  
+ ( 
+ CodigoDocumento,
+ CampoLogTransmisionDocumento, 
+ ValorLogTransmisionDocumento,
+ TextoLogTransmisionDocumento,
+ FechaLogTransmisionDocumento
+ ) 
+ SELECT  
+ CodigoDocumento,
+ CampoLogTransmisionDocumento, 
+ ValorLogTransmisionDocumento,
+ TextoLogTransmisionDocumento,
+ FechaLogTransmisionDocumento       
+ FROM dbo.LogTransmisionDocumento (NOLOCK) 
+ WHERE  
+ (@CodigoDocumento IS NULL OR CodigoDocumento=@CodigoDocumento)
+ --AND EstadoLogTransmisionDocumento = 1 
+ AND EstadoRegistro=1 
+        
+ SELECT   
+ CodigoDocumento,      
+ CampoLogTransmisionDocumento, 
+ ValorLogTransmisionDocumento,
+ TextoLogTransmisionDocumento,
+ FechaLogTransmisionDocumento        
+ FROM (         
+ SELECT          
+ CASE WHEN UPPER(@OrdenOrientacion)='ASC' OR @OrdenOrientacion IS NULL THEN         
+  CASE           
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoDocumento') THEN ROW_NUMBER()OVER(ORDER BY CodigoDocumento ASC)
+   WHEN  UPPER(@OrdenCampo) = UPPER('CampoLogTransmisionDocumento') THEN ROW_NUMBER()OVER(ORDER BY CampoLogTransmisionDocumento ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('ValorLogTransmisionDocumento') THEN ROW_NUMBER()OVER(ORDER BY ValorLogTransmisionDocumento ASC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('TextoLogTransmisionDocumento') THEN ROW_NUMBER()OVER(ORDER BY TextoLogTransmisionDocumento ASC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaLogTransmisionDocumento') THEN ROW_NUMBER()OVER(ORDER BY FechaLogTransmisionDocumento ASC)             
+   ELSE ROW_NUMBER()OVER(ORDER BY FechaLogTransmisionDocumento ASC)         
+  END         
+ ELSE         
+  CASE       
+   WHEN  UPPER(@OrdenCampo) = UPPER('CodigoDocumento') THEN ROW_NUMBER()OVER(ORDER BY CodigoDocumento DESC)    
+   WHEN  UPPER(@OrdenCampo) = UPPER('CampoLogTransmisionDocumento') THEN ROW_NUMBER()OVER(ORDER BY CampoLogTransmisionDocumento DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('ValorLogTransmisionDocumento') THEN ROW_NUMBER()OVER(ORDER BY ValorLogTransmisionDocumento DESC)         
+   WHEN  UPPER(@OrdenCampo) = UPPER('TextoLogTransmisionDocumento') THEN ROW_NUMBER()OVER(ORDER BY TextoLogTransmisionDocumento DESC)      
+   WHEN  UPPER(@OrdenCampo) = UPPER('FechaLogTransmisionDocumento') THEN ROW_NUMBER()OVER(ORDER BY FechaLogTransmisionDocumento DESC)             
+   ELSE ROW_NUMBER()OVER(ORDER BY FechaLogTransmisionDocumento DESC)      
+  END         
+ END AS [NROORDEN], 
+ CodigoDocumento,        
+ CampoLogTransmisionDocumento, 
+ ValorLogTransmisionDocumento,
+ TextoLogTransmisionDocumento,
+ FechaLogTransmisionDocumento         
+ FROM @dtLogTransmisionDocumento         
+ )Info         
+ WHERE         
+   [NROORDEN] = CASE WHEN (@PaginaActual is null)THEN [NROORDEN] ELSE -1 END         
+   OR [NROORDEN] BETWEEN @vInicio AND @vFin         
+   ORDER BY         
+   [NROORDEN] ASC;         
+           
+ SELECT  @TotalRegistros = count(1),         
+   @CantidadPaginas =  CASE WHEN @NroRegistrosPorPagina is null THEN 1         
+   ELSE CAST(CEILING(count(1)/CAST(@NroRegistrosPorPagina as float)) as int)         
+   END          
+ FROM @dtLogTransmisionDocumento             
+END
+
+GO
+
+CREATE PROCEDURE USP_LISTAR_TIPO_TRANSMISION_NAVES
+AS  
+BEGIN  
+ SELECT Codigo,Descripcion FROM dbo.DetalleCatalogo (NOLOCK) WHERE IdCatalogo = 5 AND EstadoRegistro = 1 AND Codigo IN ('0101','0102')
+END
+GO
+CREATE PROCEDURE USP_LISTAR_TIPO_TRANSMISION_DOCUMENTOS
+AS  
+BEGIN  
+ SELECT Codigo,Descripcion FROM dbo.DetalleCatalogo (NOLOCK) WHERE IdCatalogo = 5 AND EstadoRegistro = 1 AND Codigo IN ('0102','0103','0104')
+END
+GO
+
+GO
+CREATE PROCEDURE USP_PROCESAR_ARCHIVO_MANIFIESTO      
+(                                                                                                                                                                                                      
+ @NombreArchivoManifiesto VARCHAR(150),
+ @ContenidoArchivoManifiesto NTEXT
+                   
+)                                                                                                                                                                                                      
+AS                  
+DECLARE @li_contador INT                                                                                                                                                                                                      
+DECLARE @Nro INT                                                                                                                                                 
+DECLARE @ls_linea varchar(255)                                                                                                                                                                                                      
+DECLARE @ptrval binary(16)                                                                                                                                                                                                      
+DECLARE @Lin_Carrier VARCHAR(4)                                                                                                                                                                                                      
+DECLARE @ls_segmento_ant VARCHAR(6)                                                                                                                                                                                                                                                                                                                                                                                                          
+DECLARE @ls_parrafo varchar(255)                                                                                                                                                                                                                                           
+DECLARE @ls_contenedor varchar(15)                                            
+DECLARE @ls_tip_ctn varchar(4)                                                                             
+DECLARE @ls_shipperown char(1)                                                                           
+DECLARE @ls_regimen char(1)                                                                                       
+DECLARE @ls_condicion char(1)                      
+DECLARE @ls_temperatura varchar(6)                                                                     
+DECLARE @ls_uni_temp varchar(3)                                               
+DECLARE @ls_peso_carga varchar(15)                  
+DECLARE @ls_peso_tara varchar(15)                                                                                             
+DECLARE @ls_cod_prec varchar(25) 
+DECLARE @ls_ent_prec varchar(2)                                                                                                                                                        
+DECLARE @ls_cond_prec char(1)                                                                                                                                                                                                                                                                                                                                                                   
+DECLARE @ls_tipdoc varchar(3)                                                        
+DECLARE @ls_nrodoc varchar(35)                                                                                                               
+DECLARE @ls_codrecargo VARCHAR(10)                                                      
+DECLARE @ls_montorecargo VARCHAR(10)                                                                                                   
+DECLARE @ls_moneda VARCHAR(6)                                                            
+DECLARE @ls_condpago CHAR(1)                                                              
+DECLARE @ls_ptoori VARCHAR(6)                                                  
+DECLARE @ls_ptoemb VARCHAR(6)                                                                                                            
+DECLARE @ls_ptodes VARCHAR(6)                                                              
+DECLARE @ls_ptofin VARCHAR(6)                                                                                                                                                                                                      
+DECLARE @ls_rolcliente VARCHAR(2)                                                                                                                                                                                                                                                                                        
+DECLARE @FechaEmisionBL VARCHAR(20)              
+DECLARE @FechaEmbarqueBL VARCHAR(20)          
+DECLARE @ItmCtn VARCHAR(4)                                                                                                                                                                  
+DECLARE @CanBul VARCHAR(10)                                                                                             
+DECLARE @UnidadBasicaCarga VARCHAR(6)                                                        
+DECLARE @DescripcionMercaderia VARCHAR(4000)                                                                                                                                                                                                                           
+DECLARE @ls_peso_carga2 varchar(15)                                                                                                     
+DECLARE @ls_volumenctn varchar(15)                                                                                                                                                                        
+DECLARE @ContenedorBL VARCHAR(15)                                                                                                                                                                                             
+DECLARE @NumPaquetesCtn VARCHAR(10)                                                                                      
+DECLARE @MarcasyNumeros VARCHAR(255)                                                                                                                                                          
+DECLARE @CodUBCHawk VARCHAR(4)                                                                      
+DECLARE @TipTamCtn VARCHAR(6)                                                 
+DECLARE @TamCtn VARCHAR(3)                                                                                                        
+DECLARE @ClaseImo VARCHAR(3) 
+DECLARE @NroImo VARCHAR(10)                                                                                                                                                                                                                                        
+DECLARE @isctnvacio varchar(50)                                                                                                                                                                                      
+DECLARE @NomPto VARCHAR(40)                                                                                                                                                                                                                                               
+DECLARE @contCtn SMALLINT                                                                                                                                                                        
+DECLARE @IsPCI SMALLINT                                                                                                                                                         
+DECLARE @TipoEDI VARCHAR(10)                                                                                                                                                                                                                                                                            
+DECLARE @p_Bloques VARCHAR(50)                                                                  
+DECLARE @p_cnt_old VARCHAR(15)                                                                         
+DECLARE @p_cnt_new VARCHAR(15)                                                                                                                            
+DECLARE @p_bloque_old VARCHAR(100)                                                                                                                            
+DECLARE @ls_condicion_old VARCHAR(10)                                                                                                                            
+DECLARE @ls_bls_old VARCHAR(50)                                                                                          
+DECLARE @ls_bls_new VARCHAR(50)                                                                                                                        
+DECLARE @TipTamCtn_old VARCHAR(6)                                                                                                                                                
+DECLARE @TamCtn_old VARCHAR(3)                                                                                                                                                                                     
+DECLARE @ls_regimen_old CHAR(1)                                                                                                                               
+DECLARE @CanBulNoPCI VARCHAR(10) 
+DECLARE @CodUBCHawkNoPCI VARCHAR(6)                                           
+DECLARE @RUC VARCHAR(11)       
+DECLARE @RolClienteRUC  VARCHAR(6)  
+DECLARE @p_BloqueConsig VARCHAR(50)               
+DECLARE @p_BloqueRoles VARCHAR(50)  
+
+DECLARE	@CodigoLineaNaviera BIGINT   
+DECLARE	@CodigoItinerario BIGINT
+DECLARE	@CodigoTipoOperacion BIGINT
+DECLARE	@CodigoAduana BIGINT
+DECLARE	@CodigoTipoContenedor BIGINT 
+DECLARE	@CodigoCondicionTransporte BIGINT 
+DECLARE	@CodigoTipoFlete BIGINT 
+DECLARE	@ModoPago BIGINT 
+DECLARE	@CodigoMoneda BIGINT 
+DECLARE	@CodigoModoPago BIGINT 
+DECLARE	@CodigoPuertoOrigen BIGINT 
+DECLARE	@CodigoPuertoEmbarque BIGINT 
+DECLARE	@CodigoPuertoDescarga BIGINT 
+DECLARE	@CodigoPuertoFinal BIGINT 
+DECLARE	@CodigoUnidadMercancia BIGINT 
+DECLARE @CodigoTipoEnvio BIGINT
+DECLARE @CodigoClaseIMO BIGINT
+DECLARE @CodigoNumeroIMO BIGINT
+DECLARE @CodigoPersona BIGINT
+DECLARE @CodigoRol BIGINT
+DECLARE @Min_PK_Contenedor int = 1
+DECLARE @Max_PK_Contenedor int = 0
+DECLARE @NumeroContenedor varchar(11)
+DECLARE @TCodigoTipoContenedor bigint
+DECLARE @Precinto1 varchar(25)
+DECLARE @EntidadPrecinto1 varchar(2)
+DECLARE @Temperatura decimal(15,2)
+DECLARE @UnidadTemperatura varchar(3)
+DECLARE @CodigoEntidadPrecinto bigint
+DECLARE @CodigoPrecinto bigint
+DECLARE @PesoTara decimal(15,2)
+DECLARE @CodigoContenedor bigint 
+DECLARE @CodigoArchivoManifiesto bigint 
+DECLARE @EstadoRUC BIT 
+DECLARE @Voyage VARCHAR(10)                                                                     
+                                                                                                                                                                          
+SET @IsPCI = 0                                                                                      
+                                                                                                                                                                                                                                                                                                                                                                                                                                
+DECLARE @Temporal_Contenedor TABLE                                                                                                                                                                             
+(                                                                                                             
+ PK_Contenedor INT IDENTITY(1,1),                                                                                                                                   
+ NumeroContenedor VARCHAR(11),                                                                                                                                                                                           
+ CodigoTipoContenedor bigint, 
+ PropietarioContenedor bit,                                              
+ CodigoCondicionTransporte bigint,                                                                                                                                               
+ PesoCarga VARCHAR(15),                                                                   
+ PesoTara VARCHAR(15),                                                   
+ Precinto1 VARCHAR(25),
+ EntidadPrecinto1 VARCHAR(2),                                                                                                                         
+ Temperatura VARCHAR(6),                                                                                                        
+ UnidadTemperatura VARCHAR(3)                                                                                                                                                                                                                                                                                                                                          
+)                                                                           
+              
+DECLARE @Temporal_Documento TABLE                                                               
+(                                                                                                                               
+ PK_Documento INT IDENTITY(1,1),                                                                                                                                                                                                                                                                                                                                                                                                                        
+ CodigoPuertoOrigenDocumento BIGINT,                                                                                                                                                            
+ CodigoPuertoEmbarqueDocumento BIGINT,                                                                                                     
+ CodigoPuertoDescargaDocumento BIGINT,                                                                                                                                                                     
+ CodigoPuertoFinalDocumento BIGINT,                                                                                                                                           
+ CodigoAduana BIGINT, 
+ CodigoTipoBL BIGINT, 
+ CodigoTipoEnvio BIGINT, 
+ CodigoCondicionContrato BIGINT, 
+ CodigoRequerimientoServicio BIGINT, 
+ NumeroDocumento VARCHAR(25), 
+ FechaEmisionDocumento VARCHAR(20),                                                                                                                                                    
+ FechaEmbarqueDocumento VARCHAR(20)                                                                                                                                                                                                                                                                                   
+)                                                               
+                                                                                                              
+DECLARE @Temporal_DocumentoDetalleCarga TABLE                                                          
+(                                                                                                                                                         
+ PK_DocumentoCarga INT IDENTITY(1,1),                                                                                                                                                                                                                                                                                                                                                                                                          
+ NumeroDocumento VARCHAR(25),                                                                                                                                                                                                                                                                                                            
+ NumeroContenedor VARCHAR(11),  
+ CodigoCondicionTransporte bigint,
+ CodigoTipoMovimiento bigint,
+ CodigoUnidadMercancia bigint,
+ CodigoNaturalezaCarga bigint,
+ CodigoCondicionCarga bigint,
+ CodigoTemperatura bigint,
+ CodigoClaseIMO bigint,
+ CodigoNumeroIMO bigint,
+ CodigoAlmacen bigint,
+ CodigoDeposito bigint,
+ CodigoPrecinto bigint,                                                                                                                                                                                                   
+ ItemDocumento int,
+ CantidadBulto int,                                                                                                                                                                                                                                                                                                                                                                                                                                     
+ PesoBruto decimal(15,2),                                                                                                               
+ VolumenBruto decimal(15,2), 
+ TemperaturaMinima decimal(15,2),                                              
+ TemperaturaMaxima decimal(15,2),
+ Propietario bigint,
+ Observacion VARCHAR(150),
+ DescripcionMercaderia VARCHAR(4000),                                                                                                                                      
+ MarcasNumeros VARCHAR(4000), 
+ Falto bit
+ )                                                                                                                                                                                                                                                                                                           
+                                                                                                                                                                                            
+DECLARE @Temporal_DocumentoDetalleFlete TABLE                                                
+(                                                                                                                                                                                        
+ PK_DocumentoFlete INT IDENTITY(1,1),                                                                                                                                                                                                                     
+ NumeroDocumento VARCHAR(25),                                                                                                                                                                                                  
+ CodigoTipoFlete BIGINT,                                                                                                                                                                                                      
+ CodigoMoneda BIGINT, 
+ CodigoModoPago BIGINT, 
+ MontoFlete decimal(15,2)                                                                                                                                                                           
+)                                                                                                                                                                                  
+                                                                     
+DECLARE @Temporal_DocumentoDetalleCliente TABLE                                                                                                                                              
+(                                                                      
+  PK_DocumentoCliente INT IDENTITY(1,1),                                                                                                                   
+  NumeroDocumento VARCHAR(25),                                                          
+  CodigoRol BIGINT, 
+  CodigoPersona BIGINT
+)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+
+SET NOCOUNT ON                                                                                                                                                                               
+                                                                                                                                                                       
+CREATE TABLE #TEXTO(                                                                                                          
+BAPI_C_TEXTO TEXT)                                                                                                                                                                                 
+                   
+INSERT dbo.ArchivoManifiesto
+(
+    --CodigoArchivoManifiesto - this column value is auto-generated
+    NombreArchivoManifiesto,
+    ContenidoArchivoManifiesto,
+    TipoArchivoManifiesto,
+    Voyage,
+    Estado
+)
+VALUES
+(
+    -- CodigoArchivoManifiesto - bigint
+    @NombreArchivoManifiesto, -- NombreArchivoManifiesto - varchar
+    @ContenidoArchivoManifiesto, -- ContenidoArchivoManifiesto - text
+    'C', -- TipoArchivoManifiesto - char
+    NULL, -- Voyage - varchar
+    '001'
+)	
+
+SET @CodigoArchivoManifiesto=@@IDENTITY			   
+				                           
+INSERT INTO #TEXTO                                                                                                                                         
+SELECT @ContenidoArchivoManifiesto
+
+/*Reemplazando los caracteres especiales*/                                                                                                                                
+  UPDATE #TEXTO                                                                                                                                                                                                
+  SET BAPI_C_TEXTO = CAST(REPLACE(CAST(BAPI_C_TEXTO AS NVARCHAR(MAX)),'?''','') AS TEXT)                                                                   
+                                                                                                                                                                                   
+    UPDATE #TEXTO                                                                                                                      
+  SET BAPI_C_TEXTO = CAST(REPLACE(CAST(BAPI_C_TEXTO AS NVARCHAR(MAX)),'?+','') AS TEXT)                                                                                                                                                                       
+                             
+    UPDATE #TEXTO                                                           
+  SET BAPI_C_TEXTO = CAST(REPLACE(CAST(BAPI_C_TEXTO AS NVARCHAR(MAX)),'?:','') AS TEXT)                                                                                                                                                                       
+/*******/                                                                                        
+                                                                                                                        
+ SET @p_Bloques=''                                                                                                                                
+ SET @p_bloque_old=''
+ SET @p_BloqueConsig = ''                                                  
+ SET @p_BloqueRoles = '' 
+ SET @EstadoRUC = 0   
+                                                                                                                                    
+/***************************************/                                                                                                             
+                                                                                                                  
+WHILE NOT (SELECT PATINDEX('%''%', BAPI_C_TEXTO) FROM #TEXTO) = 0                                                                                                                                                            
+BEGIN                                                                                          
+ SELECT @Nro = PATINDEX('%''%', BAPI_C_TEXTO) FROM #TEXTO                                                                                                                                
+ SELECT @ls_linea = SUBSTRING(BAPI_C_TEXTO,1,@Nro - 1) FROM #TEXTO                                                                                                      
+                 
+ SELECT @ptrval = TEXTPTR(BAPI_C_TEXTO) From #TEXTO                                                       
+                                      
+ UPDATETEXT #TEXTO.BAPI_C_TEXTO @ptrval 0 @Nro ''                                                
+                                                                             
+/***************************** CABECERA ***********************************/                                                                                  
+-- Tipo de Archivo  
+IF @ls_linea LIKE 'UNH+%'                                                                                                                                                                                                       
+BEGIN                                                                      
+    IF CHARINDEX('+',@ls_linea) > 0                                                                                                             
+	BEGIN                                                                                                                                                                                       
+		SELECT @ls_linea = SUBSTRING(@ls_linea,charindex('+',@ls_linea,1)+1,LEN(@ls_linea))                                                                                                                                                                         
+	END
+	IF CHARINDEX('+',@ls_linea)>0                                                                                                                                                       
+	BEGIN                                                                                                                                              
+		SELECT @TipoEDI = SUBSTRING(@ls_linea,charindex('+',@ls_linea,1)+1,charindex(':',@ls_linea,1)-3)                       
+	END                                                                                               
+        
+    IF @TipoEDI<>'CUSCAR'                                  
+    BEGIN   
+		PRINT 'No es Archivo Cuscar'
+		BREAK                                                                                                                                                                                                                                                                           
+		--SELECT @ls_error = 'El Archivo Seleccionado no tiene Formato CUSCAR'                                                                             
+		--RaisError 30002 @ls_error                                                                                                     
+		--Return                                                                                                                                                                     
+	END                                                                                                                                              
+	SET @ls_segmento_ant = 'UNH'                                                                                                                                                       
+END                                                                                                                                         
+                                                                                                                                   
+-- Linea Naviera                                               
+IF @ls_linea LIKE 'RFF+AAZ%'                                                                                                                                      
+BEGIN                                                      
+	IF CHARINDEX(':',@ls_linea) > 0            
+	BEGIN                                                                                                                                        
+		SELECT @Lin_Carrier = SUBSTRING(@ls_linea,charindex(':',@ls_linea,1)+1,LEN(@ls_linea))   
+		                                                                                                              
+		IF NOT EXISTS(SELECT CodigoLineaNaviera FROM dbo.LineaNaviera (NOLOCK) 
+			WHERE CodigoEquivalencia = @Lin_Carrier)  
+		BEGIN
+			PRINT 'Equivalencia Linea Naviera no Existe '+@Lin_Carrier  
+			BREAK 
+		END
+		ELSE
+		BEGIN
+			SELECT @CodigoLineaNaviera=CodigoLineaNaviera FROM dbo.LineaNaviera (NOLOCK) 
+			WHERE CodigoEquivalencia = @Lin_Carrier
+		END		                   
+	END                                                                                                                                                                                                                                                                                                                          
+  SET @ls_segmento_ant = 'RFF+AAZ'                                                                                                                                                             
+END  
+
+-- Voyage 
+IF @ls_linea LIKE 'RFF+VON%'  
+BEGIN 
+   SET @Voyage = SUBSTRING(@ls_linea,9,LEN(@ls_linea)) 
+   
+   IF LEN(ISNULL(@Voyage,''))=0
+   BEGIN
+	   PRINT 'No está enviando Voyage en el Archivo' 
+	   BREAK
+   END
+   ELSE
+   BEGIN
+		UPDATE dbo.ArchivoManifiesto
+		SET
+		    dbo.ArchivoManifiesto.Voyage = @Voyage
+		WHERE CodigoArchivoManifiesto = @CodigoArchivoManifiesto
+		IF NOT EXISTS(SELECT CodigoItinerario FROM dbo.Itinerario (NOLOCK) WHERE Voyage = @Voyage AND EstadoRegistro = 1)
+		BEGIN
+			PRINT 'No existe Itinerario con Voyage '+@Voyage 
+			BREAK
+		END
+		ELSE
+		BEGIN 
+		SELECT @CodigoItinerario=ISNULL(CodigoItinerario,0),@CodigoTipoOperacion=ISNULL(CodigoTipoOperacion,0),@CodigoAduana=ISNULL(CodigoAduana,0) 
+		FROM dbo.Itinerario (NOLOCK) WHERE Voyage = @Voyage AND EstadoRegistro = 1
+		END
+   END
+   SET @ls_segmento_ant = 'RFF+VON' 
+END           
+                                                                                                                                      
+/************************ EQD ****************************/  
+-- Contenedor                                                                                                                              
+IF @ls_linea LIKE 'EQD%'                                                                                                                                                                                                             
+BEGIN                                                                              
+	SELECT @ls_linea = substring(@ls_linea,5, LEN(@ls_linea))                                                 
+                                                                                                                        
+	IF CHARINDEX('+',@ls_linea,1) > 0                                                                                                                                      
+	BEGIN                                                                              
+		SELECT @ls_linea = substring(@ls_linea,CHARINDEX('+',@ls_linea,1)+1, LEN(@ls_linea))                                                                        
+                                                                                                                                              
+	IF CHARINDEX('+',@ls_linea,1) = 0                                                                                                         
+	BEGIN                                           
+		IF CHARINDEX(':',@ls_linea,1) = 0                                                                                                                                                                 
+			SELECT @ls_contenedor = @ls_linea                                                          
+		ELSE                                                                                                       
+			SELECT @ls_contenedor = SUBSTRING(@ls_linea,1, CHARINDEX(':',@ls_linea,1)-1)                                                                                                                                               
+	END                                                                 
+	ELSE                                                                                                                                                                                                              
+	BEGIN                                                                                                                                                                                                   
+		SELECT @ls_contenedor = SUBSTRING(@ls_linea,1, CHARINDEX('+',@ls_linea,1)-1)                                                                                                      
+		SELECT @ls_linea = SUBSTRING(@ls_linea, CHARINDEX('+',@ls_linea,1)+1, LEN(@ls_linea))                                                                        
+                                                                                                                                              
+    IF CHARINDEX('+',@ls_linea,1)=0                                                                                                                                  
+    BEGIN                                                                                                                                                                                                              
+		IF CHARINDEX(':',@ls_linea,1) = 0                                           
+			SELECT @ls_tip_ctn = @ls_linea                                                                                                                                   
+		ELSE                                                                                                             
+		SELECT @ls_tip_ctn = SUBSTRING(@ls_linea,1,CHARINDEX(':',@ls_linea,1)-1)                                           
+		END                            
+    ELSE                                                             
+    BEGIN                                                                                                                                             
+		SELECT @ls_parrafo = SUBSTRING(@ls_linea,1,CHARINDEX('+',@ls_linea,1)-1)                                                             
+                                                                                    
+		IF CHARINDEX(':',@ls_parrafo,1) = 0                                           
+			SELECT @ls_tip_ctn = @ls_parrafo                                                                               
+		ELSE                                                                                                                         
+			SELECT @ls_tip_ctn = SUBSTRING(@ls_parrafo,1,CHARINDEX(':',@ls_parrafo,1)-1)                                         
+		BEGIN                                                                                                    
+			SELECT @ls_linea = @ls_linea                                                                                                         
+		IF CHARINDEX('+',@ls_linea,1)>0                                                                                                                      
+		BEGIN                                                                       
+			SELECT @ls_linea = SUBSTRING(@ls_linea,charindex('+',@ls_linea,1)+1, len(@ls_linea))                                                                                                                                                                      
+			SELECT @ls_shipperown = SUBSTRING(@ls_linea,1,CHARINDEX('+',@ls_linea,1)-1)                                                 
+                                      
+		IF CHARINDEX('+',@ls_linea,1)>0                                           
+		BEGIN                                                                                                                                                                                                              
+			SELECT @ls_linea = SUBSTRING(@ls_linea,charindex('+',@ls_linea,1)+1, len(@ls_linea))                                                                                                                                                                         
+                                             
+        IF CHARINDEX('+',@ls_linea,1)=0                                                   
+			SELECT @ls_regimen = @ls_linea                                                                                                                                                                
+        ELSE       
+        BEGIN                                                                                     
+			SELECT @ls_regimen = SUBSTRING(@ls_linea,1,CHARINDEX('+',@ls_linea,1)-1)                                                                                                                                                                 
+			SELECT @ls_linea = SUBSTRING(@ls_linea,charindex('+',@ls_linea,1)+1, len(@ls_linea))                                                                                                  
+			SELECT @ls_condicion = @ls_linea                                                                                                                                                       
+        END                                                                    
+       END                                                     
+      END                                                                                                                             
+     END                                                                                                                                                                                                        
+    END                                                           
+   END                                                                                                                                                      
+  END
+
+	IF ISNULL(@ls_contenedor,'')=''
+	BEGIN
+		PRINT 'No se esta enviando Contenedor'
+	END 
+
+	IF NOT EXISTS(SELECT CodigoTipoContenedor FROM TipoContenedor (NOLOCK) WHERE CodigoIsoGrupoTipoContenedor = @ls_tip_ctn)
+	BEGIN
+		PRINT 'Tipo de Contenedor no registrado '+@ls_tip_ctn
+	END
+	ELSE 
+	BEGIN
+		SELECT @CodigoTipoContenedor=CodigoTipoContenedor FROM TipoContenedor (NOLOCK) WHERE CodigoIsoGrupoTipoContenedor = @ls_tip_ctn
+	END
+
+	IF NOT EXISTS(SELECT CodigoTipoEnvio FROM TipoEnvio (NOLOCK) WHERE CodigoEquivalencia = @ls_regimen)
+	BEGIN
+		PRINT 'Tipo de envio no registrado '+@ls_regimen
+	END
+	ELSE  
+	BEGIN
+		SELECT @CodigoTipoEnvio=CodigoTipoEnvio FROM TipoEnvio (NOLOCK) WHERE CodigoEquivalencia = @ls_regimen
+	END                                                                                                                                                                                 
+
+	IF NOT EXISTS(SELECT CodigoCondicionTransporte FROM CondicionTransporte (NOLOCK) WHERE CodigoAduanaCondicionTransporte = @ls_condicion)
+	BEGIN
+		PRINT 'Condicion de Transporte no registrado '+@ls_condicion
+	END 
+	ELSE  
+	BEGIN
+		SELECT @CodigoCondicionTransporte=CodigoCondicionTransporte FROM dbo.CondicionTransporte (NOLOCK) WHERE CodigoAduanaCondicionTransporte = @ls_condicion
+	END                                                                                                    
+                                                                                                                                                                                                                                                                                      
+	SET @p_Bloques=@p_Bloques + 'EQD-'                                                                       
+	SET @p_cnt_old = @p_cnt_new                                                                                                                                                             
+	SET @p_cnt_new = @ls_contenedor                                                                                        
+                                                                                                                                                     
+	SELECT @ls_segmento_ant = 'EQD'                                                                                         
+END                                                                                                                             
+                                                                                                                                             
+ /************************ MEA PESO CARGA ****************************/                                                  
+IF @ls_linea LIKE 'MEA+WT+G%'                                                                                                                                                                                                               
+BEGIN                                                                                                                
+	SELECT @ls_linea = SUBSTRING(@ls_linea,5, LEN(@ls_linea))                                                                                                
+                                                                                                                                      
+	IF CHARINDEX('+',@ls_linea,1)>0                                                                                                                                                                      
+		SELECT @ls_linea = SUBSTRING(@ls_linea,CHARINDEX('+',@ls_linea,1)+1,LEN(@ls_linea))                                                      
+		BEGIN                                                        
+		IF CHARINDEX('+',@ls_linea,1)>0                                                 
+			SELECT @ls_linea = SUBSTRING(@ls_linea,CHARINDEX('+',@ls_linea,1)+1,LEN(@ls_linea))                                                         
+                                                                                                          
+	    IF CHARINDEX('+',@ls_linea,1)=0                                                                                                                                          
+			SELECT @ls_parrafo = @ls_linea                                                                             
+		ELSE                                            
+			SELECT @ls_parrafo = substring(@ls_linea,1,CHARINDEX('+',@ls_linea,1)-1)                                                                                                         
+		BEGIN                                                                                         
+		IF CHARINDEX(':',@ls_parrafo,1) > 0                                                              
+		BEGIN                                                                                                                      
+			SELECT @ls_parrafo = SUBSTRING(@ls_parrafo,CHARINDEX(':',@ls_parrafo,1)+1, LEN(@ls_parrafo))                              
+                                                                                        
+		IF CHARINDEX(':',@ls_parrafo,1) = 0                                                                                                        
+			SELECT @ls_peso_carga = @ls_parrafo                                                                                                                                                  
+		ELSE                                                                                                                                                                                          
+			SELECT @ls_peso_carga = SUBSTRING(@ls_parrafo,1,CHARINDEX(':',@ls_parrafo,1)-1)                                       
+		END                                                                                                                                                                                                              
+	END                                                                            
+  END                                                                                                                                      
+/* Codigo Anterior */                                                                                                 
+  SELECT @ls_segmento_ant = 'MEA+WT+G'                                                                                
+END                                                                                                                                                                              
+                                                                                                                                                         
+/************************ MEA PESO TARA ****************************/                                                                                                                       
+IF @ls_linea LIKE 'MEA+WT+T%'                                                                                                                            
+BEGIN                                                                                                                                                                                   
+	SELECT @ls_linea = SUBSTRING(@ls_linea,5, LEN(@ls_linea))                                                                               
+                                                                                                                                                                          
+	IF CHARINDEX('+',@ls_linea,1)>0                                                                                                       
+		SELECT @ls_linea = SUBSTRING(@ls_linea,CHARINDEX('+',@ls_linea,1)+1,LEN(@ls_linea))                                                                                           
+	BEGIN                                   
+		IF CHARINDEX('+',@ls_linea,1)>0                                                                                                                                                             
+			SELECT @ls_linea = SUBSTRING(@ls_linea,CHARINDEX('+',@ls_linea,1)+1,LEN(@ls_linea))                                                                                                                                                                        
+		IF CHARINDEX('+',@ls_linea,1)=0                                                                                                              
+			SELECT @ls_parrafo = @ls_linea                                                       
+		ELSE                                                                                                                                                                                                              
+			SELECT @ls_parrafo = substring(@ls_linea,1,CHARINDEX('+',@ls_linea,1)-1)                                                                                                                                            
+		BEGIN                                                                                                                                          
+		IF CHARINDEX(':',@ls_parrafo,1) > 0                                                                                                          
+		BEGIN                                                                                                                                         
+			SELECT @ls_parrafo = SUBSTRING(@ls_parrafo,CHARINDEX(':',@ls_parrafo,1)+1, LEN(@ls_parrafo))                                                                                                                                               
+		IF CHARINDEX(':',@ls_parrafo,1) = 0                                                                            
+			SELECT @ls_peso_tara = @ls_parrafo                                                      
+		ELSE                                                                      
+			SELECT @ls_peso_tara = SUBSTRING(@ls_parrafo,1,CHARINDEX(':',@ls_parrafo,1)-1)                                                                                                                                  
+		END                                                                                                                                        
+	  END                                                                                                                                          
+	END                                                                                                                                                                                   
+                                                                                       
+IF @ls_condicion = '4' -- CTN VACIO                                                            
+   BEGIN                     
+	   INSERT @Temporal_Contenedor(                                                                                                                                                                                                      
+	   NumeroContenedor,                                                                                                   
+	   CodigoTipoContenedor,   
+	   PropietarioContenedor,                                                                                                                                                                                                                                                                                              
+	   CodigoCondicionTransporte,                                                                                            
+	   PesoCarga,                                                                                                                               
+	   PesoTara,                                                                                    
+	   Precinto1,                                                                   
+	   EntidadPrecinto1,                                                                                                                                                                                           
+	   Temperatura,                                          
+	   UnidadTemperatura                                                                                  
+	   )                                                                                                                                     
+	   VALUES (                                                                                         
+	   @ls_contenedor,                                                                                                                                                                                                              
+	   @CodigoTipoContenedor, 
+	   CASE @ls_shipperown WHEN '1' THEN 1 ELSE 0 END,                                                                                                                                                                                                                                                                                         
+	   @CodigoCondicionTransporte,                                                                                                                                                                                                  
+	   0,                                                                                                       
+	   @ls_peso_tara,                                                                                                                                                                                                      
+	   @ls_cod_prec,                                                                                     
+	   @ls_ent_prec,                                                                                                                                                                                                                                                                                                          
+	   @ls_temperatura,                                                                                                                                           
+	   @ls_uni_temp                                                                                                   
+	   )                                                                                                                                 
+   /*Limpiar Variables*/                          
+   SELECT --@ls_contenedor = NULL,                                                                                       
+   @ls_tip_ctn = NULL, @ls_condicion = NULL, @ls_peso_carga = NULL, @ls_peso_tara = NULL,                                                                                                                                
+   @ls_cod_prec = NULL, @ls_ent_prec = NULL, @ls_temperatura = NULL, @ls_uni_temp = NULL,@CodigoTipoContenedor=NULL,
+   @ls_shipperown = NULL, @CodigoCondicionTransporte=NULL                                         
+   END                                                                                                              
+   
+	SET @p_Bloques=@p_Bloques +'MEA+WT+T-'                                                                                                     
+               
+	SELECT @ls_segmento_ant = 'MEA+WT+T'                                      
+END         
+                                                                                                                                                                                                                                                                                                                                                                
+ /************************ SEL 1****************************/                                                                                                                                                                            
+IF @ls_linea LIKE 'SEL%'                                                                                                                                                                                                           
+BEGIN                                                                                                                 
+	SELECT @ls_linea = SUBSTRING(@ls_linea,5,len(@ls_linea))                                                               
+                                                                                                                                                   
+	IF CHARINDEX('+',@ls_linea,1)=0                                                                                                                                                                                    
+		SELECT @ls_cod_prec = @ls_linea                                                                                                                                     
+	ELSE                                                                   
+	BEGIN                                                                                              
+		SELECT @ls_cod_prec = SUBSTRING(@ls_linea,1,CHARINDEX('+',@ls_linea,1)-1)                                                                                                                                                                            
+		SELECT @ls_linea = SUBSTRING(@ls_linea,CHARINDEX('+',@ls_linea,1)+1, LEN(@ls_linea))                                                                    
+                                              
+		IF CHARINDEX('+',@ls_linea,1)=0                                                                                                                                                                                                              
+			SELECT @ls_ent_prec = @ls_linea              
+		ELSE                                                                                                                        
+		BEGIN                                                                                      
+			SELECT @ls_ent_prec = SUBSTRING(@ls_linea,1,CHARINDEX('+',@ls_linea,1)-1)                                                                                                                                                                        
+	       
+			SELECT @ls_linea = SUBSTRING(@ls_linea, CHARINDEX('+',@ls_linea,1)+1, LEN(@ls_linea))                                                                                                                                                                      
+			SELECT @ls_cond_prec = @ls_linea                                                             
+		END                                                                                                                                                            
+	END                
+                                                                                                                                     
+  /* Codigo Anterior */                                                                         
+  SET @p_Bloques=@p_Bloques +'SEL-'                                                                                                                                           
+  SELECT @ls_segmento_ant = 'SEL'                                                                                         
+                                  
+  -- INICIO 48696 JAV 23/02/2016, ATAMAYO, Quita los espacios en blanco de los precintos                                  
+  SET @ls_cod_prec = REPLACE(RTRIM(LTRIM(@ls_cod_prec)),' ', '')                                  
+  -- FIN 48696                                  
+                                                                                      
+  -- INICIO JALEJOSV 19/08/2015, Solicitado por ATAMAYO, No debe ingresar precintos que vengan con este nombre: DOBLE - DOCUMENTAL - DBL  
+--  INTACT - TANKER - TANKCONTAI - NCB - TANK - TP - MSA - HLXU; ADD JAV 03/11/16 - 92933 Precintos ATB  
+                                                                                  
+IF UPPER(RTRIM(LTRIM(@ls_cod_prec))) = 'DOBLE' OR UPPER(RTRIM(LTRIM(@ls_cod_prec))) = 'DOCUMENTAL'   
+  OR UPPER(RTRIM(LTRIM(@ls_cod_prec))) = 'DBL' OR UPPER(RTRIM(LTRIM(@ls_cod_prec))) = 'INTACT'                                                                                                                          
+  OR UPPER(RTRIM(LTRIM(@ls_cod_prec))) = 'TANKER' OR UPPER(RTRIM(LTRIM(@ls_cod_prec))) = 'TANKCONTAI'     
+  OR UPPER(RTRIM(LTRIM(@ls_cod_prec))) = 'NCB' OR UPPER(RTRIM(LTRIM(@ls_cod_prec))) = 'TANK'     
+  OR UPPER(RTRIM(LTRIM(@ls_cod_prec))) = 'TP' OR UPPER(RTRIM(LTRIM(@ls_cod_prec))) = 'MSA'     
+  OR UPPER(RTRIM(LTRIM(@ls_cod_prec))) = 'HLXU'  
+BEGIN                                                                                        
+	SET @ls_cod_prec = ''                                                                                        
+END                                                                       
+-- FIN                                                                                           
+                                                                                 
+	IF @ls_linea NOT LIKE 'TMP%'                                                                                                                                                                                                      
+		BEGIN                                                                 
+		IF NOT EXISTS(SELECT NumeroContenedor FROM @Temporal_Contenedor WHERE NumeroContenedor = @ls_contenedor)                                                                                                 
+		BEGIN                                                                             
+			 INSERT @Temporal_Contenedor(                                                                                                                                                                     
+			 NumeroContenedor,                                                                       
+			 CodigoTipoContenedor,
+			 PropietarioContenedor,                                                                                            		                                                                                  
+			 CodigoCondicionTransporte,                                                      
+			 PesoCarga,                                                                                                                                                  
+			 PesoTara,                                                                                        
+			 Precinto1,                                                
+			 EntidadPrecinto1,                                                                                                                                                                                                                        
+			 Temperatura,                                                                                                                                
+			 UnidadTemperatura                                                                           
+			 )                                                                                                                                                                                                      
+			VALUES(                                                                                           
+			 @ls_contenedor,                                                                                                                                                                        
+			 @CodigoTipoContenedor,
+			 CASE @ls_shipperown WHEN '1' THEN 1 ELSE 0 END,                                                                                                                        
+			 @CodigoCondicionTransporte,                                                                                                                                                                                                      
+			 @ls_peso_carga,                                                                                                                                                                                                      
+			 @ls_peso_tara,                                                                                                                        
+			 @ls_cod_prec,                                                                                                                                                                                    
+			 @ls_ent_prec,                                                                                                                                                                                    
+			 @ls_temperatura,                                                                             
+			 @ls_uni_temp                                                                                                
+			 )                                                                                                                  
+		END                                                                                                                  
+		ELSE                                                                                             
+		BEGIN                                                                                  
+		  UPDATE @Temporal_Contenedor SET                                                                                                                 
+		  Precinto1 = CASE WHEN ISNULL(Precinto1,'')='' THEN @ls_cod_prec ELSE Precinto1 END                                                                                                                
+		  WHERE NumeroContenedor = @ls_contenedor                                                                                                                   
+		END                                                                                                                
+	END                                                                            
+   /*Limpiar Variables*/                                                                                                                             
+   SELECT --@ls_contenedor = NULL,                                                                                                                                                                                                   
+   @ls_tip_ctn = NULL, @ls_condicion = NULL, @ls_peso_carga = NULL, @ls_peso_tara = NULL,                                                                                                                                  
+   @ls_cod_prec = NULL, @ls_ent_prec = NULL, @ls_temperatura = NULL, @ls_uni_temp = NULL, 
+   @CodigoTipoContenedor=NULL, @ls_shipperown = NULL, @CodigoCondicionTransporte=NULL                                                                                                                                          
+END                                                                                                           
+                                                                                                                                                    
+ /************************ TMP ****************************/                    
+IF @ls_linea LIKE 'TMP%'                                                              
+BEGIN                                                                                                                       
+	SELECT @ls_linea = SUBSTRING(@ls_linea,5,LEN(@ls_linea))                                                                                                                                                                             
+	IF CHARINDEX('+',@ls_linea,1)>0                                                                                              
+	BEGIN                                                                                                                                                                                                              
+		SELECT @ls_linea = SUBSTRING(@ls_linea,CHARINDEX('+',@ls_linea,1)+1,LEN(@ls_linea))                                                                                              
+		IF CHARINDEX(':',@ls_linea,1)=0                                                                                                                             
+			SELECT @ls_temperatura = @ls_linea                                                             
+		ELSE                                                                       
+		BEGIN                                                                         
+			SELECT @ls_temperatura = SUBSTRING(@ls_linea,1,CHARINDEX(':',@ls_linea,1)-1)                                                                                                                                                  
+			SELECT @ls_uni_temp = SUBSTRING(@ls_linea, CHARINDEX(':',@ls_linea,1)+1, LEN(@ls_linea))                                                                                                     
+		END                                                                                                                                    
+	END                                                                                                                                                                                                                                 
+                                                                                                                  
+	  UPDATE @Temporal_Contenedor SET                                                                     
+	  Temperatura=@ls_temperatura,                                                                                                                
+	  UnidadTemperatura=@ls_uni_temp                                         
+	  WHERE NumeroContenedor = @ls_contenedor                                                                                                                
+                                           
+  /*Limpiar Variables*/                                                                               
+  SELECT --@ls_contenedor = NULL,                                                                                                                                                                                                       
+  @ls_tip_ctn = NULL,@ls_regimen = NULL, @ls_condicion = NULL, @ls_peso_carga = NULL, @ls_peso_tara = NULL,                                          
+  @ls_cod_prec = NULL, @ls_ent_prec = NULL, 
+  @ls_temperatura = NULL, @ls_uni_temp = NULL, @TipTamCtn=NULL, @TamCtn=NULL, @ls_shipperown = NULL, @CodigoCondicionTransporte=NULL                                                           
+                                                        
+  SELECT @ls_segmento_ant = 'TMP'                                                                                                                                                                     
+END                                                                                                                                                                   
+                                                                                                                            
+ /*************Validacion Si el contenedor no tiene Precinto**************/                                                  
+IF @p_cnt_old<>@p_cnt_new                                                                                                                                
+BEGIN                                                                                         
+	SET @p_bloque_old=@p_Bloques                                                                                                                                                                                            
+	IF (@p_bloque_old NOT LIKE '%SEL%') AND (ISNULL(@ls_condicion_old,@ls_condicion)= 8 OR ISNULL(@ls_condicion_old,@ls_condicion)=7)  
+	-- JAV 22/10/2015, Se modifico ya que le primer EQD no capturaba las variables.                                       
+    BEGIN  
+		IF NOT EXISTS(SELECT NumeroContenedor FROM @Temporal_Contenedor WHERE NumeroContenedor = @p_cnt_old)                                                                                         
+		BEGIN                                                                                                                              
+		   INSERT @Temporal_Contenedor(                                                                                                                 
+		   NumeroContenedor,                                                                                           
+		   CodigoTipoContenedor, 
+		   PropietarioContenedor,                                                                                                                                                             
+		   CodigoCondicionTransporte,                                                                          
+		   PesoCarga,                                                                                                                  
+		   PesoTara,                                                                                                                                                                                                          
+		   Precinto1,                                                                                                                                                      
+		   EntidadPrecinto1,                                                                                
+		   Temperatura,                                                                                                                   
+		   UnidadTemperatura                                                                                   
+		   )                                                                                                                                       
+		   VALUES(                                                                                     
+		   @p_cnt_old,                                                                                               
+		   @CodigoTipoContenedor,
+		   CASE @ls_shipperown WHEN '1' THEN 1 ELSE 0 END,
+		   @CodigoCondicionTransporte,                                                                                                                                                                                                                                                                             
+		   @ls_peso_carga,                                                                             
+		   @ls_peso_tara,                                                                                                                                                 
+		   @ls_cod_prec,                                                                                                                                          
+		   @ls_ent_prec,                                                                                             
+		   @ls_temperatura,                                                                                                                                                          
+		   @ls_uni_temp                                                                                                                       		                                                                                         
+           )
+           
+          PRINT 'El Contenedor Full no tiene Precinto '+@p_cnt_old                                                                                                                                                                                                                                                                                            
+      END                           
+ END
+ 
+ SET @p_Bloques=''                                                                                                                               
+ SET @p_cnt_old=@p_cnt_new                                                                                                                            
+ SET @ls_condicion_old=@ls_condicion                                                                                                                        
+ SET @TipTamCtn_old = @TipTamCtn                                                                                                                                                            
+ SET @TamCtn_old =  @TamCtn                                   
+ SET @ls_regimen_old = @ls_regimen                                                                           
+                                                           
+ END                                                                           
+ -- ADD JAV 30/10/2015, Si el Ultimo Contenedor (EQD) no tiene Precinto, lo inserta Acá                                                                          
+ --If @ls_linea like 'RFF+BM%' AND @p_cnt_new <> '' AND @p_bloque_old NOT LIKE '%SEL%' -  
+ -- 371431 JAV 11/01/2016, Ultimo Contenedor sin Precinto, La linea linea anterior se comenta y se coloca la de linea abajo                                                                                                                         
+IF @ls_linea LIKE 'RFF+BM%' AND @p_cnt_new <> '' AND @p_Bloques NOT LIKE '%SEL%'   
+BEGIN                                                                         
+	IF NOT EXISTS(SELECT NumeroContenedor FROM @Temporal_Contenedor WHERE NumeroContenedor = @p_cnt_new)                                                                          
+	BEGIN                                                                          
+		   INSERT @Temporal_Contenedor(                                                                                                                                                                                                   
+		   NumeroContenedor,                                                                                                    
+		   CodigoTipoContenedor, 
+		   PropietarioContenedor,                                                                                                                                                  
+		   CodigoCondicionTransporte,                                                                                                                     
+		   PesoCarga,                                                                                                                                                                                                          
+		   PesoTara,                                                                                                                                                                                                          
+		   Precinto1,                                                                                  
+		   EntidadPrecinto1,                              
+		   Temperatura,                                                      
+		   UnidadTemperatura                                                                                                                                                                                                          
+		   )                                            
+		   VALUES(                                                   
+		   @p_cnt_new,                                                                                                                                                    
+		   @CodigoTipoContenedor,
+		   CASE @ls_shipperown WHEN '1' THEN 1 ELSE 0 END,                                                                                                                                                                                                                                                                                               
+		   @CodigoCondicionTransporte,                    
+		   @ls_peso_carga,                                                      
+		   @ls_peso_tara,                                                                                      
+		   @ls_cod_prec,                                                 
+		   @ls_ent_prec,                                                                                                                                                                                                  
+		   @ls_temperatura,                  
+		   @ls_uni_temp                                                                                                            
+		   )                                                                                      
+		                                        
+		   PRINT 'El Contenedor Full no tiene Precinto '+@p_cnt_old                                     
+	END                                                                           
+		 SET @p_cnt_new = ''                                                                                
+END                                                                       
+ -- FIN                                                                                                                       
+                                                                                                             
+ /************************ RFF BM: Nro de BL ****************************/                                                                                                                                                                                    
+IF @ls_linea LIKE 'RFF+BM%'                                                                                                                                            
+BEGIN                                                                              
+	SET @ls_contenedor = ''    
+	SET @p_BloqueConsig = ''  
+	SET @p_BloqueRoles = ''  
+	SET @EstadoRUC = 0 
+                                                                                                                
+	IF CHARINDEX('+',@ls_linea) = 0                                                                                                                  
+		SELECT @ls_linea = SUBSTRING(@ls_linea,1,LEN(@ls_linea))                                                                               
+	ELSE                                                         
+		SELECT @ls_linea = SUBSTRING(@ls_linea,charindex('+',@ls_linea,1)+1,LEN(@ls_linea))                                                                                                                                                                              
+	BEGIN                                                                                                
+		SELECT @ls_tipdoc = SUBSTRING(@ls_linea,1,charindex(':',@ls_linea,1)-1)                                                                                                                  
+		SELECT @ls_nrodoc = SUBSTRING(@ls_linea, (CHARINDEX(':',@ls_linea)+1), LEN(@ls_linea))                                                
+	END                                                                                                                                                                                                          
+	
+	IF ISNULL(@ls_nrodoc,'')=''                                                                                                                                                                                   
+    BEGIN 
+		PRINT 'En el Segmento RFF+BM no estan enviando el Numero de Documento'                                                                                                                                                                                                
+	END                                                        
+	SET @ls_bls_old =@ls_bls_new                         
+	SET @ls_bls_new =@ls_nrodoc                                                                                                                    
+                                               
+	SET @ls_segmento_ant = 'RFF+BM'                                                                                 
+END                                                
+                                                                                                                                                                                                                                                                                                                                                                                                                                   
+ /************************ MOA -(Fletes Collect) ****************************/                    
+IF @ls_linea LIKE 'MOA%'                                                                                                                                                                                                             
+BEGIN                                                                 
+	SELECT @ls_linea = SUBSTRING(@ls_linea,5,LEN(@ls_linea))                                                                                                              
+    IF CHARINDEX('+',@ls_linea,1) = 0                                                                                                                                                           
+		SELECT @ls_parrafo = SUBSTRING(@ls_linea,1,LEN(@ls_linea))                                                                            
+    ELSE                                                                                                                                                                       
+		SELECT @ls_parrafo = SUBSTRING(@ls_linea,1,CHARINDEX('+',@ls_linea,1)-1)                                                                                                                                                                                    
+                      
+	IF CHARINDEX(':',@ls_parrafo,1) = 0                                                                             
+		SELECT @ls_codrecargo = @ls_parrafo                                       
+	ELSE                                                                                              
+	BEGIN                                                                   
+		SELECT @ls_codrecargo = SUBSTRING(@ls_parrafo,1,CHARINDEX(':',@ls_parrafo,1)-1)                                                                                                                                                        
+		SELECT @ls_parrafo = SUBSTRING(@ls_parrafo,CHARINDEX(':',@ls_parrafo,1)+1,len(@ls_parrafo))                                                                                           
+	END
+
+	IF NOT EXISTS(SELECT CodigoTipoFlete FROM dbo.TipoFlete (NOLOCK) WHERE CodigoEquivalencia = @ls_codrecargo AND EstadoRegistro = 1)
+	BEGIN
+		PRINT 'Equivalencia de Flete no Existe '+@ls_codrecargo +' para el Documento '+@ls_nrodoc
+	END
+	ELSE 
+	BEGIN
+		SELECT @CodigoTipoFlete = ISNULL(CodigoTipoFlete,0) FROM dbo.TipoFlete (NOLOCK) WHERE CodigoEquivalencia = @ls_codrecargo
+	END
+	                                                                                                                                                                                                       
+	IF CHARINDEX(':',@ls_parrafo,1) > 0                                                                                                                                                                                               
+	BEGIN                                                                                                                                          
+		SELECT @ls_montorecargo = SUBSTRING(@ls_parrafo,1,CHARINDEX(':',@ls_parrafo,1)-1)                                                                                                                                                          
+		SELECT @ls_parrafo = SUBSTRING(@ls_parrafo, CHARINDEX(':',@ls_parrafo,1)+1, LEN(@ls_parrafo))                                                                             
+	END                                                                                                                       
+	IF CHARINDEX(':',@ls_parrafo,1) > 0                                         
+    BEGIN                                                                                                                                                               
+		SELECT @ls_moneda = SUBSTRING(@ls_parrafo,1,CHARINDEX(':',@ls_parrafo,1)-1)                                                                                            
+		SELECT @ls_parrafo = SUBSTRING(@ls_parrafo, CHARINDEX(':',@ls_parrafo,1)+1, LEN(@ls_parrafo))                                                                                                                              
+		
+		IF NOT EXISTS(SELECT CodigoMoneda FROM dbo.Moneda (NOLOCK) WHERE CodigoMonedaSunat = @ls_moneda AND EstadoRegistro = 1)
+		BEGIN
+			PRINT 'Equivalencia de Moneda no Existe '+@ls_moneda +' para el Documento '+@ls_nrodoc
+		END
+		ELSE 
+		BEGIN
+			SELECT @CodigoMoneda=CodigoMoneda FROM dbo.Moneda (NOLOCK) WHERE CodigoMonedaSunat = @ls_moneda AND EstadoRegistro = 1
+		END           
+    END                                                                                                                                                                                                      
+    IF CHARINDEX(':',@ls_parrafo,1) > 0                                                                         
+    BEGIN                                                                
+		SELECT @ls_condpago = SUBSTRING(@ls_parrafo, CHARINDEX(':',@ls_parrafo,1)+1, LEN(@ls_parrafo))
+
+		IF NOT EXISTS(SELECT CodigoModoPago FROM dbo.ModoPago (NOLOCK) WHERE CodigoEquivalencia = @ls_condpago AND EstadoRegistro = 1)
+		BEGIN
+			SELECT @CodigoModoPago=CodigoModoPago FROM dbo.ModoPago (NOLOCK) WHERE CodigoModoPago = 3 AND EstadoRegistro = 1
+		END
+		ELSE 
+		BEGIN
+			SELECT @CodigoModoPago=CodigoModoPago FROM dbo.ModoPago (NOLOCK) WHERE CodigoEquivalencia = @ls_condpago  AND EstadoRegistro = 1
+		END                                                                                                                                                                                                       
+    END                                                        
+                                                                                                                                                                                                                                                                                                                                                   
+    /*Valida Recargos Duplicados*/                                                                                                                                                  
+    IF EXISTS(SELECT PK_DocumentoFlete FROM @Temporal_DocumentoDetalleFlete WHERE NumeroDocumento = @ls_nrodoc AND CodigoTipoFlete = @CodigoTipoFlete)                                                                                                                                                            
+    BEGIN                                                                             
+		SELECT @ls_montorecargo=CAST(MontoFlete AS decimal(15,2))+CAST(@ls_montorecargo AS decimal(15,2)) FROM @Temporal_DocumentoDetalleFlete                                                
+		WHERE NumeroDocumento = @ls_nrodoc AND CodigoTipoFlete = @CodigoTipoFlete                           
+	                                                            
+		UPDATE @Temporal_DocumentoDetalleFlete                                                                                                                                                                       
+		SET MontoFlete = CAST(@ls_montorecargo AS decimal(15,2))                                                                                              
+		WHERE NumeroDocumento = @ls_nrodoc AND CodigoTipoFlete = @CodigoTipoFlete                               
+    END                                           
+    /*Fin Recargos Duplicados*/              
+	ELSE                                                                                  
+    BEGIN                                                              
+		INSERT @Temporal_DocumentoDetalleFlete                                                                                                                                                    
+		(                                                                                                                                                                                                                                                         
+		NumeroDocumento,                                                                                                                                                                                                                                                 
+		CodigoTipoFlete,                                                                                                              
+		CodigoMoneda,                                                                                                                                                              
+		CodigoModoPago,                                                                                                             
+		MontoFlete                                                                                                                                
+		)                                                                               
+		VALUES                                                                                  
+		(                                                                                                                                                                                                                                                                                                                                 
+		@ls_nrodoc,                                                                                                                                                                                                                                                                                             
+		@CodigoTipoFlete,                                                                                                                                                                                    
+		@CodigoMoneda,                                                                                                        
+		@CodigoModoPago,
+		CAST(@ls_montorecargo AS decimal(15,2))                                                                                                                                                  
+		)                                                                                                                      
+	                                         
+	  SELECT @CodigoTipoFlete=NULL,                                                                                                                                                                                              
+		 @ls_montorecargo=NULL,                                                                               
+		 @CodigoMoneda=NULL,                                                                                          
+		 @CodigoModoPago=NULL                                                                                                                                                                                  
+                                                          
+  END                                                                
+  SET @ls_segmento_ant = 'MOA'                                                    
+ END                                             
+                                    
+ /************************ LOC+9 / Puerto de Embarque ****************************/                                                                                                        
+IF @ls_linea LIKE 'LOC+9%'                                                                                  
+BEGIN                                                                                                                                                                                       
+	SET @CodigoPuertoEmbarque = NULL                                                                                                                          
+	SET @NomPto = ''                                                                                                                               
+	SELECT @ls_linea = SUBSTRING(@ls_linea,5,LEN(@ls_linea))                                                                                                                                     
+                                                                                             
+	IF CHARINDEX('+',@ls_linea,1) > 0                                                                                                                             
+	BEGIN                                                                                                                                                                              
+		SELECT @ls_linea = SUBSTRING(@ls_linea,CHARINDEX('+',@LS_LINEA,1)+1,LEN(@ls_linea))                                                                                                                                                                       
+	                                                                            
+		IF CHARINDEX(':',@ls_linea,1) = 0                                                                                 
+		BEGIN                                                                                                                 
+			SELECT @ls_ptoemb = @ls_linea                                                                                                                                 
+		END                                                                                                                           
+		ELSE                                                     
+		BEGIN                                 
+			SELECT @ls_ptoemb = SUBSTRING(@ls_linea,1,CHARINDEX(':',@ls_linea,1)-1)                                                                                                                                                                                      
+		END                                                                                                                                                                             
+	                                           
+		/*Busca Nombre de Puerto*/                                                                                                                                                                               
+		SELECT @ls_linea = SUBSTRING(@ls_linea,CHARINDEX(':',@ls_linea,1)+1,LEN(@ls_linea))                                                                                                                                                                         
+	  
+		IF (CHARINDEX(':',@ls_linea,1) = 0)                                                         
+		BEGIN                                                                                                                             
+			SELECT @NomPto = @ls_linea                                                                                                                                                                     
+		END                   
+		
+		SELECT @ls_linea = SUBSTRING(@ls_linea,CHARINDEX(':',@ls_linea,1)+1,LEN(@ls_linea))                                            
+	    
+		IF (CHARINDEX(':',@ls_linea,1) = 0)                                                     
+		BEGIN                                                                                                            
+			SELECT @NomPto = @ls_linea                                                                              
+		END                                                                                 
+		ELSE                                                                                      
+		BEGIN                                                                                         
+			SELECT @NomPto= SUBSTRING(@ls_linea,CHARINDEX(':',@ls_linea,1)+1,LEN(@ls_linea))                                                                
+		END                                                                                                                                                                                     
+	  /*Busca Nombre de Puerto*/                                                                                                                                                                         
+	END
+
+	IF NOT EXISTS(SELECT CodigoPuerto FROM dbo.Puerto (NOLOCK) WHERE CodigoPuertoSunat = @ls_ptoemb AND EstadoRegistro = 1)
+	BEGIN
+		PRINT 'Puerto Embarque no registrado '+@ls_ptoemb+ ' - '+@NomPto                    
+	END
+	ELSE
+	BEGIN
+		SELECT @CodigoPuertoEmbarque = CodigoPuerto FROM dbo.Puerto (NOLOCK) WHERE CodigoPuertoSunat = @ls_ptoemb AND EstadoRegistro = 1                 
+	END
+                                                                                                                                                                                
+	SET @ls_segmento_ant = 'LOC+9'                                                                                                                                                                                           
+END                                                                                          
+                                                                       
+/************************ LOC+11 / Puerto de Descarga ****************************/                                                                            
+ IF @ls_linea LIKE 'LOC+11%'                                                                                           
+ BEGIN      
+  SET @CodigoPuertoDescarga = NULL                                                
+  SET @NomPto = ''                                                                                                                                                        
+  select @ls_linea = SUBSTRING(@ls_linea,5,LEN(@ls_linea))                                                                                                                                                                                                    
+                                                                                                       
+  IF CHARINDEX('+',@ls_linea,1) > 0                                                                                                                                                                                                              
+  BEGIN                                                                                            
+  SELECT @ls_linea = SUBSTRING(@ls_linea,CHARINDEX('+',@LS_LINEA,1)+1,LEN(@ls_linea))                                                                                                             
+                                                                                   
+  IF CHARINDEX(':',@ls_linea,1) = 0                                          
+    BEGIN                                                                                                                                
+		SELECT @ls_ptodes = @ls_linea                                     
+    END                                                                                                  
+   ELSE                                                                                                                                                                                   
+   BEGIN                                                                                                                                                                            
+		SELECT @ls_ptodes = SUBSTRING(@ls_linea,1,CHARINDEX(':',@ls_linea,1)-1)                                                                                          
+   END                                                                                                                                                                                       
+                                                         
+      /*Busca Nombre de Puerto*/                                                                          
+   SELECT @ls_linea = SUBSTRING(@ls_linea,CHARINDEX(':',@ls_linea,1)+1,LEN(@ls_linea))                                                                                                                                                                         
+                               
+   IF (CHARINDEX(':',@ls_linea,1) = 0)                                                                                     
+      BEGIN                        
+         SELECT @NomPto = @ls_linea                                                                     
+	  END                                                                                                                                      
+   SELECT @ls_linea = SUBSTRING(@ls_linea,CHARINDEX(':',@ls_linea,1)+1,LEN(@ls_linea))                                                                  
+   IF (CHARINDEX(':',@ls_linea,1) = 0)                                                                                                                                                                    
+      BEGIN                                                                 
+         SELECT @NomPto = @ls_linea                                                                                                                                                  
+	  END                                                                                           
+      ELSE                                                                                            
+      BEGIN                                                                                                                                 
+         SELECT @NomPto= SUBSTRING(@ls_linea,CHARINDEX(':',@ls_linea,1)+1,LEN(@ls_linea))                                                                                                                                                                     
+      END                                                                                                                                                                                      
+    /*Busca Nombre de Puerto*/                                                                    
+                                                                                                                          
+  END                                    
+	IF NOT EXISTS(SELECT CodigoPuerto FROM dbo.Puerto (NOLOCK) WHERE CodigoPuertoSunat = @ls_ptodes AND EstadoRegistro = 1)
+	BEGIN
+		PRINT 'Puerto Descarga no registrado '+@ls_ptodes+ ' - '+@NomPto                    
+	END
+	ELSE
+	BEGIN
+		SELECT @CodigoPuertoDescarga = CodigoPuerto FROM dbo.Puerto (NOLOCK) WHERE CodigoPuertoSunat = @ls_ptodes AND EstadoRegistro = 1                 
+	END                                  
+                                                                                 
+ SET @ls_segmento_ant = 'LOC+11'                                                                                                                                                                                 
+ END                                                                        
+                                                                                                                                     
+/************************ LOC+88 / Puerto de Origen ****************************/                                                                                                                 
+ If @ls_linea LIKE 'LOC+88%'                                                
+ BEGIN                                                                                                                                                                        
+  select @ls_linea = SUBSTRING(@ls_linea,5,LEN(@ls_linea))                                                                                                                                                                                                   
+  SET @CodigoPuertoOrigen = NULL                                                                    
+  SET @NomPto = ''  
+                                                                                    
+  if CHARINDEX('+',@ls_linea,1) > 0                                  
+  BEGIN                                                                                                                                                                                    
+    
+  select @ls_linea = SUBSTRING(@ls_linea,CHARINDEX('+',@LS_LINEA,1)+1,LEN(@ls_linea))                                                                                                 
+                                                                
+   if CHARINDEX(':',@ls_linea,1) = 0                                                                                                                                                  
+   BEGIN                                                                                                                              
+    select @ls_ptoori = @ls_linea       
+   END                                                                                                 
+   else                                                                                                             
+   BEGIN                                                                                                  
+    select @ls_ptoori = SUBSTRING(@ls_linea,1,CHARINDEX(':',@ls_linea,1)-1)                                                                              
+   END                                                                       
+                                                                                            
+       /*Busca Nombre de Puerto*/                                                                                                   
+   SELECT @ls_linea = SUBSTRING(@ls_linea,CHARINDEX(':',@ls_linea,1)+1,LEN(@ls_linea))                                                                                                                                                                         
+                                 
+   IF (CHARINDEX(':',@ls_linea,1) = 0)                                                                  
+ BEGIN                                                                               
+         select @NomPto = @ls_linea                                                                                            
+      END                           
+   SELECT @ls_linea = SUBSTRING(@ls_linea,CHARINDEX(':',@ls_linea,1)+1,LEN(@ls_linea))                                                                                            
+    IF (CHARINDEX(':',@ls_linea,1) = 0)                                                                                                                                                                     
+      BEGIN                                                                                                                                                              
+         SELECT @NomPto = @ls_linea                                                                          
+      END                                               
+      ELSE                                                                                                                                                                               
+      BEGIN                                                                       
+         SELECT @NomPto= SUBSTRING(@ls_linea,CHARINDEX(':',@ls_linea,1)+1,LEN(@ls_linea))                                                                                                                                                                             
+      END                                                                                                                                             
+    /*Busca Nombre de Puerto*/                                                                                                             
+END                                                                                                                                                     
+    
+	IF NOT EXISTS(SELECT CodigoPuerto FROM dbo.Puerto (NOLOCK) WHERE CodigoPuertoSunat = @ls_ptoori AND EstadoRegistro = 1)
+	BEGIN
+		PRINT 'Puerto Origen no registrado '+@ls_ptoori+ ' - '+@NomPto                    
+	END
+	ELSE
+	BEGIN
+		SELECT @CodigoPuertoOrigen = CodigoPuerto FROM dbo.Puerto (NOLOCK) WHERE CodigoPuertoSunat = @ls_ptoori AND EstadoRegistro = 1                 
+	END                                                
+                                                                                                                               
+  SET @ls_segmento_ant = 'LOC+88'                                                                                                                                                                                                   
+END                               
+                                                                                                                                  
+  /************************ LOC+7 / Place of delivery (Puerto de Destino Final) ****************************/                                                                 
+                            
+ If @ls_linea LIKE 'LOC+7%'                                     
+ BEGIN                  
+ SET @CodigoPuertoFinal = NULL                                                                                         
+ SET @NomPto = ''                                                                                
+  SELECT @ls_linea = SUBSTRING(@ls_linea,5,LEN(@ls_linea))                                                                                                 
+                                                                       
+  if CHARINDEX('+',@ls_linea,1) > 0                                                     
+ BEGIN                                                                                                                                                                   
+  select @ls_linea = SUBSTRING(@ls_linea,CHARINDEX('+',@LS_LINEA,1)+1,LEN(@ls_linea))                                                                                                                           
+                                                                                          
+   if CHARINDEX(':',@ls_linea,1) = 0                                                                                                                       
+   BEGIN                                                                                                                                                                     
+		SELECT @ls_ptofin = @ls_linea                                                                                          
+   END                                                                                                                                                                           
+   else                                                                   
+   BEGIN                                                      
+    select @ls_ptofin = SUBSTRING(@ls_linea,1,CHARINDEX(':',@ls_linea,1)-1)                                                                                                                             
+   END                             
+       /*Busca Nombre de Puerto*/                                                                                                          
+   SELECT @ls_linea = SUBSTRING(@ls_linea,CHARINDEX(':',@ls_linea,1)+1,LEN(@ls_linea))                                                                           
+                                           
+   IF (CHARINDEX(':',@ls_linea,1) = 0)                                                                                                                            
+      BEGIN                                                                                                                                                                                       
+         select @NomPto = @ls_linea                               
+      END                                                            
+   SELECT @ls_linea = SUBSTRING(@ls_linea,CHARINDEX(':',@ls_linea,1)+1,LEN(@ls_linea))                                                                                                                                                                         
+ 
+   
+    IF (CHARINDEX(':',@ls_linea,1) = 0)                                                                                                                                                
+      BEGIN                                                                                                                       
+   SELECT @NomPto = @ls_linea                                                                                                                               
+      END                                                                                                                         
+      ELSE                                                                                                                                                            
+      BEGIN     
+         SELECT @NomPto= SUBSTRING(@ls_linea,CHARINDEX(':',@ls_linea,1)+1,LEN(@ls_linea))                                                                                                                                                                      
+      END                                                                                             
+      /*Busca Nombre de Puerto*/                                                                                
+                                        
+ END                                                                            
+
+	IF NOT EXISTS(SELECT CodigoPuerto FROM dbo.Puerto (NOLOCK) WHERE CodigoPuertoSunat = @ls_ptofin AND EstadoRegistro = 1)
+	BEGIN
+		PRINT 'Puerto Final no registrado '+@ls_ptofin+ ' - '+@NomPto                    
+	END
+	ELSE
+	BEGIN
+		SELECT @CodigoPuertoFinal = CodigoPuerto FROM dbo.Puerto (NOLOCK) WHERE CodigoPuertoSunat = @ls_ptofin AND EstadoRegistro = 1                 
+	END
+	        
+ SET @ls_segmento_ant = 'LOC+7'                                                                                                                       
+ END                                                                                                                         
+                                                                                                                                                                                     
+/************************ Clientes del Documento****************************/                                         
+                                                                                                                                                                                                                                                                     
+IF (@ls_linea LIKE 'NAD%' OR @ls_linea LIKE 'RFF+AHP%')
+BEGIN  
+	IF (@ls_linea LIKE 'NAD%')
+	BEGIN                                                                                                                                                                                                            
+		SELECT @ls_linea = SUBSTRING(@ls_linea,5, LEN(@ls_linea))                                                                                                                                                               
+		SELECT @ls_rolcliente= SUBSTRING(@ls_linea,1, CHARINDEX('+',@ls_linea,1)-1)                                                                                                                                                                            	 
+                                                                                                                                                                                                                                                                                                                                                                         
+ SET @RolClienteRUC = @ls_rolcliente                                                             
+ SET @ls_rolcliente=NULL 
+ SET @CodigoRol=NULL                                                                
+                                                                                           
+  SELECT @ls_segmento_ant = 'NAD'                                                                                                                      
+END
+ 
+---------RUC DEL CLIENTE-----------
+	 IF @ls_linea LIKE 'RFF+AHP%'      
+	 BEGIN    
+	 SET  @p_BloqueConsig=@p_BloqueConsig + 'RFF+AHP-'     
+	 SELECT @RUC = SUBSTRING(@ls_linea,9,11)  
+	 
+		 IF @RUC = '' AND @RolClienteRUC = 'CN' AND @CodigoTipoOperacion = 1 -- 1: Importacion 
+			AND @CodigoPuertoDescarga IN (SELECT CodigoPuerto FROM dbo.Puerto (NOLOCK) WHERE CodigoPais = 174) -- Peru (174) 
+			AND @CodigoPuertoFinal IN (SELECT CodigoPuerto FROM dbo.Puerto (NOLOCK) WHERE CodigoPais = 174)
+		 BEGIN 
+			SET @EstadoRUC = 1
+			PRINT 'RUC en Blanco para el Consignatario para el Documento '+@ls_nrodoc                                         
+		 END
+		  
+		 IF ((LEN(@RUC) <> 11 AND LEN(@RUC) > 0) OR (ISNUMERIC(@RUC)<>1 AND LEN(@RUC) > 0)) AND @RolClienteRUC = 'CN' AND @CodigoTipoOperacion = 1 -- 1: Importacion 
+			AND @CodigoPuertoDescarga IN (SELECT CodigoPuerto FROM dbo.Puerto (NOLOCK) WHERE CodigoPais = 174) -- Peru (174) 
+			AND @CodigoPuertoFinal IN (SELECT CodigoPuerto FROM dbo.Puerto (NOLOCK) WHERE CodigoPais = 174)
+		 BEGIN 
+			SET @EstadoRUC = 1
+			PRINT 'RUC Incorrecto para el Consignatario para el Documento '+@ls_nrodoc                                                                                                                                                                                                                         
+		 END 
+     
+       IF @EstadoRUC = 0
+       BEGIN
+	   SELECT @CodigoRol=CodigoRol FROM dbo.Rol (NOLOCK) WHERE CodigoEquivalencia=@RolClienteRUC
+	   SELECT @CodigoPersona=p.CodigoPersona FROM dbo.Persona p (NOLOCK) WHERE NumeroDocumentoPersona = @RUC
+                                                         
+	   INSERT @Temporal_DocumentoDetalleCliente                                                                                              
+	   (                                                                                                                                      
+		NumeroDocumento,                                                                                                                                                                                
+		CodigoRol, 
+		CodigoPersona                                                                                                              
+	   )                                                                     
+	   VALUES                                                                                                                                                                                        
+	   (                                                                                                                                                                             
+	   @ls_nrodoc,                                                                                                                                                                                                
+	   @CodigoRol,
+	   @CodigoPersona                                                                              
+	   )                                                                         
+	  
+	   END    
+	SET @RolClienteRUC = NULL      
+	      
+	END                                                                                                               
+END                                                                                                                                              
+                                                                                                        
+  /************************ DTM - Fecha de Embarque del BL  ****************************/                                                           
+                                         
+IF @ls_linea LIKE 'DTM+136%'                                                                                                                                                  
+BEGIN                                                                                                    
+	SELECT @ls_linea = SUBSTRING(@ls_linea,8,LEN(@ls_linea))                                                                     
+                   
+	IF CHARINDEX(':',@ls_linea,1) > 0                                                                                                               
+	BEGIN                                                                         
+		SELECT @ls_linea = SUBSTRING(@ls_linea,CHARINDEX(':',@ls_linea,1)+1,LEN(@ls_linea))                          
+                                                                                                                                                                       
+	IF CHARINDEX(':',@ls_linea,1) = 0                                                
+		SELECT @FechaEmbarqueBL = @ls_linea                                                                                                                                                                                      
+	ELSE                                                                                                     
+		SELECT @FechaEmbarqueBL = SUBSTRING(@ls_linea,1,CHARINDEX(':',@ls_linea,1)-1)                                                                                                              
+	END                                                                                                
+                                                                                                                            
+	IF ISNULL(@FechaEmbarqueBL,'')=''                                                                                                                                               
+    BEGIN                                               
+		PRINT 'En el Segmento DTM+136 No esta enviando Fecha Embarque del BL '+@ls_nrodoc                                                                                         
+    END                                                                                                                        
+                                                                                                                         
+    IF ISDATE(@FechaEmbarqueBL)<>1                                                                                
+    BEGIN                                                       
+		PRINT 'La Fecha de Embarque: '+@FechaEmbarqueBL+ ' no tiene Formato Fecha '+@ls_nrodoc                                                                                                                                                                                                                      
+		SET @FechaEmbarqueBL = ''                                                                                                                          
+    END                                                                                                                                                                                                 
+                                                                                                       
+	SELECT @ls_segmento_ant = 'DTM+136'                                                                                  
+END                                                
+                                                                                
+   /************************ DTM - Fecha de Emision del BL  ****************************/                                                                                                                                              
+IF @ls_linea LIKE 'DTM+182%'                                                                                                                                                                                                           
+BEGIN                                                                                                                                                                                                             
+	SELECT @ls_linea = SUBSTRING(@ls_linea,8,LEN(@ls_linea))                                                                                
+                                                          
+	IF CHARINDEX(':',@ls_linea,1) > 0                                           
+	BEGIN                                                                                                
+		SELECT @ls_linea = SUBSTRING(@ls_linea,CHARINDEX(':',@ls_linea,1)+1,LEN(@ls_linea))                                                                                    
+	                                                                                                          
+		IF CHARINDEX(':',@ls_linea,1) = 0                                                                                                                                  
+			SELECT @FechaEmisionBL = @ls_linea                                                                                                                              
+		ELSE                                                                                                                                                                                                              
+			SELECT @FechaEmisionBL = SUBSTRING(@ls_linea,1,CHARINDEX(':',@ls_linea,1)-1)                                  
+	                                                                            
+		IF ISNULL(@FechaEmisionBL,'')=''                                                             
+		BEGIN                                 
+			PRINT 'En el Segmento DTM+182 No esta enviando Fecha Emision '+@ls_nrodoc                                                                                                                                                                                                                                                            
+		END                                                                                     
+	                                            
+		IF ISDATE(@FechaEmisionBL)<>1                                                                                                                                          
+		BEGIN                                                                                                                                    
+			PRINT 'La Fecha de Emision: ' +@FechaEmisionBL+ ' no tiene Formato Fecha '+@ls_nrodoc                                                                                                                                                 
+			SET @FechaEmisionBL = ''                                                                                                                                 
+		END                                	                                                                                                                                                                                                                                                                    
+	END                                                                                                                               
+                                                                                                                                                                          
+/*Inserto @Temporal_Documento, asegurandome que siempre haya Fecha de Emision*/   
+-- SELECT * FROM dbo.Documento d                                                                                                       
+  INSERT @Temporal_Documento                                                                                                                                                                                                       
+	(                                                                                                                                                                                                                                                                                                                                                                                                               
+	 CodigoPuertoOrigenDocumento,                                                                                                                                                            
+	 CodigoPuertoEmbarqueDocumento,                                                                                                     
+	 CodigoPuertoDescargaDocumento,                                                                                                                                                                     
+	 CodigoPuertoFinalDocumento,                                                                                                                                           
+	 CodigoAduana, 
+	 CodigoTipoBL, 
+	 CodigoTipoEnvio, 
+	 CodigoCondicionContrato, 
+	 CodigoRequerimientoServicio, 
+	 NumeroDocumento, 
+	 FechaEmisionDocumento,                                                                                                                                                    
+	 FechaEmbarqueDocumento                                                                                                               
+	)                                                                                                                                    
+  VALUES                                                                   
+  (                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+	@CodigoPuertoOrigen,                                                                                                                                                            
+	@CodigoPuertoEmbarque,                                                                                                     
+	@CodigoPuertoDescarga,                                                                                                                                                                     
+	@CodigoPuertoFinal,                                                                                                                                           
+	@CodigoAduana, 
+	1,-- 1: 705 Bill of Lading -- CodigoTipoBL, Por Defecto BL
+	@CodigoTipoOperacion,--CodigoTipoEnvio, 
+	3,-- CodigoCondicionContrato 3: -- 99: Sin Condicion Contrato, No envian este Dato. 
+	61, --CodigoRequerimientoServicio,-- 61	-- 99: Sin Requerimiento Servicio, No envian este Dato. 
+	@ls_nrodoc, 
+	@FechaEmisionBL,                                                                                                                                                    
+	@FechaEmbarqueBL                                                                                          
+  )                                                                                                                                                  
+                                    
+  SELECT 
+   @CodigoPuertoOrigen=NULL,
+   @CodigoPuertoEmbarque=NULL,
+   @CodigoPuertoDescarga=NULL,
+   @CodigoPuertoFinal=NULL,                                                                            
+   @FechaEmisionBL=NULL,                                                                                                            
+   @FechaEmbarqueBL=NULL                                                                                                                                                                                            
+                                                                                                                                                                           
+  SELECT @ls_segmento_ant = 'DTM+182'                                                                                                                                                                                        
+                                                                                                                            
+END                                                 
+                                                        
+/************************ GID - Item ,Bultos del CTN y Unidad Basica de Carga x BL   ****************************/                                                                                                                             
+IF @ls_linea like 'GID%'                                                                                                   
+BEGIN                                                                                                 
+	SELECT @ls_linea = SUBSTRING(@ls_linea,5,LEN(@ls_linea))                                                                                                                                                         
+	SELECT @ItmCtn =  SUBSTRING(@ls_linea,1,CHARINDEX('+',@ls_linea,1)-1)                                                                                                    
+	IF CHARINDEX('+',@ls_linea,1) > 0                                                                                                                     
+	BEGIN                                                                                                                    
+		SELECT @ls_linea = SUBSTRING(@ls_linea,CHARINDEX('+',@ls_linea,1)+1,LEN(@ls_linea))                                                                        
+	IF CHARINDEX(':',@ls_linea,1) = 0                                                 
+		SELECT @CanBul = @ls_linea                     
+	ELSE                                
+		SELECT @CanBul = SUBSTRING(@ls_linea,1,CHARINDEX(':',@ls_linea,1)-1)                                                             
+		SELECT @ls_linea = SUBSTRING(@ls_linea,CHARINDEX(':',@ls_linea,1)+1,LEN(@ls_linea))                                                                       
+	END                                                                                                                                                                                                      
+    
+    IF CHARINDEX(':',@ls_linea,1) = 0                                                                                                                                          
+    BEGIN                                                                                                  
+		SELECT @UnidadBasicaCarga = @ls_linea                                                          
+    END                                                                       
+	ELSE                                                                    
+	BEGIN                                                                                                   
+		SELECT @UnidadBasicaCarga = SUBSTRING(@ls_linea,1,CHARINDEX(':',@ls_linea,1)-1)                                                                                           
+		SELECT @ls_linea = SUBSTRING(@ls_linea,CHARINDEX(':',@ls_linea,1)+1,LEN(@ls_linea))                                                                                                                                         
+	END                                                                                                                                                       
+                                                        
+	SET @isctnvacio=''                                                                                                   
+	SET @isctnvacio= substring(@ls_linea,2,len(@ls_linea))                                                            
+                                                                                                                                    
+	IF NOT EXISTS(SELECT CodigoUnidadMercancia FROM dbo.UnidadMercancia (NOLOCK) WHERE CodigoUnidadMercanciaSunat = @UnidadBasicaCarga) 
+	 AND (@isctnvacio NOT LIKE '%EMPTY CONTAINER%')               
+	BEGIN                                               
+		PRINT 'En el Segmento GID No se esta enviando Unidad de Mercancia de la Carga'                                                                                                                                                                                                                                                                                                                  
+    END 
+	ELSE
+	BEGIN 
+		SELECT @CodigoUnidadMercancia=CodigoUnidadMercancia FROM dbo.UnidadMercancia (NOLOCK) WHERE CodigoUnidadMercanciaSunat = @UnidadBasicaCarga    
+	END                                                                                                                                                                                                                                                                                                                                                                                                                    
+                                                                                
+  SELECT @ls_segmento_ant = 'GID'                                                                                                                                                                                                                                  
+ END                                   
+                                                                                       
+/************************ FTX 1 - Descripcion de la Mercaderia por CTN  ****************************/                                                                                                                                                           
+IF @ls_linea like 'FTX%'                                 
+BEGIN                                                                                 
+	SELECT @ls_linea = SUBSTRING(@ls_linea,5,LEN(@ls_linea))                                                                                                 
+                                                                                                                                                                                                           
+	IF CHARINDEX('+',@ls_linea,1) > 0                                        
+	BEGIN                                                                                                                                                                                                          
+		SELECT @ls_linea = SUBSTRING(@ls_linea,CHARINDEX('+',@ls_linea,1)+1,LEN(@ls_linea))                                                                                                         
+                                                                                                                          
+	IF CHARINDEX('+',@ls_linea,1) > 0                                                                                                                             
+	BEGIN                                                                                                                                                       
+		SELECT @ls_linea = SUBSTRING(@ls_linea,CHARINDEX('+',@ls_linea,1)+1,LEN(@ls_linea))                                                                                                           
+	IF CHARINDEX('+',@ls_linea,1) > 0                                                                                                  
+	BEGIN                               
+	
+	IF ISNULL(@DescripcionMercaderia,'')=''                                                                                                                                   
+	BEGIN                                                                                                                    
+		SET @DescripcionMercaderia = ''                                                                                           
+	END                                                                                                                                                                                                
+                                                                                                                                                                
+-- Concatenar Descripcion de la Mercaderia                                   	                                                                                   
+	SET @DescripcionMercaderia = @DescripcionMercaderia  + (SUBSTRING(@ls_linea,CHARINDEX('+',@ls_linea,1)+1,LEN(@ls_linea)))                                                                                                               
+                                            
+   END                                                                                                    
+  END                                                                                                                                                    
+ END                                                       
+	SELECT @ls_segmento_ant = 'FTX'                                                                       
+END                                                                                                              
+                                                                                                                  
+  /************************ MEA PESO CARGA FISICA****************************/                                                                                                                                                                                                         
+IF @ls_linea like 'MEA+AAY+G%'                                                                                                       
+BEGIN                                                                                                                                            
+	SELECT @ls_linea = SUBSTRING(@ls_linea,5, LEN(@ls_linea))                                                                                                                                
+                                                                                      
+	IF CHARINDEX('+',@ls_linea,1)>0                                                                                                                             
+	SELECT @ls_linea = SUBSTRING(@ls_linea,CHARINDEX('+',@ls_linea,1)+1,LEN(@ls_linea))                                                                                                                            
+	BEGIN                                                                
+	IF CHARINDEX('+',@ls_linea,1)>0                                                                                                                                            
+		SELECT @ls_linea = SUBSTRING(@ls_linea,CHARINDEX('+',@ls_linea,1)+1,LEN(@ls_linea))                                                                        
+                                                                                                         
+	IF CHARINDEX('+',@ls_linea,1)=0                                                
+		SELECT @ls_parrafo = @ls_linea                                                
+	ELSE                                                                                                                                                 
+		SELECT @ls_parrafo = substring(@ls_linea,1,CHARINDEX('+',@ls_linea,1)-1)                                                                                                                                                                                                 
+	BEGIN                                                                        
+    IF CHARINDEX(':',@ls_parrafo,1) > 0                                                                                         
+    BEGIN                                                                                                                                                                                                   
+		SELECT @ls_parrafo = SUBSTRING(@ls_parrafo,CHARINDEX(':',@ls_parrafo,1)+1, LEN(@ls_parrafo))                                                                                                                                                   
+    IF CHARINDEX(':',@ls_parrafo,1) = 0                            
+		SELECT @ls_peso_carga2 = @ls_parrafo                                                                                                                          
+    ELSE                                                                                           
+		SELECT @ls_peso_carga2 = SUBSTRING(@ls_parrafo,1,CHARINDEX(':',@ls_parrafo,1)-1)                                                                                                                       
+    END                                                                             
+   END                                                                                         
+  END                                                                               
+/* Codigo Anterior */                                                                                                                                                    
+	SELECT @ls_segmento_ant = 'MEA+AAY+G'                                                                                                                                                                              
+END                                                                                                                                                                                               
+                                                                                                                                    
+   /************************ MEA VOLUMEN DEL CONTENEDOR ****************************/                                                                                                                  
+IF @ls_linea like 'MEA+VOL+AAW%'                                                             
+BEGIN                                                                            
+	SELECT @ls_linea = SUBSTRING(@ls_linea,5, LEN(@ls_linea))                                                                  
+                                                                                                                                                                                              
+	IF CHARINDEX('+',@ls_linea,1)>0                                                                                                         
+		SELECT @ls_linea = SUBSTRING(@ls_linea,CHARINDEX('+',@ls_linea,1)+1,LEN(@ls_linea))                                                                                                                           
+	BEGIN                                                                                                                        
+	IF CHARINDEX('+',@ls_linea,1)>0                          
+		SELECT @ls_linea = SUBSTRING(@ls_linea,CHARINDEX('+',@ls_linea,1)+1,LEN(@ls_linea))                                 
+                                                                                                                                                       
+	IF CHARINDEX('+',@ls_linea,1)=0                                                                                
+		SELECT @ls_parrafo = @ls_linea                                                                                                                           
+	ELSE                                                                                                  
+		SELECT @ls_parrafo = substring(@ls_linea,1,CHARINDEX('+',@ls_linea,1)-1)                                                                                                                  
+	BEGIN                                                              
+    
+    IF CHARINDEX(':',@ls_parrafo,1) > 0                                                                                                                                          
+    BEGIN                                                                                                                                                                                                              
+		SELECT @ls_parrafo = SUBSTRING(@ls_parrafo,CHARINDEX(':',@ls_parrafo,1)+1, LEN(@ls_parrafo))                                                                                                                             
+                                      
+    IF CHARINDEX(':',@ls_parrafo,1) = 0                                                                                               
+		SELECT @ls_volumenctn = @ls_parrafo                                                                                                                                                 
+	ELSE                                                                  
+        SELECT @ls_volumenctn = SUBSTRING(@ls_parrafo,1,CHARINDEX(':',@ls_parrafo,1)-1)                                                                                       
+    END                                                                                                                                                          
+   END                                                               
+  END                                                                                                                                                                                                                                  
+/* Codigo Anterior */                     
+	SELECT @ls_segmento_ant = 'MEA+VOL+AAW'                                                                                                                                               
+END                                                                                                  
+                                                                                                                                         
+/************************ SGP - Numero de Contenedor  ****************************/                                                                                
+                             
+IF @ls_linea like 'SGP%'                                                                           
+BEGIN                                                                                                                                                                                
+	SELECT @ls_linea = SUBSTRING(@ls_linea,5,LEN(@ls_linea))                                                                                                                                                                          
+	IF CHARINDEX('+',@ls_linea,1) = 0                                                                             
+	BEGIN                                                                                                                  
+		SELECT @ContenedorBL = SUBSTRING(@ls_linea,1,LEN(@ls_linea))   
+	END                                                                                                                      
+	ELSE                                                                                                                                                                                      
+	BEGIN                                                                                                                                    
+		SELECT @NumPaquetesCtn = SUBSTRING(@ls_linea,CHARINDEX('+',@ls_linea,1)+1,LEN(@ls_linea))                                                                                  
+	END                                                      
+
+	IF @isctnvacio=':EMPTY CONTAINERS'                                                                                                                                                                   
+	BEGIN                                                                                                                    
+		SET @ContenedorBL=SUBSTRING(@ls_linea,1,LEN(@ls_linea)-2)                                                                                     
+		-- Inserta en SGP cuando son Contenedores Vacios                                                                            
+	  INSERT @Temporal_DocumentoDetalleCarga (                                                                                                           
+		NumeroDocumento,                                                                                                                                                                                                                                                                                                            
+		NumeroContenedor,  
+		CodigoCondicionTransporte,
+		CodigoTipoMovimiento,
+		CodigoUnidadMercancia,
+		CodigoNaturalezaCarga,
+		CodigoCondicionCarga,
+		CodigoTemperatura,
+		CodigoClaseIMO,
+		CodigoNumeroIMO,
+		CodigoAlmacen,
+		CodigoDeposito,
+		CodigoPrecinto,                                                                                                                                                                                                   
+		ItemDocumento,
+		CantidadBulto,                                                                                                                                                                                                                                                                                                                                                                                                                                     
+		PesoBruto,                                                                                                               
+		VolumenBruto, 
+		TemperaturaMinima,                                              
+		TemperaturaMaxima,
+		Propietario,
+		Observacion,
+		DescripcionMercaderia,                                                                                                                                      
+		MarcasNumeros, 
+		Falto                                                                                                                                
+	)                                                        
+	   VALUES(                                                                                                                                                                              
+	   @ls_nrodoc,                                                                                                                                                                                                                                                                                      
+	   @ContenedorBL,                                                                                                                                                                                               
+	   NULL, -- CodigoCondicionTransporte, esta en Containers
+	   4, -- CodigoTipoMovimiento, sera 4 (FCL/LCL)  
+	   @CodigoUnidadMercancia, 
+	   6, -- CodigoNaturalezaCarga, sera 6 (Contenerizada)      
+	   4, -- CodigoCondicionCarga, sera 4 (Carga General)
+	   NULL, -- CodigoTemperatura, esta en Containers (hay que trar del FK)
+	   NULL, -- CodigoClaseIMO, Los Vacios no tiene IMO,
+	   NULL, -- CodigoNumeroIMO, Los Vacios no tiene IMO,
+	   NULL, -- CodigoAlmacen, Por Definir	                                                                                                                                                        
+	   NULL, -- CodigoDeposito, Por Definir,
+	   NULL, -- CodigoPrecinto, esta en Containers,
+	   CAST(@ItmCtn AS int),                                                                                                                                                                      
+	   1, -- CantidadBulto, Por ser Vacio se envia 1   
+	   0, -- PesoBruto, Por ser Vacio se envia 0                                                                                
+	   0, -- VolumenBruto, Por ser Vacio se envia 0  
+	   NULL, -- TemperaturaMinima, esta en Containers                                                                                                                     
+	   NULL, -- TemperaturaMaxima, esta en Containers
+	   NULL, -- Propietario, esta en Containers
+	   NULL, -- Observacion, no Tiene Observacion
+	   'EMPTY CONTAINER', -- DescripcionMercaderia, por ser Vacio
+	   'SMyN',-- MarcasNumeros, Sin Marcas y Numeros por ser Vacio 
+	   0 -- Falto, 0: No es Falto                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+	 )                                                  
+	 /*Limpio Variables*/                                                                                                                                                                                
+	  SELECT                                                                                                                          
+		--@ls_nrodoc = NULL,                                                                                         
+		--@ls_nrobooking = NULL,                                
+	   @ContenedorBL= NULL,                                                                                                                
+	   @UnidadBasicaCarga= NULL,                                                                                                                                                                                                 
+	   @ItmCtn= NULL,                                                                                       
+	   @CanBul= NULL,                                                                                                                                                                                                  
+	   @CodUBCHawk= NULL,                                                
+	   @ls_peso_carga2= NULL,                                                                                                                                                                                     
+	   @DescripcionMercaderia= NULL,                                                                 
+	   @MarcasyNumeros= NULL,                                                                                          
+	   @ls_regimen= NULL,                                                                                       
+	   @ls_condicion= NULL,                                                                                                            
+	   @ls_condicion= NULL,                                       
+	   @ClaseImo = NULL,                                                                     
+	   @NroImo = NULL,                                       
+	   @ls_volumenctn = NULL,
+	   @CodigoCondicionTransporte = NULL,
+	   @CodigoUnidadMercancia=NULL,
+	   @CodigoClaseIMO=NULL,
+	   @CodigoNumeroIMO=NULL                                                                              
+	  END                                                                                          
+                                                                                                                         
+  SET  @p_Bloques= @p_Bloques +'SGP-'                                                                              
+  SELECT @ls_segmento_ant = 'SGP'                                                                                                                                                                                   
+ END                                                               
+                                                                  
+  /************************ DGS - IMO - Indicador de Peligrosidad  ****************************/                                                                                                                                     
+ IF @ls_linea like 'DGS+IMD%'                                                                         
+ BEGIN                                                                                                                                                      
+  select @ls_linea = SUBSTRING(@ls_linea,5, LEN(@ls_linea))                                                                                                           
+                                                                                                                                                  
+  if CHARINDEX('+',@ls_linea,1)>0                                                                                                                                                                         
+  BEGIN                                               
+   select @ls_linea = SUBSTRING(@ls_linea,CHARINDEX('+',@ls_linea,1)+1,LEN(@ls_linea))                                                                                          
+                                                                                                         
+   if CHARINDEX('+',@ls_linea,1)>0                                                                                                                                  
+    BEGIN                                                           
+  select @ClaseImo = SUBSTRING(@ls_linea,1,CHARINDEX('+',@ls_linea,1)-1)                                                                                                                                
+ END                                                                              
+   ELSE                                                                                                                                
+ BEGIN                                                                                              
+  select @ClaseImo = SUBSTRING(@ls_linea,1,LEN(@ls_linea))                                                                                                                 
+ END                                                                                                                                
+                                                                                                                      
+    if CHARINDEX('+',@ls_linea,1)>0                                                                                              
+    BEGIN                                                                 
+  select @NroImo = SUBSTRING(@ls_linea,CHARINDEX('+',@ls_linea,1)+1,LEN(@ls_linea))                                                                                                                                     
+                 
+    END                                                                        
+  END   
+                                        
+-- SI EL IMO NO EXISTE EN HAWK, INSERTO CON DESCRIPCION .. (Enviar Como Inconsistencia)                                                                      
+  IF NOT EXISTS (SELECT CodigoClaseIMO FROM dbo.ClaseIMO (NOLOCK) WHERE CodigoClaseIMOSunat = @ClaseImo)                                                                                                                                          
+   BEGIN                                                                                                                                                                   
+   INSERT dbo.ClaseIMO
+   (
+       --CodigoClaseIMO - this column value is auto-generated
+       CodigoClaseIMOSunat,
+       NombreClaseIMO,
+       EstadoRegistro,
+       UsuarioCreacion,
+       FechaHoraCreacion
+   )
+   VALUES
+   (
+       -- CodigoClaseIMO - bigint
+       @ClaseImo, -- CodigoClaseIMOSunat - varchar
+       'IMO '+@ClaseImo, -- NombreClaseIMO - varchar
+       1, -- EstadoRegistro - bit
+       'JAV', -- UsuarioCreacion - varchar
+       getdate()
+   )   
+
+   SET @CodigoClaseIMO=@@Identity 
+
+   INSERT dbo.NumeroIMO
+   (
+       --CodigoNumeroIMO - this column value is auto-generated
+       CodigoClaseIMO,
+       NumberIMO,
+       NombreNumeroIMO,
+       PaginaNumeroIMO,
+       EstadoRegistro,
+       UsuarioCreacion,
+       FechaHoraCreacion
+   )
+   VALUES
+   (
+       -- CodigoNumeroIMO - bigint
+       @CodigoClaseIMO, -- CodigoClaseIMO - bigint
+       isnull(@NroImo,''), -- NumberIMO - varchar
+       'Numero IMO '+isnull(@NroImo,''), -- NombreNumeroIMO - varchar
+       NULL, -- PaginaNumeroIMO - int
+       1, -- EstadoRegistro - bit,
+	   USER_NAME(),
+     getdate()
+   ) 
+   
+   SET @CodigoNumeroIMO=@@Identity                                       
+                                                                                                                                 
+	PRINT 'Se Insertó la ClaseIMO '+@ClaseImo+' debes registrar su Descripcion'                                                                                                                                                                                                                                                                                                                                               
+   END
+   ELSE 
+	BEGIN
+		SELECT @CodigoClaseIMO=CodigoClaseIMO FROM dbo.ClaseIMO (NOLOCK) WHERE CodigoClaseIMOSunat = @ClaseImo
+		SELECT @CodigoNumeroIMO=CodigoNumeroIMO FROM dbo.NumeroIMO (NOLOCK) WHERE CodigoClaseIMO = @CodigoClaseIMO AND NumberIMO = @NroImo 
+	END  
+	                                                                              
+  SELECT @ls_segmento_ant = 'DGS+IMD'                                                                                                                                                                            
+ END                                                                                                                                                            
+                                                          
+/********PCI - MARCAS Y NUMEROS******/                                          
+IF @ls_linea like 'PCI%'                                                                                            
+BEGIN                                          
+  SET @IsPCI = 1                                                                                                                        
+  SELECT @ls_linea = SUBSTRING(@ls_linea,5,LEN(@ls_linea))                                                    
+                                                                                                                                      
+  IF CHARINDEX('+',@ls_linea,1) > 0                                                                                                                    
+  BEGIN                                                                                                                                                                     
+  IF CHARINDEX('+',@ls_linea,1) > 0                                                                                                       
+     BEGIN                                                                                                                                                         
+      SELECT @MarcasyNumeros = SUBSTRING(@ls_linea,CHARINDEX('+',@ls_linea,1)+1,LEN(@ls_linea))                                                                                                                                   
+     END                     
+   END                                                                                                                                         
+/*Valida que las descripciones largas del contenedor estens separadas por ItemCtn*/                                                                                                                                                                                                                                                                                                                                               
+   INSERT @Temporal_DocumentoDetalleCarga                                                                                                                    
+   (                                                                                                                                                                                                                             
+		NumeroDocumento,                                                                                                                                                                                                                                                                                                            
+		NumeroContenedor,  
+		CodigoCondicionTransporte,
+		CodigoTipoMovimiento,
+		CodigoUnidadMercancia,
+		CodigoNaturalezaCarga,
+		CodigoCondicionCarga,
+		CodigoTemperatura,
+		CodigoClaseIMO,
+		CodigoNumeroIMO,
+		CodigoAlmacen,
+		CodigoDeposito,
+		CodigoPrecinto,                                                                                                                                                                                                   
+		ItemDocumento,
+		CantidadBulto,                                                                                                                                                                                                                                                                                                                                                                                                                                     
+		PesoBruto,                                                                                                               
+		VolumenBruto, 
+		TemperaturaMinima,                                              
+		TemperaturaMaxima,
+		Propietario,
+		Observacion,
+		DescripcionMercaderia,                                                                                                                                      
+		MarcasNumeros, 
+		Falto                                                                                                                                                                                  
+   )  
+   SELECT
+	   @ls_nrodoc,                                                                                                                                                                                                                                                                                      
+	   @ContenedorBL,                                                                                                                                                                                               
+	   NULL, -- CodigoCondicionTransporte, esta en Containers
+	   4, -- CodigoTipoMovimiento, sera 4 (FCL/LCL)  
+	   @CodigoUnidadMercancia, 
+	   6, -- CodigoNaturalezaCarga, sera 6 (Contenerizada)      
+	   4, -- CodigoCondicionCarga, sera 4 (Carga General)
+	   NULL, -- CodigoTemperatura, esta en Containers (hay que trar del FK)
+	   @CodigoClaseIMO, -- CodigoClaseIMO, Los Vacios no tiene IMO,
+	   @CodigoNumeroIMO, -- CodigoNumeroIMO, Los Vacios no tiene IMO,
+	   NULL, -- CodigoAlmacen, Por Definir	                                                                                                                                                        
+	   NULL, -- CodigoDeposito, Por Definir,
+	   NULL, -- CodigoPrecinto, esta en Containers,
+	   CAST(@ItmCtn AS int),                                                                                                                                                                      
+	   CAST(@CanBul AS int), -- CantidadBulto, Por ser Vacio se envia 1   
+	   CAST(@ls_peso_carga2 AS decimal(15,2)), -- PesoBruto
+	   CAST(@ls_volumenctn AS decimal(15,2)), -- VolumenBruto
+	   NULL, -- TemperaturaMinima, esta en Containers                                                                                                                     
+	   NULL, -- TemperaturaMaxima, esta en Containers
+	   NULL, -- Propietario, esta en Containers
+	   NULL, -- Observacion, no Tiene Observacion
+	   @DescripcionMercaderia, -- DescripcionMercaderia, por ser Vacio
+	   @MarcasyNumeros,-- MarcasNumeros, Sin Marcas y Numeros por ser Vacio 
+	   0 -- Falto, 0: No es Falto                                                                                                                                                                                                                                                                                                                                                 
+                                                                         
+ /*Limpio Variables*/                                                                                                                    
+    SELECT                                                       
+   --@ls_nrodoc = NULL,                                                                                                                                     
+   --@ls_nrobooking = NULL,                                                                                
+      @ContenedorBL= NULL,                             
+     @UnidadBasicaCarga= NULL,                                                         
+	 @ItmCtn= NULL,                                                                                 
+     @CanBul= NULL,                                                                                
+     @CodUBCHawk= NULL,                                                                                                                                                                                                  
+     @ls_peso_carga2= NULL,                                       
+     @DescripcionMercaderia= NULL,                                                                                                                                                                                                  
+     @MarcasyNumeros= NULL,                                                                                
+     @ls_regimen= NULL,                                                 
+     @ls_condicion= NULL,                                                                      
+     @ls_condicion= NULL,                                                    
+     @ClaseImo = NULL,                                                                                                                                                                                              
+     @NroImo = NULL,                                                                                                  
+     @ls_volumenctn = NULL,
+	 @CodigoCondicionTransporte = NULL,
+	 @CodigoUnidadMercancia=NULL,
+	 @CodigoClaseIMO=NULL,
+	 @CodigoNumeroIMO=NULL                                                                                                              
+	                                                                                                                 
+    SET @DescripcionMercaderia = ''                                                                                                                                                                                                                             
+    SET @p_Bloques = @p_Bloques +'PCI-'                                                                                                                                                            
+    SELECT @ls_segmento_ant = 'PCI'                                
+END                                                                          
+                                                                
+ /*MIGUEL, Contador de Ctn si llega @contCtn = 3, indica que no tiene PCI (Se fue hasta el Segmento GID Siguiente)*/                                                                                                                                           
+                          
+  IF ISNULL(@ContenedorBL,'')<>''                                                                     
+    BEGIN                                                                                                                                                     
+       SET @contCtn=@contCtn+1                                                                                                                                          
+    END                                                    
+ ELSE                                                                                                                                           
+    BEGIN                                                                                                                    
+       SET @contCtn=0                                                                                                                                                                  
+    END                                                                                            
+                                                                                                                    
+  -- ADD JAV 28/09/2015, Si PCI = 0 (No tiene PCI) y @contCtn=2, se suma un valor mas para que inserte (@contCtn=3)                                                                          
+  IF (@isPCI = 0) AND (ISNULL(@ContenedorBL,'')<>'') AND @contCtn=2                                   
+    BEGIN                                                                            
+  SET @CanBulNoPCI = @CanBul                                                                          
+  SET @CodUBCHawkNoPCI = @CodUBCHawk                                                                
+ END                                                                                                                                                                       
+   --FIN                                                                            
+                                                                                                                                                                                       
+ IF (@isPCI = 0) AND (@contCtn=3) AND (ISNULL(@ContenedorBL,'')<>'')                                                   
+ BEGIN                                                                                                                                                                                                   
+   INSERT @Temporal_DocumentoDetalleCarga                                                                                                                    
+   (                                                                                                                                                                                                                             
+		NumeroDocumento,                                                                                                                                                                                                                                                                                                            
+		NumeroContenedor,  
+		CodigoCondicionTransporte,
+		CodigoTipoMovimiento,
+		CodigoUnidadMercancia,
+		CodigoNaturalezaCarga,
+		CodigoCondicionCarga,
+		CodigoTemperatura,
+		CodigoClaseIMO,
+		CodigoNumeroIMO,
+		CodigoAlmacen,
+		CodigoDeposito,
+		CodigoPrecinto,                                                                                                                                                                                                   
+		ItemDocumento,
+		CantidadBulto,                                                                                                                                                                                                                                                                                                                                                                                                                                     
+		PesoBruto,                                                                                                               
+		VolumenBruto, 
+		TemperaturaMinima,                                              
+		TemperaturaMaxima,
+		Propietario,
+		Observacion,
+		DescripcionMercaderia,                                                                                                                                      
+		MarcasNumeros, 
+		Falto                                                                                                                                                                                  
+   )  
+   SELECT
+	   @ls_nrodoc,                                                                                                                                                                                                                                                                                      
+	   @ContenedorBL,                                                                                                                                                                                               
+	   NULL, -- CodigoCondicionTransporte, esta en Containers
+	   4, -- CodigoTipoMovimiento, sera 4 (FCL/LCL)  
+	   @CodigoUnidadMercancia, 
+	   6, -- CodigoNaturalezaCarga, sera 6 (Contenerizada)      
+	   4, -- CodigoCondicionCarga, sera 4 (Carga General)
+	   NULL, -- CodigoTemperatura, esta en Containers (hay que trar del FK)
+	   @CodigoClaseIMO, -- CodigoClaseIMO, Los Vacios no tiene IMO,
+	   @CodigoNumeroIMO, -- CodigoNumeroIMO, Los Vacios no tiene IMO,
+	   NULL, -- CodigoAlmacen, Por Definir	                                                                                                                                                        
+	   NULL, -- CodigoDeposito, Por Definir,
+	   NULL, -- CodigoPrecinto, esta en Containers,
+	   CAST(@ItmCtn AS int),                                                                                                                                                                      
+	   CAST(@CanBul AS int), -- CantidadBulto, Por ser Vacio se envia 1   
+	   CAST(@ls_peso_carga2 AS decimal(15,2)), -- PesoBruto
+	   CAST(@ls_volumenctn AS decimal(15,2)), -- VolumenBruto
+	   NULL, -- TemperaturaMinima, esta en Containers                                                                                                                     
+	   NULL, -- TemperaturaMaxima, esta en Containers
+	   NULL, -- Propietario, esta en Containers
+	   NULL, -- Observacion, no Tiene Observacion
+	   @DescripcionMercaderia, -- DescripcionMercaderia, por ser Vacio
+	   @MarcasyNumeros,-- MarcasNumeros, Sin Marcas y Numeros por ser Vacio 
+	   0 -- Falto, 0: No es Falto                                                                                                                                                                                                                                                                                                                                                 
+                                                                         
+ /*Limpio Variables*/                                                                                                                    
+    SELECT                                                       
+   --@ls_nrodoc = NULL,                                                                                                                                     
+   --@ls_nrobooking = NULL,                                                                                
+     @ContenedorBL= NULL,                             
+     @UnidadBasicaCarga= NULL,                                                         
+	 @ItmCtn= NULL,                                                                                 
+     @CanBul= NULL,                                                                                
+     @CodUBCHawk= NULL,                                                                                                                                                                                                  
+     @ls_peso_carga2= NULL,                                       
+     @DescripcionMercaderia= NULL,                                                                                                                                                                                                  
+     @MarcasyNumeros= NULL,                                                                                
+     @ls_regimen= NULL,                                                 
+     @ls_condicion= NULL,                                                                      
+     @ls_condicion= NULL,                                                    
+     @ClaseImo = NULL,                                                                                                                                                                                              
+     @NroImo = NULL,                                                                                                  
+     @ls_volumenctn = NULL,
+	 @CodigoCondicionTransporte = NULL,
+	 @CodigoUnidadMercancia=NULL,
+	 @CodigoClaseIMO=NULL,
+	 @CodigoNumeroIMO=NULL                                                                                                                                                                                                                                                                                               
+                            
+   SET @DescripcionMercaderia = ''                                                                                                                                                                                                                                                                                                                                                                                                                 
+  END                            
+                                                                         
+  SET @isPCI = 0  -- Reinicia el @isPCI a 0                                                     
+                                                                                                    
+  IF  @ls_bls_old<>@ls_bls_new                                                 
+  BEGIN                                                                                         
+	IF @p_Bloques NOT LIKE '%SGP%'                                                                                                   
+    BEGIN    
+		PRINT 'El BL ' + @ls_bls_old + ' no tiene carga '                                                                                                                                  
+                                                                      
+		DELETE FROM @Temporal_Documento WHERE NumeroDocumento=@ls_bls_old                                                                                                                                                                                                  
+		DELETE FROM @Temporal_DocumentoDetalleFlete WHERE NumeroDocumento=@ls_bls_old                                                                                                                            
+		DELETE FROM @Temporal_DocumentoDetalleCliente WHERE NumeroDocumento=@ls_bls_old                                   
+    END                                                                                                          
+	SET @p_Bloques=''                                                                           
+	SET @ls_bls_old=@ls_bls_new                                                                                                                                               
+  END 
+                                                                                                                                                                        
+END -- FIN DEL BUCLE de TEXTO      
+
+ DELETE FROM @Temporal_Documento WHERE ISNULL(NumeroDocumento,'')=''                                                                                                                    
+ DELETE FROM @Temporal_DocumentoDetalleCarga WHERE ISNULL(NumeroContenedor,'')=''  
+ DELETE FROM @Temporal_DocumentoDetalleCliente WHERE ISNULL(NumeroDocumento,'')=''
+ DELETE FROM @Temporal_DocumentoDetalleFlete WHERE (ISNULL(NumeroDocumento,'')='' OR ISNULL(CodigoTipoFlete,0)=0)  
+
+ SELECT * FROM @Temporal_Contenedor
+ SELECT * FROM @Temporal_Documento
+ SELECT * FROM @Temporal_DocumentoDetalleCarga
+ SELECT * FROM @Temporal_DocumentoDetalleCliente
+ SELECT * FROM @Temporal_DocumentoDetalleFlete
+
+-- Migracion Contenedores, Precintos, Entidad Precinto, Temperaturas
+SELECT @Max_PK_Contenedor=Max(PK_Contenedor) FROM @Temporal_Contenedor
+
+WHILE (@Min_PK_Contenedor<=@Max_PK_Contenedor)
+BEGIN
+	SELECT @NumeroContenedor=NumeroContenedor,@TCodigoTipoContenedor=CodigoTipoContenedor,@PesoTara=cast(PesoTara AS decimal(15,2)),@Precinto1=Precinto1,
+	@EntidadPrecinto1=EntidadPrecinto1,@UnidadTemperatura=UnidadTemperatura
+	FROM @Temporal_Contenedor WHERE PK_Contenedor = @Min_PK_Contenedor
+
+	-- Entidad Precinto
+	IF NOT EXISTS(SELECT CodigoEntidadPrecinto FROM dbo.EntidadPrecinto ep (NOLOCK) WHERE ep.CodigoEntidadPrecintoSunat = @EntidadPrecinto1 AND ep.EstadoRegistro = 1)
+	BEGIN
+		SELECT @CodigoEntidadPrecinto=CodigoEntidadPrecinto FROM dbo.EntidadPrecinto ep (NOLOCK) WHERE ep.CodigoEntidadPrecintoSunat = 'AB' AND ep.EstadoRegistro = 1
+	END 
+	ELSE
+	BEGIN
+		SELECT @CodigoEntidadPrecinto=CodigoEntidadPrecinto FROM dbo.EntidadPrecinto ep (NOLOCK) WHERE ep.CodigoEntidadPrecintoSunat = @EntidadPrecinto1 AND ep.EstadoRegistro = 1
+	END
+	
+	-- Precinto
+	IF NOT EXISTS(SELECT CodigoPrecinto FROM dbo.Precinto p (NOLOCK) WHERE p.NumeroPrecinto = @Precinto1 AND p.EstadoRegistro = 1)
+	BEGIN
+		INSERT dbo.Precinto
+		(
+		    --CodigoPrecinto - this column value is auto-generated
+		    CodigoCondicionPrecinto,
+		    CodigoEntidadPrecinto,
+		    NumeroPrecinto,
+		    EstadoRegistro,
+		    UsuarioCreacion,
+		    FechaHoraCreacion
+		)
+		VALUES
+		(
+		    -- CodigoPrecinto - bigint
+		    1, -- CodigoCondicionPrecinto - bigint -- BUENO
+		    @CodigoEntidadPrecinto, -- CodigoEntidadPrecinto - bigint
+		    @Precinto1, -- NumeroPrecinto - varchar
+		    1, -- EstadoRegistro - bit
+		    USER_NAME(), -- UsuarioCreacion - varchar
+		    GETDATE()
+		)
+
+		SET @CodigoPrecinto = @@IDENTITY
+	END 
+	ELSE
+	BEGIN
+		SELECT @CodigoPrecinto=CodigoPrecinto FROM dbo.Precinto p (NOLOCK) WHERE p.NumeroPrecinto = @Precinto1 AND p.EstadoRegistro = 1
+
+		UPDATE dbo.Precinto
+		SET
+		    CodigoEntidadPrecinto = @CodigoEntidadPrecinto, 
+		    UsuarioActualizacion = USER_NAME(),
+		    FechaHoraActualizacion = GETDATE()
+		WHERE NumeroPrecinto = @Precinto1
+	END  
+
+	-- Contenedor
+	IF NOT EXISTS(SELECT c.CodigoContenedor FROM dbo.Contenedor c (NOLOCK) WHERE c.NumeroContenedor = @NumeroContenedor AND c.EstadoRegistro = 1)
+	BEGIN
+		INSERT dbo.Contenedor
+		(
+		    CodigoTipoContenedor,
+		    NumeroContenedor,
+		    TaraContenedor,
+		    EstadoRegistro,
+		    UsuarioCreacion,
+		    FechaHoraCreacion
+		)
+		VALUES
+		(
+		    @TCodigoTipoContenedor, 
+		    @NumeroContenedor, 
+		    @PesoTara, 
+		    1,
+		    USER_NAME(), 
+		    GETDATE()
+		)
+
+		SET @CodigoContenedor = @@IDENTITY
+	END 
+	ELSE
+	BEGIN
+		UPDATE dbo.Contenedor
+		SET
+		    CodigoTipoContenedor = @TCodigoTipoContenedor, 
+		    TaraContenedor = @PesoTara,
+		    UsuarioActualizacion = USER_NAME(), 
+		    FechaHoraActualizacion = GETDATE()
+		WHERE NumeroContenedor = @NumeroContenedor
+
+		SELECT @CodigoContenedor=c.CodigoContenedor FROM dbo.Contenedor c (NOLOCK) WHERE c.NumeroContenedor = @NumeroContenedor AND c.EstadoRegistro = 1
+	END 
+	SET @Min_PK_Contenedor = @Min_PK_Contenedor + 1 
+END
+      
+UPDATE a SET 
+a.CodigoCondicionTransporte = b.CodigoCondicionTransporte, 
+a.CodigoTemperatura = t.CodigoTemperatura,
+a.TemperaturaMinima = b.Temperatura,
+a.TemperaturaMaxima = b.Temperatura,
+a.Propietario = b.PropietarioContenedor,
+a.CodigoPrecinto = p.CodigoPrecinto,
+a.CodigoUnidadMercancia = CASE WHEN a.CodigoUnidadMercancia IS NULL THEN 1 ELSE a.CodigoUnidadMercancia END,
+a.CodigoClaseIMO = CASE WHEN a.CodigoClaseIMO IS NULL THEN 20 ELSE a.CodigoClaseIMO END,
+a.CodigoNumeroIMO = CASE WHEN a.CodigoNumeroIMO IS NULL THEN 1277 ELSE a.CodigoNumeroIMO END,
+a.CodigoAlmacen = 136, -- TRABAJOS MARITIMOS S.A. TRAMARSA
+a.CodigoDeposito = 5886 -- DP WORLD CALLAO S.R.L.
+FROM @Temporal_DocumentoDetalleCarga a INNER JOIN @Temporal_Contenedor b ON a.NumeroContenedor = b.NumeroContenedor
+LEFT JOIN dbo.Temperatura t ON ISNULL(b.UnidadTemperatura,'999') = t.CodigoTemperaturaSunat 
+INNER JOIN dbo.Precinto p ON b.Precinto1 = p.NumeroPrecinto
+
+-- Si el Documento Existe, se debe eliminar, para volver a registrarlo con la nueva data
+DECLARE @Documentos_Eliminar TABLE
+(
+	CodigoDocumento bigint
+)
+
+INSERT @Documentos_Eliminar
+SELECT CodigoDocumento FROM dbo.Documento (NOLOCK) d INNER JOIN @Temporal_Documento td ON d.CodigoItinerario = @CodigoItinerario AND d.CodigoPuertoOrigenDocumento=td.CodigoPuertoOrigenDocumento
+AND d.CodigoPuertoEmbarqueDocumento=td.CodigoPuertoEmbarqueDocumento AND d.CodigoPuertoDescargaDocumento=td.CodigoPuertoDescargaDocumento AND 
+d.CodigoPuertoFinalDocumento=td.CodigoPuertoFinalDocumento AND CodigoLineaNaviera=@CodigoLineaNaviera AND d.CodigoAduana=td.CodigoAduana
+
+DELETE FROM DocumentoDetalleFlete WHERE CodigoDocumento IN (SELECT CodigoDocumento FROM @Documentos_Eliminar)
+DELETE FROM DocumentoDetalleCliente WHERE CodigoDocumento IN (SELECT CodigoDocumento FROM @Documentos_Eliminar)
+DELETE FROM DocumentoDetalleCarga WHERE CodigoDocumento IN (SELECT CodigoDocumento FROM @Documentos_Eliminar)
+DELETE FROM Documento WHERE CodigoDocumento IN (SELECT CodigoDocumento FROM @Documentos_Eliminar)
+
+INSERT dbo.Documento
+(
+    --CodigoDocumento - this column value is auto-generated
+    CodigoItinerario,
+    CodigoPuertoOrigenDocumento,
+    CodigoPuertoEmbarqueDocumento,
+    CodigoPuertoDescargaDocumento,
+    CodigoPuertoFinalDocumento,
+    CodigoLineaNaviera,
+    CodigoAduana,
+    CodigoTipoBL,
+    CodigoTipoEnvio,
+    CodigoCondicionContrato,
+    CodigoRequerimientoServicio,
+    NumeroDocumento,
+    FechaEmisionDocumento,
+    FechaEmbarqueDocumento
+)
+ SELECT 
+	@CodigoItinerario,
+    CodigoPuertoOrigenDocumento,
+    CodigoPuertoEmbarqueDocumento,
+    CodigoPuertoDescargaDocumento,
+    CodigoPuertoFinalDocumento,
+    @CodigoLineaNaviera,
+    CodigoAduana,
+    CodigoTipoBL,
+    CodigoTipoEnvio,
+    CodigoCondicionContrato,
+    CodigoRequerimientoServicio,
+    NumeroDocumento,
+    CAST(FechaEmisionDocumento AS datetime),
+    CAST(FechaEmbarqueDocumento AS datetime)
+FROM @Temporal_Documento
+
+INSERT dbo.DocumentoDetalleCarga
+(
+    --CodigoDocumentoDetalleCarga - this column value is auto-generated
+    CodigoDocumento,
+    CodigoContenedor,
+    CodigoCondicionTransporte,
+    CodigoTipoMovimiento,
+    CodigoUnidadMercancia,
+    CodigoNaturalezaCarga,
+    CodigoCondicionCarga,
+    CodigoTemperatura,
+    CodigoClaseIMO,
+    CodigoNumeroIMO,
+    CodigoAlmacenDocumentoDetalleCarga,
+    CodigoDepositoDocumentoDetalleCarga,
+    CodigoPrecinto,
+    ItemDocumentoDetalleCarga,
+    CantidadBultoDocumentoDetalleCarga,
+    PesoBrutoDocumentoDetalleCarga,
+    VolumenBrutoDocumentoDetalleCarga,
+    TemperaturaMinimaDocumentoDetalleCarga,
+    TemperaturaMaximaDocumentoDetalleCarga,
+    PropietarioDocumentoDetalleCarga,
+    ObservacionDocumentoDetalleCarga,
+    DescripcionDocumentoDetalleCarga,
+    MarcasNumerosDocumentoDetalleCarga,
+    FaltoDocumentoDetalleCarga
+)
+SELECT
+    -- CodigoDocumentoDetalleCarga - bigint
+    d.CodigoDocumento,
+    c.CodigoContenedor,
+    tddc.CodigoCondicionTransporte,
+    tddc.CodigoTipoMovimiento,
+    tddc.CodigoUnidadMercancia,
+    tddc.CodigoNaturalezaCarga,
+    tddc.CodigoCondicionCarga,
+    tddc.CodigoTemperatura,
+    tddc.CodigoClaseIMO,
+    tddc.CodigoNumeroIMO,
+    tddc.CodigoAlmacen,
+    tddc.CodigoDeposito,
+    tddc.CodigoPrecinto,
+    tddc.ItemDocumento,
+    tddc.CantidadBulto,
+    tddc.PesoBruto,
+    tddc.VolumenBruto,
+    tddc.TemperaturaMinima,
+    tddc.TemperaturaMaxima,
+    tddc.Propietario,
+    tddc.Observacion,
+    tddc.DescripcionMercaderia,
+    tddc.MarcasNumeros,
+    tddc.Falto
+FROM @Temporal_DocumentoDetalleCarga tddc INNER JOIN dbo.Documento (NOLOCK) d ON tddc.NumeroDocumento=d.NumeroDocumento
+INNER JOIN dbo.Contenedor (NOLOCK) c ON c.NumeroContenedor = tddc.NumeroContenedor
+
+INSERT dbo.DocumentoDetalleCliente
+(
+    --CodigoDocumentoDetalleCliente - this column value is auto-generated
+    CodigoDocumento,
+    CodigoRol,
+    CodigoPersona
+)
+SELECT
+	d.CodigoDocumento,
+    tddc.CodigoRol,
+    tddc.CodigoPersona
+FROM @Temporal_DocumentoDetalleCliente tddc INNER JOIN dbo.Documento (NOLOCK) d ON tddc.NumeroDocumento=d.NumeroDocumento
+
+INSERT dbo.DocumentoDetalleFlete
+(
+    --CodigoDocumentoDetalleFlete - this column value is auto-generated
+    CodigoDocumento,
+    CodigoTipoFlete,
+    CodigoMoneda,
+    CodigoModoPago,
+    MontoDocumentoDetalleFlete
+)
+SELECT
+	d.CodigoDocumento,
+    tddf.CodigoTipoFlete,
+    tddf.CodigoMoneda,
+    tddf.CodigoModoPago,
+    tddf.MontoFlete
+FROM @Temporal_DocumentoDetalleFlete tddf INNER JOIN dbo.Documento (NOLOCK) d ON tddf.NumeroDocumento=d.NumeroDocumento
+                                                                                                                                 
+SET NOCOUNT OFF    
+
+GO

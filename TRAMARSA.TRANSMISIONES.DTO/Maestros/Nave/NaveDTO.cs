@@ -1,0 +1,50 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace TRAMARSA.TRANSMISIONES.DTO.Nave
+{
+    [DataContract]
+    public class NaveDTO
+    {
+        [DataMember(Order = 0)]
+        public Int64? CodigoNave { get; set; }
+        [DataMember(Order = 1)]
+        public string NombreNave { get; set; }
+        [DataMember(Order = 2)]
+        public Int64? CodigoPais { get; set; }
+        [DataMember(Order = 3)]
+        public string NombrePais { get; set; }
+        [DataMember(Order = 4)]
+        public Int64? CodigoTipoNave { get; set; }
+        [DataMember(Order = 5)]
+        public string NombreTipoNave { get; set; }
+        [DataMember(Order = 6)]
+        public Int64? CodigoLineaNaviera { get; set; }
+        [DataMember(Order = 7)]
+        public string NombreLineaNaviera { get; set; }
+        [DataMember(Order = 8)]
+        public string MatriculaNave { get; set; }
+        [DataMember(Order = 9)]
+        public Decimal? TrbNave { get; set; }
+        [DataMember(Order = 10)]
+        public Decimal? TrnNave { get; set; }
+        [DataMember(Order = 11)]
+        public Decimal? EsloraNave { get; set; }
+        [DataMember(Order = 12)]
+        public Decimal? MangaNave { get; set; }
+        [DataMember(Order = 13)]
+        public Decimal? CaladoNave { get; set; }
+        [DataMember(Order = 14)]
+        public string UsuarioCreacion { get; set; }
+        [DataMember(Order = 15)]
+        public DateTime? FechaHoraCreacion { get; set; }
+        [DataMember(Order = 16)]
+        public string UsuarioActualizacion { get; set; }
+        [DataMember(Order = 17)]
+        public DateTime? FechaHoraActualizacion { get; set; }
+    }
+}
